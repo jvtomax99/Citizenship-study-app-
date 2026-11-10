@@ -15,6 +15,10 @@ so far: no code, no SPEC.md, no hosting chosen yet.
   (Jose's other study app is on GitHub Pages; Interp is on Vercel).
 - **No main branch yet.** The first pull request creates it once Jose OKs it.
 
+- **Public repo, paid assets.** The repo is public (checked 2026-11-10), so paid raw files can't be committed (docs/assets.md, section 9) unless Jose makes it private.
+- **Taste skill.** docs/design-rules.md asks for Senlin's taste skill from a link Jose hasn't given yet (PASTE_LINK_HERE). Until he does, use the `taste` skill this environment already has, and ask him for the link.
+- **Refactor prompt.** docs/refactor.md, run when Jose asks for "Refactor: CLEANUP.md items ...".
+
 # General rules (all of Jose's website projects)
 
 These are the same in every project. Where this project works differently
