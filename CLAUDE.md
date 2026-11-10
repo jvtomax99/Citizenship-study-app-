@@ -13,8 +13,9 @@ so far: no code, no SPEC.md, no hosting chosen yet.
 - **Real user:** TO FILL (Jose himself, or someone he is building it for).
 - **Hosting:** not chosen yet. Decide it in the plan and write it here
   (Jose's other study app is on GitHub Pages; Interp is on Vercel).
-- **No main branch yet.** GitHub's default branch is `claude/amazing-albattani-rqksw7`.
-  Creating `main` and making it the default is Jose's call (a repo setting).
+- **Default branch.** `main` exists since 2026-11-10, but GitHub's default is
+  still `claude/amazing-albattani-rqksw7` until Jose switches it (Settings,
+  Branches). Pull requests go into `main`.
 - **Handoffs:** new handoffs go in root `HANDOFF.md`. None exists yet.
 - **Rule docs:** `docs/design-rules.md`, `docs/assets.md`,
   `docs/cleanup-audit.md` and `docs/refactor.md` are in the repo.
