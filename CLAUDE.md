@@ -13,7 +13,17 @@ so far: no code, no SPEC.md, no hosting chosen yet.
 - **Real user:** TO FILL (Jose himself, or someone he is building it for).
 - **Hosting:** not chosen yet. Decide it in the plan and write it here
   (Jose's other study app is on GitHub Pages; Interp is on Vercel).
-- **No main branch yet.** The first pull request creates it once Jose OKs it.
+- **Default branch.** `main` exists since 2026-11-10, but GitHub's default is
+  still `claude/amazing-albattani-rqksw7` until Jose switches it (Settings,
+  Branches). Pull requests go into `main`.
+- **Handoffs:** new handoffs go in root `HANDOFF.md`. None exists yet.
+- **Rule docs:** `docs/design-rules.md`, `docs/assets.md`,
+  `docs/cleanup-audit.md` and `docs/refactor.md` are in the repo.
+  `DESIGN.md`, `docs/ARCHITECTURE.md` and `docs/CLEANUP.md` do not exist yet;
+  make them when the first code or design work needs them.
+- **Site check:** not set up yet (no pages). When the first page lands, copy
+  `.github/site-check.cjs` and `.github/workflows/site-check.yml` from
+  Lions-Roar- and list the pages there.
 
 - **Public repo, paid assets.** The repo is public (checked 2026-11-10), so paid raw files can't be committed (docs/assets.md, section 9) unless Jose makes it private.
 - **Taste skill.** Saved in `.claude/skills/taste/` (Senlin's, MIT; `SOURCE.md` there says where from). It asks for the Playwright MCP server; in a cloud session use the Playwright already installed instead (run its `references/extract.js` with `page.evaluate`).
