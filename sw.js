@@ -3,12 +3,12 @@
 // fresh set is downloaded in the background and swapped in only if every file arrived,
 // so the files never get mixed between two versions. An update shows up the second
 // time the app is opened. A new file the app needs must be added to FILES.
-const CACHE = 'civics128-v1';
+const CACHE = 'civics128-v2';
 const NEXT = 'civics128-next';
 const FILES = [
   './', 'index.html', 'manifest.webmanifest', 'css/app.css',
   'js/app.js', 'js/data.js', 'js/store.js', 'js/srs.js', 'js/speak.js', 'js/ui.js',
-  'js/home.js', 'js/place.js', 'js/study.js', 'js/drill.js',
+  'js/home.js', 'js/place.js', 'js/study.js', 'js/drill.js', 'js/mock.js', 'js/match.js', 'js/listen.js',
   'data/questions.json', 'data/es.json', 'data/officials.json',
   'assets/images/mall-day.webp', 'assets/images/mall-night.webp', 'assets/images/eagle-officer.webp',
   'assets/fonts/fraunces.woff2', 'assets/fonts/fraunces-italic.woff2', 'assets/fonts/nunito.woff2',

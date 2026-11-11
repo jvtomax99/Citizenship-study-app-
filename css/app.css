@@ -206,3 +206,30 @@ a.btn{display:grid;place-items:center;text-decoration:none}
 .es-toggle{position:relative}
 .es-toggle::after{content:"";position:absolute;inset:-8px -6px}
 .pill-link{height:44px}
+
+/* ---- mock interview (js/mock.js) ---- */
+.mic.is-listening{background:linear-gradient(180deg,var(--indigo1),var(--indigo));box-shadow:0 3px 0 var(--indigo-lip),0 0 0 4px rgba(95,87,201,.25);animation:hear 1.2s var(--ease) infinite alternate}
+@keyframes hear{to{box-shadow:0 3px 0 var(--indigo-lip),0 0 0 9px rgba(95,87,201,.12)}}
+.field input:disabled{opacity:1;-webkit-text-fill-color:var(--ink);color:var(--ink);background:var(--page)}
+.mic-note{min-height:18px;margin:6px var(--sp-1) 0;font-size:var(--fs-small);line-height:18px;font-weight:700;color:var(--text-soft)}
+.hint.center{text-align:center;margin-top:var(--sp-3)}
+.sheet{position:sticky;margin:var(--sp-4) calc(-1*var(--sp-4)) 0;max-height:78vh;overflow-y:auto;overscroll-behavior:contain}
+.sheet.ask{background:var(--card);border-top:2px solid var(--line)}
+.sheet.ask h2{color:var(--ink)}
+.sheet .you{margin-bottom:var(--sp-2);font-weight:700;color:var(--text)}
+.sheet .you b{color:var(--ink);font-weight:900}
+.sheet .also{margin-top:var(--sp-2)}
+.sheet ul+small,.sheet p+small{margin-bottom:var(--sp-2)}
+.sheet>.btn,.sheet>.pair{margin-top:var(--sp-4)}
+.sheet .pair .btn{flex:1}
+.flip{display:block;width:100%;min-height:44px;margin-top:var(--sp-2);border:0;background:none;font:800 var(--fs-small)/18px var(--sans);color:var(--text);text-decoration:underline;text-underline-offset:3px}
+.review details{margin-top:var(--sp-2);border-radius:var(--r);background:var(--card);border:1.5px solid var(--line)}
+.review summary{display:flex;gap:10px;align-items:flex-start;padding:12px 14px;list-style:none;cursor:pointer;color:var(--ink);font-weight:800}
+.review summary::-webkit-details-marker{display:none}
+.review summary i{flex:none;width:24px;height:24px;border-radius:50%;display:grid;place-items:center;font:900 13px var(--sans);color:var(--on-accent);background:var(--liberty)}
+.review .wrong summary i{background:var(--red)}
+.review summary small{display:block;margin-top:2px;font-size:var(--fs-small);line-height:18px;font-weight:700;color:var(--text-soft)}
+.sheetlike{padding:0 14px 12px 48px;font-size:var(--fs-small);line-height:20px}
+.sheetlike p{margin:0;font-weight:800;color:var(--text)}
+.sheetlike ul{margin:2px 0 0;padding-left:18px;color:var(--ink);font-weight:700}
+.sheetlike small{display:block;margin-top:4px;color:var(--text-soft);font-weight:700}

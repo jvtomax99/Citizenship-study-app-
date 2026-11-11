@@ -35,9 +35,10 @@ const spanishFor = (q) => data.es[q.id] || null;
 const draftMark = (es) => (es && es.checked ? '' : ' <span class="draft" title="Todavía no revisado">borrador</span>');
 
 // The officer's card: chips, the eagle, the speaker, the question, the Español pill.
-export function questionCard(q, { chips = [] } = {}) {
+// spanish: false hides the Español pill (the mock interview is in English, like the real one).
+export function questionCard(q, { chips = [], spanish = true } = {}) {
   const open = store.get().spanish;
-  const es = spanishFor(q);
+  const es = spanish ? spanishFor(q) : null;
   return `<section class="card">
     <div class="chips">${chips.map((c) => `<span class="chip">${esc(c)}</span>`).join('')}${q.star6520 ? '<span class="chip star">★ 65/20 list</span>' : ''}</div>
     <div class="officer">

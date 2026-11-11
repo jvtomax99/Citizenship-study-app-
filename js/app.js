@@ -1,5 +1,6 @@
 // Starts the app and shows the screen the address asks for:
 //   #/  Home    #/place  Pick your state    #/study[/section]  Study cards    #/drill  Drill
+//   #/mock  Mock interview
 import { loadData } from './data.js';
 import { store } from './store.js';
 import { stopSpeaking } from './speak.js';
@@ -7,9 +8,10 @@ import { home } from './home.js';
 import { place, leavePlace } from './place.js';
 import { study, leaveStudy } from './study.js';
 import { drill, leaveDrill } from './drill.js';
+import { mock, leaveMock } from './mock.js';
 
 const root = document.getElementById('app');
-const screens = { '': home, place, study, drill };
+const screens = { '': home, place, study, drill, mock };
 
 function render() {
   const [name = '', arg = ''] = location.hash.replace(/^#\/?/, '').split('/');
@@ -21,7 +23,7 @@ function render() {
 }
 
 window.addEventListener('hashchange', () => {
-  stopSpeaking(); leaveStudy(); leaveDrill(); leavePlace();
+  stopSpeaking(); leaveStudy(); leaveDrill(); leaveMock(); leavePlace();
   render();
   window.scrollTo(0, 0);
 });

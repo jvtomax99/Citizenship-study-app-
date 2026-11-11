@@ -12,6 +12,8 @@ const blank = () => ({
   spanish: false,  // was the Español line left open
   skippedPlace: false,
   hideInstallTip: false,
+  mock: null,      // the mock interview in progress (js/mock.js)
+  mockHistory: [], // the last 10 finished interviews: {day, list, right, wrong, passed}
 });
 
 let state = blank();

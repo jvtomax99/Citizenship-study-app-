@@ -2,6 +2,7 @@
 import { data, idsInList, placeByCode } from './data.js';
 import { store } from './store.js';
 import { isKnown, dayNumber, ROUND_SIZE } from './srs.js';
+import { standing } from './match.js';
 import { esc, frame, wire, ICON } from './ui.js';
 
 let installEvent = null; // Android and desktop Chrome offer a real install prompt
@@ -26,6 +27,8 @@ export function home(root, _arg, rerender) {
   const waiting = ids.filter((id) => s.cards[id] && s.cards[id].box === 0 && s.cards[id].seen && s.cards[id].due <= today).length;
   const rows = sectionRows(s.list, s.cards);
   const round = Math.min(ROUND_SIZE, ids.length);
+  const going = s.mock && !standing(s.mock.log, s.mock.list).over;
+  const lastMock = (s.mockHistory || []).at(-1);
   let group = '';
 
   root.innerHTML = frame(`
@@ -53,7 +56,9 @@ export function home(root, _arg, rerender) {
     </section>
 
     <a class="btn primary" href="#/drill">Drill · ${round} questions</a>
+    <a class="btn ghost" href="#/mock">${going ? `Continue the interview · ${s.mock.log.length} answered` : 'Mock interview'}</a>
     <a class="btn ghost" href="#/study">Study cards</a>
+    ${lastMock ? `<p class="hint center">Last interview${lastMock.list === '6520' ? ' (65/20)' : ''}: ${lastMock.passed ? 'passed' : 'not yet'}, ${lastMock.right} right and ${lastMock.wrong} wrong.</p>` : ''}
 
     ${!installed() && !s.hideInstallTip ? `<aside class="tip">
       <p><b>Keep your progress safe.</b> ${isIos() ? 'Tap the Share button, then “Add to Home Screen”.' : 'Add this app to your Home Screen.'} It also opens without internet.</p>
