@@ -4,8 +4,8 @@
 
 Step 6 (backup, user guide, first release) is built, reviewed and on the test link. It
 is NOT released: no pull request yet, nothing live.
-- **Next: Jose's phone test**, then the pull request into `main` only when Jose asks,
-  then his "push". Ask with buttons.
+- Jose ran the phone test on 2026-11-11: "It works". **Next: the pull request into
+  `main` only when Jose asks**, then his "push". Ask with buttons.
 - Jose's try-this list: on the iPhone, from the Home Screen icon, Backup, "Save a
   backup", send it by WhatsApp or save to Files; load it in Safari or on a second
   phone; see the same numbers; "Undo the load"; open the guide and tap Español.

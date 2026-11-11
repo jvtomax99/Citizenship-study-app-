@@ -203,8 +203,9 @@ Each phase is one pull request, one or two sessions.
 - [ ] 6. Backup, user guide, first release to GitHub Pages.
   - [x] Backup and guide built 2026-11-11, tapped through by script, reviewed by a
     separate reviewer (fixes in), on the test link.
-  - [ ] Jose saves a backup on his iPhone from the Home Screen icon and loads it on
-    another phone or copy (the one thing the script cannot prove).
+  - [x] Jose ran the phone test list (save from the Home Screen icon, load in another
+    copy, undo, the guide) on 2026-11-11: "It works". He did not say which of the
+    three ways to save his iPhone used.
   - [ ] Jose's "push" on the pull request into `main`; Jose turns on Pages (Settings,
     Pages, branch `main`, root) and makes `main` the default branch.
   - [ ] Live address checked: loads, installs, opens offline.
