@@ -3,7 +3,7 @@ import { idsInList, placeByCode, sectionRows } from './data.js';
 import { store } from './store.js';
 import { isKnown, dayNumber, ROUND_SIZE } from './srs.js';
 import { standing } from './match.js';
-import { esc, frame, wire, sectionLinks, ICON } from './ui.js';
+import { esc, frame, wire, sectionLinks, eagleHeader, ICON } from './ui.js';
 
 let installEvent = null; // Android and desktop Chrome offer a real install prompt
 window.addEventListener('beforeinstallprompt', (e) => { e.preventDefault(); installEvent = e; });
@@ -29,13 +29,7 @@ export function home(root, _arg, rerender) {
       <div class="grow"></div>
     </div>
     <section class="card hello">
-      <div class="officer">
-        <img class="badge big" src="assets/images/eagle-officer.webp" alt="" width="64" height="64">
-        <div>
-          <span class="who">U.S. civics test · 2025</span>
-          <h1 class="title">Ready to study?</h1>
-        </div>
-      </div>
+      ${eagleHeader('U.S. civics test · 2025', 'Ready to study?')}
       <div class="seg" role="group" aria-label="Which questions">
         <button data-act="list" data-list="all" aria-pressed="${s.list === 'all'}">All 128</button>
         <button data-act="list" data-list="6520" aria-pressed="${s.list === '6520'}">★ 65/20 list (20)</button>

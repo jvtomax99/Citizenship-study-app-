@@ -4,7 +4,7 @@ import { data, idsInList } from './data.js';
 import { store } from './store.js';
 import { buildRound, grade, requeue, isMiss, dayNumber, MAX_RETRIES } from './srs.js';
 import { stopSpeaking } from './speak.js';
-import { frame, topBar, questionCard, answersPanel, wire, toggleSpanish, ICON } from './ui.js';
+import { frame, topBar, questionCard, answersPanel, wire, toggleSpanish, eagleHeader, ICON } from './ui.js';
 
 let round = null; // {queue, total, asked: Set, retries: {}, tally: {knew, guessed, missed}, shown}
 
@@ -43,11 +43,7 @@ function results(root, rerender) {
   root.innerHTML = frame(`
     ${topBar({ href: '#/', label: 'Home', done: round.total, total: round.total, barLabel: 'Round finished' })}
     <section class="card">
-      <div class="officer">
-        <img class="badge big" src="assets/images/eagle-officer.webp" alt="" width="64" height="64">
-        <div><span class="who">Round finished</span>
-        <h1 class="title">${knew === round.total ? 'You knew them all!' : `You knew ${knew} of ${round.total}`}</h1></div>
-      </div>
+      ${eagleHeader('Round finished', knew === round.total ? 'You knew them all!' : `You knew ${knew} of ${round.total}`)}
       <div class="score">
         <div class="good"><b>${knew}</b><span>knew it</span></div>
         <div><b>${guessed}</b><span>guessed</span></div>

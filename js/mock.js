@@ -7,7 +7,7 @@ import { grade, dayNumber } from './srs.js';
 import { speak, stopSpeaking } from './speak.js';
 import { canListen, listen, stopListening } from './listen.js';
 import { RULES, standing, pickQuestions, judge } from './match.js';
-import { esc, frame, topBar, questionCard, wire } from './ui.js';
+import { esc, frame, topBar, questionCard, wire, eagleHeader } from './ui.js';
 
 // The interview in progress lives in the store (it survives closing the app):
 //   {list, ids, log: [{id, said, auto, verdict, flipped}], open}
@@ -85,11 +85,7 @@ function startScreen(root, rerender) {
   root.innerHTML = frame(`
     ${topBar({ href: '#/', label: 'Home' })}
     <section class="card">
-      <div class="officer">
-        <img class="badge big" src="assets/images/eagle-officer.webp" alt="" width="64" height="64">
-        <div><span class="who">Mock interview${list === '6520' ? ' · 65/20' : ''}</span>
-        <h1 class="title">${going ? 'Welcome back' : 'Ready for the officer?'}</h1></div>
-      </div>
+      ${eagleHeader(`Mock interview${list === '6520' ? ' · 65/20' : ''}`, going ? 'Welcome back' : 'Ready for the officer?')}
       <p class="lead">The officer asks up to <b>${rule.ask}</b> questions out loud. <b>${rule.pass}</b> right and you pass. It stops at ${rule.pass} right or ${rule.fail} wrong, as the real interview does.</p>
       <p class="hint">${canListen()
         ? 'Answer out loud with the microphone, or type. To turn your voice into words, the phone sends it to Apple or Google.'
@@ -145,11 +141,7 @@ function results(root, m, rerender) {
   root.innerHTML = frame(`
     ${topBar({ href: '#/', label: 'Home', done: m.log.length, total: m.log.length, barLabel: 'Interview finished' })}
     <section class="card">
-      <div class="officer">
-        <img class="badge big" src="assets/images/eagle-officer.webp" alt="" width="64" height="64">
-        <div><span class="who">Interview finished</span>
-        <h1 class="title">${st.passed ? 'You passed!' : 'Not yet'}</h1></div>
-      </div>
+      ${eagleHeader('Interview finished', st.passed ? 'You passed!' : 'Not yet')}
       <div class="score">
         <div class="good"><b>${st.right}</b><span>right</span></div>
         <div><b>${st.wrong}</b><span>wrong</span></div>

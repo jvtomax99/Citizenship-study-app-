@@ -42,6 +42,14 @@ export function sectionLinks(rows, { meter = false } = {}) {
   }).join('');
 }
 
+// The big eagle header of a card: the eagle, a small caption, a large title.
+// caption and title are HTML: escape anything that is not fixed text before passing it.
+export const eagleHeader = (caption, title) => `<div class="officer">
+    <img class="badge big" src="assets/images/eagle-officer.webp" alt="" width="64" height="64">
+    <div><span class="who">${caption}</span>
+    <h1 class="title">${title}</h1></div>
+  </div>`;
+
 const spanishFor = (q) => data.es[q.id] || null;
 const draftMark = (es) => (es && es.checked ? '' : ' <span class="draft" title="Todavía no revisado">borrador</span>');
 
