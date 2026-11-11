@@ -13,6 +13,8 @@ A study app for the U.S. citizenship (naturalization) civics test, 2025 version
 - **The questions are copied, never written.** `data/questions.json` is built from
   the USCIS PDF in `sources/`; `python3 tools/questions_from_pdf.py` must say OK
   before any push. uscis.gov blocks automated downloads: ask Jose to upload files.
+- **Always clickable suggestions** (Jose, 2026-11-11): every question or next step
+  goes out as `AskUserQuestion` buttons, recommended first, never only as text.
 - **No main branch yet.** The first pull request creates it once Jose OKs it.
 
 - **Public repo, paid assets.** The repo is public (checked 2026-11-10), so paid raw files can't be committed (docs/assets.md, section 9) unless Jose makes it private.

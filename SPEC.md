@@ -100,8 +100,9 @@ TO FILL: Jose to confirm.
 
 ## Open questions for Jose
 
-- Senators and governors: only the states where the family and friends live (Jose,
-  2026-11-11); other states type their own. TO FILL: which states.
+- Senators and governors: only the states where the family and friends live:
+  New Jersey and New York (Jose, 2026-11-11); other states type their own. Needs
+  www.senate.gov, www.nj.gov and www.governor.ny.gov reachable to confirm names.
 
 ## Budget
 
@@ -126,8 +127,8 @@ Each phase is one pull request, one or two sessions.
   - [ ] Jose reads the Spanish (`checked` stays false until then).
   - [ ] Federal names confirmed on uscis.gov/citizenship/testupdates; senators and
     governors filled (see Open questions).
-- [ ] 2. Look: DESIGN.md per `docs/design-rules.md` (template or not, 1 to 3 sites
-  Jose likes, the taste skill), one sample screen for Jose's OK.
+- [ ] 2. Look: DESIGN.md per `docs/design-rules.md`, from Duolingo's feel (Jose's
+  pick, 2026-11-11; no template, $0), one sample screen for Jose's OK.
 - [ ] 3. App shell, state picker, Study cards with read-aloud, Drill with spaced
   repetition and "I guessed". Home Screen install and offline.
 - [ ] 4. Mock interview with voice, the 12/9 rule and 65/20 mode.
