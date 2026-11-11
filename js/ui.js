@@ -90,6 +90,9 @@ export function answersPanel(q) {
     ${optional ? '<p class="hint">Words in parentheses are optional.</p>' : ''}</section>`;
 }
 
+// The Español pill on a question card: open or close the Spanish text.
+export const toggleSpanish = (rerender) => () => { store.set({ spanish: !store.get().spanish }); rerender(); };
+
 // Buttons and links marked data-act="name" call handlers[name]. Returns nothing.
 export function wire(root, handlers, q) {
   const drawn = performance.now();

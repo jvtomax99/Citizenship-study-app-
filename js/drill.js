@@ -4,7 +4,7 @@ import { data, idsInList } from './data.js';
 import { store } from './store.js';
 import { buildRound, grade, requeue, isMiss, dayNumber, MAX_RETRIES } from './srs.js';
 import { stopSpeaking } from './speak.js';
-import { frame, topBar, questionCard, answersPanel, wire, ICON } from './ui.js';
+import { frame, topBar, questionCard, answersPanel, wire, toggleSpanish, ICON } from './ui.js';
 
 let round = null; // {queue, total, asked: Set, retries: {}, tally: {knew, guessed, missed}, shown}
 
@@ -86,7 +86,7 @@ export function drill(root, _arg, rerender) {
   wire(root, {
     show: () => { round.shown = true; rerender(); },
     grade: (el) => { stopSpeaking(); answer(el.dataset.result); rerender(); window.scrollTo(0, 0); },
-    spanish: () => { store.set({ spanish: !store.get().spanish }); rerender(); },
+    spanish: toggleSpanish(rerender),
   }, () => q);
 }
 

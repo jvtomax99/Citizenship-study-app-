@@ -3,7 +3,7 @@ import { data, idsInList } from './data.js';
 import { store } from './store.js';
 import { sectionRows } from './home.js';
 import { stopSpeaking } from './speak.js';
-import { esc, frame, topBar, questionCard, answersPanel, wire, ICON } from './ui.js';
+import { esc, frame, topBar, questionCard, answersPanel, wire, toggleSpanish, ICON } from './ui.js';
 
 const at = {}; // where you were in each section, while the app stays open
 let shown = false;
@@ -57,7 +57,7 @@ export function study(root, key, rerender) {
     next: () => go(i + 1),
     done: () => { at[slot] = 0; location.hash = '#/study'; },
     prev: () => go(i - 1),
-    spanish: () => { store.set({ spanish: !store.get().spanish }); rerender(); },
+    spanish: toggleSpanish(rerender),
   }, () => q);
 }
 
