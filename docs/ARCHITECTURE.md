@@ -85,7 +85,8 @@ background, so an update appears the second time the app is opened. A new file t
 needs must be added to the `FILES` list in `sw.js`, and the cache name there bumped.
 
 A backup is that same remembered state as one text file (`js/backup.js`). Loading one
-replaces the state; what the phone held is kept under `civics128.undo` until it is undone.
+replaces the state; what the phone held is kept under `civics128.undo` (one copy).
+Putting it back swaps the two, so nothing is dropped by one tap.
 The hidden install tip and the last-backup date belong to the phone and do not travel.
 
 ## Going live

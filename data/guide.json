@@ -69,14 +69,14 @@
       "t": "Mock interview: practice like the real day",
       "p": [
         "The officer reads each question out loud, in English. Answer with the microphone or by typing, then tap “Check my answer”.",
-        "The app checks your answer. If it is not sure, it shows the accepted answers and you decide. It stops at 12 right answers (you pass) or 9 wrong, like the real interview.",
+        "The app checks your answer. If it is not sure, it shows the accepted answers and you decide. It stops at 12 right answers (you pass) or 9 wrong, like the real interview. On the 65/20 list it stops at 6 right or 5 wrong.",
         "On some phones the microphone does not work. You can always type."
       ],
       "es": {
         "t": "Entrevista de práctica: como el día de verdad",
         "p": [
           "El oficial lee cada pregunta en voz alta, en inglés. Responda con el micrófono o escribiendo y luego toque “Check my answer”.",
-          "La app revisa su respuesta. Si no está segura, le muestra las respuestas aceptadas y usted decide. Se detiene con 12 respuestas correctas (usted aprueba) o 9 incorrectas, como la entrevista de verdad.",
+          "La app revisa su respuesta. Si no está segura, le muestra las respuestas aceptadas y usted decide. Se detiene con 12 respuestas correctas (usted aprueba) o 9 incorrectas, como la entrevista de verdad. En la lista 65/20 se detiene con 6 correctas o 5 incorrectas.",
           "En algunos teléfonos el micrófono no funciona. Siempre puede escribir."
         ]
       }
@@ -92,7 +92,7 @@
         "t": "La lista 65/20",
         "p": [
           "Si tiene 65 años o más y ha sido residente permanente por 20 años o más, estudia solo las 20 preguntas marcadas con una estrella. Toque “★ 65/20 list (20)” en la primera pantalla.",
-          "Pregunte a su abogado o a USCIS si no está seguro de que esto se aplica a usted."
+          "Pregunte a su abogado o a USCIS si no está seguro de que esto se aplique a usted."
         ]
       }
     },
@@ -117,6 +117,7 @@
       "p": [
         "Your progress is saved only on this phone. The app opened in Safari or Chrome and the app opened from the Home Screen icon keep separate progress.",
         "To move your progress to another phone, or just to keep a copy: tap “Backup”, then “Save a backup”. Send the file to yourself by WhatsApp or email. On the other phone, open the app, tap “Backup”, then “Load a backup” and pick the file.",
+        "Cannot find the file on the other phone? Use “Copy the backup as text” here and “Paste a backup as text” there.",
         "Loading a backup replaces the progress on that phone. You can undo it."
       ],
       "es": {
@@ -124,6 +125,7 @@
         "p": [
           "Su progreso se guarda solo en este teléfono. La app abierta en Safari o Chrome y la app abierta desde el ícono de la pantalla de inicio guardan su progreso por separado.",
           "Para pasar su progreso a otro teléfono, o solo para tener una copia: toque “Backup” y luego “Save a backup”. Envíese el archivo por WhatsApp o por correo. En el otro teléfono, abra la app, toque “Backup”, luego “Load a backup” y elija el archivo.",
+          "¿No encuentra el archivo en el otro teléfono? Use “Copy the backup as text” aquí y “Paste a backup as text” allá.",
           "Cargar una copia reemplaza el progreso de ese teléfono. Puede deshacerlo."
         ]
       }

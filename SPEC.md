@@ -110,7 +110,9 @@ read through a search extract:
      progress to another phone.
    - Backup (Jose OK'd the plan, 2026-11-11): one file with everything the phone
      remembers, sent through the phone's Share menu, a download, or copied as text.
-     Loading shows the file's numbers next to the phone's, then replaces, with an Undo.
+     Loading shows the file's numbers next to the phone's, then replaces. The phone
+     keeps the one copy it had before; putting it back also shows both sides first
+     and can itself be undone (from the review: no single tap drops progress).
      Files that are not a backup are refused.
 9. **User guide.** "How to use this app" on Home: short steps in English, Spanish one
    tap away (Jose, 2026-11-11).
@@ -199,3 +201,10 @@ Each phase is one pull request, one or two sessions.
   checked off: Jose will test the voice interview later). Jose tried it on his phone:
   "Looks good" (2026-11-11).
 - [ ] 6. Backup, user guide, first release to GitHub Pages.
+  - [x] Backup and guide built 2026-11-11, tapped through by script, reviewed by a
+    separate reviewer (fixes in), on the test link.
+  - [ ] Jose saves a backup on his iPhone from the Home Screen icon and loads it on
+    another phone or copy (the one thing the script cannot prove).
+  - [ ] Jose's "push" on the pull request into `main`; Jose turns on Pages (Settings,
+    Pages, branch `main`, root) and makes `main` the default branch.
+  - [ ] Live address checked: loads, installs, opens offline.

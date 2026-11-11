@@ -378,7 +378,7 @@ async function run(scheme) {
   await tap('[data-act=save]');
   await page.waitForFunction(() => window.__shared);
   assert.deepEqual(await page.evaluate(() => window.__shared), { name: dl.suggestedFilename(), text: fileText });
-  assert.ok((await page.locator('.note.ok').innerText()).includes('Backup sent'));
+  assert.ok((await page.locator('.note.ok').innerText()).includes('Shared.'));
   // a phone that will not copy by itself shows the text to copy by hand
   await page.evaluate(() => { Object.defineProperty(navigator, 'clipboard', { value: { writeText: async () => { throw new Error('no'); } }, configurable: true }); });
   await tap('[data-act=copy]');
@@ -397,6 +397,7 @@ async function run(scheme) {
     await page.fill('#in', text);
     await tap('[data-act=check]');
     assert.ok((await page.locator('.note.bad').innerText()).includes(says), says);
+    assert.equal(await page.locator('#in').inputValue(), text, 'a refused text stays in the box');
     assert.equal(await page.evaluate(() => localStorage['civics128.v1']), undefined, 'a refused file changes nothing');
   }
   await shot('30-backup-refused', true);
@@ -423,12 +424,24 @@ async function run(scheme) {
   await shot('32-backup-loaded', true);
   // undo puts back what the phone had (here: nothing), and the file can be loaded again
   await tap('[data-act=undo]');
+  await page.waitForSelector('[data-act=putback]');
+  const undoSides = await page.locator('.side').allInnerTexts();
+  assert.ok(undoSides[0].replace(/\s+/g, ' ').includes('0 of 128 known') && undoSides[1].includes('New Jersey'), 'undo shows both sides first');
+  assert.equal(await kept(), before, 'asking to undo changes nothing yet');
+  await shot('32b-backup-undo-ask', true);
+  await tap('[data-act=putback]');
   await page.waitForSelector('.note.ok');
-  assert.ok((await page.locator('.note.ok').innerText()).includes('Undone'));
-  assert.equal(await page.locator('[data-act=undo]').count(), 0);
+  assert.ok((await page.locator('.note.ok').innerText()).includes('earlier progress back'));
   assert.equal(await page.evaluate(() => Object.keys(JSON.parse(localStorage['civics128.v1']).cards).length), 0);
+  // the undo can itself be undone: nothing is ever dropped by one tap
+  await tap('[data-act=undo]');
+  await tap('[data-act=putback]');
+  await page.waitForSelector('.note.ok');
+  assert.equal(await kept(), before);
+  // loading a second file says that the one kept copy will be dropped
   await page.setInputFiles('#pick', file);
   await page.waitForSelector('.compare');
+  assert.ok((await page.locator('.content').innerText()).includes('keeps one earlier copy'));
   await tap('[data-act=replace]');
   await page.waitForSelector('.note.ok');
   assert.equal(await kept(), before);

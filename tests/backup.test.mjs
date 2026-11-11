@@ -8,7 +8,7 @@ const state = () => ({
   v: 1, place: 'NJ', typed: { NJ: { senators: ['', ''], governor: '', rep: 'Test Representative' } }, list: '6520',
   cards: { 1: { box: 2, due: today + 3, seen: 2, last: 'knew' }, 2: { box: 0, due: today, seen: 1, last: 'missed' }, 128: { box: 1, due: today + 1, seen: 1, last: 'knew' } },
   spanish: true, skippedPlace: false, hideInstallTip: true, lastBackup: today - 4,
-  mock: { list: 'all', ids: [5, 9, 77], log: [{ id: 5, said: 'the Constitution', auto: 'right', verdict: 'right', flipped: false }], open: { said: 'um', auto: 'unsure', verdict: null } },
+  mock: { list: 'all', ids: [5, 9, 77, ...Array.from({ length: 17 }, (_, i) => i + 100)], log: [{ id: 5, said: 'the Constitution', auto: 'right', verdict: 'right', flipped: false }], open: { said: 'um', auto: 'unsure', verdict: null } },
   mockHistory: [{ day: today - 1, list: 'all', right: 12, wrong: 3, passed: true }],
   goal: 20, days: { [today - 1]: full, [today]: { n: 3, g: 20, ids: [1, 2, 128] } },
 });
@@ -83,7 +83,7 @@ test('a broken interview is left behind; the rest still loads', () => {
   const load = (mock) => unpack(JSON.stringify({ app: 'civics128', v: 1, state: { goal: 5, mock } })).state;
   const good = state().mock;
   assert.deepEqual(load(good).mock, good);
-  for (const bad of [{ ...good, ids: [5, 5, 77] }, { ...good, ids: [5, 9, 500] }, { ...good, ids: [] }, { ...good, list: 'x' }, { ...good, log: [{ id: 9, said: '', auto: 'right', verdict: 'right' }] }, { ...good, log: [{ id: 5, said: '', auto: 'right', verdict: null }] }, { ...good, log: 'none' }, 'mock', 7]) {
+  for (const bad of [{ ...good, ids: [5, 5, ...good.ids.slice(2)] }, { ...good, ids: [5, 9, 500, ...good.ids.slice(3)] }, { ...good, ids: [] }, { ...good, ids: [5] }, { ...good, list: '6520' }, { ...good, list: 'x' }, { ...good, log: [{ id: 9, said: '', auto: 'right', verdict: 'right' }] }, { ...good, log: [{ id: 5, said: '', auto: 'right', verdict: null }] }, { ...good, log: 'none' }, 'mock', 7]) {
     const s = load(bad);
     assert.equal(s.mock, null);
     assert.equal(s.goal, 5);

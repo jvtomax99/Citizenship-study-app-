@@ -1,60 +1,57 @@
-# HANDOFF (written 2026-11-11, after Step 5 was built)
+# HANDOFF (written 2026-11-11, Step 6 built, not released)
 
 ## Goal and exact next step
 
-Build the citizenship study app (SPEC.md). Steps 1 to 5 are built. Step 5 (the National
-Mall, daily goal, forgiving streak) is checked off: Jose tried it on his phone and said
-"Looks good" (2026-11-11).
-- **Next: ask Jose with buttons** between Step 6 (backup, user guide, first release to
-  GitHub Pages; a big feature, so plan first) and the Step 4 voice test.
-- Step 4 (mock interview) is still NOT checked off: Jose said "test this much later".
-  Owed: one interview by voice in the browser and one from the Home Screen icon. If it
-  fails in the installed app, confirm the "This phone cannot listen here" wording in
-  `js/mock.js`.
-- Small leftovers from the Step 5 review: "Study cards" opened from a landmark goes back
-  to the sections list, not the Mall; a drill round left open overnight treats a
-  returning question as a retry. A first-ever visit on a slow connection shows the
-  Mall's first picture in about 3 s (later visits about 0.3 s).
-- Cleanup audit: last ran 2026-11-11; one step finished since, so not due yet.
+Step 6 (backup, user guide, first release) is built, reviewed and on the test link. It
+is NOT released: no pull request yet, nothing live.
+- **Next: Jose's phone test**, then the pull request into `main` only when Jose asks,
+  then his "push". Ask with buttons.
+- Jose's try-this list: on the iPhone, from the Home Screen icon, Backup, "Save a
+  backup", send it by WhatsApp or save to Files; load it in Safari or on a second
+  phone; see the same numbers; "Undo the load"; open the guide and tap Español.
+  Unproven on a real iPhone: which of the three ways to save works there (Share menu,
+  download, copy as text), and whether the file picker lists the file (it has no file
+  filter on purpose; the reviewer says iPhone then also offers photos).
+- After the merge, Jose: Settings, Pages, branch `main`, folder root; Settings,
+  Branches, default `main`. Then check
+  https://jvtomax99.github.io/Citizenship-study-app-/ loads, installs, opens offline.
 
-## Done (branch `claude/relaxed-mccarthy-sqi1n0`, pushed, nothing live, no `main` yet)
+## Done this session (branch `claude/relaxed-mccarthy-sqi1n0`, pushed)
 
-- Steps 1 to 3 as before.
-- Step 5: `js/progress.js`, `js/mall.js`, `tests/progress.test.mjs`, Home's Today panel and
-  Mall strip, `#/drill/<part>`, eight pictures in `assets/images/landmarks/` (200 Runway
-  credits, 1,270 left). Jose's choices: look B, eight landmarks, honest light, forgiving streak.
-- Step 4: `js/mock.js`, `js/match.js`, `js/listen.js`, `tests/match.test.mjs`, the Home
-  button, `sw.js` list. Proof: `node --test tests/*.mjs` (16 pass) and
-  `node tools/shots.mjs` (needs `python3 -m http.server 8123`).
-- The first cleanup audit: `docs/CLEANUP.md`. Jose chose "Clean up the low-risk ones":
-  done 2026-11-11 (items 3, 5, 7 to 10, 12 to 14; item 6 skipped, it needs a
-  `package.json`). The medium and high items stay: recheck items 1 and 2 (the sample
-  screen, the mock styles) now that Step 4 uses them. Also fixed: button labels in dark
-  mode took the link color.
+- `js/backup.js` + `tests/backup.test.mjs`, `js/more.js` (`#/backup`, `#/guide`),
+  `data/guide.json` (Spanish `checked:false`), `store.replace/kept/undo`, Home rows,
+  `sw.js` list (cache `civics128-v4`), robots "hidden from Google" line, `.nojekyll`,
+  `README.md`. `main`'s three rule-file commits are merged in (CLAUDE.md settled).
+- Proof: `node --test tests/*.mjs` (48 pass), `python3 tools/questions_from_pdf.py` OK,
+  `node tools/shots.mjs` ALL OK (needs `python3 -m http.server 8123`; takes about 4
+  minutes, run it with a long timeout).
+- Review caught: undo could drop weeks of study in one tap (now asks, and swaps);
+  "saved" was claimed without knowing (wording now asks to check); a crafted interview
+  in a file could freeze "Continue" (now refused).
+- Runway: cleared on the Terms of Use, section 4.4 (CREDITS.md). Jose is on the paid
+  Standard plan.
 
-## Left open, waiting on Jose
+## Still owed by Jose before the release
+
+- Step 4 voice test (one interview by voice in the browser, one from the icon). Step 4
+  is NOT checked off.
+- The four federal names at uscis.gov/citizenship/testupdates (`confirmed` is null).
+- Read the Spanish: the 20 marked 65/20 first, plus the guide.
+- Show it to one of the family and friends. SPEC.md TO FILL (who, the app's name).
+
+## Notes
 
 - Test link: https://citizenship-study-test.vercel.app (Vercel project
-  `citizenship-study-test`, team `language-services`, deployed from this branch with the
-  Vercel tools: git source, target production). It does NOT update by itself.
-- Show the app to one of the family and friends.
-- Read the Spanish; SPEC.md TO FILL (who, the app's name, "Not in v1").
-- Confirm the four federal names at uscis.gov/citizenship/testupdates. Recheck Booker's
-  seat and NY's governor in January 2027.
-- Confirm his Runway plan allows the pictures on a public website (CREDITS.md).
-- Small flaw: the monument's tip shows through the progress bar.
-
-## This session's decisions (all in SPEC.md)
-
-The app checks the answer and one tap overrules it; when unsure it asks. After the
-review the checker was made strict: up to three key words must all be there, extra words
-or a "not" send it to "Compare your answer". It asks often, by design.
+  `citizenship-study-test`, team `language-services`; a push makes a preview only, so
+  deploy with git source, target production). Its saved progress is separate from the
+  live site's: the backup file is how to carry it over.
+- `main` exists (rule files only). GitHub's default branch is still
+  `claude/amazing-albattani-rqksw7`.
+- Site check workflow (CLAUDE.md) lives in Lions-Roar-, not reachable from this session.
+- Step 5 leftovers still open: "Study cards" from a landmark goes back to the sections
+  list; a drill round left open overnight treats a returning question as a retry.
+- Cleanup audit: last ran 2026-11-11; one step finished since, due after Step 6 and 4.
 
 ## Files to look at first
 
-SPEC.md, docs/ARCHITECTURE.md, js/match.js, tests/match.test.mjs, js/mock.js, tools/shots.mjs.
-
-## Also pushed in the other two repos (same branch name, not yet in their `main`)
-
-One CLAUDE.md commit each in Interp and CPA-study-app: the two new rules (always
-buttons, all links in one block). Each needs a pull request and Jose's "push".
+SPEC.md, docs/ARCHITECTURE.md, js/more.js, js/backup.js, tools/shots.mjs.

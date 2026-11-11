@@ -29,6 +29,23 @@ try {
   if (saved && saved.v === 1) state = { ...state, ...saved };
 } catch { /* private mode or damaged data: start fresh, keep working */ }
 
+// Make next the phone's progress and keep what was saved on the phone until now aside.
+// Both are written or neither: if the second write fails, the first is taken back.
+function swapIn(next) {
+  let before = null, had = null;
+  try {
+    before = localStorage.getItem(UNDO);
+    had = localStorage.getItem(KEY) || JSON.stringify(state); // what is really saved, also if another tab wrote it
+    localStorage.setItem(UNDO, had);
+    localStorage.setItem(KEY, JSON.stringify(next));
+    state = next;
+    return true;
+  } catch {
+    try { if (before === null) localStorage.removeItem(UNDO); else localStorage.setItem(UNDO, before); } catch { /* nothing more to do */ }
+    return false;
+  }
+}
+
 export const store = {
   get: () => state,
   set(patch) {
@@ -46,28 +63,24 @@ export const store = {
     return this.set({ goal, days });
   },
   // Load a backup: everything is replaced by next (already checked by unpack in
-  // js/backup.js). What the phone held is kept aside for Undo. False if the phone
-  // could not keep it, and then nothing is changed.
+  // js/backup.js). What the phone held is kept aside (one copy) so it can be put back.
+  // False if the phone could not save, and then nothing is changed.
   replace(next) {
-    try {
-      localStorage.setItem(UNDO, JSON.stringify(state));
-      const loaded = { ...blank(), ...next, hideInstallTip: state.hideInstallTip, lastBackup: state.lastBackup };
-      localStorage.setItem(KEY, JSON.stringify(loaded));
-      state = loaded;
-      return true;
-    } catch { return false; }
+    const loaded = { ...blank(), ...next, hideInstallTip: state.hideInstallTip, lastBackup: state.lastBackup };
+    return swapIn(loaded);
   },
-  canUndo() { try { return !!localStorage.getItem(UNDO); } catch { return false; } },
-  // Put back what the phone held before the last load.
-  undo() {
+  // The progress kept aside by the last load or put-back, or null.
+  kept() {
     try {
       const old = JSON.parse(localStorage.getItem(UNDO) || 'null');
-      if (!old || old.v !== 1) return false;
-      localStorage.setItem(KEY, JSON.stringify(old));
-      localStorage.removeItem(UNDO);
-      state = { ...blank(), ...old };
-      return true;
-    } catch { return false; }
+      return old && old.v === 1 ? { ...blank(), ...old } : null;
+    } catch { return null; }
+  },
+  // Put the kept progress back. What is on the phone now is kept aside in its place,
+  // so this can itself be put back.
+  undo() {
+    const old = this.kept();
+    return !!old && swapIn(old);
   },
   typedFor(code) {
     const t = state.typed[code] || {};

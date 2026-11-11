@@ -5,6 +5,7 @@
 // app knows, checks each one, and drops the rest. It never keeps the parsed object itself.
 import { isKnown } from './srs.js';
 import { GOALS, streak } from './progress.js';
+import { RULES } from './match.js';
 
 export const APP = 'civics128';
 export const VERSION = 1;
@@ -82,7 +83,8 @@ function cleanAnswer(e, { open = false } = {}) {
 function cleanMock(m) {
   if (!isObj(m) || !LISTS.includes(m.list) || !Array.isArray(m.ids) || !Array.isArray(m.log)) return null;
   const ids = m.ids.filter(qid);
-  if (!ids.length || ids.length !== m.ids.length || ids.length > 20 || new Set(ids).size !== ids.length) return null;
+  // an interview always holds every question it may ask (pickQuestions in js/match.js)
+  if (ids.length !== m.ids.length || ids.length !== RULES[m.list].ask || new Set(ids).size !== ids.length) return null;
   if (m.log.length > ids.length) return null;
   const log = [];
   for (let i = 0; i < m.log.length; i++) {
