@@ -1,9 +1,8 @@
 // Study cards: flip through a section, hear the question, show the answers.
-import { data, idsInList } from './data.js';
+import { data, idsInList, sectionRows } from './data.js';
 import { store } from './store.js';
-import { sectionRows } from './home.js';
 import { stopSpeaking } from './speak.js';
-import { esc, frame, topBar, questionCard, answersPanel, wire, toggleSpanish, ICON } from './ui.js';
+import { frame, topBar, questionCard, answersPanel, wire, toggleSpanish, sectionLinks, ICON } from './ui.js';
 
 const at = {}; // where you were in each section, while the app stays open
 let shown = false;
@@ -11,7 +10,6 @@ let shown = false;
 function listView(root) {
   const s = store.get();
   const all = idsInList(s.list);
-  let group = '';
   root.innerHTML = frame(`
     ${topBar({ href: '#/', label: 'Home', icon: ICON.back })}
     <section class="card">
@@ -21,10 +19,7 @@ function listView(root) {
     </section>
     <div class="rows">
       <a class="row" href="#/study/all"><span class="row-main"><b>${s.list === '6520' ? 'The whole 65/20 list' : 'All questions'}</b></span><span class="row-count">${all.length}</span>${ICON.chevron}</a>
-      ${sectionRows(s.list, s.cards).map((r) => {
-        const head = r.group !== group ? `<h3 class="group">${esc(group = r.group)}</h3>` : '';
-        return `${head}<a class="row" href="#/study/${r.key}"><span class="row-main"><b>${esc(r.title)}</b></span><span class="row-count">${r.ids.length}</span>${ICON.chevron}</a>`;
-      }).join('')}
+      ${sectionLinks(sectionRows(s.list, s.cards))}
     </div>`, { short: true });
   root.onclick = null;
 }

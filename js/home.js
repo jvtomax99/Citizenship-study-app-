@@ -1,22 +1,15 @@
 // Home: the state chip, how much is known, the two big buttons, the sections.
-import { data, idsInList, placeByCode } from './data.js';
+import { idsInList, placeByCode, sectionRows } from './data.js';
 import { store } from './store.js';
 import { isKnown, dayNumber, ROUND_SIZE } from './srs.js';
 import { standing } from './match.js';
-import { esc, frame, wire, ICON } from './ui.js';
+import { esc, frame, wire, sectionLinks, ICON } from './ui.js';
 
 let installEvent = null; // Android and desktop Chrome offer a real install prompt
 window.addEventListener('beforeinstallprompt', (e) => { e.preventDefault(); installEvent = e; });
 
 const installed = () => window.matchMedia('(display-mode: standalone)').matches || navigator.standalone === true;
 const isIos = () => /iphone|ipad|ipod/i.test(navigator.userAgent);
-
-export function sectionRows(list, cards) {
-  return data.sections.map((s) => {
-    const ids = idsInList(list, s.ids);
-    return { ...s, ids, known: ids.filter((id) => isKnown(cards[id])).length };
-  }).filter((s) => s.ids.length);
-}
 
 export function home(root, _arg, rerender) {
   const s = store.get();
@@ -29,7 +22,6 @@ export function home(root, _arg, rerender) {
   const round = Math.min(ROUND_SIZE, ids.length);
   const going = s.mock && !standing(s.mock.log, s.mock.list).over;
   const lastMock = (s.mockHistory || []).at(-1);
-  let group = '';
 
   root.innerHTML = frame(`
     <div class="top">
@@ -66,14 +58,7 @@ export function home(root, _arg, rerender) {
     </aside>` : ''}
 
     <h2 class="label section-head">Sections</h2>
-    <div class="rows">${rows.map((r) => {
-      const head = r.group !== group ? `<h3 class="group">${esc(group = r.group)}</h3>` : '';
-      return `${head}<a class="row" href="#/study/${r.key}">
-        <span class="row-main"><b>${esc(r.title)}</b>
-          <span class="meter thin" style="--p:${Math.round((r.known / r.ids.length) * 100)}%"><i></i></span></span>
-        <span class="row-count">${r.known}/${r.ids.length}</span>${ICON.chevron}
-      </a>`;
-    }).join('')}</div>
+    <div class="rows">${sectionLinks(rows, { meter: true })}</div>
     <p class="fine">The questions and answers are copied word for word from USCIS (form M-1778, 09/25). This app is not made by USCIS.</p>
   `);
 

@@ -1,3 +1,5 @@
+import { isKnown } from './srs.js';
+
 // Loads the three data files and joins them by question id. Nothing here rewrites a
 // question or an answer: the USCIS wording is always shown as it is in questions.json.
 
@@ -30,6 +32,14 @@ export const placeByCode = (code) => data.places.find((p) => p.code === code) ||
 // The question ids in a list: 'all' or '6520' (the 20 starred questions).
 export const idsInList = (list, ids = data.questions.map((q) => q.id)) =>
   list === '6520' ? ids.filter((id) => data.byId[id].star6520) : ids;
+
+// The sections that have questions in a list, with how many of them are known.
+export function sectionRows(list, cards) {
+  return data.sections.map((s) => {
+    const ids = idsInList(list, s.ids);
+    return { ...s, ids, known: ids.filter((id) => isKnown(cards[id])).length };
+  }).filter((s) => s.ids.length);
+}
 
 const MONTHS = ['Jan', 'Feb', 'Mar', 'Apr', 'May', 'Jun', 'Jul', 'Aug', 'Sep', 'Oct', 'Nov', 'Dec'];
 export function niceDate(iso) {

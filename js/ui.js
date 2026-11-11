@@ -31,6 +31,17 @@ export function topBar({ href, label, icon = ICON.close, done = 0, total = 0, ba
   </div>`;
 }
 
+// One link per section, under its group heading (rows from sectionRows in js/data.js).
+// meter: true adds the gold line and shows known/total instead of the total.
+export function sectionLinks(rows, { meter = false } = {}) {
+  let group = '';
+  return rows.map((r) => {
+    const head = r.group !== group ? `<h3 class="group">${esc(group = r.group)}</h3>` : '';
+    return `${head}<a class="row" href="#/study/${r.key}"><span class="row-main"><b>${esc(r.title)}</b>${meter
+      ? `<span class="meter thin" style="--p:${Math.round((r.known / r.ids.length) * 100)}%"><i></i></span>` : ''}</span><span class="row-count">${meter ? `${r.known}/` : ''}${r.ids.length}</span>${ICON.chevron}</a>`;
+  }).join('');
+}
+
 const spanishFor = (q) => data.es[q.id] || null;
 const draftMark = (es) => (es && es.checked ? '' : ' <span class="draft" title="Todavía no revisado">borrador</span>');
 
