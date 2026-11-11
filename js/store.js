@@ -1,6 +1,9 @@
 // Everything the app remembers, kept on this phone only (localStorage).
 // Step 6's backup file will save and load this same object.
 
+import { addAnswer } from './progress.js';
+import { dayNumber } from './srs.js';
+
 const KEY = 'civics128.v1';
 
 const blank = () => ({
@@ -14,6 +17,8 @@ const blank = () => ({
   hideInstallTip: false,
   mock: null,      // the mock interview in progress (js/mock.js)
   mockHistory: [], // the last 10 finished interviews: {day, list, right, wrong, passed}
+  goal: 10,        // questions a day: 5, 10 or 20
+  days: {},        // per day number: {n: questions answered, g: that day's goal} (js/progress.js)
 });
 
 let state = blank();
@@ -28,6 +33,14 @@ export const store = {
     state = { ...state, ...patch };
     try { localStorage.setItem(KEY, JSON.stringify(state)); } catch { /* storage full or blocked */ }
     return state;
+  },
+  // One more question answered today (the drill and the mock interview call this).
+  countAnswer() { return this.set({ days: addAnswer(state.days, dayNumber(), state.goal) }); },
+  // A new daily goal. Today is held to the new goal; earlier days keep theirs.
+  setGoal(goal) {
+    const today = dayNumber();
+    const days = state.days[today] ? { ...state.days, [today]: { ...state.days[today], g: goal } } : state.days;
+    return this.set({ goal, days });
   },
   typedFor(code) {
     const t = state.typed[code] || {};

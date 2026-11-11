@@ -90,6 +90,18 @@ Both fonts are saved in `assets/fonts/` (variable WOFF2), so they load offline.
 - **Home card:** 64px eagle, small caps label, serif title, the All 128 / 65/20 switch
   (two 44px outline buttons, the chosen one ringed in indigo), "X of N known" with a
   14px gold meter on `--line`.
+- **Today panel** (Home): `--card`, 2px `--line` border, radius 18. Small caps "Today",
+  a gold streak pill ("★ 3 days in a row", grey at 0), "6 of 10 questions", the 14px
+  gold meter, seven 28px day circles (gold with a star = goal met, dashed gold = rest
+  day, grey fill = some questions, indigo ring = today), and a text link to change the
+  goal (opens the 5 / 10 / 20 switch).
+- **Mall strip** (Home): a row-style link with eight 36px round landmark pictures, dim
+  or bright, gold ring when lit, and "3 of 8 lit".
+- **Landmark stop** (the Mall): the picture 3:2, radius 28, the long plum shadow; the
+  name in the serif 20 / 24 on a navy fade, the part title, a 6px gold meter and the
+  count. Light is one variable `--l` (0 to 1): the picture goes from grey-blue dusk
+  (saturation 25%, brightness 50%, a navy wash) to full color. Lit: a 3px gold ring and
+  a gold "★ LIT" pill. Tapping opens its two buttons under the picture.
 - **Rows** (sections, states): 56px min, `--card`, 2px `--line` border and 3px lip,
   radius 18, name in `--ink` 800, count in `--text-soft`, a chevron; sections carry a
   6px gold meter.

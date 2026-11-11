@@ -25,3 +25,14 @@ letters, no logos, no people."
 Tried first and replaced: the same landmarks as a clay toy diorama.
 
 A new picture must match these: same style line, same camera height, same fade color.
+
+## The eight Mall landmarks (2026-11-11)
+
+Jose picked look B of three Lincoln Memorial trials (A straight on, B close from the
+corner, C wide with the pool). Every landmark uses the same sentence around its subject,
+then the shared style line: "[the landmark] from a three-quarter angle at the corner of
+its steps, close and monumental, low camera looking up, golden hour light raking across
+the stone with the first warm floodlights glowing, a few cherry blossom branches in the
+top corner, sky from indigo through violet and rose to gold." 4:3 at 2K, resized to
+720 px wide (WebP, quality 72, 21 to 52 KB) and a 108 px center square for Home. The dim
+and lit looks are the same picture: CSS takes the color and light away (`css/app.css`).

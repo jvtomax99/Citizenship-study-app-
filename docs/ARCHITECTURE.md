@@ -28,7 +28,7 @@ nothing to install. GitHub Pages serves the folder as it is.
   `DESIGN.md`); `manifest.webmanifest` and `sw.js` make it install and work offline.
 - `js/` One small file each:
   - `app.js` starts the app and picks the screen from the address (`#/`, `#/place`,
-    `#/study/<section>`, `#/drill`, `#/mock`).
+    `#/study/<section>`, `#/drill[/<section>]`, `#/mock`, `#/mall`).
   - `data.js` loads the three data files and works out the personal answers
     (`personalAnswers`: senators, governor, capital, representative, the four federal names)
     and the section list (`sectionRows`).
@@ -42,18 +42,23 @@ nothing to install. GitHub Pages serves the folder as it is.
     answers. When changing it, add the case to the test list first.
   - `mock.js` the mock interview's screens. The interview in progress is `mock` in the
     store; finished ones go to `mockHistory` (last 10).
+  - `progress.js` pure functions (`tests/progress.test.mjs`): a landmark's light
+    (`landmark`), the daily count (`addAnswer`), the forgiving streak (`streak`, `week`).
+  - `mall.js` the Mall screen (`#/mall`), the landmark list (`LANDMARKS`, one per
+    section key) and Home's strip. `#/drill/<section key>` drills one part.
   - `ui.js` shared pieces (scene, top bar, question card, answers panel, eagle header,
     section rows, the Español switch).
   - `home.js`, `place.js`, `study.js`, `drill.js` the other four screens.
 - `tests/` `node --test tests/*.mjs` checks the schedule and the answer checker.
   `tools/shots.mjs` taps through the whole app at phone size (a pretend microphone
-  stands in for voice), checks the "Done when" lines of Steps 3 and 4 and saves screenshots
+  stands in for voice), checks the "Done when" lines of Steps 3, 4 and 5 and saves screenshots
   (start `python3 -m http.server 8123` first).
 - `DESIGN.md` The look: colors, type, shape, components, motion (Jose OK'd it).
   `preview/sample-drill.html` is the sample screen it was approved from.
 - `assets/fonts/` Fraunces and Nunito as web files (saved here so they work offline).
   `assets/icons/` the app icon, cut from the eagle picture.
-- `assets/images/` The 3D-rendered pictures (the Mall by day and night, the eagle officer). `CREDITS.md` lists every asset; `docs/design/art-prompts.md` says how they were made.
+- `assets/images/` The 3D-rendered pictures (the Mall by day and night, the eagle officer;
+  `landmarks/` the eight Mall landmarks, each 720 px wide plus a 108 px `-s` square for Home). `CREDITS.md` lists every asset; `docs/design/art-prompts.md` says how they were made.
 - `docs/design/` Taste studies of sites Jose picked (`duolingo.com.md`).
 - `docs/` Rules (design, assets, cleanup, refactor) and this file.
 
@@ -65,7 +70,8 @@ the questions by id in the app (`js/data.js`). The question wording is never cha
 code: personal answers are shown above the USCIS text, not instead of it.
 
 Progress stays on each phone: `js/store.js` keeps the state, typed names, the 65/20
-switch and one card per question (`box`, `due`, `seen`, `last`). `sw.js` saves every
+switch, one card per question (`box`, `due`, `seen`, `last`), the daily goal and
+`days` (questions answered per day, last 60 days; the streak is worked out, never stored). `sw.js` saves every
 file on the first visit, serves the saved copy, and fetches a fresh one in the
 background, so an update appears the second time the app is opened. A new file the app
 needs must be added to the `FILES` list in `sw.js`.

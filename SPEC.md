@@ -84,12 +84,25 @@ read through a search extract:
    - Voice is the phone's own speech to text: it needs internet on Android Chrome and
      sends the audio to Google or Apple (the start screen says so). Whether it works
      in the installed Home Screen app on an iPhone: Jose to try (not known).
-6. **The National Mall.** A drawn 2D Mall whose landmarks light up as each section
-   is mastered (Capitol: system of government, Archives: rights, monuments: history,
-   the flag: symbols). Tap a landmark to drill that section.
+6. **The National Mall.** Eight rendered landmarks, one per official USCIS part
+   (Jose, 2026-11-11: eight, not four, so the 47-question part does not hide progress):
+   National Archives (Principles), the Capitol (System of Government), Supreme Court
+   (Rights and Responsibilities), Washington Monument (Colonial Period), Lincoln
+   Memorial (1800s), World War II Memorial (Recent History), the flag (Symbols),
+   fireworks over the Mall (Holidays). Tap a landmark to drill that part or open its
+   study cards.
+   - Honest light (Jose, 2026-11-11): a landmark brightens with each question known,
+     turns gold only when every question was known on two different days, and dims
+     again if one is missed. If the family finds the dimming discouraging, the fallback
+     is to keep the gold and show a "needs review" mark (`js/progress.js`).
+   - Only the drill brightens a landmark; a right answer in the mock interview does not
+     change the drill's memory (a miss there dims, as before).
    - Done when: mastering questions in a section visibly changes its landmark, and
      the screen loads in under 2 s on a mid-range phone.
-7. **Daily goal and streak.**
+7. **Daily goal and streak.** 10 questions a day (5 or 20 by choice); the drill's and the
+   interview's answers count, study cards do not. Forgiving (Jose, 2026-11-11): one
+   missed day in any seven is a rest day and keeps the days in a row. Home shows today,
+   the last seven days and the streak. No reminders or notifications in v1.
    - Done when: reaching the goal shows today's progress and the streak goes up.
 8. **Home Screen app and backup.** Installs, works offline, saves and loads a backup
    file.
@@ -172,5 +185,6 @@ Each phase is one pull request, one or two sessions.
   and said to move on.
 - [ ] 4. Mock interview with voice, the 12/9 rule and 65/20 mode (built 2026-11-11,
   reviewed, on the test link; waits on Jose finishing one by voice on his phone).
-- [ ] 5. The National Mall, daily goal and streak.
+- [ ] 5. The National Mall, daily goal and streak (built 2026-11-11 before Step 4 was
+  checked off: Jose will test the voice interview later; waits on Jose seeing it on his phone).
 - [ ] 6. Backup, user guide, first release to GitHub Pages.

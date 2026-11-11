@@ -176,6 +176,7 @@ function settle(m) {
     cards[id] = grade(cards[id], 'missed', dayNumber());
     store.set({ cards });
   }
+  store.countAnswer();
   const next = { ...m, log, open: null };
   const st = standing(log, m.list);
   if (st.over) {

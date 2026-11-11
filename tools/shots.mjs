@@ -1,4 +1,4 @@
-// Taps through the app at phone size, checks the "Done when" lines of Steps 3 and 4 and saves
+// Taps through the app at phone size, checks the "Done when" lines of Steps 3, 4 and 5 and saves
 // screenshots. Run a local server first (python3 -m http.server 8123), then:
 //   node tools/shots.mjs [folder for the pictures] [http://localhost:8123/]
 import { createRequire } from 'node:module';
@@ -138,6 +138,7 @@ async function run(scheme) {
   assert.equal(seen.filter((q) => q === seen[2]).length, 1, 'a known question was asked once');
   const score = await page.locator('.score').innerText();
   assert.match(score.replace(/\s+/g, ' '), /8 knew it 1 guessed 1 missed/);
+  assert.ok((await page.locator('.goal-hit').innerText()).includes('Goal reached'));
   await shot('8-drill-results');
   // the next round starts with the two that were missed or guessed... they were known
   // on the second try, so they are due tomorrow, and today's round is all new questions
@@ -149,6 +150,9 @@ async function run(scheme) {
   await page.goto(base + '#/');
   await page.waitForSelector('.hello');
   assert.ok((await page.locator('.known').innerText()).includes('10 of 128'));
+  // Step 5: ten first answers reach the daily goal of 10, and the streak goes up
+  assert.ok((await page.locator('.today').innerText()).replace(/\s+/g, ' ').includes('10 of 10 questions · goal reached'));
+  assert.ok((await page.locator('.streak').innerText()).includes('1 day in a row'));
   log(`${scheme}: drill round, miss and guess both came back, progress saved`);
   await shot('9-home-after-drill');
 
@@ -266,6 +270,92 @@ async function run(scheme) {
   await tap('[data-list="all"]');
   await shot('19-home-after-interviews', true);
   log(`${scheme}: mock interview passed at 12 right (voice, overrule both ways, leave and continue), 65/20 stopped at 5 misses`);
+
+  // Step 5: the Mall. Knowing a part's questions brightens its landmark; knowing them
+  // again another day lights it; a miss dims it. The streak forgives one missed day.
+  const stop = 'button[data-key="history-B"]';
+  const lightOf = () => page.locator('.stop', { has: page.locator(stop) }).evaluate((el) => ({ l: Number(el.style.getPropertyValue('--l')), lit: el.classList.contains('lit'), filter: getComputedStyle(el.querySelector('img')).filter }));
+  const drillPart = async (results) => {
+    await page.goto(base + '#/mall');
+    await tap(stop);
+    await tap('a[href="#/drill/history-B"]');
+    await page.waitForSelector('[data-act=show]');
+    let i = 0;
+    while (await page.locator('[data-act=show]').count() && i < results.length) {
+      await tap('[data-act=show]');
+      await tap(`[data-result=${results[i++]}]`);
+    }
+    await page.goto(base + '#/mall');
+    await page.waitForSelector('.stop');
+  };
+  await page.evaluate(() => { const k = 'civics128.v1'; const s = JSON.parse(localStorage[k]); s.cards = {}; localStorage[k] = JSON.stringify(s); });
+  await page.goto(base + '#/mall');
+  await page.reload();
+  await page.waitForSelector('.stop');
+  assert.equal(await page.locator('.stop').count(), 8);
+  const dim = await lightOf();
+  assert.equal(dim.l, 0);
+  await shot('21-mall-start', true);
+  await drillPart(Array(10).fill('knew'));
+  const bright = await lightOf();
+  assert.equal(bright.l, 1, 'all ten known: full light');
+  assert.equal(bright.lit, false, 'known once is not lit yet');
+  assert.notEqual(bright.filter, dim.filter, 'the picture itself changed');
+  await tap(stop);
+  await shot('22-mall-known-once', true);
+  // the next day: every card is due again
+  await page.evaluate(() => { const k = 'civics128.v1'; const s = JSON.parse(localStorage[k]); for (const id in s.cards) s.cards[id].due -= 1; localStorage[k] = JSON.stringify(s); });
+  await page.reload();
+  await drillPart(Array(10).fill('knew'));
+  assert.equal((await lightOf()).lit, true, 'known on two different days: lit');
+  assert.ok((await page.locator('.tally').innerText()).includes('1 of 8'));
+  await shot('23-mall-lit', true);
+  await drillPart(['missed']);
+  const after1 = await lightOf();
+  assert.equal(after1.lit, false, 'a miss dims a lit landmark');
+  assert.equal(after1.l, 0.9);
+  await shot('24-mall-dimmed');
+  // opening the Mall on a slowed-down phone (4x slower chip, slow 4G) stays under 2 seconds.
+  // This is the saved copy every visit after the first uses; for a first-ever visit run
+  // tools/shots.mjs against the real site, which shrinks files in transit (this server does not).
+  await page.evaluate(() => navigator.serviceWorker.ready);
+  await page.waitForTimeout(800);
+  const cdp = await ctx.newCDPSession(page);
+  await cdp.send('Network.enable');
+  await cdp.send('Network.emulateNetworkConditions', { offline: false, latency: 150, downloadThroughput: 1.6e6 / 8, uploadThroughput: 750e3 / 8 });
+  await cdp.send('Emulation.setCPUThrottlingRate', { rate: 4 });
+  await page.goto('about:blank');
+  const t0 = Date.now();
+  await page.goto(base + '#/mall');
+  await page.waitForFunction(() => { const im = document.querySelector('.stop img'); return im && im.complete && im.naturalWidth > 0; });
+  const ms = Date.now() - t0;
+  await cdp.send('Emulation.setCPUThrottlingRate', { rate: 1 });
+  await cdp.send('Network.emulateNetworkConditions', { offline: false, latency: 0, downloadThroughput: -1, uploadThroughput: -1 });
+  assert.ok(ms < 2000, `the Mall took ${ms} ms`);
+  log(`${scheme}: a landmark brightens, lights after two days, dims on a miss; the Mall opened in ${ms} ms on a slowed phone`);
+  // the streak: goal met three days ago and two days ago, yesterday missed (a rest day), today met
+  await page.evaluate(() => {
+    const k = 'civics128.v1'; const s = JSON.parse(localStorage[k]);
+    const t = Math.floor((Date.now() - new Date().getTimezoneOffset() * 60000) / 86400000);
+    const full = { n: 10, g: 10 };
+    s.days = { [t - 3]: full, [t - 2]: full, [t]: full };
+    localStorage[k] = JSON.stringify(s);
+  });
+  await page.goto(base + '#/');
+  await page.reload();
+  await page.waitForSelector('.today');
+  assert.ok((await page.locator('.streak').innerText()).includes('3 days in a row'));
+  assert.equal(await page.locator('.day.rest').count(), 1);
+  assert.ok((await page.locator('.strip').innerText()).includes('0 of 8 lit'));
+  await tap('[data-act=pickgoal]');
+  await tap('[data-goal="20"]');
+  assert.ok((await page.locator('.today').innerText()).replace(/\s+/g, ' ').includes('10 of 20 questions'));
+  assert.ok((await page.locator('.streak').innerText()).includes('2 days in a row'), 'today is held to the new goal, earlier days keep theirs');
+  await tap('[data-act=pickgoal]');
+  await shot('25-home-goal-choice', true);
+  await tap('[data-goal="10"]');
+  await shot('26-home-streak-rest-day', true);
+  log(`${scheme}: the goal, the week with a rest day, the streak and the goal choice`);
 
   // 6. offline: with the network cut, the app still opens from the saved copy
   await page.evaluate(() => navigator.serviceWorker.ready);

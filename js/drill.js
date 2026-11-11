@@ -1,12 +1,14 @@
 // Drill: the officer asks, you answer out loud, show the answers, then say how it went.
 // Missed and guessed questions come back later in the round and stay due (js/srs.js).
 import { data, idsInList } from './data.js';
+import { metOn, streak } from './progress.js';
+import { LANDMARKS } from './mall.js';
 import { store } from './store.js';
 import { buildRound, grade, requeue, isMiss, dayNumber, MAX_RETRIES } from './srs.js';
 import { stopSpeaking } from './speak.js';
-import { frame, topBar, questionCard, answersPanel, wire, toggleSpanish, eagleHeader, ICON } from './ui.js';
+import { frame, topBar, questionCard, answersPanel, wire, toggleSpanish, eagleHeader } from './ui.js';
 
-let round = null; // {queue, total, asked: Set, retries: {}, tally: {knew, guessed, missed}, shown}
+let round = null; // {queue, total, asked: Set, retries: {}, tally: {knew, guessed, missed}, shown, list, part, goalHit}
 
 function shuffle(list) {
   const a = list.slice();
@@ -14,10 +16,14 @@ function shuffle(list) {
   return a;
 }
 
-function start() {
+// part: a section key like 'history-B' drills only that part (from the Mall); '' = everything.
+const partOf = (arg) => data.sections.find((x) => x.key === arg) || null;
+
+function start(part = '') {
   const s = store.get();
-  const queue = buildRound(idsInList(s.list), s.cards, dayNumber(), { shuffle });
-  round = { queue, total: queue.length, asked: new Set(), retries: {}, tally: { knew: 0, guessed: 0, missed: 0 }, shown: false, list: s.list };
+  const sec = partOf(part);
+  const queue = buildRound(idsInList(s.list, sec ? sec.ids : undefined), s.cards, dayNumber(), { shuffle });
+  round = { queue, total: queue.length, asked: new Set(), retries: {}, tally: { knew: 0, guessed: 0, missed: 0 }, shown: false, list: s.list, part: sec ? sec.key : '', goalHit: false };
 }
 
 function answer(result) {
@@ -26,7 +32,12 @@ function answer(result) {
   const cards = { ...store.get().cards };
   cards[id] = grade(cards[id], result, dayNumber(), { retry });
   store.set({ cards });
-  if (!retry) round.tally[result]++; // the tally counts each question's first answer
+  if (!retry) { // the tally and the daily goal count each question's first answer
+    round.tally[result]++;
+    const today = dayNumber();
+    const before = metOn(store.get().days, today);
+    if (!before && metOn(store.countAnswer().days, today)) round.goalHit = true;
+  }
   round.asked.add(id);
   let rest = round.queue.slice(1);
   if (isMiss(result) && (round.retries[id] || 0) < MAX_RETRIES) {
@@ -40,8 +51,12 @@ function answer(result) {
 function results(root, rerender) {
   const { knew, guessed, missed } = round.tally;
   const back = guessed + missed;
+  const s = store.get();
+  const today = dayNumber();
+  const run = streak(s.days, today).count;
+  const home = round.part ? '#/mall' : '#/';
   root.innerHTML = frame(`
-    ${topBar({ href: '#/', label: 'Home', done: round.total, total: round.total, barLabel: 'Round finished' })}
+    ${topBar({ href: home, label: round.part ? 'The Mall' : 'Home', done: round.total, total: round.total, barLabel: 'Round finished' })}
     <section class="card">
       ${eagleHeader('Round finished', knew === round.total ? 'You knew them all!' : `You knew ${knew} of ${round.total}`)}
       <div class="score">
@@ -50,25 +65,28 @@ function results(root, rerender) {
         <div><b>${missed}</b><span>missed</span></div>
       </div>
       <p class="lead">${back ? `The ${back} you guessed or missed ${back === 1 ? 'comes' : 'come'} back first in your next round.` : 'These come back in a few days, so they stay fresh.'}</p>
+      ${round.goalHit ? `<p class="goal-hit"><b>★ Goal reached.</b> ${run} day${run === 1 ? '' : 's'} in a row.</p>`
+        : metOn(s.days, today) ? '' : `<p class="hint">Today: ${s.days[today]?.n || 0} of ${s.goal} questions.</p>`}
     </section>
     <div class="spacer"></div>
     <div class="actions">
       <button class="btn primary" data-act="again">Another round</button>
-      <a class="btn ghost" href="#/">Home</a>
+      <a class="btn ghost" href="${home}">${round.part ? 'Back to the Mall' : 'Home'}</a>
     </div>`);
-  wire(root, { again: () => { start(); rerender(); window.scrollTo(0, 0); } });
+  wire(root, { again: () => { start(round.part); rerender(); window.scrollTo(0, 0); } });
 }
 
-export function drill(root, _arg, rerender) {
-  if (!round || round.list !== store.get().list) start();
+export function drill(root, arg, rerender) {
+  const part = partOf(arg) ? arg : '';
+  if (!round || round.list !== store.get().list || round.part !== part) start(part);
   if (!round.queue.length) return results(root, rerender);
 
   const q = data.byId[round.queue[0]];
   const again = round.asked.has(q.id);
   const done = round.asked.size;
   root.innerHTML = frame(`
-    ${topBar({ href: '#/', label: 'Leave the drill', done, total: round.total, barLabel: `${done} of ${round.total} questions answered`, pills: [`✓ ${round.tally.knew}`, `✕ ${round.tally.guessed + round.tally.missed}`] })}
-    ${questionCard(q, { chips: [again ? 'Once more' : `Drill · ${Math.min(done + 1, round.total)} of ${round.total}`] })}
+    ${topBar({ href: round.part ? '#/mall' : '#/', label: 'Leave the drill', done, total: round.total, barLabel: `${done} of ${round.total} questions answered`, pills: [`✓ ${round.tally.knew}`, `✕ ${round.tally.guessed + round.tally.missed}`] })}
+    ${questionCard(q, { chips: [again ? 'Once more' : `${round.part && LANDMARKS[round.part] ? LANDMARKS[round.part].name : 'Drill'} · ${Math.min(done + 1, round.total)} of ${round.total}`] })}
     ${round.shown ? answersPanel(q) : '<p class="say">Say your answer out loud, then check it.</p>'}
     <div class="spacer"></div>
     <div class="actions">${round.shown ? `
