@@ -2,11 +2,17 @@
 
 ## Goal and exact next step
 
-Build the citizenship study app (SPEC.md). Phases 1 (question bank) and 2 (look) are
-done; **Phase 3 (the app itself) is built and tested in a phone-size browser, not yet
-checked off**: Jose has to tap through it. Next step: get Jose's OK on the Step 3
-screenshots, bring back the test-link question (Vercel, below), then Phase 4 (mock
-interview) with its own plan first.
+Build the citizenship study app (SPEC.md). Phases 1 to 3 are built; Jose tried Phase 3
+on his phone at the test link and said to move on (2026-11-11). **Next: Phase 4, the
+mock interview** (the officer reads questions aloud in random order; answer by voice
+where the phone allows it, typing otherwise; show the accepted answers; score it; stop
+at 12 right or 9 wrong; a 65/20 mode with 10 asked and 6 to pass). It is a big feature:
+look at 2 or 3 similar tools, then plan mode, wait for Jose's OK, then build. The sample
+screen `preview/sample-drill.html` already shows the mock interview's look (answer
+field, microphone, the row of 12 stars, the right and wrong sheets).
+
+Also due: the cleanup check. Phase 3 was checked off and `docs/CLEANUP.md` does not
+exist, so offer `docs/cleanup-audit.md` with buttons (Run it now, Next session, Skip).
 
 ## Done (branch `claude/relaxed-mccarthy-sqi1n0`, pushed, nothing live, no `main` yet)
 
@@ -18,12 +24,11 @@ interview) with its own plan first.
 
 ## Left open, waiting on Jose
 
-- Try Step 3 on a real phone at the test link https://citizenship-study-test.vercel.app
-  (Vercel project `citizenship-study-test`, team Language Services, made 2026-11-11 from
-  this branch; not listed in search engines). It does NOT update by itself: after new
-  work, deploy the branch again with the Vercel tools (target production). Jose's
-  Deployment Storage was 7.5 of 10 GB, all from Interp's uploads (100+ in 8 days); this
-  app is about 1 MB per upload. The voice and Home Screen install still need his try.
+- Test link: https://citizenship-study-test.vercel.app (Vercel project
+  `citizenship-study-test`, team Language Services, deployed from this branch, hidden
+  from search engines). It does NOT update by itself: after new work, deploy the branch
+  again with the Vercel tools (git source, target production). About 1 MB per upload;
+  Jose's Deployment Storage was 7.5 of 10 GB, all from Interp's uploads.
 - Show the plan to one of the family and friends (the app is for them).
 - Read the Spanish (shown in the app with a "borrador" mark); the 20 marked 65/20 first.
 - SPEC.md TO FILL: who the family and friends are, the app's name (working name on the

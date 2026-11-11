@@ -152,10 +152,10 @@ Each phase is one pull request, one or two sessions.
   - [x] Jose asked for it to look like the real Washington, D.C.: the scenes are now
     the true view from the Lincoln Memorial, day and night.
   - [x] Jose OK'd the sample: "Good, build with it".
-- [ ] 3. App shell, state picker, Study cards with read-aloud, Drill with spaced
-  repetition and "I guessed". Home Screen install and offline. Built and tapped through
-  in a phone-size browser on 2026-11-11 (`node tools/shots.mjs`); waits on Jose trying
-  it on a real phone (the voice and the Home Screen install can't be proven from here).
+- [x] 3. App shell, state picker, Study cards with read-aloud, Drill with spaced
+  repetition and "I guessed". Home Screen install and offline. Built 2026-11-11, tapped
+  through by script (`node tools/shots.mjs`), and Jose tried the test link on his phone
+  and said to move on.
 - [ ] 4. Mock interview with voice, the 12/9 rule and 65/20 mode.
 - [ ] 5. The National Mall, daily goal and streak.
 - [ ] 6. Backup, user guide, first release to GitHub Pages.
