@@ -99,6 +99,12 @@ TO FILL: Jose to confirm.
 
 - A short explanation on each study card (why the answer is the answer), in English and
   Spanish. Its own step, after Jose has read the Spanish (Jose, 2026-11-11).
+- Reading and writing practice (the English test: read 1 of 3 sentences, write 1 of
+  3), from the USCIS vocabulary lists.
+- Practice for the N-400 interview questions themselves (the officer's questions
+  about the application).
+- More languages.
+- A how-to video like the CPA app's.
 
 ## Open questions for Jose
 
