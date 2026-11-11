@@ -2,17 +2,17 @@
 
 ## What this is
 
-A study app for the U.S. citizenship (naturalization) test. The repo is empty
-so far: no code, no SPEC.md, no hosting chosen yet.
+A study app for the U.S. citizenship (naturalization) civics test, 2025 version
+(128 questions). Plan and phases: SPEC.md. Map: docs/ARCHITECTURE.md.
 
 ## This project: how the general rules apply here
 
-- **New project.** No code before SPEC.md exists. First step: help Jose write
-  SPEC.md (who it's for, "Done when" lines, "Not in v1", "Later", Phases), with
-  research on 2 or 3 similar study apps first, then plan mode.
-- **Real user:** TO FILL (Jose himself, or someone he is building it for).
-- **Hosting:** not chosen yet. Decide it in the plan and write it here
-  (Jose's other study app is on GitHub Pages; Interp is on Vercel).
+- **Real user:** family and friends Jose is helping (who: TO FILL in SPEC.md).
+- **Hosting:** GitHub Pages from `main` (Jose, 2026-11-11). Merging to `main` is
+  going live; the preview is Playwright screenshots (phone first) sent as files.
+- **The questions are copied, never written.** `data/questions.json` is built from
+  the USCIS PDF in `sources/`; `python3 tools/questions_from_pdf.py` must say OK
+  before any push. uscis.gov blocks automated downloads: ask Jose to upload files.
 - **No main branch yet.** The first pull request creates it once Jose OKs it.
 
 - **Public repo, paid assets.** The repo is public (checked 2026-11-10), so paid raw files can't be committed (docs/assets.md, section 9) unless Jose makes it private.

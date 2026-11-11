@@ -16,21 +16,25 @@ its own look: a drawn 2D National Mall, not a 3D city or a campus.
 
 - Family and friends Jose is helping through naturalization. TO FILL: who, how many,
   which language each speaks best, and their interview dates if known.
+- Picked by Jose on 2026-11-11: family and friends, English plus Spanish help (the
+  test is in English; Spanish one tap away), a drawn 2D National Mall, GitHub Pages.
 - What they need (assumed until Jose confirms): short sessions on an ordinary phone,
   plain English, Spanish one tap away, the questions said out loud the way the
   officer will say them, and answers that match their own state.
 
 ## The test it prepares for
 
-From USCIS, read through search extracts only so far (uscis.gov is blocked from
-Claude's network; every fact is to be rechecked against the PDF before Phase 1 ships):
+From the USCIS PDF (M-1778, 09/25, in `sources/`; Jose uploaded it on 2026-11-11, as
+uscis.gov refuses automated downloads). The stopping rule is from the Policy Manual,
+read through a search extract:
 
 - The 2025 civics test applies to N-400s filed on or after October 20, 2025.
   Earlier filers take the 2008 test (100 questions), which this app does not cover.
 - Oral. The officer asks up to 20 of the 128 questions; 12 right passes. The officer
   stops at 12 right or 9 wrong.
 - 65/20 (age 65+, permanent resident 20+ years): 20 marked questions, 10 asked,
-  6 right passes.
+  6 right passes, and the civics test may be taken in the language of their choice. So
+  for a 65/20 applicant the Spanish answers can be the real answers, and must be right.
 - Some answers vary by person (senators, representative, governor, state capital)
   or by date (President, Vice President, Speaker, Chief Justice).
 - Sources: USCIS 2025 civics test page, the 128-question PDF (M-1778, 09/25), the
@@ -39,8 +43,9 @@ Claude's network; every fact is to be rechecked against the PDF before Phase 1 s
 ## Features (v1)
 
 1. **Question bank.** All 128 questions and every accepted answer from the USCIS PDF,
-   in its sections, with the 65/20 marks, and a Spanish translation and short
-   explanation per question.
+   in its sections, with the 65/20 marks, and a Spanish translation of each question,
+   answer and note. A short explanation per question comes with the Study cards
+   (Phase 3).
    - Done when: every question and answer matches the PDF word for word (a check
      script compares them), and Jose has read the Spanish.
 2. **Your state's answers.** Pick your state (and D.C. or territory); the senator,
@@ -93,6 +98,13 @@ TO FILL: Jose to confirm.
 - More languages.
 - A how-to video like the CPA app's.
 
+## Open questions for Jose
+
+- Senators and governors: fill them now from senate.gov and each state (allow
+  www.senate.gov in the network settings), or wait for the new Congress (January 3,
+  2027) and let users type their own until then.
+- Which states do the family and friends live in? Those get checked first.
+
 ## Hosting
 
 GitHub Pages from `main` (Jose's pick, 2026-11-11). Free; the repo stays public.
@@ -102,10 +114,11 @@ No server.
 
 Each phase is one pull request, one or two sessions.
 
-- [ ] 1. Question bank: the 128 questions from the USCIS PDF into
+- [x] 1. Question bank: the 128 questions from the USCIS PDF into
   `data/questions.json`, the check script, officeholders file with dates, Spanish
-  drafts for Jose to read. Needs the PDF (Jose uploads it, or www.uscis.gov is
-  allowed in the network settings).
+  drafts for Jose to read (2026-11-11). Still open from it, for Jose: read the
+  Spanish (`checked` stays false until then); recheck the four federal names on
+  uscis.gov/citizenship/testupdates; how to fill senators and governors (below).
 - [ ] 2. Look: DESIGN.md per `docs/design-rules.md` (template or not, 1 to 3 sites
   Jose likes, the taste skill), one sample screen for Jose's OK.
 - [ ] 3. App shell, state picker, Study cards with read-aloud, Drill with spaced
