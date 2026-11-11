@@ -1,37 +1,37 @@
 {
- "about": "Answers that change with elections (questions 23, 29, 30, 38, 39, 57, 61, 62). Every name carries the date it was last checked and where. The app shows that date next to the answer.",
+ "about": "Answers that depend on where you live (23, 29, 61, 62) or on who holds an office now (30, 38, 39, 57). Values: a name or list = filled; null = not filled yet; \"none\" = the office does not exist there. Each person, once filled, is {name, confirmed, source}: confirmed is the date someone actually checked the name at the source. The app shows that date.",
  "federal": {
   "30": {
    "office": "Speaker of the House of Representatives",
    "name": "Mike Johnson",
-   "checked": "2025-09-18",
    "source": "https://www.uscis.gov/citizenship/testupdates",
-   "recheck": true
+   "confirmed": null,
+   "sourceReviewed": "2025-09-18"
   },
   "38": {
    "office": "President of the United States",
    "name": "Donald J. Trump",
-   "checked": "2025-09-18",
    "source": "https://www.uscis.gov/citizenship/testupdates",
-   "recheck": true
+   "confirmed": null,
+   "sourceReviewed": "2025-09-18"
   },
   "39": {
    "office": "Vice President of the United States",
    "name": "JD Vance",
-   "checked": "2025-09-18",
    "source": "https://www.uscis.gov/citizenship/testupdates",
-   "recheck": true
+   "confirmed": null,
+   "sourceReviewed": "2025-09-18"
   },
   "57": {
    "office": "Chief Justice of the United States",
    "name": "John G. Roberts, Jr.",
-   "checked": "2025-09-18",
    "source": "https://www.uscis.gov/citizenship/testupdates",
-   "recheck": true
+   "confirmed": null,
+   "sourceReviewed": "2025-09-18"
   }
  },
- "federalNote": "The 2025-09-18 date is the USCIS page's own 'last reviewed' date, read through a search-engine extract, not the page itself. Recheck on uscis.gov/citizenship/testupdates before release, and again after the new Congress sits (January 3, 2027): the Speaker is elected then.",
- "statesNote": "Capitals are fixed. Senators and governors are empty on purpose: they come from senate.gov and each governor's office, which this session could not reach. Until filled, the app asks the user to type their own. Question 29 (your representative) is always typed or picked by the user, since it depends on the district.",
+ "federalNote": "sourceReviewed is the USCIS page's own 'last reviewed' date (2025-09-18), seen in a search-engine extract, not the page itself. confirmed stays null until someone reads uscis.gov/citizenship/testupdates. Recheck after the new Congress sits on January 3, 2027: the House elects its Speaker then.",
+ "statesNote": "Capitals are fixed. Senators and governors are null until filled from senate.gov and each state's or territory's own site, each with its confirmed date. Until then the app asks the user to type their own. Question 29 (your representative) is always typed or picked by the user, since it depends on the district.",
  "places": [
   {
    "code": "AL",
@@ -437,9 +437,9 @@
    "code": "DC",
    "name": "District of Columbia",
    "type": "district",
-   "capital": null,
-   "senators": null,
-   "governor": null,
+   "capital": "none",
+   "senators": "none",
+   "governor": "none",
    "answers": {
     "23": "D.C. has no U.S. senators.",
     "61": "D.C. does not have a governor.",
@@ -451,40 +451,59 @@
    "name": "Puerto Rico",
    "type": "territory",
    "capital": "San Juan",
-   "senators": null,
-   "governor": null
+   "senators": "none",
+   "governor": null,
+   "answers": {
+    "23": "Puerto Rico has no U.S. senators."
+   }
   },
   {
    "code": "GU",
    "name": "Guam",
    "type": "territory",
    "capital": "Hagåtña",
-   "senators": null,
-   "governor": null
+   "senators": "none",
+   "governor": null,
+   "answers": {
+    "23": "Guam has no U.S. senators."
+   },
+   "capitalAlso": [
+    "Agana",
+    "Hagatna"
+   ]
   },
   {
    "code": "VI",
    "name": "U.S. Virgin Islands",
    "type": "territory",
    "capital": "Charlotte Amalie",
-   "senators": null,
-   "governor": null
+   "senators": "none",
+   "governor": null,
+   "answers": {
+    "23": "The U.S. Virgin Islands have no U.S. senators."
+   }
   },
   {
    "code": "AS",
    "name": "American Samoa",
    "type": "territory",
    "capital": "Pago Pago",
-   "senators": null,
-   "governor": null
+   "senators": "none",
+   "governor": null,
+   "answers": {
+    "23": "American Samoa has no U.S. senators."
+   }
   },
   {
    "code": "MP",
    "name": "Northern Mariana Islands",
    "type": "territory",
    "capital": "Saipan",
-   "senators": null,
-   "governor": null
+   "senators": "none",
+   "governor": null,
+   "answers": {
+    "23": "The Northern Mariana Islands have no U.S. senators."
+   }
   }
  ]
 }

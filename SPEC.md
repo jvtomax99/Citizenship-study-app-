@@ -52,7 +52,7 @@ read through a search extract:
    governor and capital answers fill in. Representative: pick from the list or type
    your own. Every officeholder answer shows the date it was last checked.
    - Done when: picking a state changes those answers everywhere, and one file holds
-     every officeholder with its checked date.
+     every officeholder with the date someone confirmed it at the source.
 3. **Study cards.** Question in English, tap to see the answers, tap for Spanish.
    A speaker button reads the question aloud (the phone's own voice).
    - Done when: a user flips through a section and hears any question read aloud.
@@ -114,11 +114,15 @@ No server.
 
 Each phase is one pull request, one or two sessions.
 
-- [x] 1. Question bank: the 128 questions from the USCIS PDF into
-  `data/questions.json`, the check script, officeholders file with dates, Spanish
-  drafts for Jose to read (2026-11-11). Still open from it, for Jose: read the
-  Spanish (`checked` stays false until then); recheck the four federal names on
-  uscis.gov/citizenship/testupdates; how to fill senators and governors (below).
+- [ ] 1. Question bank (built 2026-11-11, waits on Jose for the last two items):
+  - [x] The 128 questions from the USCIS PDF into `data/questions.json`, with how
+    many answers each question asks for (`need`), and the check script.
+  - [x] Spanish drafts in `data/es.json`, reviewed once by a second Claude pass.
+  - [x] Officeholder file: capitals, D.C. and territory answers, the four federal
+    names awaiting confirmation.
+  - [ ] Jose reads the Spanish (`checked` stays false until then).
+  - [ ] Federal names confirmed on uscis.gov/citizenship/testupdates; senators and
+    governors filled (see Open questions).
 - [ ] 2. Look: DESIGN.md per `docs/design-rules.md` (template or not, 1 to 3 sites
   Jose likes, the taste skill), one sample screen for Jose's OK.
 - [ ] 3. App shell, state picker, Study cards with read-aloud, Drill with spaced
