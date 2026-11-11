@@ -1,46 +1,45 @@
-# HANDOFF (written 2026-11-11)
+# HANDOFF (written 2026-11-11, after Step 3 was built)
 
 ## Goal and exact next step
 
 Build the citizenship study app (SPEC.md). Phases 1 (question bank) and 2 (look) are
-done. **Next: Phase 3**, the app itself: app shell, state picker, Study cards with
-read-aloud, Drill with spaced repetition and "I guessed", Home Screen install and
-offline. It is a big feature: plan mode first (what, how, assumptions), wait for
-Jose's OK, then build. Turn `preview/sample-drill.html` into the real screens; it
-already holds the tokens and components in `DESIGN.md`.
+done; **Phase 3 (the app itself) is built and tested in a phone-size browser, not yet
+checked off**: Jose has to tap through it. Next step: get Jose's OK on the Step 3
+screenshots, bring back the test-link question (Vercel, below), then Phase 4 (mock
+interview) with its own plan first.
 
-## Done (branch `claude/relaxed-mccarthy-sqi1n0`, all pushed, nothing live, no `main` yet)
+## Done (branch `claude/relaxed-mccarthy-sqi1n0`, pushed, nothing live, no `main` yet)
 
-- `data/questions.json`: the 128 USCIS questions, built and checked word for word by
-  `python3 tools/questions_from_pdf.py` (must say OK before any push).
-- `data/es.json`: Spanish drafts, reviewed once by a second pass; every entry still
-  `checked:false` until Jose reads it.
-- `data/officials.json`: capitals; NJ and NY senators and governors confirmed
-  2026-11-11 at the official sites.
-- `DESIGN.md`, `preview/sample-drill.html`, `assets/images/` (the real D.C. view by day
-  and night, the eagle officer), `CREDITS.md`, `docs/design/`.
+- Phases 1 and 2 as before (data files, DESIGN.md, the pictures).
+- Phase 3: `index.html`, `css/app.css`, `js/` (app, data, store, srs, speak, ui, home,
+  place, study, drill), `sw.js`, `manifest.webmanifest`, `assets/fonts/`, `assets/icons/`.
+  Proof: `node --test tests/*.mjs` (the schedule) and `node tools/shots.mjs` (taps
+  through everything, light and dark, offline too; needs `python3 -m http.server 8123`).
 
 ## Left open, waiting on Jose
 
-- Read the Spanish (a side-by-side page was sent to him; rebuild it from the two data
-  files if he asks). Start with the 20 marked 65/20.
-- SPEC.md TO FILL: who the family and friends are, the app's name, "Not in v1" OK.
-- Confirm the four federal names at uscis.gov/citizenship/testupdates (the site blocks
-  automated reads; Jose opens it). Recheck Booker's seat and NY's governor in January 2027.
+- Try Step 3 on a real phone: the voice and Home Screen install can't be proven here.
+  He chose "screenshots now, test link later": his Vercel account (team Language
+  Services, two Interp projects) once warned that storage was full. He looks at
+  vercel.com, Usage tab; then offer the Vercel test link again with buttons.
+- Show the plan to one of the family and friends (the app is for them).
+- Read the Spanish (shown in the app with a "borrador" mark); the 20 marked 65/20 first.
+- SPEC.md TO FILL: who the family and friends are, the app's name (working name on the
+  icon: "Citizenship Study", in `index.html` and `manifest.webmanifest`), "Not in v1" OK.
+- Confirm the four federal names at uscis.gov/citizenship/testupdates (Jose opens it).
+  Recheck Booker's seat and NY's governor in January 2027.
 - Confirm his Runway plan allows the pictures on a public website (CREDITS.md).
-- Small flaw: the monument's tip shows through the progress bar on the sample.
+- Small flaw: the monument's tip shows through the progress bar.
 
-## This session's decisions (all in SPEC.md or CLAUDE.md)
+## This session's decisions (all in SPEC.md)
 
-Family and friends; English plus Spanish help; GitHub Pages; $0 in new purchases
-(Runway credits he has are fine, 120 used); NJ and NY first; look = the real
-Washington, D.C. view, 3D-rendered pictures, never live 3D; friendly cartoon eagle kept
-(a realistic one looked stern); always buttons; all links in one block.
+Drill = say it out loud, show answers, then I knew it / I guessed / I missed it.
+Explanations on cards moved to "Later". Screenshots now, Vercel test link later.
+Added without being asked, small: a Home switch between all 128 and the 65/20 list.
 
 ## Files to look at first
 
-SPEC.md, DESIGN.md, docs/ARCHITECTURE.md, preview/sample-drill.html,
-docs/design/art-prompts.md.
+SPEC.md, docs/ARCHITECTURE.md, DESIGN.md, js/srs.js, js/data.js, tools/shots.mjs.
 
 ## Also pushed in the other two repos (same branch name, not yet in their `main`)
 

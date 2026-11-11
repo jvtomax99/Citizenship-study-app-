@@ -52,6 +52,7 @@ New art must match that style line. Never live 3D (SPEC, Not in v1).
 - **Fraunces** (Google Fonts, free): the question (27 / 33, 700, -0.3px), the Spanish
   line (18 / 25, italic 500), feedback titles (22 / 28, 700). Serif = "this is the
   official wording".
+Both fonts are saved in `assets/fonts/` (variable WOFF2), so they load offline.
 - **Nunito** (Google Fonts, free): everything else. Body and inputs 17 / 24, 700 (never
   under 16px in an input: iOS zooms). Buttons 15, 900, uppercase, +1px. Small 13, 800.
   Labels 12, 900, uppercase, +1.2 to 1.4px.
@@ -84,9 +85,28 @@ New art must match that style line. Never live 3D (SPEC, Not in v1).
 - **Feedback sheet:** fixed to the bottom, slides up 260ms. Soft green or soft red,
   serif title with a round ✓ or ✕, the accepted answers, one button.
 
+- **Short scene:** on list and form screens (state picker, section list) the picture is
+  230px tall and the card starts 20px under the top bar.
+- **Home card:** 64px eagle, small caps label, serif title, the All 128 / 65/20 switch
+  (two 44px outline buttons, the chosen one ringed in indigo), "X of N known" with a
+  14px gold meter on `--line`.
+- **Rows** (sections, states): 56px min, `--card`, 2px `--line` border and 3px lip,
+  radius 18, name in `--ink` 800, count in `--text-soft`, a chevron; sections carry a
+  6px gold meter.
+- **Answers panel:** `--liberty-soft`, radius 28, small caps label in Liberty text, each
+  accepted answer in `--ink` 800 with a hairline between; Spanish under it in the italic
+  serif; personal answers (names) in the 22px serif with a caption saying where the name
+  came from.
+- **Drill buttons:** "I knew it" is the one primary; "I guessed" and "I missed it" are
+  outline buttons side by side under it. No red: a miss here is not an error.
+- **Bottom actions:** stick to the bottom of the screen over a fade to `--page`.
+- **Draft mark:** "borrador", a dashed pill in `--text-soft`, beside Spanish not yet read.
+- **Typed field:** 52px, radius 14, same border and focus ring as the answer field.
+
 ## Motion
 
-Ease `cubic-bezier(0.22,1,0.36,1)`. The scene drifts slowly; the speaker's rings pulse.
+Ease `cubic-bezier(0.22,1,0.36,1)`. The scene drifts slowly; the speaker's rings pulse
+while it is talking and rest otherwise (with 128 cards, a ring that never stops is noise).
 Reduced motion: everything still.
 
 ## Do and don't

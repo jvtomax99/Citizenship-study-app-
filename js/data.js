@@ -1,0 +1,98 @@
+// Loads the three data files and joins them by question id. Nothing here rewrites a
+// question or an answer: the USCIS wording is always shown as it is in questions.json.
+
+export const data = { questions: [], byId: {}, es: {}, officials: null, places: [], sections: [] };
+
+const GROUPS = { government: 'American Government', history: 'American History', symbols: 'Symbols and Holidays' };
+
+export async function loadData() {
+  const [q, es, off] = await Promise.all(
+    ['data/questions.json', 'data/es.json', 'data/officials.json'].map((u) => fetch(u).then((r) => {
+      if (!r.ok) throw new Error(u + ' ' + r.status);
+      return r.json();
+    })));
+  data.questions = q.questions;
+  data.byId = Object.fromEntries(q.questions.map((x) => [x.id, x]));
+  data.es = es.questions;
+  data.officials = off;
+  data.places = off.places.slice().sort((a, b) => a.name.localeCompare(b.name));
+  const seen = new Map();
+  for (const x of q.questions) {
+    const key = x.section + '-' + x.part;
+    if (!seen.has(key)) seen.set(key, { key, group: GROUPS[x.section] || x.section, title: x.partTitle, ids: [] });
+    seen.get(key).ids.push(x.id);
+  }
+  data.sections = [...seen.values()];
+}
+
+export const placeByCode = (code) => data.places.find((p) => p.code === code) || null;
+
+// The question ids in a list: 'all' or '6520' (the 20 starred questions).
+export const idsInList = (list, ids = data.questions.map((q) => q.id)) =>
+  list === '6520' ? ids.filter((id) => data.byId[id].star6520) : ids;
+
+const MONTHS = ['Jan', 'Feb', 'Mar', 'Apr', 'May', 'Jun', 'Jul', 'Aug', 'Sep', 'Oct', 'Nov', 'Dec'];
+export function niceDate(iso) {
+  const [y, m, d] = iso.split('-').map(Number);
+  return `${MONTHS[m - 1]} ${d}, ${y}`;
+}
+const host = (url) => { try { return new URL(url).hostname.replace(/^www\./, ''); } catch { return 'the official site'; } };
+
+function person(p, todayIso) {
+  let caption = `Checked ${niceDate(p.confirmed)} at ${host(p.source)}.`;
+  const recheck = (p.recheck || '').slice(0, 10);
+  if (/^\d{4}-\d{2}-\d{2}$/.test(recheck) && todayIso >= recheck) caption += ' This may have changed since: check again.';
+  return { text: p.name, caption };
+}
+const typed = (text, where) => ({ text, caption: `You typed this. Check it at ${where}.` });
+
+// The answers that depend on the person or on today's officeholders.
+//   mine: [{text, caption}]  names or sentences to say, with where they came from
+//   ask:  null | 'place' (no state picked yet) | 'typed' (a name still has to be typed)
+// The USCIS text (q.answers) is shown under these either way.
+export function personalAnswers(q, profile, todayIso = new Date().toISOString().slice(0, 10)) {
+  if (q.kind === 'fixed') return { mine: [], ask: null };
+
+  if (q.kind === 'current-official') {
+    const f = data.officials.federal[q.id];
+    const caption = f.confirmed
+      ? `Checked ${niceDate(f.confirmed)} at ${host(f.source)}.`
+      : `The name USCIS lists (its page was last reviewed ${niceDate(f.sourceReviewed)}). Confirm at uscis.gov/citizenship/testupdates before your interview.`;
+    return { mine: [{ text: f.name, caption }], ask: null };
+  }
+
+  const place = placeByCode(profile.place);
+  if (!place) return { mine: [], ask: 'place' };
+  const t = profile.typed;
+  const special = place.answers && place.answers[q.id];
+  if (special) return { mine: [{ text: special, caption: '' }], ask: null };
+
+  if (q.id === 23) {
+    if (Array.isArray(place.senators) && place.senators.length)
+      return { mine: place.senators.map((s) => person(s, todayIso)), ask: null };
+    const names = t.senators.map((s) => s.trim()).filter(Boolean);
+    return names.length ? { mine: names.map((n) => typed(n, 'senate.gov')), ask: null } : { mine: [], ask: 'typed' };
+  }
+  if (q.id === 29) {
+    const n = t.rep.trim();
+    return n ? { mine: [typed(n, 'house.gov')], ask: null } : { mine: [], ask: 'typed' };
+  }
+  if (q.id === 61) {
+    if (place.governor && place.governor.name) return { mine: [person(place.governor, todayIso)], ask: null };
+    const n = t.governor.trim();
+    const site = place.type === 'territory' ? "your territory's official website" : "your state's official website";
+    return n ? { mine: [typed(n, site)], ask: null } : { mine: [], ask: 'typed' };
+  }
+  if (q.id === 62) return { mine: [{ text: place.capital, caption: '' }], ask: null };
+  return { mine: [], ask: null };
+}
+
+// What the place screen has to ask for: which names are not in the data file.
+export function needsTyping(place) {
+  const special = place.answers || {};
+  return {
+    senators: !special[23] && !(Array.isArray(place.senators) && place.senators.length),
+    governor: !special[61] && !(place.governor && place.governor.name),
+    rep: true,
+  };
+}

@@ -10,7 +10,7 @@ A free web app for studying the U.S. naturalization civics test (the 2025 test,
 128 questions) on a phone. It installs to the Home Screen, works offline, and keeps
 progress on the device. Same habits as Jose's other two study apps (spaced
 repetition, honest readiness, a daily goal, a world that grows as you learn), with
-its own look: a drawn 2D National Mall, not a 3D city or a campus.
+its own look: the real view of the National Mall as 3D-rendered pictures, not live 3D.
 
 ## Who it's for
 
@@ -44,8 +44,7 @@ read through a search extract:
 
 1. **Question bank.** All 128 questions and every accepted answer from the USCIS PDF,
    in its sections, with the 65/20 marks, and a Spanish translation of each question,
-   answer and note. A short explanation per question comes with the Study cards
-   (Phase 3).
+   answer and note. (A short explanation per question moved to "Later": Jose, 2026-11-11.)
    - Done when: every question and answer matches the PDF word for word (a check
      script compares them), and Jose has read the Spanish.
 2. **Your state's answers.** Pick your state (and D.C. or territory); the senator,
@@ -54,10 +53,16 @@ read through a search extract:
    - Done when: picking a state changes those answers everywhere, and one file holds
      every officeholder with the date someone confirmed it at the source.
 3. **Study cards.** Question in English, tap to see the answers, tap for Spanish.
-   A speaker button reads the question aloud (the phone's own voice).
+   A speaker button reads the English question aloud (the phone's own voice). Spanish
+   shows a "borrador" (draft) mark until Jose has read it. A switch on Home limits
+   everything to the 20 questions of the 65/20 list.
    - Done when: a user flips through a section and hears any question read aloud.
-4. **Drill with spaced repetition.** Missed questions come back sooner. "I guessed"
-   counts a lucky right answer as a miss.
+4. **Drill with spaced repetition.** Rounds of 10. You say the answer out loud, tap
+   "Show answers", then tap I knew it, I guessed or I missed it (Jose's pick,
+   2026-11-11: no typing, no multiple choice; checking typed and spoken answers is the
+   Mock interview's job). Missed questions come back sooner: later in the same round,
+   and first in the next one. "I guessed" counts a lucky right answer as a miss.
+   Knowing it waits 1, 3, 7, 14, then 30 days.
    - Done when: a missed question returns before a right one, and a guess counts as
      a miss.
 5. **Mock interview.** The officer reads questions aloud in random order; you answer
@@ -92,6 +97,11 @@ TO FILL: Jose to confirm.
 
 ## Later
 
+- A short explanation on each study card (why the answer is the answer), in English and
+  Spanish. Its own step, after Jose has read the Spanish (Jose, 2026-11-11).
+- A private test link on Vercel so Jose can hear the voice and try the Home Screen
+  install on a real phone before going live. Waiting on Jose looking at Vercel's Usage
+  tab (his account once warned that storage was full; this app is about 1 MB).
 - Reading and writing practice (the English test: read 1 of 3 sentences, write 1 of
   3), from the USCIS vocabulary lists.
 - Practice for the N-400 interview questions themselves (the officer's questions
@@ -142,7 +152,9 @@ Each phase is one pull request, one or two sessions.
     the true view from the Lincoln Memorial, day and night.
   - [x] Jose OK'd the sample: "Good, build with it".
 - [ ] 3. App shell, state picker, Study cards with read-aloud, Drill with spaced
-  repetition and "I guessed". Home Screen install and offline.
+  repetition and "I guessed". Home Screen install and offline. Built and tapped through
+  in a phone-size browser on 2026-11-11 (`node tools/shots.mjs`); waits on Jose trying
+  it on a real phone (the voice and the Home Screen install can't be proven from here).
 - [ ] 4. Mock interview with voice, the 12/9 rule and 65/20 mode.
 - [ ] 5. The National Mall, daily goal and streak.
 - [ ] 6. Backup, user guide, first release to GitHub Pages.

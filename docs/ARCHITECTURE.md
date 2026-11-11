@@ -1,6 +1,7 @@
 # Architecture
 
-Short map; keep it current. No app code yet (Phase 1 is the data).
+Short map; keep it current. Plain HTML, CSS and JavaScript: no framework, no build step,
+nothing to install. GitHub Pages serves the folder as it is.
 
 ## Folders
 
@@ -23,8 +24,25 @@ Short map; keep it current. No app code yet (Phase 1 is the data).
   flag it checks `questions.json` against the PDF two ways (the parse, and every string
   verbatim in a plain-text read) plus pinned facts (the 20 stars, 410 answers), and
   checks `es.json` covers every answer and note. Needs `pdftotext` (poppler-utils).
-- `DESIGN.md` The look: colors, type, shape, components, motion (draft, waiting for
-  Jose's OK). `preview/sample-drill.html` is its sample screen (`?state=ask|right|wrong`).
+- `index.html` The one page. `css/app.css` holds the whole look (the variables from
+  `DESIGN.md`); `manifest.webmanifest` and `sw.js` make it install and work offline.
+- `js/` One small file each:
+  - `app.js` starts the app and picks the screen from the address (`#/`, `#/place`,
+    `#/study/<section>`, `#/drill`).
+  - `data.js` loads the three data files and works out the personal answers
+    (`personalAnswers`: senators, governor, capital, representative, the four federal names).
+  - `store.js` what the phone remembers (one `localStorage` entry, `civics128.v1`).
+  - `srs.js` the come-back-sooner schedule (pure functions; `tests/srs.test.mjs`).
+  - `speak.js` read-aloud with the phone's voice.
+  - `ui.js` shared pieces (scene, top bar, question card, answers panel).
+  - `home.js`, `place.js`, `study.js`, `drill.js` the four screens.
+- `tests/` `node --test tests/*.mjs` checks the schedule. `tools/shots.mjs` taps through
+  the whole app at phone size, checks Step 3's "Done when" lines and saves screenshots
+  (start `python3 -m http.server 8123` first).
+- `DESIGN.md` The look: colors, type, shape, components, motion (Jose OK'd it).
+  `preview/sample-drill.html` is the sample screen it was approved from.
+- `assets/fonts/` Fraunces and Nunito as web files (saved here so they work offline).
+  `assets/icons/` the app icon, cut from the eagle picture.
 - `assets/images/` The 3D-rendered pictures (the Mall by day and night, the eagle officer). `CREDITS.md` lists every asset; `docs/design/art-prompts.md` says how they were made.
 - `docs/design/` Taste studies of sites Jose picked (`duolingo.com.md` and its raw `.json`).
 - `docs/` Rules (design, assets, cleanup, refactor) and this file.
@@ -33,4 +51,11 @@ Short map; keep it current. No app code yet (Phase 1 is the data).
 
 USCIS PDF -> `tools/questions_from_pdf.py --write` -> `data/questions.json`.
 Spanish and officeholders are written by hand (Claude drafts, Jose checks) and joined to
-the questions by id in the app. Progress will stay in the browser on each phone.
+the questions by id in the app (`js/data.js`). The question wording is never changed in
+code: personal answers are shown above the USCIS text, not instead of it.
+
+Progress stays on each phone: `js/store.js` keeps the state, typed names, the 65/20
+switch and one card per question (`box`, `due`, `seen`, `last`). `sw.js` saves every
+file on the first visit, serves the saved copy, and fetches a fresh one in the
+background, so an update appears the second time the app is opened. A new file the app
+needs must be added to the `FILES` list in `sw.js`.
