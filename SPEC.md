@@ -101,8 +101,9 @@ TO FILL: Jose to confirm.
 ## Open questions for Jose
 
 - Senators and governors: only the states where the family and friends live:
-  New Jersey and New York (Jose, 2026-11-11); other states type their own. Needs
-  www.senate.gov, www.nj.gov and www.governor.ny.gov reachable to confirm names.
+  New Jersey and New York (Jose, 2026-11-11); other states type their own. Filled and
+  confirmed at senate.gov, nj.gov and governor.ny.gov on 2026-11-11; Booker's seat and
+  New York's governor were on the 2026 ballot, so recheck both in early January 2027.
 
 ## Budget
 

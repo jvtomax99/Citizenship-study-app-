@@ -1,5 +1,5 @@
 {
- "about": "Answers that depend on where you live (23, 29, 61, 62) or on who holds an office now (30, 38, 39, 57). Values: a name or list = filled; null = not filled yet; \"none\" = the office does not exist there. Each person, once filled, is {name, confirmed, source}: confirmed is the date someone actually checked the name at the source. The app shows that date.",
+ "about": "Answers that depend on where you live (23, 29, 61, 62) or on who holds an office now (30, 38, 39, 57). Values: a name or list = filled; null = not filled yet; \"none\" = the office does not exist there. Each person, once filled, is {name, confirmed, source, recheck?}: confirmed is the date someone actually checked the name at the source. The app shows that date.",
  "federal": {
   "30": {
    "office": "Speaker of the House of Representatives",
@@ -270,8 +270,24 @@
    "name": "New Jersey",
    "type": "state",
    "capital": "Trenton",
-   "senators": [],
-   "governor": null
+   "senators": [
+    {
+     "name": "Cory A. Booker",
+     "confirmed": "2026-11-11",
+     "source": "https://www.senate.gov/general/contact_information/senators_cfm.xml",
+     "recheck": "2027-01-03: this seat (Class II) was on the November 3, 2026 ballot; the term ends January 3, 2027."
+    },
+    {
+     "name": "Andy Kim",
+     "confirmed": "2026-11-11",
+     "source": "https://www.senate.gov/general/contact_information/senators_cfm.xml"
+    }
+   ],
+   "governor": {
+    "name": "Mikie Sherrill",
+    "confirmed": "2026-11-11",
+    "source": "https://www.nj.gov/governor/"
+   }
   },
   {
    "code": "NM",
@@ -286,8 +302,24 @@
    "name": "New York",
    "type": "state",
    "capital": "Albany",
-   "senators": [],
-   "governor": null
+   "senators": [
+    {
+     "name": "Kirsten E. Gillibrand",
+     "confirmed": "2026-11-11",
+     "source": "https://www.senate.gov/general/contact_information/senators_cfm.xml"
+    },
+    {
+     "name": "Charles E. Schumer",
+     "confirmed": "2026-11-11",
+     "source": "https://www.senate.gov/general/contact_information/senators_cfm.xml"
+    }
+   ],
+   "governor": {
+    "name": "Kathy Hochul",
+    "confirmed": "2026-11-11",
+    "source": "https://www.governor.ny.gov/",
+    "recheck": "2027-01-01: the governor's office was on the November 3, 2026 ballot; the new term starts January 1, 2027."
+   }
   },
   {
    "code": "NC",
