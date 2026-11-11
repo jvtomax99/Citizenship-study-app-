@@ -25,6 +25,7 @@ function listView(root, rerender, current) {
     </button>`).join('')}</div>
     <p class="fine" id="nomatch" hidden>No state with that name.</p>
     ${current ? '' : '<button class="btn ghost" data-act="skip">Skip for now</button>'}
+    ${current ? '' : '<a class="link" href="#/backup">Have a backup file from another phone? Load it</a>'}
   `, { short: true });
 
   const find = root.querySelector('#find');

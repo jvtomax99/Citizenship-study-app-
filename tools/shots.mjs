@@ -1,9 +1,9 @@
-// Taps through the app at phone size, checks the "Done when" lines of Steps 3, 4 and 5 and saves
+// Taps through the app at phone size, checks the "Done when" lines of Steps 3 to 6 and saves
 // screenshots. Run a local server first (python3 -m http.server 8123), then:
 //   node tools/shots.mjs [folder for the pictures] [http://localhost:8123/]
 import { createRequire } from 'node:module';
 import assert from 'node:assert/strict';
-import { mkdirSync } from 'node:fs';
+import { mkdirSync, readFileSync } from 'node:fs';
 const require = createRequire(import.meta.url);
 let chromium;
 try { ({ chromium } = require('playwright')); } catch { ({ chromium } = require('/opt/node22/lib/node_modules/playwright')); }
@@ -357,6 +357,102 @@ async function run(scheme) {
   await shot('26-home-streak-rest-day', true);
   log(`${scheme}: the goal, the week with a rest day, the streak and the goal choice`);
 
+  // 7. backup: save a file, start as a new phone, load the file, see the same progress
+  const kept = () => page.evaluate(() => { const s = JSON.parse(localStorage['civics128.v1'] || '{}'); return JSON.stringify([s.place, s.typed, s.list, s.cards, s.goal, s.days, s.mockHistory]); });
+  const before = await kept();
+  const knownLine = (await page.locator('.known p').first().innerText()).trim();
+  assert.ok((await page.locator('.more').innerText()).includes('Last saved: never'));
+  await tap('.more a[href="#/backup"]');
+  await page.waitForSelector('[data-act=save]');
+  await shot('27-backup', true);
+  await page.waitForTimeout(TAP);
+  const [dl] = await Promise.all([page.waitForEvent('download'), page.click('[data-act=save]')]);
+  assert.match(dl.suggestedFilename(), /^citizenship-backup-\d{4}-\d{2}-\d{2}\.json$/);
+  const file = await dl.path();
+  const fileText = readFileSync(file, 'utf8');
+  assert.ok((await page.locator('.note.ok').innerText()).includes(dl.suggestedFilename()));
+  assert.ok((await page.locator('.card').innerText()).includes('Last saved: today'));
+  await shot('28-backup-saved', true);
+  // where the phone has a Share menu that takes files, the file goes there instead
+  await page.evaluate(() => { navigator.canShare = (d) => !!(d && d.files); navigator.share = async (d) => { window.__shared = { name: d.files[0].name, text: await d.files[0].text() }; }; });
+  await tap('[data-act=save]');
+  await page.waitForFunction(() => window.__shared);
+  assert.deepEqual(await page.evaluate(() => window.__shared), { name: dl.suggestedFilename(), text: fileText });
+  assert.ok((await page.locator('.note.ok').innerText()).includes('Backup sent'));
+  // a phone that will not copy by itself shows the text to copy by hand
+  await page.evaluate(() => { Object.defineProperty(navigator, 'clipboard', { value: { writeText: async () => { throw new Error('no'); } }, configurable: true }); });
+  await tap('[data-act=copy]');
+  assert.equal(await page.locator('#out').inputValue(), fileText);
+  await shot('29-backup-as-text', true);
+  // a new phone: nothing saved yet
+  await page.evaluate(() => { localStorage.clear(); });
+  await page.goto('about:blank');
+  await page.goto(base);
+  await page.waitForSelector('#find');
+  await tap('a[href="#/backup"]');
+  await page.waitForSelector('[data-act=pick]');
+  // files that are not a backup are refused and nothing changes
+  await tap('[data-act=paste]');
+  for (const [text, says] of [['hello', 'could not be read'], ['{"app":"other","v":1,"state":{}}', 'not a backup from this app'], ['{"app":"civics128","v":2,"state":{}}', 'newer version']]) {
+    await page.fill('#in', text);
+    await tap('[data-act=check]');
+    assert.ok((await page.locator('.note.bad').innerText()).includes(says), says);
+    assert.equal(await page.evaluate(() => localStorage['civics128.v1']), undefined, 'a refused file changes nothing');
+  }
+  await shot('30-backup-refused', true);
+  // the real file: both sides are shown before anything changes
+  await page.setInputFiles('#pick', file);
+  await page.waitForSelector('.compare');
+  const sides = await page.locator('.side').allInnerTexts();
+  assert.ok(sides[0].replace(/\s+/g, ' ').includes(knownLine.replace(/\s+/g, ' ')), `the backup's side says ${knownLine}`);
+  assert.ok(sides[0].includes('New Jersey') && sides[0].includes('3 days in a row'));
+  assert.ok(sides[1].replace(/\s+/g, ' ').includes('0 of 128 known') && sides[1].includes('no state picked'));
+  assert.equal(await page.evaluate(() => localStorage['civics128.v1']), undefined, 'looking at a backup changes nothing');
+  await shot('31-backup-compare', true);
+  await tap('[data-act=cancel]');
+  await page.waitForSelector('[data-act=pick]');
+  // pasted as text works the same way
+  await tap('[data-act=paste]');
+  await page.fill('#in', fileText);
+  await tap('[data-act=check]');
+  await page.waitForSelector('.compare');
+  await tap('[data-act=replace]');
+  await page.waitForSelector('.note.ok');
+  assert.ok((await page.locator('.note.ok').innerText()).includes('Backup loaded'));
+  assert.equal(await kept(), before, 'the loaded progress is the saved progress');
+  await shot('32-backup-loaded', true);
+  // undo puts back what the phone had (here: nothing), and the file can be loaded again
+  await tap('[data-act=undo]');
+  await page.waitForSelector('.note.ok');
+  assert.ok((await page.locator('.note.ok').innerText()).includes('Undone'));
+  assert.equal(await page.locator('[data-act=undo]').count(), 0);
+  assert.equal(await page.evaluate(() => Object.keys(JSON.parse(localStorage['civics128.v1']).cards).length), 0);
+  await page.setInputFiles('#pick', file);
+  await page.waitForSelector('.compare');
+  await tap('[data-act=replace]');
+  await page.waitForSelector('.note.ok');
+  assert.equal(await kept(), before);
+  await page.goto(base + '#/');
+  await page.waitForSelector('.hello');
+  assert.equal((await page.locator('.known p').first().innerText()).trim(), knownLine);
+  assert.ok((await page.locator('.streak').innerText()).includes('3 days in a row'));
+  log(`${scheme}: a backup file is saved (download, Share menu, as text), refused when it is not one, compared, loaded on a "new phone" with the same progress, undone and loaded again`);
+
+  // 8. the guide, in English and with Spanish
+  await tap('.more a[href="#/guide"]');
+  await page.waitForSelector('.step');
+  assert.equal(await page.locator('.step').count(), 9);
+  assert.equal(await page.locator('.step .es').count(), 0);
+  await shot('33-guide', true);
+  await tap('[data-act=spanish]');
+  assert.ok(await page.locator('.step p.es').count() >= 18);
+  assert.ok((await page.locator('.card').innerText()).includes('borrador'));
+  await shot('34-guide-spanish', true);
+  await tap('[data-act=spanish]');
+  await tap('a.x');
+  await page.waitForSelector('.hello');
+  log(`${scheme}: the guide opens with nine steps, Spanish one tap away and marked as a draft`);
+
   // 6. offline: with the network cut, the app still opens from the saved copy
   await page.evaluate(() => navigator.serviceWorker.ready);
   await page.waitForTimeout(800);
@@ -366,7 +462,11 @@ async function run(scheme) {
   await page.goto(base + '#/study/symbols-A');
   await page.waitForSelector('.q');
   assert.ok(await page.evaluate(() => document.fonts.check('700 27px Fraunces')));
-  log(`${scheme}: opens and shows a study card with the network off`);
+  await page.goto(base + '#/guide');
+  await page.waitForSelector('.step');
+  await page.goto(base + '#/backup');
+  await page.waitForSelector('[data-act=save]');
+  log(`${scheme}: opens and shows a study card, the guide and Backup with the network off`);
   await shot('20-offline-study');
   await ctx.setOffline(false);
 

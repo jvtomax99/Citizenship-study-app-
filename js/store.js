@@ -1,12 +1,13 @@
 // Everything the app remembers, kept on this phone only (localStorage).
-// Step 6's backup file will save and load this same object.
+// The backup file (js/backup.js) saves and loads this same object.
 
 import { addAnswer } from './progress.js';
 import { dayNumber } from './srs.js';
 
 const KEY = 'civics128.v1';
+const UNDO = 'civics128.undo'; // what the phone held before the last backup was loaded
 
-const blank = () => ({
+export const blank = () => ({
   v: 1,
   place: null,     // 'NJ', 'DC', 'PR'... null until picked
   typed: {},       // per place code: {senators: ['', ''], governor: '', rep: ''}
@@ -19,6 +20,7 @@ const blank = () => ({
   mockHistory: [], // the last 10 finished interviews: {day, list, right, wrong, passed}
   goal: 10,        // questions a day: 5, 10 or 20
   days: {},        // per day number: {n: questions answered, g: that day's goal}; today also ids (js/progress.js)
+  lastBackup: null, // the day number a backup was last saved from this phone
 });
 
 let state = blank();
@@ -42,6 +44,30 @@ export const store = {
     const today = dayNumber();
     const days = state.days[today] ? { ...state.days, [today]: { ...state.days[today], g: goal } } : state.days;
     return this.set({ goal, days });
+  },
+  // Load a backup: everything is replaced by next (already checked by unpack in
+  // js/backup.js). What the phone held is kept aside for Undo. False if the phone
+  // could not keep it, and then nothing is changed.
+  replace(next) {
+    try {
+      localStorage.setItem(UNDO, JSON.stringify(state));
+      const loaded = { ...blank(), ...next, hideInstallTip: state.hideInstallTip, lastBackup: state.lastBackup };
+      localStorage.setItem(KEY, JSON.stringify(loaded));
+      state = loaded;
+      return true;
+    } catch { return false; }
+  },
+  canUndo() { try { return !!localStorage.getItem(UNDO); } catch { return false; } },
+  // Put back what the phone held before the last load.
+  undo() {
+    try {
+      const old = JSON.parse(localStorage.getItem(UNDO) || 'null');
+      if (!old || old.v !== 1) return false;
+      localStorage.setItem(KEY, JSON.stringify(old));
+      localStorage.removeItem(UNDO);
+      state = { ...blank(), ...old };
+      return true;
+    } catch { return false; }
   },
   typedFor(code) {
     const t = state.typed[code] || {};

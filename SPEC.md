@@ -108,6 +108,13 @@ read through a search extract:
    file.
    - Done when: the app opens offline from the Home Screen icon, and a backup moves
      progress to another phone.
+   - Backup (Jose OK'd the plan, 2026-11-11): one file with everything the phone
+     remembers, sent through the phone's Share menu, a download, or copied as text.
+     Loading shows the file's numbers next to the phone's, then replaces, with an Undo.
+     Files that are not a backup are refused.
+9. **User guide.** "How to use this app" on Home: short steps in English, Spanish one
+   tap away (Jose, 2026-11-11).
+   - Done when: a person can read how to install, study and back up, in both languages.
 
 ## Not in v1
 
@@ -115,6 +122,9 @@ TO FILL: Jose to confirm.
 
 - The 2008 test (100 questions).
 - Accounts, sync between phones, any server (so no AI grading of spoken answers).
+- Automatic backups or backup reminders; mixing two backups together.
+- Being listed on Google: the live site asks search engines to skip it until Jose
+  says otherwise (2026-11-11). A custom web address.
 - Languages other than English and Spanish. Fully bilingual menus.
 - Live 3D. The Mall and the mascot are 3D-rendered pictures (Jose, 2026-11-11), saved as
   images so the app stays fast on older phones.
@@ -131,7 +141,7 @@ TO FILL: Jose to confirm.
   about the application).
 - More languages.
 - A mock interview in Spanish for 65/20 applicants (not needed now: Jose, 2026-11-11).
-- A how-to video like the CPA app's.
+- A how-to video like the CPA app's. A printable guide.
 
 ## Open questions for Jose
 

@@ -17,6 +17,8 @@ nothing to install. GitHub Pages serves the folder as it is.
     order; parentheses mean optional words, as in English), `notes`, `glosses` (an English
     name or synonym shown beside an answer, never part of it), `checked` (true once
     Jose has read it).
+  - `guide.json` The user guide: short steps in English, each with Spanish (`checked`
+    turns true once Jose has read the Spanish).
   - `officials.json` Names that change with elections. null = not filled yet, "none" =
     the office doesn't exist there; each name gets `confirmed` (date someone checked it at
     the source); capitals for the 50 states and 5 territories; D.C.'s special answers.
@@ -28,7 +30,7 @@ nothing to install. GitHub Pages serves the folder as it is.
   `DESIGN.md`); `manifest.webmanifest` and `sw.js` make it install and work offline.
 - `js/` One small file each:
   - `app.js` starts the app and picks the screen from the address (`#/`, `#/place`,
-    `#/study/<section>`, `#/drill[/<section>]`, `#/mock`, `#/mall`).
+    `#/study/<section>`, `#/drill[/<section>]`, `#/mock`, `#/mall`, `#/backup`, `#/guide`).
   - `data.js` loads the three data files and works out the personal answers
     (`personalAnswers`: senators, governor, capital, representative, the four federal names)
     and the section list (`sectionRows`).
@@ -46,12 +48,18 @@ nothing to install. GitHub Pages serves the folder as it is.
     (`landmark`), the daily count (`addAnswer`), the forgiving streak (`streak`, `week`).
   - `mall.js` the Mall screen (`#/mall`), the landmark list (`LANDMARKS`, one per
     section key) and Home's strip. `#/drill/<section key>` drills one part.
+  - `backup.js` the backup file, pure functions (`tests/backup.test.mjs`): `pack` writes
+    it, `unpack` reads one and keeps only the fields it knows (a file from another phone
+    is not trusted), `summary` gives the numbers shown before a load.
+  - `more.js` the Backup screen (`#/backup`: Share menu, download or copy as text; load
+    from a file or pasted text, compare, replace, undo) and the guide (`#/guide`, text in
+    `data/guide.json`, fetched when first opened).
   - `ui.js` shared pieces (scene, top bar, question card, answers panel, eagle header,
     section rows, the Español switch).
   - `home.js`, `place.js`, `study.js`, `drill.js` the other four screens.
-- `tests/` `node --test tests/*.mjs` checks the schedule and the answer checker.
+- `tests/` `node --test tests/*.mjs` checks the schedule, the answer checker and the backup file.
   `tools/shots.mjs` taps through the whole app at phone size (a pretend microphone
-  stands in for voice), checks the "Done when" lines of Steps 3, 4 and 5 and saves screenshots
+  stands in for voice), checks the "Done when" lines of Steps 3 to 6 and saves screenshots
   (start `python3 -m http.server 8123` first).
 - `DESIGN.md` The look: colors, type, shape, components, motion (Jose OK'd it).
   `preview/sample-drill.html` is the sample screen it was approved from.
@@ -74,4 +82,15 @@ switch, one card per question (`box`, `due`, `seen`, `last`), the daily goal and
 `days` (questions answered per day, last 60 days; the streak is worked out, never stored). `sw.js` saves every
 file on the first visit, serves the saved copy, and fetches a fresh one in the
 background, so an update appears the second time the app is opened. A new file the app
-needs must be added to the `FILES` list in `sw.js`.
+needs must be added to the `FILES` list in `sw.js`, and the cache name there bumped.
+
+A backup is that same remembered state as one text file (`js/backup.js`). Loading one
+replaces the state; what the phone held is kept under `civics128.undo` until it is undone.
+The hidden install tip and the last-backup date belong to the phone and do not travel.
+
+## Going live
+
+GitHub Pages serves `main` as it is (`.nojekyll`, no build) at
+https://jvtomax99.github.io/Citizenship-study-app-/. `index.html` asks search engines
+not to list it (Jose, 2026-11-11). The Vercel test link is a separate copy with its own
+saved progress.

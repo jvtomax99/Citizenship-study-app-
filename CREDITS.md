@@ -4,7 +4,7 @@ Every asset: what it is, where it came from, its license, what it cost.
 
 | Asset | File | Source | License | Cost |
 |---|---|---|---|---|
-| The Mall at golden hour, the real view from the Lincoln Memorial (3D-rendered picture) | `assets/images/mall-day.webp` | Made for this app with Runway's image tool (Jose's Runway account), 2026-11-11 | Made-to-order output on Jose's account. TO CONFIRM: that his Runway plan's terms allow use on a public website | 20 Runway credits |
+| The Mall at golden hour, the real view from the Lincoln Memorial (3D-rendered picture) | `assets/images/mall-day.webp` | Made for this app with Runway's image tool (Jose's Runway account), 2026-11-11 | Made-to-order output on Jose's account (paid Standard plan). Runway's Terms of Use, section 4.4 (last updated 2026-10-23, read 2026-11-11 at runway.com/terms-of-use): Runway "does not claim ownership of any of your Inputs or Outputs" and "does not restrict your commercial use of your Outputs" | 20 Runway credits |
 | The Mall at night | `assets/images/mall-night.webp` | Same | Same | 20 Runway credits |
 | Eagle officer (mascot) | `assets/images/eagle-officer.webp`, `eagle-officer-full.webp` | Same | Same | 20 Runway credits |
 | The eight Mall landmarks (3D-rendered pictures) | `assets/images/landmarks/*.webp` (archives, capitol, court, monument, lincoln, ww2, flag, fireworks; each with a small `-s` square) | Same, 2026-11-11 | Same | 160 Runway credits (plus 40 for two trial looks not used) |

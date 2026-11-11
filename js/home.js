@@ -6,6 +6,7 @@ import { standing } from './match.js';
 import { esc, frame, wire, eagleHeader, ICON } from './ui.js';
 import { GOALS, answeredOn, metOn, streak, week } from './progress.js';
 import { mallRows, mallStrip } from './mall.js';
+import { ago } from './backup.js';
 
 let installEvent = null; // Android and desktop Chrome offer a real install prompt
 window.addEventListener('beforeinstallprompt', (e) => { e.preventDefault(); installEvent = e; });
@@ -78,6 +79,10 @@ export function home(root, _arg, rerender) {
     </aside>` : ''}
 
     ${mallStrip(rows)}
+    <nav class="more" aria-label="More">
+      <a class="row" href="#/backup"><span class="row-main"><b>Backup</b><small>Last saved: ${ago(s.lastBackup, today)}</small></span>${ICON.chevron}</a>
+      <a class="row" href="#/guide"><span class="row-main"><b>How to use this app</b><small lang="es">Cómo usar esta app</small></span>${ICON.chevron}</a>
+    </nav>
     <p class="fine">The questions and answers are copied word for word from USCIS (form M-1778, 09/25). This app is not made by USCIS.</p>
   `);
 
