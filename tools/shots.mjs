@@ -456,6 +456,7 @@ async function run(scheme) {
   await page.waitForSelector('.step');
   assert.equal(await page.locator('.step').count(), 9);
   assert.equal(await page.locator('.step .es').count(), 0);
+  assert.match(await page.locator('.video video').getAttribute('src'), /how-to-use-en\.mp4$/, 'the how-to video is on the guide');
   await shot('33-guide', true);
   await tap('[data-act=spanish]');
   assert.ok(await page.locator('.step p.es').count() >= 18);

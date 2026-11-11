@@ -192,6 +192,10 @@ export function backup(root, _arg, rerender) {
 
 // ---- guide ----
 
+// The how-to video (made in promo/). It is not saved for offline use: it needs internet.
+// es stays null until Jose has read the Spanish script; then it is 'media/how-to-use-es.mp4'.
+const VIDEO = { en: 'media/how-to-use-en.mp4', es: null, poster: 'media/how-to-use-en.jpg' };
+
 let guideData = null; // data/guide.json, fetched the first time the guide is opened
 let guideFailed = false;
 
@@ -211,9 +215,14 @@ export function guide(root, _arg, rerender) {
   root.innerHTML = frame(`${top}
     <section class="card">
       ${eagleHeader('Guide · Guía', 'How to use this app')}
-      <p class="lead">Short steps, one for each part of the app. Tap “Español” to read them in Spanish too.</p>
+      <p class="lead">A short video, then short steps, one for each part of the app. Tap “Español” to read them in Spanish too.</p>
       <button class="es-toggle" data-act="spanish" aria-expanded="${open}">Español <span aria-hidden="true">${open ? '▴' : '▾'}</span></button>
       ${open && guideData && !guideData.checked ? '<p class="hint" lang="es">El español de esta guía es un <span class="draft">borrador</span> todavía no revisado.</p>' : ''}
+    </section>
+    <section class="video" aria-label="Video guide">
+      <h2 class="label">Watch the guide · 2 minutes</h2>
+      <video controls playsinline preload="none" poster="${VIDEO.poster}" src="${(open && VIDEO.es) || VIDEO.en}"${open && VIDEO.es ? ' lang="es"' : ''}></video>
+      <p class="hint">The video needs internet.${open && !VIDEO.es ? ' <span lang="es">El video en español viene pronto; por ahora está en inglés.</span>' : ''}</p>
     </section>
     <div class="steps">${body}</div>
     <a class="btn ghost" href="#/backup">Open Backup</a>`, { short: true });

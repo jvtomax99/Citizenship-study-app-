@@ -3,7 +3,7 @@
 // fresh set is downloaded in the background and swapped in only if every file arrived,
 // so the files never get mixed between two versions. An update shows up the second
 // time the app is opened. A new file the app needs must be added to FILES.
-const CACHE = 'civics128-v4';
+const CACHE = 'civics128-v5';
 const NEXT = 'civics128-next';
 const FILES = [
   './', 'index.html', 'manifest.webmanifest', 'css/app.css',
@@ -16,6 +16,7 @@ const FILES = [
   'assets/fonts/fraunces.woff2', 'assets/fonts/fraunces-italic.woff2', 'assets/fonts/nunito.woff2',
   'assets/icons/icon-180.png', 'assets/icons/icon-192.png', 'assets/icons/icon-512.png',
   'assets/icons/icon-maskable-512.png',
+  'media/how-to-use-en.jpg', // the video's first picture; the video itself is too big to save and plays from the internet
 ];
 const fresh = () => FILES.map((f) => new Request(f, { cache: 'no-cache' }));
 
@@ -46,6 +47,7 @@ function refreshAll() {
 self.addEventListener('fetch', (e) => {
   const req = e.request;
   if (req.method !== 'GET' || new URL(req.url).origin !== location.origin) return;
+  if (req.url.endsWith('.mp4')) return; // video: the browser asks for it in pieces, straight from the internet
   e.respondWith(caches.open(CACHE).then(async (cache) => {
     const saved = await cache.match(req, { ignoreSearch: true });
     if (req.mode === 'navigate') e.waitUntil(refreshAll());
