@@ -119,6 +119,9 @@ TO FILL: Jose to confirm.
 - More languages.
 - A mock interview in Spanish for 65/20 applicants (not needed now: Jose, 2026-11-11).
 - A how-to video like the CPA app's.
+
+## Open questions for Jose
+
 - Senators and governors: only the states where the family and friends live:
   New Jersey and New York (Jose, 2026-11-11); other states type their own. Filled and
   confirmed at senate.gov, nj.gov and governor.ny.gov on 2026-11-11; Booker's seat and
