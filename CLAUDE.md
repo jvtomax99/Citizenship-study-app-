@@ -1,7 +1,7 @@
 # CLAUDE.md: Citizenship study app
 
 A study app for the U.S. citizenship (naturalization) test. The repo is
-empty so far: no code, no `SPEC.md`, no hosting chosen, no `main` branch.
+empty so far: no code, no `SPEC.md`, no hosting chosen.
 The rules shared by all of Jose's projects are in
 `.claude/rules/general.md`; where this file differs, this file wins.
 
@@ -14,7 +14,15 @@ The rules shared by all of Jose's projects are in
   for someone else, and put the answer in `SPEC.md`.
 - **Hosting.** Not chosen. Decide it in the plan and write it here (Jose's
   other study app is on GitHub Pages; Interp is on Vercel).
-- **No `main` yet.** The first pull request creates it once Jose OKs it.
+- **Default branch.** Pull requests go into `main`. GitHub's default is
+  still `claude/amazing-albattani-rqksw7` until Jose switches it (Settings,
+  Branches), so a fresh clone can be behind `main`: fetch `main` first.
+- **Site check.** Not set up (no pages). When the first page lands, copy
+  `.github/site-check.cjs` and `.github/workflows/site-check.yml` from
+  Lions-Roar- and list the pages there.
+- **Not made yet:** `DESIGN.md`, `docs/ARCHITECTURE.md` and
+  `docs/CLEANUP.md`. Make them when the first code or design work needs
+  them.
 - **Public repo.** Paid raw files (fonts, models) can't be committed
   (`docs/assets.md`, section 9) unless Jose makes it private.
 
