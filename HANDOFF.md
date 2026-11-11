@@ -2,18 +2,20 @@
 
 ## Goal and exact next step
 
-Build the citizenship study app (SPEC.md). Steps 1 to 5 are built; **Steps 4 and 5 both
-wait on Jose** and neither is checked off.
-- Step 5 (the National Mall, daily goal, forgiving streak) was built 2026-11-11, reviewed
-  and put on the test link. Next: Jose looks at it on his phone. If he is happy, check
-  off Step 5 in SPEC.md; then the cleanup check (docs/CLEANUP.md, "Last audit").
-- Step 4 (mock interview): Jose said "test this much later". Still owed: one interview by
-  voice in the browser and one from the Home Screen icon. If it fails in the installed
-  app, confirm the "This phone cannot listen here" wording in `js/mock.js`.
-- Then Step 6 (backup, user guide, first release to GitHub Pages).
-- Not done from the Step 5 review, small: "Study cards" opened from a landmark goes back
+Build the citizenship study app (SPEC.md). Steps 1 to 5 are built. Step 5 (the National
+Mall, daily goal, forgiving streak) is checked off: Jose tried it on his phone and said
+"Looks good" (2026-11-11).
+- **Next: ask Jose with buttons** between Step 6 (backup, user guide, first release to
+  GitHub Pages; a big feature, so plan first) and the Step 4 voice test.
+- Step 4 (mock interview) is still NOT checked off: Jose said "test this much later".
+  Owed: one interview by voice in the browser and one from the Home Screen icon. If it
+  fails in the installed app, confirm the "This phone cannot listen here" wording in
+  `js/mock.js`.
+- Small leftovers from the Step 5 review: "Study cards" opened from a landmark goes back
   to the sections list, not the Mall; a drill round left open overnight treats a
-  returning question as a retry.
+  returning question as a retry. A first-ever visit on a slow connection shows the
+  Mall's first picture in about 3 s (later visits about 0.3 s).
+- Cleanup audit: last ran 2026-11-11; one step finished since, so not due yet.
 
 ## Done (branch `claude/relaxed-mccarthy-sqi1n0`, pushed, nothing live, no `main` yet)
 

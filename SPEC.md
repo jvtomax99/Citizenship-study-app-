@@ -185,6 +185,7 @@ Each phase is one pull request, one or two sessions.
   and said to move on.
 - [ ] 4. Mock interview with voice, the 12/9 rule and 65/20 mode (built 2026-11-11,
   reviewed, on the test link; waits on Jose finishing one by voice on his phone).
-- [ ] 5. The National Mall, daily goal and streak (built 2026-11-11 before Step 4 was
-  checked off: Jose will test the voice interview later; waits on Jose seeing it on his phone).
+- [x] 5. The National Mall, daily goal and streak (built 2026-11-11 before Step 4 was
+  checked off: Jose will test the voice interview later). Jose tried it on his phone:
+  "Looks good" (2026-11-11).
 - [ ] 6. Backup, user guide, first release to GitHub Pages.
