@@ -31,12 +31,11 @@ html,body{margin:0;background:var(--page)}
 body{color:var(--text);font:600 var(--fs-body)/24px var(--sans);-webkit-font-smoothing:antialiased}
 button{font-family:inherit;cursor:pointer}
 .app{position:relative;max-width:560px;margin:0 auto;min-height:100vh;min-height:100dvh;display:flex;flex-direction:column;overflow:hidden}
-.scene{position:absolute;inset:0 0 auto 0;z-index:0}
-.scene{overflow:hidden}
+.scene{position:absolute;inset:0 0 auto 0;z-index:0;overflow:hidden}
 .scene img{display:block;width:100%;height:auto;aspect-ratio:1440/1075;animation:drift 40s ease-in-out infinite alternate;transform-origin:50% 60%}
 .scene::after{content:"";position:absolute;inset:0;background:linear-gradient(180deg,rgba(20,16,60,.28),transparent 22%,transparent 72%,var(--page) 97%)}
 @keyframes drift{to{scale:1.05}}
-.content{position:relative;z-index:1;display:flex;flex-direction:column;flex:1;padding:var(--sp-4);padding-bottom:max(var(--sp-4),env(safe-area-inset-bottom))}
+.content{position:relative;z-index:1;display:flex;flex-direction:column;flex:1;padding:var(--sp-4) var(--sp-4) 0}
 
 /* top bar, on the sky */
 .top{display:flex;align-items:center;gap:var(--sp-3);height:44px}
@@ -56,15 +55,16 @@ button{font-family:inherit;cursor:pointer}
 .chip{height:28px;padding:0 12px;border-radius:var(--r-pill);font-size:var(--fs-small);font-weight:800;display:inline-flex;align-items:center;gap:6px;background:var(--page);color:var(--text);border:1.5px solid var(--line)}
 .chip.star{background:linear-gradient(180deg,var(--gold1),var(--gold));color:var(--gold-ink);border-color:transparent;box-shadow:0 2px 0 #C98A12}
 .officer{display:flex;align-items:center;gap:10px;margin:var(--sp-4) 0 var(--sp-3)}
-.who{flex:1}
 .badge{width:44px;height:44px;border-radius:50%;flex:none;object-fit:cover;box-shadow:0 0 0 2.5px var(--card),0 0 0 4.5px var(--gold),0 3px 0 4.5px #C98A12}
-.who{font-size:var(--fs-micro);line-height:16px;font-weight:900;letter-spacing:1.4px;text-transform:uppercase;color:var(--plum)}
-.q{margin:0;font:700 var(--fs-question)/33px var(--serif);letter-spacing:-.3px;color:var(--ink)}
+.who{flex:1;font-size:var(--fs-micro);line-height:16px;font-weight:900;letter-spacing:1.4px;text-transform:uppercase;color:var(--plum)}
+.q,.title{margin:0;font:700 var(--fs-question)/33px var(--serif);letter-spacing:-.3px;color:var(--ink)}
 .speak{position:relative;width:48px;height:48px;border-radius:50%;border:0;display:grid;place-items:center;flex:none;color:#fff;background:linear-gradient(180deg,var(--indigo1),var(--indigo));box-shadow:0 4px 0 var(--indigo-lip),0 12px 20px -6px rgba(63,58,158,.55),inset 0 1px 0 rgba(255,255,255,.35)}
-.speak::before,.speak::after{content:"";position:absolute;inset:-5px;border-radius:50%;border:2px solid var(--indigo1);opacity:0;animation:ring 2.4s var(--ease) infinite}
+.speak::before,.speak::after{content:"";position:absolute;inset:-5px;border-radius:50%;border:2px solid var(--indigo1);opacity:0;animation:ring 2.4s var(--ease) infinite paused} /* the speaker rests until it talks */
 .speak::after{animation-delay:1.2s}
+.speak.is-speaking::before,.speak.is-speaking::after{animation-play-state:running}
 @keyframes ring{0%{transform:scale(.9);opacity:.5}100%{transform:scale(1.35);opacity:0}}
-.es-toggle{display:inline-flex;align-items:center;gap:6px;margin-top:var(--sp-3);height:28px;padding:0 12px;border-radius:var(--r-pill);border:1.5px solid var(--line);background:var(--page);color:var(--plum);font:900 var(--fs-micro)/16px var(--sans);letter-spacing:1.2px;text-transform:uppercase}
+.es-toggle{position:relative;display:inline-flex;align-items:center;gap:6px;margin-top:var(--sp-3);height:28px;padding:0 12px;border-radius:var(--r-pill);border:1.5px solid var(--line);background:var(--page);color:var(--plum);font:900 var(--fs-micro)/16px var(--sans);letter-spacing:1.2px;text-transform:uppercase}
+.es-toggle::after{content:"";position:absolute;inset:-8px -6px} /* a 44px tap area; the pill keeps its look */
 .es{margin:var(--sp-2) 0 0;font:italic 500 var(--fs-es)/25px var(--serif);color:var(--es)}
 
 /* answer */
@@ -120,10 +120,10 @@ a.btn{display:grid;place-items:center;text-decoration:none}
 .content.short .card{margin-top:var(--sp-5)}
 
 /* home */
-.pill-link{display:inline-flex;align-items:center;gap:6px;height:36px;padding:0 10px 0 14px;border-radius:var(--r-pill);color:#fff;text-decoration:none;font-size:var(--fs-small);font-weight:900;background:var(--glass);border:1px solid rgba(255,255,255,.35);backdrop-filter:blur(8px);-webkit-backdrop-filter:blur(8px)}
+.pill-link{display:inline-flex;align-items:center;gap:6px;height:44px;padding:0 10px 0 14px;border-radius:var(--r-pill);color:#fff;text-decoration:none;font-size:var(--fs-small);font-weight:900;background:var(--glass);border:1px solid rgba(255,255,255,.35);backdrop-filter:blur(8px);-webkit-backdrop-filter:blur(8px)}
 .badge.big{width:64px;height:64px}
 .hello .officer{margin-top:0}
-.title{margin:2px 0 0;font:700 var(--fs-question)/33px var(--serif);letter-spacing:-.3px;color:var(--ink)}
+.title{margin:2px 0 0}
 .lead{margin:var(--sp-2) 0 0}
 .seg{display:flex;gap:var(--sp-2);margin-top:var(--sp-2)}
 .seg button{flex:1;height:44px;border-radius:var(--r-sm);border:2px solid var(--line);background:var(--card);color:var(--text);font:800 var(--fs-small)/18px var(--sans)}
@@ -165,10 +165,7 @@ a.btn{display:grid;place-items:center;text-decoration:none}
 .typed input{width:100%;height:52px;margin:4px 0;border-radius:var(--r-sm);border:2px solid var(--line);background:var(--card);padding:0 14px;font:700 var(--fs-body) var(--sans);color:var(--ink)}
 .typed input:focus{outline:none;border-color:var(--indigo1);box-shadow:0 0 0 4px rgba(95,87,201,.18)}
 
-/* the speaker rests until it talks */
-.speak::before,.speak::after{animation-play-state:paused;opacity:0}
-.speak.is-speaking::before,.speak.is-speaking::after{animation-play-state:running}
-.es .draft,.draft{display:inline-block;vertical-align:middle;margin-left:6px;padding:0 8px;border-radius:var(--r-pill);border:1.5px dashed var(--line-strong);font:800 var(--fs-micro)/18px var(--sans);font-style:normal;letter-spacing:.4px;color:var(--text-soft)}
+.draft{display:inline-block;vertical-align:middle;margin-left:6px;padding:0 8px;border-radius:var(--r-pill);border:1.5px dashed var(--line-strong);font:800 var(--fs-micro)/18px var(--sans);font-style:normal;letter-spacing:.4px;color:var(--text-soft)}
 
 /* the answers */
 .say{margin:var(--sp-5) var(--sp-2) 0;text-align:center;font-weight:700;color:var(--text-soft)}
@@ -187,7 +184,6 @@ a.btn{display:grid;place-items:center;text-decoration:none}
 
 /* the buttons at the bottom stay in reach */
 .actions{position:sticky;bottom:0;z-index:2;margin:0 calc(-1*var(--sp-4));padding:var(--sp-5) var(--sp-4) max(var(--sp-4),env(safe-area-inset-bottom));background:linear-gradient(180deg,transparent,var(--page) 26%)}
-.content{padding-bottom:0}
 .content>:last-child:not(.actions){margin-bottom:max(var(--sp-5),env(safe-area-inset-bottom))}
 .actions .btn.ghost{margin-top:var(--sp-3)}
 .actions.two{display:flex;gap:var(--sp-3);align-items:flex-start}
@@ -201,11 +197,6 @@ a.btn{display:grid;place-items:center;text-decoration:none}
 .score span{font-size:var(--fs-small);font-weight:800;color:var(--text-soft)}
 .score .good{background:var(--liberty-soft);border-color:transparent}
 .score .good b{color:var(--liberty-text)}
-
-/* small pills keep their look but get a 44px tap area */
-.es-toggle{position:relative}
-.es-toggle::after{content:"";position:absolute;inset:-8px -6px}
-.pill-link{height:44px}
 
 /* ---- mock interview (js/mock.js) ---- */
 .mic.is-listening{background:linear-gradient(180deg,var(--indigo1),var(--indigo));box-shadow:0 3px 0 var(--indigo-lip),0 0 0 4px rgba(95,87,201,.25);animation:hear 1.2s var(--ease) infinite alternate}
