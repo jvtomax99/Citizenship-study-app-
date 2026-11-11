@@ -99,15 +99,6 @@ TO FILL: Jose to confirm.
 
 - A short explanation on each study card (why the answer is the answer), in English and
   Spanish. Its own step, after Jose has read the Spanish (Jose, 2026-11-11).
-- A private test link on Vercel so Jose can hear the voice and try the Home Screen
-  install on a real phone before going live. Waiting on Jose looking at Vercel's Usage
-  tab (his account once warned that storage was full; this app is about 1 MB).
-- Reading and writing practice (the English test: read 1 of 3 sentences, write 1 of
-  3), from the USCIS vocabulary lists.
-- Practice for the N-400 interview questions themselves (the officer's questions
-  about the application).
-- More languages.
-- A how-to video like the CPA app's.
 
 ## Open questions for Jose
 
@@ -123,6 +114,10 @@ CC0 art, and pictures made with the Runway credits Jose already has (120 used so
 CREDITS.md).
 
 ## Hosting
+
+Test link (not the live site): https://citizenship-study-test.vercel.app, a separate
+Vercel project deployed from the working branch so Jose can try a build on a real phone
+(Jose, 2026-11-11). Hidden from search engines by `vercel.json`.
 
 GitHub Pages from `main` (Jose's pick, 2026-11-11). Free; the repo stays public.
 No server.

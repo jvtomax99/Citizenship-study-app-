@@ -18,10 +18,12 @@ interview) with its own plan first.
 
 ## Left open, waiting on Jose
 
-- Try Step 3 on a real phone: the voice and Home Screen install can't be proven here.
-  He chose "screenshots now, test link later": his Vercel account (team Language
-  Services, two Interp projects) once warned that storage was full. He looks at
-  vercel.com, Usage tab; then offer the Vercel test link again with buttons.
+- Try Step 3 on a real phone at the test link https://citizenship-study-test.vercel.app
+  (Vercel project `citizenship-study-test`, team Language Services, made 2026-11-11 from
+  this branch; not listed in search engines). It does NOT update by itself: after new
+  work, deploy the branch again with the Vercel tools (target production). Jose's
+  Deployment Storage was 7.5 of 10 GB, all from Interp's uploads (100+ in 8 days); this
+  app is about 1 MB per upload. The voice and Home Screen install still need his try.
 - Show the plan to one of the family and friends (the app is for them).
 - Read the Spanish (shown in the app with a "borrador" mark); the 20 marked 65/20 first.
 - SPEC.md TO FILL: who the family and friends are, the app's name (working name on the
@@ -34,7 +36,8 @@ interview) with its own plan first.
 ## This session's decisions (all in SPEC.md)
 
 Drill = say it out loud, show answers, then I knew it / I guessed / I missed it.
-Explanations on cards moved to "Later". Screenshots now, Vercel test link later.
+Explanations on cards moved to "Later". Vercel test link made (Jose OK'd it after
+seeing his Usage tab).
 Added without being asked, small: a Home switch between all 128 and the 65/20 list.
 
 ## Files to look at first
