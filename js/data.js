@@ -70,7 +70,7 @@ export function personalAnswers(q, profile, todayIso = localIso()) {
   if (q.kind === 'current-official') {
     const f = data.officials.federal[q.id];
     const caption = f.confirmed
-      ? checkedLine(f)
+      ? checkedLine(f) + (f.also && f.also.length ? ` USCIS also accepts: ${f.also.join(', ')}.` : '')
       : `The name USCIS lists (its page was last reviewed ${niceDate(f.sourceReviewed)}). Confirm at uscis.gov/citizenship/testupdates before your interview.`;
     return { mine: [{ text: f.name, caption }], ask: null };
   }

@@ -178,8 +178,10 @@ Each phase is one pull request, one or two sessions.
   - [x] Officeholder file: capitals, D.C. and territory answers, the four federal
     names awaiting confirmation.
   - [ ] Jose reads the Spanish (`checked` stays false until then).
-  - [ ] Federal names confirmed on uscis.gov/citizenship/testupdates; senators and
-    governors filled (see Open questions).
+  - [x] Federal names confirmed on uscis.gov/citizenship/testupdates (Jose's screenshot
+    of the page, 2026-11-11: all four match; the other accepted forms it lists are
+    shown too); senators and governors filled (see Open questions). Recheck the
+    Speaker after January 3, 2027.
 - [x] 2. Look (Jose OK'd it on 2026-11-11): DESIGN.md per `docs/design-rules.md`, from Duolingo's feel (Jose's
   pick, 2026-11-11; no template, $0), one sample screen for Jose's OK.
   - [x] Taste study of duolingo.com (`docs/design/`), DESIGN.md draft, sample screen

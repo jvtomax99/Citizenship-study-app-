@@ -4,8 +4,9 @@
 
 Step 6 (backup, user guide, first release) is built, reviewed and on the test link. It
 is NOT released: no pull request yet, nothing live.
-- Jose ran the phone test on 2026-11-11: "It works". **Next: the pull request into
-  `main` only when Jose asks**, then his "push". Ask with buttons.
+- Jose ran the phone test on 2026-11-11: "It works". Pull request 5 into `main` is open. The
+  four federal names are confirmed (his screenshot of the USCIS page). **Next: his
+  "push"**, then the two settings. Ask with buttons.
 - Jose's try-this list: on the iPhone, from the Home Screen icon, Backup, "Save a
   backup", send it by WhatsApp or save to Files; load it in Safari or on a second
   phone; see the same numbers; "Undo the load"; open the guide and tap Español.
@@ -35,7 +36,6 @@ is NOT released: no pull request yet, nothing live.
 
 - Step 4 voice test (one interview by voice in the browser, one from the icon). Step 4
   is NOT checked off.
-- The four federal names at uscis.gov/citizenship/testupdates (`confirmed` is null).
 - Read the Spanish: the 20 marked 65/20 first, plus the guide.
 - Show it to one of the family and friends. SPEC.md TO FILL (who, the app's name).
 

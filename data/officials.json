@@ -5,32 +5,47 @@
    "office": "Speaker of the House of Representatives",
    "name": "Mike Johnson",
    "source": "https://www.uscis.gov/citizenship/testupdates",
-   "confirmed": null,
-   "sourceReviewed": "2025-09-18"
+   "confirmed": "2026-11-11",
+   "sourceReviewed": "2025-09-18",
+   "also": [
+    "Johnson",
+    "James Michael Johnson (birth name)"
+   ]
   },
   "38": {
    "office": "President of the United States",
    "name": "Donald J. Trump",
    "source": "https://www.uscis.gov/citizenship/testupdates",
-   "confirmed": null,
-   "sourceReviewed": "2025-09-18"
+   "confirmed": "2026-11-11",
+   "sourceReviewed": "2025-09-18",
+   "also": [
+    "Donald Trump",
+    "Trump"
+   ]
   },
   "39": {
    "office": "Vice President of the United States",
    "name": "JD Vance",
    "source": "https://www.uscis.gov/citizenship/testupdates",
-   "confirmed": null,
-   "sourceReviewed": "2025-09-18"
+   "confirmed": "2026-11-11",
+   "sourceReviewed": "2025-09-18",
+   "also": [
+    "Vance"
+   ]
   },
   "57": {
    "office": "Chief Justice of the United States",
    "name": "John G. Roberts, Jr.",
    "source": "https://www.uscis.gov/citizenship/testupdates",
-   "confirmed": null,
-   "sourceReviewed": "2025-09-18"
+   "confirmed": "2026-11-11",
+   "sourceReviewed": "2025-09-18",
+   "also": [
+    "John Roberts",
+    "Roberts"
+   ]
   }
  },
- "federalNote": "sourceReviewed is the USCIS page's own 'last reviewed' date (2025-09-18), seen in a search-engine extract, not the page itself. confirmed stays null until someone reads uscis.gov/citizenship/testupdates. Recheck after the new Congress sits on January 3, 2027: the House elects its Speaker then.",
+ "federalNote": "confirmed 2026-11-11: Jose opened uscis.gov/citizenship/testupdates on his phone and sent a screenshot; the four names match. also = the other forms of the name that page lists as accepted. sourceReviewed is the page's own 'last reviewed' date as seen earlier in a search extract. Recheck after the new Congress sits on January 3, 2027: the House elects its Speaker then.",
  "statesNote": "Capitals are fixed. Senators and governors are null until filled from senate.gov and each state's or territory's own site, each with its confirmed date. Until then the app asks the user to type their own. Question 29 (your representative) is always typed or picked by the user, since it depends on the district.",
  "places": [
   {
