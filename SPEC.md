@@ -132,7 +132,9 @@ Each phase is one pull request, one or two sessions.
   pick, 2026-11-11; no template, $0), one sample screen for Jose's OK.
   - [x] Taste study of duolingo.com (`docs/design/`), DESIGN.md draft, sample screen
     `preview/sample-drill.html` (2026-11-11).
-  - [ ] Jose OKs the sample (or asks for changes).
+  - [x] Jose found the first sample too simple; of three richer options he picked
+    "Golden hour on the Mall" with more detail. DESIGN.md and the sample redrawn.
+  - [ ] Jose OKs the redrawn sample (or asks for changes).
 - [ ] 3. App shell, state picker, Study cards with read-aloud, Drill with spaced
   repetition and "I guessed". Home Screen install and offline.
 - [ ] 4. Mock interview with voice, the 12/9 rule and 65/20 mode.
