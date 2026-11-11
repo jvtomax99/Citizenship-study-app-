@@ -1,88 +1,95 @@
 # Design: Citizenship study app
 
-> Duolingo's feel (bold, rounded, bright, one thing per screen, buttons you want to
-> press) in this app's own civic colors: Statue of Liberty patina, flag navy and red,
-> and a drawn National Mall. Draft 2026-11-11, from `docs/design/duolingo.com.md`.
-> Waiting for Jose's OK on the sample screen.
+> Golden hour on the National Mall. A drawn sunset scene (Lincoln Memorial,
+> Washington Monument, Capitol, reflecting pool) sits behind a warm cream page; the
+> question is set in an elegant serif on a soft white card; everything you press is
+> bold, rounded and has a solid lip (the Duolingo lesson, `docs/design/duolingo.com.md`).
+> Dark mode is the same Mall at night, monuments floodlit.
+> Jose picked this direction ("A") on 2026-11-11 and asked for more detail. Sample:
+> `preview/sample-drill.html` (`?state=ask|right|wrong`). Draft until he OKs the sample.
 
-Every value lives in CSS variables on `:root`; change it here and there together.
-Phone first (390px), one column, max content width 560px on larger screens.
+Every value is a CSS variable on `:root` in the sample; change it here and there
+together. Phone first (390px), one column, content max 560px.
 
 ## Colors
 
+### Page, text, lines (switch with the theme)
+
 | Token | Light | Dark | Role |
 |---|---|---|---|
-| `--bg` | `#FFFFFF` | `#131A2B` | Page |
-| `--surface` | `#F6F7F4` | `#1C2438` | Cards at rest, the answer field |
-| `--line` | `#E3E5E8` | `#2C3550` | Every border and every button lip on outlines |
-| `--ink` | `#1D2B53` | `#EEF1F8` | Headings, the question |
-| `--text` | `#3C4152` | `#D3D8E4` | Body |
-| `--text-soft` | `#6A7184` | `#9AA3B8` | Secondary text (4.7:1 on white; never lighter) |
-| `--liberty` | `#14806F` | `#3CC4AD` | Main action, progress, right answers. Statue of Liberty patina (4.8:1 with white) |
-| `--liberty-lip` | `#0E5F53` | `#239A86` | The bottom edge under `--liberty` buttons |
-| `--liberty-soft` | `#DDF4EF` | `#173A3A` | Right-answer banner |
-| `--red` | `#D2374B` | `#F06B7C` | Wrong answers, the 9-wrong counter. Flag red |
-| `--red-lip` | `#A8283A` | `#C34A5A` | Its bottom edge |
-| `--red-soft` | `#FBE6E9` | `#3A1E26` | Wrong-answer banner |
-| `--navy` | `#1D2B53` | `#8FB0FF` | Secondary action labels, links, the Spanish line |
-| `--on-accent` | `#FFFFFF` | `#131A2B` | Text and icons on `--liberty`, `--red` and `--navy` fills (dark text in dark mode, where the fills are light) |
-| `--gold` | `#F5B700` | `#F7C744` | Streak, stars, the 65/20 chip. Never text on white |
+| `--page` | `#FFF8F0` | `#12152B` | Page; the scene fades into it |
+| `--card` | `#FFFFFF` | `#1C2040` | Question card, answer field, outline button |
+| `--ink` | `#2A2347` | `#F1EEFA` | The question, headings, strong numbers |
+| `--text` | `#4A4363` | `#D5D0E6` | Body |
+| `--text-soft` | `#6E6687` | `#A9A2C4` | Captions, placeholder. Never lighter |
+| `--line` / `--line-strong` | `#EFE4F7` / `#D9CBE8` | `#2F3360` / `#444A82` | Borders, outline lips / dashed borders, empty stars |
+| `--plum` | `#7556A8` | `#BBA5E8` | Small caps labels ("THE OFFICER ASKS", "ESPAÑOL") |
+| `--es` | `#6A4FA3` | `#C7B4F2` | The Spanish line |
 
-Text on `--liberty`, `--red` and `--navy` fills is `--on-accent`, 700+. One loud color per screen: `--liberty`
-for the action, `--red` only when something is wrong.
+### Actions (each is a top-to-bottom gradient with a solid lip)
+
+| Name | Light: top, bottom, lip | Dark: top, bottom, lip | Role |
+|---|---|---|---|
+| Liberty | `#17907D`, `#127567`, `#0C5348` | `#4DD1BA`, `#2FB39C`, `#1D7F6F` | Main action, mic, right answers. Statue of Liberty patina |
+| Indigo | `#5F57C9`, `#3F3A9E`, `#2E2A78` | `#8E87F0`, `#6C64DB`, `#4640A0` | Speaker, officer badge, focus ring |
+| Red | `#DA4558`, `#C22F43`, `#8F1F30` | `#F58C9A`, `#E96A7B`, `#B04555` | Wrong answers only |
+| Gold | `#FFD66B`, `#F5B026`, `#C98A12` | same | Progress, earned stars, the 65/20 chip (text `--gold-ink` `#4A2A00`) |
+
+`--on-accent` (text on Liberty and Red): `#FFFFFF` light, `#0D1424` dark. Soft
+banners: `--liberty-soft` `#DDF4EF` / `#173A3A`, `--red-soft` `#FBE6E9` / `#3A1E2A`.
+One loud action per screen; red appears only when something is wrong.
+
+### The scene (golden hour / night)
+
+Sky `--s1`…`--s6`: `#2B3596` `#5B55C2` `#A873C6` `#F08F8C` `#FFC489` `#FFE6AE`
+(night: `#060920` `#0F153F` `#26235C` `#4B2F6E` `#7A4476` `#B5607A`). Buildings
+`--land1` `#674A92`, shade `--land2` `#4E3777`, sunlit edges `--rim` `#FFC39A`, lit
+windows `--win` `#FFD98A` (night: buildings `#DAD4F2` / `#A9A0D2`, rim white). Trees
+`#44356E` / `#5D4A8C`. Pool `#FFDCA6` to `#F8D2CF`. Flags `#F0607A`.
 
 ## Type
 
-One family: **Nunito** (Google Fonts, free, rounded), weights 600, 700 and 800.
-
-| Token | Size / line | Weight | Use |
-|---|---|---|---|
-| `--fs-display` | 32 / 38 | 800 | Screen title, result score |
-| `--fs-question` | 24 / 31 | 800 | The question |
-| `--fs-title` | 19 / 25 | 800 | Card titles |
-| `--fs-body` | 17 / 24 | 600 | Body, answers. Also every input (never under 16px: iOS zooms) |
-| `--fs-button` | 15 / 20 | 800, uppercase, +0.8px | Buttons |
-| `--fs-small` | 13 / 18 | 700 | Chips, captions |
+- **Fraunces** (Google Fonts, free): the question (27 / 33, 700, -0.3px), the Spanish
+  line (18 / 25, italic 500), feedback titles (22 / 28, 700). Serif = "this is the
+  official wording".
+- **Nunito** (Google Fonts, free): everything else. Body and inputs 17 / 24, 700 (never
+  under 16px in an input: iOS zooms). Buttons 15, 900, uppercase, +1px. Small 13, 800.
+  Labels 12, 900, uppercase, +1.2 to 1.4px.
 
 ## Shape, space, depth
 
-- **Radius:** `--r: 14px` on buttons, cards, fields; `--r-pill: 999px` on chips and the
-  progress bar. Nothing else.
-- **Space:** 8px base: `--sp-1` 4, `--sp-2` 8, `--sp-3` 12, `--sp-4` 16, `--sp-5` 24,
-  `--sp-6` 32, `--sp-7` 48. Side gutter 16px on phones.
-- **Depth is a lip, not a shadow.** Buttons and tappable cards get a solid bottom edge:
-  `box-shadow: 0 4px 0 var(--…-lip)` on filled buttons, `0 2px 0 var(--line)` with a
-  2px `--line` border on outline buttons and cards. No blurred shadows anywhere.
+- Radius: card 28, buttons and fields 18, small buttons 14, chips and bars pill.
+- Space: 4, 8, 12, 16, 20, 24. Side gutter 16.
+- Depth has two layers. Things you press: a solid lip (`0 5px 0` of the lip color) plus a
+  1px inner top highlight. Things that float (the card, the sheet): a long soft plum
+  shadow `0 22px 44px -16px rgba(92,52,120,.38)`. No grey shadows.
+- The card's border is a 1.5px gradient from white to `--line`.
 
 ## Components
 
-- **Primary button:** 52px tall, full width, `--liberty` with its lip, label
-  `--fs-button` white. Disabled: `--line` fill, `--text-soft` label, no lip.
-- **Secondary button:** same size, white, 2px `--line` border and lip, label `--navy`.
-- **Press:** the button moves down 4px and the lip goes to 0 (80ms). Needs `:active`
-  plus a JS `is-pressed` class (touch screens have no hover).
-- **Question card:** the officer bubble: `--surface`, `--r`, question in
-  `--fs-question` `--ink`, a round speaker button (44px) to hear it, the Spanish line
-  under it in `--navy` 600, hidden until "Español" is tapped.
-- **Answer field:** 56px, `--surface`, 2px `--line` border, `--fs-body`, a 44px mic
-  button inside on the right. Focus: border `--navy`.
-- **Progress bar:** 16px pill, track `--line`, fill `--liberty` with a 4px lighter
-  highlight stripe at the top.
-- **Feedback banner:** slides up from the bottom over the action area. Right:
-  `--liberty-soft`, title in `--liberty` 800. Wrong: `--red-soft`, title `--red`, the
-  accepted answers listed. Its button replaces the Check button.
-- **Speaker button:** 44px circle, `--navy` fill, `--on-accent` icon, 3px lip `--speak-lip`
-  (`#0F1836` light, `#5A78C4` dark).
-- **Chips:** 26px pill, `--fs-small`, e.g. "★ On the 65/20 list" on `--gold` with `--ink` text,
-  "Needs 2 answers" on `--surface`.
+- **Scene header:** the SVG scene, 390 by 300, top of the screen, fading into `--page`.
+  The top bar floats on it: 44px glass close button, 14px gold progress bar (questions
+  asked), glass tally pills (right, wrong).
+- **Question card:** chips row; officer badge (34px indigo circle, dome icon) with the
+  label and the 48px speaker button (two rings pulse out of it); the question; a gold
+  ✦ divider; the Español pill; the Spanish line.
+- **Answer field:** 58px, 2px `--line` border, 44px Liberty mic inside. Focus: indigo
+  border and a 4px soft ring.
+- **Road to 12:** dashed panel with 12 stars (gold when earned) and "7 of 12 right to
+  pass · 1 of 9 misses". In 65/20 mode: 6 stars, 5 misses.
+- **Primary button:** 56px, Liberty gradient, lip, label `--on-accent`. **Outline
+  button:** 52px, `--card`, 2px `--line` border and 3px lip, label `--ink`.
+- **Press:** moves down 5px, lip to 0, 80ms. `:active` plus a JS `is-pressed` class.
+- **Feedback sheet:** fixed to the bottom, slides up 260ms. Soft green or soft red,
+  serif title with a round ✓ or ✕, the accepted answers, one button.
 
 ## Motion
 
-- Ease `cubic-bezier(0.22, 1, 0.36, 1)`. Press 80ms, banner 260ms, progress fill 400ms.
-- Reduced motion: no slides, only fades.
+Ease `cubic-bezier(0.22,1,0.36,1)`. In the scene: stars twinkle, clouds drift (38s and
+52s), the pool shimmers. Reduced motion: everything still.
 
 ## Do and don't
 
-- Do: one main action per screen; illustrations for warmth (the Mall); short sentences.
-- Don't: Duolingo's green `#58CC02`, its owl, its fonts or its name; gradients;
-  blurred shadows; text under 13px; grey text lighter than `--text-soft`.
+- Do: one main action per screen; let the scene carry the beauty and keep the card calm.
+- Don't: Duolingo's green, owl, fonts or name; photos; grey shadows; text under 12px;
+  the serif for buttons or labels; text lighter than `--text-soft`.
