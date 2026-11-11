@@ -1,20 +1,26 @@
-# HANDOFF (written 2026-11-11, after Step 4 was built)
+# HANDOFF (written 2026-11-11, after Step 5 was built)
 
 ## Goal and exact next step
 
-Build the citizenship study app (SPEC.md). Steps 1 to 3 are built. **Step 4, the mock
-interview, is built, reviewed and on the test link; it waits on Jose** doing one interview
-by voice on his phone, twice: in the browser, and from the Home Screen icon. That answers
-the open question: does the microphone work inside the installed app on an iPhone?
-- If yes: check off Step 4 in SPEC.md.
-- If not in the installed app: `js/mock.js` already says "This phone cannot listen here"
-  and suggests Safari; confirm that wording with Jose, then check off Step 4.
-- Then Step 5 (the National Mall, daily goal, streak): a big feature, so look at 2 or 3
-  similar tools, plan mode, wait for Jose's OK.
+Build the citizenship study app (SPEC.md). Steps 1 to 5 are built; **Steps 4 and 5 both
+wait on Jose** and neither is checked off.
+- Step 5 (the National Mall, daily goal, forgiving streak) was built 2026-11-11, reviewed
+  and put on the test link. Next: Jose looks at it on his phone. If he is happy, check
+  off Step 5 in SPEC.md; then the cleanup check (docs/CLEANUP.md, "Last audit").
+- Step 4 (mock interview): Jose said "test this much later". Still owed: one interview by
+  voice in the browser and one from the Home Screen icon. If it fails in the installed
+  app, confirm the "This phone cannot listen here" wording in `js/mock.js`.
+- Then Step 6 (backup, user guide, first release to GitHub Pages).
+- Not done from the Step 5 review, small: "Study cards" opened from a landmark goes back
+  to the sections list, not the Mall; a drill round left open overnight treats a
+  returning question as a retry.
 
 ## Done (branch `claude/relaxed-mccarthy-sqi1n0`, pushed, nothing live, no `main` yet)
 
 - Steps 1 to 3 as before.
+- Step 5: `js/progress.js`, `js/mall.js`, `tests/progress.test.mjs`, Home's Today panel and
+  Mall strip, `#/drill/<part>`, eight pictures in `assets/images/landmarks/` (200 Runway
+  credits, 1,270 left). Jose's choices: look B, eight landmarks, honest light, forgiving streak.
 - Step 4: `js/mock.js`, `js/match.js`, `js/listen.js`, `tests/match.test.mjs`, the Home
   button, `sw.js` list. Proof: `node --test tests/*.mjs` (16 pass) and
   `node tools/shots.mjs` (needs `python3 -m http.server 8123`).

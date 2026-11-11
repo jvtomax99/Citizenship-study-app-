@@ -60,9 +60,40 @@ test('changing the goal later does not rewrite earlier days', () => {
   assert.equal(metOn(days, 101), false);
 });
 
-test('old days are dropped after 60', () => {
-  const days = addAnswer({ 1: { n: 10, g: 10 }, 95: { n: 10, g: 10 } }, 100, 10);
-  assert.deepEqual(Object.keys(days), ['95', '100']);
+test('days older than 400 are dropped; a long streak is kept whole', () => {
+  const days = addAnswer({ 1: { n: 10, g: 10 }, 495: { n: 10, g: 10 } }, 500, 10);
+  assert.deepEqual(Object.keys(days), ['495', '500']);
+  let long = {};
+  for (let d = 1; d <= 100; d++) for (let i = 0; i < 5; i++) long = addAnswer(long, d, 5, i);
+  assert.equal(streak(long, 100).count, 100);
+});
+
+test('the same question counts once a day, and again the next day', () => {
+  let days = {};
+  for (let i = 0; i < 10; i++) days = addAnswer(days, 100, 10, 7);
+  assert.equal(days[100].n, 1);
+  days = addAnswer(days, 100, 10, 8);
+  assert.equal(days[100].n, 2);
+  days = addAnswer(days, 101, 10, 7);
+  assert.equal(days[101].n, 1);
+  assert.equal(days[100].ids, undefined, 'only today remembers which questions');
+});
+
+test('rest days six days apart: the older one is not forgiven; seven apart: both are', () => {
+  // rest at 98; next miss at 92 (6 days earlier) ends the streak there
+  const six = streak(met(91, 93, 94, 95, 96, 97, 99, 100), 100);
+  assert.deepEqual(six.rest, [98]);
+  assert.equal(six.count, 7);
+  // rest at 98; next miss at 91 (7 days earlier) is forgiven too
+  const seven = streak(met(90, 92, 93, 94, 95, 96, 97, 99, 100), 100);
+  assert.deepEqual(seven.rest, [98, 91]);
+  assert.equal(seven.count, 9);
+});
+
+test('a rest day needs a met day before it', () => {
+  const s = streak(met(99, 100), 100);
+  assert.equal(s.count, 2);
+  assert.deepEqual(s.rest, []);
 });
 
 test('the streak counts days in a row; today not done yet is not a miss', () => {

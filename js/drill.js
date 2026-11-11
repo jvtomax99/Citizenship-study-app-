@@ -8,7 +8,8 @@ import { buildRound, grade, requeue, isMiss, dayNumber, MAX_RETRIES } from './sr
 import { stopSpeaking } from './speak.js';
 import { frame, topBar, questionCard, answersPanel, wire, toggleSpanish, eagleHeader } from './ui.js';
 
-let round = null; // {queue, total, asked: Set, retries: {}, tally: {knew, guessed, missed}, shown, list, part, goalHit}
+const rounds = {}; // one round per list and part, so a part drill does not throw away the full one
+let round = null; // the round on screen: {queue, total, asked: Set, retries: {}, tally: {knew, guessed, missed}, shown, list, part, goalHit}
 
 function shuffle(list) {
   const a = list.slice();
@@ -23,7 +24,7 @@ function start(part = '') {
   const s = store.get();
   const sec = partOf(part);
   const queue = buildRound(idsInList(s.list, sec ? sec.ids : undefined), s.cards, dayNumber(), { shuffle });
-  round = { queue, total: queue.length, asked: new Set(), retries: {}, tally: { knew: 0, guessed: 0, missed: 0 }, shown: false, list: s.list, part: sec ? sec.key : '', goalHit: false };
+  round = rounds[s.list + ':' + (sec ? sec.key : '')] = { queue, total: queue.length, asked: new Set(), retries: {}, tally: { knew: 0, guessed: 0, missed: 0 }, shown: false, list: s.list, part: sec ? sec.key : '', goalHit: false };
 }
 
 function answer(result) {
@@ -36,7 +37,7 @@ function answer(result) {
     round.tally[result]++;
     const today = dayNumber();
     const before = metOn(store.get().days, today);
-    if (!before && metOn(store.countAnswer().days, today)) round.goalHit = true;
+    if (!before && metOn(store.countAnswer(id).days, today)) round.goalHit = true;
   }
   round.asked.add(id);
   let rest = round.queue.slice(1);
@@ -78,7 +79,8 @@ function results(root, rerender) {
 
 export function drill(root, arg, rerender) {
   const part = partOf(arg) ? arg : '';
-  if (!round || round.list !== store.get().list || round.part !== part) start(part);
+  round = rounds[store.get().list + ':' + part] || null;
+  if (!round) start(part);
   if (!round.queue.length) return results(root, rerender);
 
   const q = data.byId[round.queue[0]];
@@ -105,4 +107,7 @@ export function drill(root, arg, rerender) {
 }
 
 // A finished round should not greet you again when you come back from Home.
-export function leaveDrill() { if (round && !round.queue.length) round = null; else if (round) round.shown = false; }
+export function leaveDrill() {
+  if (round && !round.queue.length) delete rounds[round.list + ':' + round.part]; else if (round) round.shown = false;
+  round = null;
+}

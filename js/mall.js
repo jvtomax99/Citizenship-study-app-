@@ -74,7 +74,7 @@ export function mall(root, _arg, rerender) {
       </div>`;
     }).join('')}</div>`, { short: true });
 
-  wire(root, { open: (el) => { open = open === el.dataset.key ? '' : el.dataset.key; rerender(); } });
+  wire(root, { open: (el) => { open = open === el.dataset.key ? '' : el.dataset.key; rerender(); root.querySelector(`[data-key="${el.dataset.key}"]`)?.focus({ preventScroll: true }); } });
 }
 
 export function leaveMall() { open = ''; }

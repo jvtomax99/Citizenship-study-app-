@@ -6,7 +6,7 @@ import { isKnown } from './srs.js';
 // js/srs.js (a box only goes up when the question was due, so at least a day apart).
 const STRONG_BOX = 2;
 export const GOALS = [5, 10, 20];
-const KEEP_DAYS = 60;
+const KEEP_DAYS = 400; // long enough for a streak of more than a year
 const REST_EVERY = 7; // one missed day is forgiven in any seven
 
 // One landmark. light runs 0..1 with the share of questions known; lit only when every
@@ -19,11 +19,16 @@ export function landmark(ids, cards) {
 }
 
 // days is {dayNumber: {n, g}}: questions answered that day and the goal it was held to.
-// The goal is kept per day so changing it later never rewrites the past.
-export function addAnswer(days, today, goal) {
+// The goal is kept per day so changing it later never rewrites the past. Today also
+// keeps ids, the questions already counted, so the same question counts once a day
+// (asking a one-question part ten times is not ten questions).
+export function addAnswer(days, today, goal, id) {
   const out = {};
-  for (const [d, v] of Object.entries(days || {})) if (today - d < KEEP_DAYS) out[d] = v;
-  out[today] = { n: (out[today]?.n || 0) + 1, g: goal };
+  for (const [d, v] of Object.entries(days || {})) if (today - d < KEEP_DAYS) out[d] = Number(d) === today ? v : { n: v.n, g: v.g };
+  const now = out[today] || { n: 0, g: goal, ids: [] };
+  const ids = now.ids || [];
+  if (id != null && ids.includes(id)) return out;
+  out[today] = { n: now.n + 1, g: goal, ids: id != null ? [...ids, id] : ids };
   return out;
 }
 
@@ -47,11 +52,13 @@ export function streak(days, today) {
 
 // The last seven days, oldest first, for the row of dots.
 const LETTERS = ['S', 'M', 'T', 'W', 'T', 'F', 'S'];
+const NAMES = ['Sunday', 'Monday', 'Tuesday', 'Wednesday', 'Thursday', 'Friday', 'Saturday'];
 export function week(days, today) {
   const { rest } = streak(days, today);
   return Array.from({ length: 7 }, (_, i) => {
     const d = today - 6 + i;
     const state = metOn(days, d) ? 'met' : rest.includes(d) ? 'rest' : answeredOn(days, d) ? 'some' : 'none';
-    return { day: d, letter: LETTERS[(((d + 4) % 7) + 7) % 7], state, today: d === today };
+    const wd = (((d + 4) % 7) + 7) % 7; // day 0 was a Thursday
+    return { day: d, letter: LETTERS[wd], name: NAMES[wd], state, today: d === today };
   });
 }

@@ -18,7 +18,7 @@ const blank = () => ({
   mock: null,      // the mock interview in progress (js/mock.js)
   mockHistory: [], // the last 10 finished interviews: {day, list, right, wrong, passed}
   goal: 10,        // questions a day: 5, 10 or 20
-  days: {},        // per day number: {n: questions answered, g: that day's goal} (js/progress.js)
+  days: {},        // per day number: {n: questions answered, g: that day's goal}; today also ids (js/progress.js)
 });
 
 let state = blank();
@@ -35,7 +35,8 @@ export const store = {
     return state;
   },
   // One more question answered today (the drill and the mock interview call this).
-  countAnswer() { return this.set({ days: addAnswer(state.days, dayNumber(), state.goal) }); },
+  // Each question counts once a day.
+  countAnswer(id) { return this.set({ days: addAnswer(state.days, dayNumber(), state.goal, id) }); },
   // A new daily goal. Today is held to the new goal; earlier days keep theirs.
   setGoal(goal) {
     const today = dayNumber();

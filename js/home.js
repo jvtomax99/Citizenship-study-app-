@@ -28,7 +28,7 @@ function todayPanel(s, today) {
     </div>
     <p><b>${Math.min(n, s.goal)} of ${s.goal}</b> questions${met ? ' · goal reached' : ''}</p>
     <div class="meter" role="progressbar" aria-label="${n} of ${s.goal} questions today" aria-valuenow="${Math.min(n, s.goal)}" aria-valuemin="0" aria-valuemax="${s.goal}" style="--p:${Math.min(100, Math.round((n / s.goal) * 100))}%"><i></i></div>
-    <div class="week">${week(s.days, today).map((d) => `<span class="day ${d.state}${d.today ? ' now' : ''}" title="${DOT[d.state]}"><i>${d.state === 'met' ? '★' : d.state === 'rest' ? '·' : ''}</i>${d.letter}</span>`).join('')}</div>
+    <div class="week">${week(s.days, today).map((d) => `<span class="day ${d.state}${d.today ? ' now' : ''}" role="img" aria-label="${d.name}${d.today ? ' (today)' : ''}: ${DOT[d.state].toLowerCase()}"><i>${d.state === 'met' ? '★' : d.state === 'rest' ? '·' : ''}</i>${d.letter}</span>`).join('')}</div>
     ${pickingGoal ? `<div class="seg" role="group" aria-label="Questions a day">${GOALS.map((g) => `<button data-act="goal" data-goal="${g}" aria-pressed="${s.goal === g}">${g} a day</button>`).join('')}</div>
       <p class="hint">A day counts when you reach your goal in the drill or the interview. One missed day a week is a rest day and keeps your days in a row.</p>`
       : `<button class="link" data-act="pickgoal">Goal: ${s.goal} questions a day · change</button>`}

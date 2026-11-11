@@ -232,7 +232,7 @@ a.btn{display:grid;place-items:center;text-decoration:none}
 .today p{margin:0}.today p b{color:var(--ink);font-weight:900}
 .today-head{display:flex;align-items:center;justify-content:space-between;gap:var(--sp-2)}
 .today-head .label{margin:0}
-.streak{padding:4px 10px;border-radius:var(--r-pill);background:var(--line);color:var(--text-soft);font-size:var(--fs-micro);line-height:16px;font-weight:900}
+.streak{padding:4px 10px;border-radius:var(--r-pill);background:var(--line);color:var(--text);font-size:var(--fs-micro);line-height:16px;font-weight:900}
 .streak.on{background:linear-gradient(90deg,var(--gold1),var(--gold));color:var(--gold-ink)}
 .week{display:flex;justify-content:space-between;margin-top:var(--sp-2)}
 .day{display:flex;flex-direction:column;align-items:center;gap:2px;font-size:var(--fs-micro);line-height:16px;font-weight:900;color:var(--text-soft)}
