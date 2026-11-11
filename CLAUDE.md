@@ -15,6 +15,9 @@ A study app for the U.S. citizenship (naturalization) civics test, 2025 version
   before any push. uscis.gov blocks automated downloads: ask Jose to upload files.
 - **Always clickable suggestions** (Jose, 2026-11-11): every question or next step
   goes out as `AskUserQuestion` buttons, recommended first, never only as text.
+- **Links and settings to paste go in one code block, all at once** (Jose,
+  2026-11-11): every link or domain in a single block, one per line, never split
+  into several blocks.
 - **No main branch yet.** The first pull request creates it once Jose OKs it.
 
 - **Public repo, paid assets.** The repo is public (checked 2026-11-10), so paid raw files can't be committed (docs/assets.md, section 9) unless Jose makes it private.
