@@ -41,8 +41,8 @@ function answersFor(q) {
     // for the checker: a personal question is checked against the person's answers only
     // ("Answers will vary." is not an answer); up to four words is a name, more is a sentence
     // such as "D.C. has no U.S. senators."
-    check: q.kind === 'fixed' ? { accepted: q.answers.map((a) => a.text), need: q.need }
-      : { mine: mine.map((m) => ({ text: m.text, name: NAMED.has(q.id) && m.text.trim().split(/\s+/).length <= 4 })) } };
+    check: q.kind === 'fixed' ? { question: q.question, accepted: q.answers.map((a) => a.text), need: q.need }
+      : { question: q.question, mine: mine.map((m) => ({ text: m.text, name: NAMED.has(q.id) && m.text.trim().split(/\s+/).length <= 4 })) } };
 }
 
 function accepted(q) {
@@ -58,10 +58,21 @@ function accepted(q) {
 }
 
 function road(st) {
-  return `<div class="road" aria-label="${st.right} of ${st.pass} right answers needed to pass, ${st.wrong} of ${st.fail} misses">
+  return `<div class="road" role="img" aria-label="${st.right} of ${st.pass} right answers needed to pass, ${st.wrong} of ${st.fail} misses">
     <div class="stars">${Array.from({ length: st.pass }, (_, i) => `<svg class="st${i < st.right ? ' on' : ''}" viewBox="0 0 24 24" aria-hidden="true">${STAR}</svg>`).join('')}</div>
     <p><span><b>${st.right} of ${st.pass}</b> right to pass</span><span><b>${st.wrong} of ${st.fail}</b> misses</span></p>
   </div>`;
+}
+
+const LISTENING = 'Listening… say your answer.';
+// the question on screen now, or null (a late answer from the microphone must not land on the next one)
+const current = () => { const m = get(); return live && m && !m.open ? m.ids[m.log.length] : null; };
+
+function paintMic(root) {
+  const b = root.querySelector('.mic');
+  const n = root.querySelector('.mic-note');
+  if (b) { b.classList.toggle('is-listening', hearing); b.setAttribute('aria-pressed', hearing); b.setAttribute('aria-label', hearing ? 'Stop listening' : 'Answer out loud'); }
+  if (n) n.textContent = hearing ? LISTENING : note;
 }
 
 // ---- screens ----
@@ -105,8 +116,8 @@ function sheet(q, open, last) {
   const you = open.said ? `<p class="you">You said: <b>${esc(open.said)}</b></p>` : '';
   const next = last ? 'See the result' : 'Next question';
   if (!open.verdict) {
-    return `<div class="sheet ask" role="status">
-      <h2>Compare your answer</h2>
+    return `<div class="sheet ask">
+      <h2 tabindex="-1">Compare your answer</h2>
       ${you || '<p class="you">You did not type or say an answer here.</p>'}
       ${accepted(q)}
       <div class="pair">
@@ -116,14 +127,16 @@ function sheet(q, open, last) {
     </div>`;
   }
   const s = SHEET[open.verdict];
-  const changed = open.auto !== 'skip' && open.auto !== open.verdict;
-  return `<div class="sheet ${s.cls}" role="status">
-    <h2><i>${s.mark}</i>${s.title}</h2>
+  const flip = open.auto === 'skip' ? '' // "I don't know" is a miss: nothing to overrule
+    : open.auto === 'unsure' ? 'Change my mark'
+    : open.auto !== open.verdict ? 'Undo: put it back'
+    : open.verdict === 'wrong' ? 'The app got it wrong: I was right' : 'I was actually wrong';
+  return `<div class="sheet ${s.cls}">
+    <h2 tabindex="-1"><i aria-hidden="true">${s.mark}</i>${s.title}</h2>
     ${you}
     ${accepted(q)}
     <button class="btn ${s.btn}" data-act="next">${next}</button>
-    ${open.auto === 'skip' ? '' : `<button class="flip" data-act="flip">${changed ? 'Undo: put it back'
-      : (open.verdict === 'wrong' ? 'The app got it wrong: I was right' : 'I was actually wrong')}</button>`}
+    ${flip ? `<button class="flip" data-act="flip">${flip}</button>` : ''}
   </div>`;
 }
 
@@ -165,7 +178,7 @@ function results(root, m, rerender) {
 // Count the answer on the sheet and move on.
 function settle(m) {
   const id = m.ids[m.log.length];
-  const log = [...m.log, { id, ...m.open, flipped: m.open.auto !== 'skip' && m.open.auto !== m.open.verdict }];
+  const log = [...m.log, { id, ...m.open, flipped: (m.open.auto === 'right' || m.open.auto === 'wrong') && m.open.auto !== m.open.verdict }];
   if (m.open.verdict === 'wrong') { // a miss comes back sooner in the drill
     const cards = { ...store.get().cards };
     cards[id] = grade(cards[id], 'missed', dayNumber());
@@ -184,7 +197,7 @@ function settle(m) {
 export function mock(root, _arg, rerender) {
   host = root;
   const m = get();
-  if (m && standing(m.log, m.list).over && live) return results(root, m, rerender);
+  if (m && standing(m.log, m.list).over) return results(root, m, rerender); // also after a reload
   if (!live || !m) return startScreen(root, rerender);
 
   const q = data.byId[m.ids[m.log.length]];
@@ -199,7 +212,7 @@ export function mock(root, _arg, rerender) {
         autocomplete="off" autocapitalize="sentences" enterkeyhint="done" value="${esc(m.open ? m.open.said : draft)}"${m.open ? ' disabled' : ''}>
       ${canListen() && !m.open ? `<button class="mic${hearing ? ' is-listening' : ''}" data-act="mic" aria-label="${hearing ? 'Stop listening' : 'Answer out loud'}" aria-pressed="${hearing}">${MIC}</button>` : ''}
     </div>
-    <p class="mic-note" aria-live="polite">${esc(hearing ? 'Listening… say your answer.' : note)}</p>
+    <p class="mic-note" role="status">${esc(hearing ? LISTENING : note)}</p>
     ${road(st)}
     <div class="spacer"></div>
     ${m.open ? sheet(q, m.open, last) : `<div class="actions">
@@ -223,22 +236,30 @@ export function mock(root, _arg, rerender) {
     check,
     skip: () => { stopListening(); hearing = false; stopSpeaking(); save({ ...m, open: { said: input.value.trim(), auto: 'skip', verdict: 'wrong' } }); rerender(); },
     mark: (el) => { save({ ...m, open: { ...m.open, verdict: el.dataset.verdict } }); rerender(); },
-    flip: () => { save({ ...m, open: { ...m.open, verdict: m.open.verdict === 'right' ? 'wrong' : 'right' } }); rerender(); },
+    // after "I was right / I was wrong" this goes back to the two buttons; otherwise it overrules the app
+    flip: () => { save({ ...m, open: { ...m.open, verdict: m.open.auto === 'unsure' ? null : (m.open.verdict === 'right' ? 'wrong' : 'right') } }); rerender(); },
     next: () => { settle(get()); rerender(); window.scrollTo(0, 0); },
+    // The microphone changes the button and the line under the field in place: a full
+    // redraw would close the keyboard and swallow the next tap.
     mic: () => {
-      if (hearing) { stopListening(); hearing = false; rerender(); return; }
+      if (hearing) { stopListening(); hearing = false; paintMic(root); return; }
       stopSpeaking(); // the microphone must not hear the officer
       hearing = true; note = '';
+      const asked = q.id;
       listen({
-        onText: (t) => { draft = t; const f = host && host.querySelector('#answer'); if (f) f.value = t; },
-        onEnd: (why) => { hearing = false; note = why; if (live && host === root) rerender(); },
+        onText: (t) => { if (current() !== asked) return; draft = t; const f = root.querySelector('#answer'); if (f) f.value = t; },
+        onEnd: (why) => { if (current() !== asked) return; hearing = false; note = why; paintMic(root); },
       });
-      rerender();
+      paintMic(root);
     },
+    speak: () => { if (hearing) { stopListening(); hearing = false; paintMic(root); } }, // the officer repeats: stop listening first
   }, () => q);
 
-  // the sheet and its buttons must be on screen without a scroll
-  if (m.open) root.querySelector('.sheet').scrollIntoView({ block: 'end' });
+  // the sheet and its buttons must be on screen without a scroll, and a screen reader hears it
+  if (m.open) {
+    root.querySelector('.sheet').scrollIntoView({ block: 'end' });
+    root.querySelector('.sheet h2').focus({ preventScroll: true });
+  }
   if (!m.open && spoken !== q.id) { // the officer reads each new question once, by himself
     spoken = q.id;
     speak(q.question, root.querySelector('.speak'));

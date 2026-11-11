@@ -71,6 +71,18 @@ read through a search extract:
    does. A 65/20 mode (10 asked, 6 to pass).
    - Done when: a user finishes an interview by voice and sees pass or fail with
      each question's accepted answers.
+   - Decided with Jose, 2026-11-11: the app checks the answer and one tap overrules
+     it ("The app got it wrong: I was right" / "I was actually wrong"). When the app
+     is not sure it shows the accepted answers and asks "I was right / I was wrong";
+     it must never teach a wrong answer as right. No server, so the check compares
+     words (js/match.js); it will ask often, by design.
+   - In English only, including 65/20 mode (the Spanish is still a draft). A wrong
+     answer goes to the drill as missed; a right one does not change the drill. The
+     last 10 results are kept; Home shows the latest. "I don't know" is a miss; Check
+     with nothing typed asks the person to compare (for people who only say it aloud).
+   - Voice is the phone's own speech to text: it needs internet on Android Chrome and
+     sends the audio to Google or Apple (the start screen says so). Whether it works
+     in the installed Home Screen app on an iPhone: Jose to try (not known).
 6. **The National Mall.** A drawn 2D Mall whose landmarks light up as each section
    is mastered (Capitol: system of government, Archives: rights, monuments: history,
    the flag: symbols). Tap a landmark to drill that section.
@@ -104,6 +116,7 @@ TO FILL: Jose to confirm.
 - Practice for the N-400 interview questions themselves (the officer's questions
   about the application).
 - More languages.
+- A mock interview in Spanish for 65/20 applicants (once Jose has read the Spanish).
 - A how-to video like the CPA app's.
 
 ## Open questions for Jose
@@ -156,6 +169,7 @@ Each phase is one pull request, one or two sessions.
   repetition and "I guessed". Home Screen install and offline. Built 2026-11-11, tapped
   through by script (`node tools/shots.mjs`), and Jose tried the test link on his phone
   and said to move on.
-- [ ] 4. Mock interview with voice, the 12/9 rule and 65/20 mode.
+- [ ] 4. Mock interview with voice, the 12/9 rule and 65/20 mode (built 2026-11-11,
+  reviewed, on the test link; waits on Jose finishing one by voice on his phone).
 - [ ] 5. The National Mall, daily goal and streak.
 - [ ] 6. Backup, user guide, first release to GitHub Pages.

@@ -81,7 +81,7 @@ export function words(text) {
   flush();
   // a year said in two halves: "seventeen seventy-six" -> 1776
   for (let i = 0; i < out.length - 1; i++) {
-    if (/^(1[0-9]|20)$/.test(out[i]) && /^\d\d$/.test(out[i + 1])) out.splice(i, 2, out[i] + out[i + 1]);
+    if (/^([1-9]|1[0-9]|20)$/.test(out[i]) && /^\d\d$/.test(out[i + 1])) out.splice(i, 2, out[i] + out[i + 1]); // also "four thirty-five"
   }
   return out;
 }
@@ -106,6 +106,7 @@ function same(a, b, name = false) {
   const x = stem(a), y = stem(b);
   if (x === y) return true;
   const short = Math.min(x.length, y.length);
+  if (!name && x[0] !== y[0]) return false; // "Greek" is not "Creek"; a slip rarely hits the first letter
   const slack = name ? (short >= 6 ? 2 : short >= 4 ? 1 : 0) : (short >= 8 ? 2 : short >= 5 ? 1 : 0);
   return slack > 0 && distance(x, y, slack) <= slack;
 }
@@ -136,7 +137,11 @@ export function ways(answer) {
     const all = words(inside);
     const last = i === parts.length - 1;
     const before = i > 0 && !parts[i - 1].startsWith('(') ? words(parts[i - 1]).pop() : null;
-    if (last && main.length && !CONTINUES.has(all[0]) && !/\band\b/i.test(inside)) {
+    if (last && main.length && /^[A-Z][a-z]+$/.test(inside.trim())) {
+      // one more word of the same name: "New York (Harbor)", "Valley Forge (Encampment)".
+      // It may stand in for the word before it, never for the whole answer.
+      main[main.length - 1].push(...key(all));
+    } else if (last && main.length && !CONTINUES.has(all[0]) && !/\band\b/i.test(inside)) {
       // a second name at the end: "Presidents Day (Washington's Birthday)"
       for (const item of inside.split(',')) { const k = key(words(item)); if (k.length) alts.push(k.map((w) => [w])); }
     } else if (!last && before && !STOP.has(before) && main.length) {
@@ -146,30 +151,46 @@ export function ways(answer) {
     } // otherwise the words are simply optional: "(U.S.) Constitution", "(of the United States)"
   });
   if (/^one of\b/i.test(answer) && main.length > 1 && main[0][0] === '1') main.shift(); // "One of the writers...": not a number
+  // a closing "of the United States" adds nothing: "16th president" is the answer
+  if (main.length >= 3 && main[main.length - 1].length === 1 && main[main.length - 1][0] === 'us') main.pop();
   const out = main.length ? [main] : [];
   // "Twenty-seven (27)": the second name is the same thing; keep one
   for (const a of alts) if (!out.some((w) => JSON.stringify(w) === JSON.stringify(a))) out.push(a);
   return out.length ? out : [key(words(answer)).map((w) => [w])];
 }
 
-// How well what was said covers one way: 'right' | 'unsure' | 'wrong'.
+const NEGATION = new Set('no not dont doesnt didnt never non cannot cant isnt arent wasnt without nobody none neither nor'.split(' '));
+const FILLER = new Set('think believe maybe guess probably answer called name named sir maam officer yes well thats like say said know sure'.split(' '));
+
+// How well what was said covers one way to say an answer.
+//   verdict: 'right' | 'unsure' | 'wrong';  used: which said words did the covering.
+// Up to three key words: all of them. Longer answers: three quarters, and every number.
 function cover(said, way, name) {
-  const hit = (group) => group.some((w) => said.some((s) => same(s, w, name)));
-  const hits = way.filter(hit).length;
+  const used = new Set();
+  const hit = (group) => {
+    const i = said.findIndex((s) => group.some((w) => same(s, w, name)));
+    if (i >= 0) used.add(i);
+    return i >= 0;
+  };
+  const got = way.map(hit);
+  const hits = got.filter(Boolean).length;
   const n = way.length;
-  const numbersOk = way.every((g) => !g.every(isNumber) || hit(g)); // a number is never optional
-  const enough = n <= 2 ? hits === n : n === 3 ? hits >= 2 : hits / n >= 0.75;
-  if (enough && numbersOk) return 'right';
-  return hits && hits / n >= 0.5 ? 'unsure' : 'wrong';
+  const numbersOk = way.every((g, i) => !g.every(isNumber) || got[i]); // a number is never optional
+  const enough = n <= 3 ? hits === n : hits / n >= 0.75;
+  let verdict = enough && numbersOk ? 'right' : (hits && (hits / n >= 0.5 || hits >= 2) ? 'unsure' : 'wrong');
+  // "you have to pay to vote" is not "you don't have to pay to vote"
+  const negated = (ws) => ws.some((w) => NEGATION.has(w));
+  if (verdict === 'right' && negated(said) !== negated(way.flat())) verdict = 'unsure';
+  return { verdict, used };
 }
 
 const RANK = { wrong: 0, unsure: 1, right: 2 };
-const best = (results) => results.reduce((a, b) => (RANK[b] > RANK[a] ? b : a), 'wrong');
+const best = (results) => results.reduce((a, b) => (RANK[b.verdict] > RANK[a.verdict] ? b : a), { verdict: 'wrong', used: new Set() });
 
 // A person's name: the last name alone is enough, as USCIS accepts for officials.
 function nameWay(text) {
   const ws = words(text).filter((w) => !/^(jr|sr|2|3|iv)$/.test(w));
-  return [[ws[ws.length - 1]]];
+  return ws.length ? [[ws[ws.length - 1]]] : null;
 }
 
 // 'right' | 'wrong' | 'unsure'.
@@ -177,15 +198,33 @@ function nameWay(text) {
 //   mine: [{text, name}] the answers for this person (their senators, today's President);
 //         name = it is a person's name.
 //   need: how many answers the question asks for.
-export function judge(said, { accepted = [], mine = [], need = 1 } = {}) {
+//   question: its text; words from it are never held against the person.
+export function judge(said, { accepted = [], mine = [], need = 1, question = '' } = {}) {
   const heard = words(said);
   if (!heard.length) return 'unsure';
   if (!accepted.length && !mine.length) return 'unsure'; // nothing to compare with
   const each = [
-    ...mine.map((m) => (m.name ? cover(heard, nameWay(m.text), true) : best(ways(m.text).map((w) => cover(heard, w, false))))),
+    ...mine.map((m) => {
+      if (!m.name) return best(ways(m.text).map((w) => cover(heard, w, false)));
+      const way = nameWay(m.text);
+      return way ? cover(heard, way, true) : { verdict: 'unsure', used: new Set() }; // a name the app cannot read
+    }),
     ...accepted.map((a) => best(ways(a).map((w) => cover(heard, w, false)))),
   ];
-  const rights = each.filter((r) => r === 'right').length;
-  if (rights >= need) return 'right';
-  return rights || each.includes('unsure') ? 'unsure' : 'wrong';
+  // Count the right ones; each must bring a word of its own ("join a group" is not two answers).
+  const taken = new Set();
+  let rights = 0;
+  for (const r of each) {
+    if (r.verdict !== 'right' || ![...r.used].some((i) => !taken.has(i))) continue;
+    rights++;
+    for (const i of r.used) taken.add(i);
+  }
+  if (rights >= need) {
+    // Right words plus something else ("the vice president", "Theodore Roosevelt", "2 or 3"):
+    // the extra word may change the meaning, so the person decides.
+    const known = [question, ...accepted, ...mine.map((m) => m.text)].flatMap(words);
+    const extra = heard.some((w, i) => !taken.has(i) && !STOP.has(w) && !FILLER.has(w) && !known.some((k) => same(w, k, true)));
+    return extra ? 'unsure' : 'right';
+  }
+  return rights || each.some((r) => r.verdict === 'unsure') ? 'unsure' : 'wrong';
 }

@@ -99,7 +99,7 @@ export function wire(root, handlers, q) {
     // a double tap must not press the button that just appeared under the finger
     if (e.isTrusted && performance.now() - drawn < 300 && el.dataset.act !== 'speak') return;
     const act = el.dataset.act;
-    if (act === 'speak' && q) return speak(q().question, el);
+    if (act === 'speak' && q) { if (handlers.speak) handlers.speak(el); return speak(q().question, el); }
     if (handlers[act]) handlers[act](el, e);
   };
 }

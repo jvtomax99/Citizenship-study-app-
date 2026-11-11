@@ -234,3 +234,4 @@ a.btn{display:grid;place-items:center;text-decoration:none}
 .sheetlike ul{margin:2px 0 0;padding-left:18px;color:var(--ink);font-weight:700}
 .sheetlike small{display:block;margin-top:4px;color:var(--text-soft);font-weight:700}
 .content>.sheet:last-child{margin-bottom:0}
+.sheet h2:focus{outline:none}

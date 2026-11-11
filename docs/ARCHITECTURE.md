@@ -28,16 +28,24 @@ nothing to install. GitHub Pages serves the folder as it is.
   `DESIGN.md`); `manifest.webmanifest` and `sw.js` make it install and work offline.
 - `js/` One small file each:
   - `app.js` starts the app and picks the screen from the address (`#/`, `#/place`,
-    `#/study/<section>`, `#/drill`).
+    `#/study/<section>`, `#/drill`, `#/mock`).
   - `data.js` loads the three data files and works out the personal answers
     (`personalAnswers`: senators, governor, capital, representative, the four federal names).
   - `store.js` what the phone remembers (one `localStorage` entry, `civics128.v1`).
   - `srs.js` the come-back-sooner schedule (pure functions; `tests/srs.test.mjs`).
-  - `speak.js` read-aloud with the phone's voice.
+  - `speak.js` read-aloud with the phone's voice. `listen.js` speech to text with the
+    phone's own recognizer (not on every phone; the screen always works by typing).
+  - `match.js` the officer's judgment, pure functions (`tests/match.test.mjs`): the
+    interview's rules (`RULES`, `standing`, `pickQuestions`) and `judge()`, which calls a
+    typed or spoken answer right, wrong or unsure by comparing words. It only reads the
+    answers. When changing it, add the case to the test list first.
+  - `mock.js` the mock interview's screens. The interview in progress is `mock` in the
+    store; finished ones go to `mockHistory` (last 10).
   - `ui.js` shared pieces (scene, top bar, question card, answers panel).
-  - `home.js`, `place.js`, `study.js`, `drill.js` the four screens.
-- `tests/` `node --test tests/*.mjs` checks the schedule. `tools/shots.mjs` taps through
-  the whole app at phone size, checks Step 3's "Done when" lines and saves screenshots
+  - `home.js`, `place.js`, `study.js`, `drill.js` the other four screens.
+- `tests/` `node --test tests/*.mjs` checks the schedule and the answer checker.
+  `tools/shots.mjs` taps through the whole app at phone size (a pretend microphone
+  stands in for voice), checks the "Done when" lines of Steps 3 and 4 and saves screenshots
   (start `python3 -m http.server 8123` first).
 - `DESIGN.md` The look: colors, type, shape, components, motion (Jose OK'd it).
   `preview/sample-drill.html` is the sample screen it was approved from.

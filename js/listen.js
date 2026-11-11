@@ -16,12 +16,13 @@ const WHY = {
 let rec = null;
 
 export function stopListening() {
-  if (rec) { try { rec.abort(); } catch { /* already stopped */ } }
+  if (rec) { rec.quiet = true; try { rec.abort(); } catch { /* already stopped */ } } // stopped on purpose: no message
   rec = null;
 }
 
 // Starts listening. onText(words so far) is called as the person speaks;
 // onEnd(message) once at the end, with a plain reason when it failed, '' when it worked.
+// It is not called when stopListening() ended it: the caller already knows.
 export function listen({ onText, onEnd }) {
   stopListening();
   if (!SR) { onEnd('This phone cannot listen here. Type your answer.'); return; }
@@ -36,6 +37,7 @@ export function listen({ onText, onEnd }) {
     if (ended) return;
     ended = true;
     if (rec === mine) rec = null;
+    if (mine.quiet) return;
     onEnd(why || (heard ? '' : WHY['no-speech']));
   };
   mine.onresult = (e) => {

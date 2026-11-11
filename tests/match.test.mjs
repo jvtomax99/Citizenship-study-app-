@@ -6,13 +6,13 @@ import { judge, words, ways, standing, pickQuestions, RULES } from '../js/match.
 
 const qs = JSON.parse(readFileSync(new URL('../data/questions.json', import.meta.url))).questions;
 const byId = Object.fromEntries(qs.map((q) => [q.id, q]));
-const check = (id, said) => { const q = byId[id]; return judge(said, { accepted: q.answers.map((a) => a.text), need: q.need }); };
+const check = (id, said) => { const q = byId[id]; return judge(said, { accepted: q.answers.map((a) => a.text), need: q.need, question: q.question }); };
 
 // [question id, what the person said, what the app must decide]
 const CASES = [
   // plain right answers, typed or as a phone would write them
   [2, 'The Constitution', 'right'], [2, 'the u.s. constitution', 'right'], [2, 'constitution', 'right'],
-  [2, 'I think it is the US Constitution', 'right'], [2, 'la constitucion', 'right'],
+  [2, 'I think it is the US Constitution', 'right'], [2, 'constitucion', 'right'], [2, 'la constitucion', 'unsure'],
   [7, '27', 'right'], [7, 'twenty-seven', 'right'], [7, 'twenty seven', 'right'], [7, 'Twenty seven amendments', 'right'],
   [21, '100', 'right'], [21, 'one hundred', 'right'], [21, 'a hundred', 'right'],
   [24, '435', 'right'], [24, 'four hundred thirty five', 'right'], [24, 'four hundred and thirty-five', 'right'],
@@ -22,13 +22,13 @@ const CASES = [
   [1, 'republic', 'right'], [1, 'a representative democracy', 'right'],
   [5, 'amendments', 'right'], [5, 'by amendment', 'right'],
   [9, 'the declaration of independence', 'right'], [9, 'Declaration of Independance', 'right'],
-  [12, 'capitalism', 'right'], [12, 'capitalist', 'right'], [12, 'free market', 'right'],
+  [12, 'capitalism', 'right'], [12, 'capitalist', 'right'], [12, 'free market', 'unsure'],
   [16, 'executive, legislative and judicial', 'right'], [16, 'congress the president and the courts', 'right'],
   [17, 'the executive branch', 'right'], [19, 'the senate and the house', 'right'], [19, 'Senate and House of Representatives', 'right'],
   [40, 'the vice president', 'right'], [42, 'the president', 'right'], [52, 'the supreme court', 'right'],
   [55, 'for life', 'right'], [55, 'life', 'right'], [55, 'until they retire', 'right'],
   [51, 'resolves disagreements about the law', 'right'], [51, 'it reviews laws', 'right'],
-  [58, 'print money', 'right'], [58, 'declare war', 'right'], [59, 'police', 'right'], [59, 'give a drivers license', 'right'],
+  [58, 'print money', 'unsure'], [58, 'declare war', 'right'], [59, 'police', 'right'], [59, 'give a drivers license', 'right'],
   [74, 'Native Americans', 'right'], [74, 'american indians', 'right'], [75, 'people from africa', 'right'], [75, 'Africans', 'right'],
   [76, 'the revolutionary war', 'right'], [76, 'American Revolution', 'right'],
   [78, 'Jefferson', 'right'], [78, 'Thomas Jefferson', 'right'], [78, 'tomas jeferson', 'right'],
@@ -43,14 +43,14 @@ const CASES = [
   [104, '1929', 'right'], [104, 'the stock market crash of 1929', 'right'],
   [105, 'Roosevelt', 'right'], [105, 'Franklin Roosevelt', 'right'], [105, 'rosevelt', 'right'],
   [108, 'the Soviet Union', 'right'], [108, 'Russia', 'right'], [108, 'USSR', 'right'],
-  [109, 'communism', 'right'], [110, 'to stop the spread of communism', 'right'], [110, 'stop communism', 'right'],
-  [113, 'he fought for civil rights', 'right'], [113, 'civil rights', 'right'],
+  [109, 'communism', 'right'], [110, 'to stop the spread of communism', 'right'], [110, 'stop communism', 'unsure'],
+  [113, 'he fought for civil rights', 'right'], [113, 'civil rights', 'unsure'],
   [115, 'terrorists attacked the United States', 'right'], [115, 'a terrorist attack on the united states', 'right'],
   [117, 'Cherokee', 'right'], [117, 'cheroke', 'right'], [117, 'Navajo', 'right'],
   [118, 'cars', 'right'], [118, 'the light bulb', 'right'], [118, 'airplanes', 'right'],
   [119, 'Washington DC', 'right'], [119, 'Washington, D.C.', 'right'], [119, 'Washington', 'unsure'],
   [120, 'New York', 'right'], [120, 'new york harbor', 'right'], [120, 'Liberty Island', 'right'],
-  [121, 'because there were thirteen original colonies', 'right'], [121, '13 colonies', 'right'],
+  [121, 'because there were thirteen original colonies', 'right'], [121, '13 colonies', 'unsure'], [24, 'four thirty five', 'right'], [68, 'be born in the United States', 'unsure'],
   [122, 'because there are 50 states', 'right'], [122, 'fifty states', 'right'], [122, 'one for each state', 'right'],
   [123, 'The Star-Spangled Banner', 'right'], [123, 'star spangled banner', 'right'],
   [124, 'out of many, one', 'right'],
@@ -75,7 +75,7 @@ const CASES = [
   [52, 'congress', 'wrong'], [92, 'World War II', 'unsure'], [97, '13th amendment', 'unsure'], [97, '15th amendment', 'unsure'],
   [100, 'the civil war', 'unsure'], [102, '1919', 'wrong'], [105, 'Lincoln', 'wrong'], [108, 'China', 'wrong'], [108, 'Germany', 'wrong'],
   [119, 'New York', 'wrong'], [120, 'Washington', 'wrong'], [123, 'America the Beautiful', 'wrong'],
-  [94, 'first president', 'wrong'], [94, 'president of the united states', 'unsure'],
+  [94, 'first president', 'unsure'], [94, 'president of the united states', 'unsure'],
   [117, 'Aztec', 'wrong'], [16, 'the president', 'wrong'], [19, 'the senate', 'unsure'],
   [2, 'I don\'t know', 'wrong'], [36, 'two years', 'unsure'], [22, 'four years', 'unsure'],
 ];
@@ -87,15 +87,30 @@ test('the checker judges real-looking answers as expected', () => {
   assert.ok(CASES.length >= 80);
 });
 
-test('a wrong answer is never called right, even when words overlap', () => {
-  // The one known soft spot: an answer that contains the right word plus more.
-  assert.equal(check(42, 'the vice president'), 'right'); // "president" is in it; the person can mark it wrong
-  assert.notEqual(check(36, 'two years'), 'right');
-  assert.notEqual(check(97, 'the 13th amendment'), 'right');
+test('a wrong answer that shares words with a right one is never called right', () => {
+  // found by the review of 2026-11-11; the app may say unsure or wrong, never right
+  const NOT_RIGHT = [
+    [42, 'the vice president'], [43, 'the vice president'], [105, 'Theodore Roosevelt'], [66, 'the president of the United States'],
+    [27, '2 or 3'], [63, 'You have to pay to vote'], [13, 'Everyone is above the law'], [64, 'non-citizens'], [70, "don't pay taxes"],
+    [110, 'to spread communism'], [113, 'fought in the civil war'], [115, 'Japan attacked the United States'],
+    [106, 'to support the Axis powers'], [79, 'June 4, 1776'], [98, 'before the civil war'], [16, 'legislative and executive'],
+    [89, 'first secretary of state'], [1, 'Republican party'], [117, 'Greek'], [120, 'Pearl Harbor'], [120, 'Boston harbor'],
+    [69, 'join a group'], [67, 'be loyal to the United States and its laws'], [36, 'two years'], [97, 'the 13th amendment'],
+    [94, 'president of the united states'], [86, 'third president'], [52, 'federal court'], [19, 'the house'], [92, 'the revolutionary war'],
+    [100, 'the civil war'], [21, 'one hundred fifty'], [53, 'nineteen'], [78, 'Thomas Edison'], [123, 'the star banner song of freedom'],
+  ];
+  assert.deepEqual(NOT_RIGHT.filter(([id, said]) => check(id, said) === 'right').map(([id, said]) => `Q${id} "${said}"`), []);
+});
+
+test('odd input never breaks the checker', () => {
+  for (const said of ['?', '-', '   ', '🙂', '1,000', 'x'.repeat(5000), 'II', 'Jr.', 'Ω']) {
+    assert.ok(['right', 'wrong', 'unsure'].includes(check(2, said)));
+    for (const text of ['?', '-', 'II', 'Jr.', 'Ωμέγα', '']) assert.equal(judge('Booker', { mine: [{ text, name: true }] }), 'unsure');
+  }
 });
 
 test('personal answers: a last name is enough, a missing name asks the person', () => {
-  const senators = { mine: [{ text: 'Cory Booker', name: true }, { text: 'Andy Kim', name: true }] };
+  const senators = { question: byId[23].question, mine: [{ text: 'Cory Booker', name: true }, { text: 'Andy Kim', name: true }] };
   assert.equal(judge('Booker', senators), 'right');
   assert.equal(judge('senator cory booker', senators), 'right');
   assert.equal(judge('Corey Bookar', senators), 'right');
@@ -133,7 +148,7 @@ test('every accepted answer in the bank passes when said word for word', () => {
   for (const q of qs.filter((x) => x.kind === 'fixed')) {
     for (const a of q.answers) {
       const plain = a.text.replace(/\(\d+\)/g, ' ').replace(/[()]/g, ' ');
-      const got = judge(plain, { accepted: [a.text], need: 1 });
+      const got = judge(plain, { accepted: [a.text], need: 1, question: q.question });
       if (got !== 'right') off.push(`Q${q.id} "${a.text}" -> ${got}`);
     }
   }
