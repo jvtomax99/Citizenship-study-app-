@@ -76,7 +76,8 @@ read through a search extract:
      is not sure it shows the accepted answers and asks "I was right / I was wrong";
      it must never teach a wrong answer as right. No server, so the check compares
      words (js/match.js); it will ask often, by design.
-   - In English only, including 65/20 mode (the Spanish is still a draft). A wrong
+   - In English only, including 65/20 mode (Jose, 2026-11-11: nobody in the family will
+     take the 65/20 test in Spanish). A wrong
      answer goes to the drill as missed; a right one does not change the drill. The
      last 10 results are kept; Home shows the latest. "I don't know" is a miss; Check
      with nothing typed asks the person to compare (for people who only say it aloud).
@@ -116,14 +117,8 @@ TO FILL: Jose to confirm.
 - Practice for the N-400 interview questions themselves (the officer's questions
   about the application).
 - More languages.
-- A mock interview in Spanish for 65/20 applicants (once Jose has read the Spanish).
+- A mock interview in Spanish for 65/20 applicants (not needed now: Jose, 2026-11-11).
 - A how-to video like the CPA app's.
-- Bug, dark mode only (found in the 2026-11-11 cleanup, not fixed there): links that look
-  like buttons take the link color, so "Drill · 10 questions" on Home is purple on green
-  and hard to read. Cause: `css/app.css`, the dark `a{color}` rule outranks `.btn.primary`.
-
-## Open questions for Jose
-
 - Senators and governors: only the states where the family and friends live:
   New Jersey and New York (Jose, 2026-11-11); other states type their own. Filled and
   confirmed at senate.gov, nj.gov and governor.ny.gov on 2026-11-11; Booker's seat and

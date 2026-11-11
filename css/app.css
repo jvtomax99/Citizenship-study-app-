@@ -107,7 +107,7 @@ button{font-family:inherit;cursor:pointer}
 /* ---- beyond the sample: the real app's screens ---- */
 [hidden]{display:none!important}
 a{color:var(--indigo)}
-@media (prefers-color-scheme:dark){:root:not([data-theme=light]) a{color:var(--indigo1)}}
+@media (prefers-color-scheme:dark){:root:not([data-theme=light]) a:not(.btn){color:var(--indigo1)}} /* not buttons: their label color is their own */
 :focus-visible{outline:3px solid var(--indigo1);outline-offset:2px}
 .grow{flex:1}
 a.x,button.x{text-decoration:none;padding:0}
