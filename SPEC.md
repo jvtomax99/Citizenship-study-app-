@@ -103,6 +103,11 @@ TO FILL: Jose to confirm.
 - Senators and governors: only the states where the family and friends live (Jose,
   2026-11-11); other states type their own. TO FILL: which states.
 
+## Budget
+
+$0, free assets only, no template (Jose, 2026-11-11). Google Fonts, public-domain or
+CC0 art.
+
 ## Hosting
 
 GitHub Pages from `main` (Jose's pick, 2026-11-11). Free; the repo stays public.
