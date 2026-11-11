@@ -80,6 +80,6 @@ export function home(root, _arg, rerender) {
   wire(root, {
     list: (el) => { store.set({ list: el.dataset.list }); rerender(); },
     hidetip: () => { store.set({ hideInstallTip: true }); rerender(); },
-    install: async () => { if (installEvent) { installEvent.prompt(); installEvent = null; } },
+    install: () => { if (installEvent) { installEvent.prompt(); installEvent = null; } },
   });
 }

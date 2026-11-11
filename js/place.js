@@ -23,7 +23,7 @@ function listView(root, rerender, current) {
     <div class="rows" id="places">${data.places.map((p) => `<button class="row${p.code === current ? ' is-on' : ''}" data-act="pick" data-code="${p.code}" data-name="${esc(p.name.toLowerCase())} ${p.code.toLowerCase()}">
       <span class="row-main"><b>${esc(p.name)}</b></span>${p.type !== 'state' ? `<span class="row-count">${KIND[p.type]}</span>` : ''}${ICON.chevron}
     </button>`).join('')}</div>
-    <p class="fine none" id="nomatch" hidden>No state with that name.</p>
+    <p class="fine" id="nomatch" hidden>No state with that name.</p>
     ${current ? '' : '<button class="btn ghost" data-act="skip">Skip for now</button>'}
   `, { short: true });
 

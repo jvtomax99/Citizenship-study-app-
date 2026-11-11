@@ -99,6 +99,5 @@ export function needsTyping(place) {
   return {
     senators: !special[23] && !(Array.isArray(place.senators) && place.senators.length),
     governor: !special[61] && !(place.governor && place.governor.name),
-    rep: true,
   };
 }

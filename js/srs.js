@@ -5,7 +5,7 @@
 
 export const WAIT_DAYS = [0, 1, 3, 7, 14, 30]; // days to wait after reaching box n
 export const ROUND_SIZE = 10;
-export const RETRY_GAP = 3;  // a missed question returns after this many other questions
+const RETRY_GAP = 3;  // a missed question returns after this many other questions
 export const MAX_RETRIES = 2; // per question, per round
 
 export function dayNumber(date = new Date()) {
