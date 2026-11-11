@@ -23,6 +23,9 @@ Short map; keep it current. No app code yet (Phase 1 is the data).
   flag it checks `questions.json` against the PDF two ways (the parse, and every string
   verbatim in a plain-text read) plus pinned facts (the 20 stars, 410 answers), and
   checks `es.json` covers every answer and note. Needs `pdftotext` (poppler-utils).
+- `DESIGN.md` The look: colors, type, shape, components, motion (draft, waiting for
+  Jose's OK). `preview/sample-drill.html` is its sample screen (`?state=ask|right|wrong`).
+- `docs/design/` Taste studies of sites Jose picked (`duolingo.com.md` and its raw `.json`).
 - `docs/` Rules (design, assets, cleanup, refactor) and this file.
 
 ## How data moves

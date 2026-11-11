@@ -1,0 +1,123 @@
+<!doctype html>
+<html lang="en">
+<head>
+<meta charset="utf-8">
+<meta name="viewport" content="width=device-width,initial-scale=1">
+<title>Sample: Practice question</title>
+<link rel="preconnect" href="https://fonts.googleapis.com">
+<link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+<link href="https://fonts.googleapis.com/css2?family=Nunito:wght@600;700;800&display=swap" rel="stylesheet">
+<style>
+:root{
+  --bg:#FFFFFF;--surface:#F6F7F4;--line:#E3E5E8;--ink:#1D2B53;--text:#3C4152;--text-soft:#6A7184;
+  --liberty:#14806F;--liberty-lip:#0E5F53;--liberty-soft:#DDF4EF;
+  --red:#D2374B;--red-lip:#A8283A;--red-soft:#FBE6E9;--navy:#1D2B53;--speak-lip:#0F1836;--on-accent:#FFFFFF;--gold:#F5B700;
+  --fs-display:32px;--fs-question:24px;--fs-title:19px;--fs-body:17px;--fs-button:15px;--fs-small:13px;
+  --r:14px;--r-pill:999px;--sp-1:4px;--sp-2:8px;--sp-3:12px;--sp-4:16px;--sp-5:24px;--sp-6:32px;--sp-7:48px;
+  --ease:cubic-bezier(0.22,1,0.36,1);
+}
+@media (prefers-color-scheme:dark){:root:not([data-theme=light]){
+  --bg:#131A2B;--surface:#1C2438;--line:#2C3550;--ink:#EEF1F8;--text:#D3D8E4;--text-soft:#9AA3B8;
+  --liberty:#3CC4AD;--liberty-lip:#239A86;--liberty-soft:#173A3A;--red:#F06B7C;--red-lip:#C34A5A;--red-soft:#3A1E26;--navy:#8FB0FF;--speak-lip:#5A78C4;--on-accent:#131A2B;--gold:#F7C744;}}
+*{box-sizing:border-box}
+html,body{margin:0;background:var(--bg);color:var(--text);font:600 var(--fs-body)/24px Nunito,system-ui,sans-serif;-webkit-font-smoothing:antialiased}
+.app{max-width:560px;margin:0 auto;min-height:100vh;min-height:100dvh;display:flex;flex-direction:column;padding:var(--sp-4)}
+/* top bar */
+.top{display:flex;align-items:center;gap:var(--sp-3);height:44px}
+.icon-btn{width:44px;height:44px;border:0;background:none;color:var(--text-soft);display:grid;place-items:center;border-radius:var(--r);cursor:pointer;flex:none}
+.bar{flex:1;height:16px;border-radius:var(--r-pill);background:var(--line);overflow:hidden}
+.bar i{display:block;height:100%;width:var(--p);background:var(--liberty);border-radius:inherit;position:relative;transition:width .4s var(--ease)}
+.bar i::after{content:"";position:absolute;left:8px;right:8px;top:4px;height:4px;border-radius:var(--r-pill);background:rgba(255,255,255,.35)}
+.tally{display:flex;gap:var(--sp-2);font-size:var(--fs-small);font-weight:800;flex:none}
+.tally b{display:flex;align-items:center;gap:3px}
+.tally .ok{color:var(--liberty)}.tally .no{color:var(--red)}
+/* body */
+.chips{display:flex;gap:var(--sp-2);margin:var(--sp-5) 0 var(--sp-3);flex-wrap:wrap}
+.chip{height:26px;padding:0 10px;border-radius:var(--r-pill);font-size:var(--fs-small);font-weight:800;display:inline-flex;align-items:center;background:var(--surface);color:var(--text-soft);border:2px solid var(--line)}
+.chip.gold{background:var(--gold);color:#1D2B53;border-color:transparent}
+h1{font-size:var(--fs-title);line-height:25px;font-weight:800;color:var(--ink);margin:0 0 var(--sp-4)}
+.officer{display:flex;gap:var(--sp-3);align-items:flex-start}
+.badge{width:64px;height:64px;flex:none}
+.bubble{position:relative;flex:1;background:var(--surface);border:2px solid var(--line);border-radius:var(--r);padding:var(--sp-4);box-shadow:0 2px 0 var(--line)}
+.bubble::before{content:"";position:absolute;left:-9px;top:22px;width:14px;height:14px;background:var(--surface);border-left:2px solid var(--line);border-bottom:2px solid var(--line);transform:rotate(45deg)}
+.q{font-size:var(--fs-question);line-height:31px;font-weight:800;color:var(--ink);margin:0}
+.q-row{display:flex;gap:var(--sp-3);align-items:flex-start}
+.speak{width:44px;height:44px;border-radius:50%;border:0;background:var(--navy);color:var(--on-accent);display:grid;place-items:center;flex:none;box-shadow:0 3px 0 var(--speak-lip);cursor:pointer}
+.es-toggle{margin-top:var(--sp-3);border:0;background:none;padding:0;color:var(--navy);font:800 var(--fs-small)/18px Nunito,sans-serif;letter-spacing:.8px;text-transform:uppercase;cursor:pointer}
+.es{margin:var(--sp-2) 0 0;color:var(--navy);font-weight:700}
+.field{margin-top:var(--sp-5);position:relative}
+.field input{width:100%;height:56px;border-radius:var(--r);border:2px solid var(--line);background:var(--surface);padding:0 60px 0 var(--sp-4);font:600 var(--fs-body) Nunito,sans-serif;color:var(--ink)}
+.field input:focus{outline:none;border-color:var(--navy)}
+.mic{position:absolute;right:6px;top:6px;width:44px;height:44px;border-radius:var(--r);border:0;background:var(--liberty);color:var(--on-accent);display:grid;place-items:center;box-shadow:0 3px 0 var(--liberty-lip);cursor:pointer}
+.hint{font-size:var(--fs-small);line-height:18px;color:var(--text-soft);margin:var(--sp-2) 0 0;font-weight:700}
+.spacer{flex:1;min-height:var(--sp-5)}
+/* buttons */
+.btn{display:block;width:100%;height:52px;border-radius:var(--r);border:0;font:800 var(--fs-button)/20px Nunito,sans-serif;letter-spacing:.8px;text-transform:uppercase;cursor:pointer;transition:transform 80ms,box-shadow 80ms}
+.btn.primary{background:var(--liberty);color:var(--on-accent);box-shadow:0 4px 0 var(--liberty-lip)}
+.btn.danger{background:var(--red);color:var(--on-accent);box-shadow:0 4px 0 var(--red-lip)}
+.btn.ghost{background:var(--bg);color:var(--navy);border:2px solid var(--line);box-shadow:0 2px 0 var(--line);margin-top:var(--sp-3)}
+.btn:active,.btn.is-pressed{transform:translateY(4px);box-shadow:none}
+/* feedback */
+.sheet{margin:0 calc(-1*var(--sp-4)) calc(-1*var(--sp-4));padding:var(--sp-4) var(--sp-4) var(--sp-5);border-radius:var(--r) var(--r) 0 0}
+.sheet.wrong{background:var(--red-soft)}
+.sheet.right{background:var(--liberty-soft)}
+.sheet h2{margin:0 0 var(--sp-2);font-size:var(--fs-title);line-height:25px;font-weight:800;display:flex;gap:var(--sp-2);align-items:center}
+.sheet.wrong h2{color:var(--red)}.sheet.right h2{color:var(--liberty)}
+.sheet p{margin:0 0 var(--sp-1);color:var(--ink)}
+.sheet ul{margin:0 0 var(--sp-4);padding-left:20px;color:var(--ink)}
+.sheet small{display:block;color:var(--text-soft);font-size:var(--fs-small);line-height:18px;margin-bottom:var(--sp-4)}
+</style>
+</head>
+<body>
+<main class="app" id="app">
+  <div class="top">
+    <button class="icon-btn" aria-label="Leave the interview"><svg width="22" height="22" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="3" stroke-linecap="round"><path d="M5 5l14 14M19 5L5 19"/></svg></button>
+    <div class="bar" role="progressbar" aria-valuenow="8" aria-valuemax="20" style="--p:40%"><i></i></div>
+    <div class="tally" aria-label="7 right, 1 wrong"><b class="ok">✓ 7</b><b class="no">✕ 1</b></div>
+  </div>
+
+  <div class="chips"><span class="chip">Mock interview · 9 of 20</span><span class="chip gold">★ On the 65/20 list</span></div>
+  <h1>The officer asks:</h1>
+
+  <div class="officer">
+    <svg class="badge" viewBox="0 0 64 64" aria-hidden="true">
+      <circle cx="32" cy="32" r="30" fill="var(--liberty-soft)"/>
+      <rect x="14" y="44" width="36" height="5" rx="2" fill="var(--ink)"/>
+      <rect x="18" y="31" width="28" height="13" rx="2" fill="#fff" stroke="var(--ink)" stroke-width="2.5"/>
+      <path d="M21 31v13M27 31v13M37 31v13M43 31v13" stroke="var(--ink)" stroke-width="2"/>
+      <path d="M20 31c0-8 5-13 12-13s12 5 12 13z" fill="#fff" stroke="var(--ink)" stroke-width="2.5"/>
+      <rect x="30.5" y="9" width="3" height="9" rx="1.5" fill="var(--ink)"/>
+      <circle cx="32" cy="9" r="2.5" fill="var(--gold)"/>
+    </svg>
+    <div class="bubble">
+      <div class="q-row">
+        <p class="q">What is the supreme law of the land?</p>
+        <button class="speak" aria-label="Hear the question"><svg width="22" height="22" viewBox="0 0 24 24" fill="currentColor"><path d="M4 9v6h4l5 4V5L8 9z"/><path d="M16 8.5a5 5 0 010 7M18.5 6a8.5 8.5 0 010 12" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round"/></svg></button>
+      </div>
+      <button class="es-toggle" aria-expanded="true">Español ▴</button>
+      <p class="es">¿Cuál es la ley suprema de la nación?</p>
+    </div>
+  </div>
+
+  <div class="field">
+    <input id="answer" type="text" placeholder="Say or type your answer" value="" aria-label="Your answer">
+    <button class="mic" aria-label="Answer out loud"><svg width="22" height="22" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.4" stroke-linecap="round"><rect x="9" y="3" width="6" height="11" rx="3" fill="currentColor"/><path d="M5.5 11a6.5 6.5 0 0013 0M12 17.5V21"/></svg></button>
+  </div>
+  <p class="hint">Answer out loud, like at your interview. 12 right passes; 9 wrong ends it.</p>
+
+  <div class="spacer"></div>
+  <div id="actions">
+    <button class="btn primary">Check</button>
+    <button class="btn ghost">I don't know</button>
+  </div>
+</main>
+<script>
+// Preview states for screenshots: ?state=ask | right | wrong
+const st=new URLSearchParams(location.search).get('state')||'ask';
+const a=document.getElementById('actions'),inp=document.getElementById('answer');
+if(st==='right'){inp.value='The Constitution';a.className='sheet right';a.innerHTML='<h2>✓ Right!</h2><p>Accepted: (U.S.) Constitution</p><small>Words in parentheses are optional.</small><button class="btn primary">Next question</button>';}
+if(st==='wrong'){inp.value='The Bill of Rights';a.className='sheet wrong';a.innerHTML='<h2>✕ Not this time</h2><p>The officer will accept:</p><ul><li>(U.S.) Constitution</li></ul><small>The Bill of Rights is part of it: the first ten amendments.</small><button class="btn danger">Got it</button>';}
+document.querySelectorAll('.btn').forEach(b=>b.addEventListener('pointerdown',()=>{b.classList.add('is-pressed');setTimeout(()=>b.classList.remove('is-pressed'),260)}));
+</script>
+</body>
+</html>
