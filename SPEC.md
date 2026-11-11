@@ -109,7 +109,7 @@ TO FILL: Jose to confirm.
 ## Budget
 
 $0 in new purchases, no template (Jose, 2026-11-11). Google Fonts, public-domain or
-CC0 art, and pictures made with the Runway credits Jose already has (60 used so far;
+CC0 art, and pictures made with the Runway credits Jose already has (120 used so far;
 CREDITS.md).
 
 ## Hosting
@@ -138,6 +138,8 @@ Each phase is one pull request, one or two sessions.
     "Golden hour on the Mall" with more detail. DESIGN.md and the sample redrawn.
   - [x] Jose asked for 3D images and richer detail: the Mall (day and night) and an
     eagle officer rendered as 3D pictures, in the sample.
+  - [x] Jose asked for it to look like the real Washington, D.C.: the scenes are now
+    the true view from the Lincoln Memorial, day and night.
   - [ ] Jose OKs the sample (or asks for changes).
 - [ ] 3. App shell, state picker, Study cards with read-aloud, Drill with spaced
   repetition and "I guessed". Home Screen install and offline.

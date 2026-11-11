@@ -1,7 +1,7 @@
 # Design: Citizenship study app
 
-> Golden hour on the National Mall. A 3D-rendered miniature of the Mall (Lincoln
-> Memorial, Washington Monument, Capitol, reflecting pool) sits behind a warm cream page; the
+> Golden hour on the National Mall. The real view of Washington, D.C. from the Lincoln
+> Memorial (Reflecting Pool, Washington Monument, Capitol dome, the flag), 3D-rendered, sits behind a warm cream page; the
 > question is set in an elegant serif on a soft white card; everything you press is
 > bold, rounded and has a solid lip (the Duolingo lesson, `docs/design/duolingo.com.md`).
 > Dark mode is the same Mall at night, monuments floodlit.
@@ -41,7 +41,7 @@ One loud action per screen; red appears only when something is wrong.
 
 ### The art (3D-rendered pictures)
 
-Jose asked for 3D images with rich detail (2026-11-11). The scenes are rendered once and
+Jose asked for 3D images with rich detail, true to the real Washington, D.C. (2026-11-11). The scenes are rendered once and
 saved as pictures, so they cost a phone nothing: `assets/images/mall-day.webp` (light)
 and `mall-night.webp` (dark), each fading into `--page` at the bottom, and the eagle
 officer `eagle-officer.webp`. Style, prompts and sizes: `docs/design/art-prompts.md`.
