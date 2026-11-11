@@ -1,0 +1,40 @@
+[
+  {"id": "hook", "head": ["", ""], "lines": [
+    "The citizenship interview. A hundred and twenty-eight civics questions.",
+    "The officer asks up to twenty. Get twelve right, and you pass."]},
+  {"id": "title", "head": ["", ""], "lines": [
+    "This is Citizenship Study. Here's how to use it."]},
+  {"id": "ios", "head": ["On iPhone,", "Add to Home Screen."], "lines": [
+    "First, put it on your Home Screen. On iPhone, open the page in Safari.",
+    "Tap Share, then Add to Home Screen."]},
+  {"id": "android", "head": ["On Android,", "Install the App."], "lines": [
+    "On Android, open it in Chrome. Tap the three dots, then Add to Home screen, or Install app."]},
+  {"id": "icon", "head": ["Then Always", "Open It From Here."], "lines": [
+    "From then on, open it from its icon. It works without internet."]},
+  {"id": "state", "head": ["Pick Your State.", "Get Your Answers."], "lines": [
+    "Pick your state. Your senators, your governor and your state capital fill in.",
+    "Then type in your representative."]},
+  {"id": "study", "head": ["Study Cards.", "Learn the Answers."], "lines": [
+    "Study cards teach you the answers. Pick a part, and tap the speaker to hear the question.",
+    "Tap Show answers to see every answer the officer accepts.",
+    "Tap Español for help in Spanish. The interview itself is in English."]},
+  {"id": "drill", "head": ["Drill.", "Practice Every Day."], "lines": [
+    "Drill is your daily practice. Say the answer out loud, then tap Show answers.",
+    "Be honest: I knew it, I guessed, or I missed it.",
+    "Guessed or missed, the question comes back sooner. Knew it, and it waits longer each time."]},
+  {"id": "mock", "head": ["Mock Interview.", "Like the Real Day."], "lines": [
+    "The mock interview is like the real day. The officer reads each question out loud.",
+    "Answer with the microphone, or type. Then tap Check my answer.",
+    "It stops at twelve right, or nine wrong, just like the real interview."]},
+  {"id": "list", "head": ["65 or Older?", "The 65/20 List."], "lines": [
+    "Sixty-five or older, with twenty years as a permanent resident? Tap the 65/20 list, and study only the twenty questions with a star."]},
+  {"id": "goal", "head": ["Ten a Day.", "Light Up the Mall."], "lines": [
+    "Your goal is ten questions a day. One missed day a week is a rest day.",
+    "On the National Mall, each landmark gets brighter as you learn its questions.",
+    "It turns gold when you knew them all on two different days."]},
+  {"id": "backup", "head": ["Keep It Safe.", "Save a Backup."], "lines": [
+    "Your progress is saved only on this phone. Tap Backup, save the file, and send it to yourself."]},
+  {"id": "outro", "head": ["", ""], "lines": [
+    "This app is not made by USCIS. Check the names of officials at uscis.gov before your interview.",
+    "Add it to your Home Screen, and study a little every day. Good luck!"]}
+]

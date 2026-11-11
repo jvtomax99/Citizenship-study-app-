@@ -52,7 +52,7 @@ nothing to install. GitHub Pages serves the folder as it is.
     it, `unpack` reads one and keeps only the fields it knows (a file from another phone
     is not trusted), `summary` gives the numbers shown before a load.
   - `more.js` the Backup screen (`#/backup`: Share menu, download or copy as text; load
-    from a file or pasted text, compare, replace, undo) and the guide (`#/guide`, text in
+    from a file or pasted text, compare, replace, undo) and the guide (`#/guide`: the how-to video, `VIDEO`, then the text in
     `data/guide.json`, fetched when first opened).
   - `ui.js` shared pieces (scene, top bar, question card, answers panel, eagle header,
     section rows, the Español switch).
@@ -67,6 +67,10 @@ nothing to install. GitHub Pages serves the folder as it is.
   `assets/icons/` the app icon, cut from the eagle picture.
 - `assets/images/` The 3D-rendered pictures (the Mall by day and night, the eagle officer;
   `landmarks/` the eight Mall landmarks, each 720 px wide plus a 108 px `-s` square for Home). `CREDITS.md` lists every asset; `docs/design/art-prompts.md` says how they were made.
+- `media/` The how-to video (`how-to-use-en.mp4`, later `-es.mp4`) and its first picture.
+  Played on the guide screen; not saved for offline use (`sw.js` lets `.mp4` pass).
+- `promo/` How the video is made, in code (Remotion): `README.md` there has the steps,
+  `SCRIPT.md` the words in both languages. Not part of the app; has its own `package.json`.
 - `docs/design/` Taste studies of sites Jose picked (`duolingo.com.md`).
 - `docs/` Rules (design, assets, cleanup, refactor) and this file.
 

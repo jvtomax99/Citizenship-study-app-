@@ -1,0 +1,7 @@
+node_modules
+out
+# made again by tools/capture.cjs, voice.py and sfx.py (see README.md)
+public/shots
+public/voice
+public/sfx
+public/music.mp3

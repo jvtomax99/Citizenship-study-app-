@@ -2,7 +2,7 @@ Drafted 2026-11-11 from Jose's answers. Gaps marked TO FILL for Jose.
 
 # SPEC: Citizenship study app
 
-Working name TO FILL (Jose picks; the CPA app is "Above the Line").
+Name: Citizenship Study (Jose, 2026-11-11: the name on the icon stays).
 
 ## What it is
 
@@ -118,6 +118,17 @@ read through a search extract:
    tap away (Jose, 2026-11-11).
    - Done when: a person can read how to install, study and back up, in both languages.
 
+10. **How-to video.** A narrated video of about 2 minutes, once in English and once in
+   Spanish, in the style of the CPA app's and the Interpreter Hub's (Jose, 2026-11-11;
+   moved up from "Later"). It plays on the guide screen ("Watch the guide" on Home) and
+   is also a file to send by WhatsApp. Made in code from screenshots of the real app
+   (`promo/`). The Spanish narration is recorded only after Jose has read its script.
+   - Done when: the video plays on a phone in both languages and walks through install,
+     the state, Study cards, Drill, the Mock interview, the 65/20 list, the goal and the
+     Mall, and Backup.
+   - Not in its first version: Spanish app screens (the app's buttons are English), a
+     real person's voice, saving the video for offline use (it needs internet).
+
 ## Not in v1
 
 TO FILL: Jose to confirm.
@@ -143,7 +154,7 @@ TO FILL: Jose to confirm.
   about the application).
 - More languages.
 - A mock interview in Spanish for 65/20 applicants (not needed now: Jose, 2026-11-11).
-- A how-to video like the CPA app's. A printable guide.
+- A printable guide.
 
 ## Open questions for Jose
 
@@ -211,3 +222,8 @@ Each phase is one pull request, one or two sessions.
   - [ ] Jose's "push" on the pull request into `main`; Jose turns on Pages (Settings,
     Pages, branch `main`, root) and makes `main` the default branch.
   - [ ] Live address checked: loads, installs, opens offline.
+- [ ] 7. How-to video in English and Spanish.
+  - [x] English video built 2026-11-11 (`media/how-to-use-en.mp4`), on the guide screen.
+  - [ ] Jose reads the Spanish script (`promo/SCRIPT.md`) and picks the Spanish voice
+    from the draft; then the Spanish video goes on the guide screen.
+  - [ ] Jose watches both on his phone.

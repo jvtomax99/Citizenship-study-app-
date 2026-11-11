@@ -11,6 +11,9 @@ Every asset: what it is, where it came from, its license, what it cost.
 | Fraunces, Nunito (fonts) | `assets/fonts/fraunces.woff2`, `fraunces-italic.woff2`, `nunito.woff2` | Google Fonts families, downloaded as web files from the Fontsource packages `@fontsource-variable/fraunces` and `@fontsource-variable/nunito` 5.3.0, 2026-11-11 | SIL Open Font License 1.1 (covers a public website) | Free |
 | App icon | `assets/icons/icon-*.png` | Cut from the eagle officer picture above | Same as the eagle officer | No extra credits |
 | The 128 questions | `sources/uscis-2025-civics-128.pdf` | USCIS, form M-1778 (09/25) | U.S. government work, public domain | Free |
+| How-to video: narration | `media/how-to-use-*.mp4` | Kokoro-82M text to speech, run offline (voices `am_michael`, `ef_dora`), 2026-11-11 | Apache 2.0 | Free |
+| How-to video: music and sound effects | same | Synthesized by `promo/tools/music.py` and `sfx.py`; nothing sampled | Made here | Free |
+| How-to video: made with Remotion 4 | `promo/` | remotion.dev | Free for individuals and companies of up to three people | Free |
 
 Runway credits spent on art so far: 320 (sixteen pictures; eleven are in use, five were
 trials). The prompts used for the pictures are in `docs/design/art-prompts.md`.
