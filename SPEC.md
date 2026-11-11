@@ -130,7 +130,7 @@ Each phase is one pull request, one or two sessions.
   - [ ] Jose reads the Spanish (`checked` stays false until then).
   - [ ] Federal names confirmed on uscis.gov/citizenship/testupdates; senators and
     governors filled (see Open questions).
-- [ ] 2. Look: DESIGN.md per `docs/design-rules.md`, from Duolingo's feel (Jose's
+- [x] 2. Look (Jose OK'd it on 2026-11-11): DESIGN.md per `docs/design-rules.md`, from Duolingo's feel (Jose's
   pick, 2026-11-11; no template, $0), one sample screen for Jose's OK.
   - [x] Taste study of duolingo.com (`docs/design/`), DESIGN.md draft, sample screen
     `preview/sample-drill.html` (2026-11-11).
@@ -140,7 +140,7 @@ Each phase is one pull request, one or two sessions.
     eagle officer rendered as 3D pictures, in the sample.
   - [x] Jose asked for it to look like the real Washington, D.C.: the scenes are now
     the true view from the Lincoln Memorial, day and night.
-  - [ ] Jose OKs the sample (or asks for changes).
+  - [x] Jose OK'd the sample: "Good, build with it".
 - [ ] 3. App shell, state picker, Study cards with read-aloud, Drill with spaced
   repetition and "I guessed". Home Screen install and offline.
 - [ ] 4. Mock interview with voice, the 12/9 rule and 65/20 mode.

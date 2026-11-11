@@ -6,7 +6,7 @@
 > bold, rounded and has a solid lip (the Duolingo lesson, `docs/design/duolingo.com.md`).
 > Dark mode is the same Mall at night, monuments floodlit.
 > Jose picked this direction ("A") on 2026-11-11 and asked for more detail. Sample:
-> `preview/sample-drill.html` (`?state=ask|right|wrong`). Draft until he OKs the sample.
+> `preview/sample-drill.html` (`?state=ask|right|wrong`). He OK'd the sample the same day ("build with it"); this file is the rule for every screen.
 
 Every value is a CSS variable on `:root` in the sample; change it here and there
 together. Phone first (390px), one column, content max 560px.
