@@ -1,0 +1,149 @@
+{
+  "about": "The short user guide (js/more.js, #/guide). English, with Spanish help under the Español switch. checked turns true once Jose has read the Spanish.",
+  "checked": false,
+  "items": [
+    {
+      "id": "install",
+      "t": "Put the app on your Home Screen",
+      "p": [
+        "iPhone: open this page in Safari, tap the Share button (the square with an arrow), then “Add to Home Screen”.",
+        "Android: open this page in Chrome, tap the three dots, then “Add to Home screen” or “Install app”.",
+        "After that, open the app from its icon. It works without internet."
+      ],
+      "es": {
+        "t": "Ponga la app en su pantalla de inicio",
+        "p": [
+          "iPhone: abra esta página en Safari, toque el botón Compartir (el cuadrado con una flecha) y luego “Agregar a inicio”.",
+          "Android: abra esta página en Chrome, toque los tres puntos y luego “Agregar a la pantalla principal” o “Instalar app”.",
+          "Después, abra la app desde su ícono. Funciona sin internet."
+        ]
+      }
+    },
+    {
+      "id": "state",
+      "t": "Pick your state",
+      "p": [
+        "Some answers depend on where you live: your senators, your governor and your state capital. Tap the state name at the top of the first screen to pick or change it.",
+        "If a name is missing, you can type it in. Your representative is always typed in."
+      ],
+      "es": {
+        "t": "Elija su estado",
+        "p": [
+          "Algunas respuestas dependen de dónde vive: sus senadores, su gobernador y la capital de su estado. Toque el nombre del estado en la parte de arriba de la primera pantalla para elegirlo o cambiarlo.",
+          "Si falta un nombre, puede escribirlo. El nombre de su representante siempre se escribe."
+        ]
+      }
+    },
+    {
+      "id": "study",
+      "t": "Study cards: learn the answers",
+      "p": [
+        "Tap “Study cards” and pick a part. Read the question, tap the speaker to hear it, then tap “Show answers”.",
+        "Tap “Español” to see the question and the answers in Spanish. The Spanish is only for help: the interview is in English."
+      ],
+      "es": {
+        "t": "Tarjetas de estudio: aprenda las respuestas",
+        "p": [
+          "Toque “Study cards” y elija una parte. Lea la pregunta, toque la bocina para escucharla y luego toque “Show answers”.",
+          "Toque “Español” para ver la pregunta y las respuestas en español. El español es solo una ayuda: la entrevista es en inglés."
+        ]
+      }
+    },
+    {
+      "id": "drill",
+      "t": "Drill: practice every day",
+      "p": [
+        "Tap “Drill”. Say the answer out loud, tap “Show answers”, then be honest: “I knew it”, “I guessed” or “I missed it”.",
+        "A question you guessed or missed comes back sooner. A question you knew comes back after more days."
+      ],
+      "es": {
+        "t": "Práctica (Drill): practique todos los días",
+        "p": [
+          "Toque “Drill”. Diga la respuesta en voz alta, toque “Show answers” y luego sea sincero: “I knew it” (la sabía), “I guessed” (adiviné) o “I missed it” (no la sabía).",
+          "Una pregunta que adivinó o no supo vuelve más pronto. Una pregunta que sabía vuelve después de más días."
+        ]
+      }
+    },
+    {
+      "id": "mock",
+      "t": "Mock interview: practice like the real day",
+      "p": [
+        "The officer reads each question out loud, in English. Answer with the microphone or by typing, then tap “Check my answer”.",
+        "The app checks your answer. If it is not sure, it shows the accepted answers and you decide. It stops at 12 right answers (you pass) or 9 wrong, like the real interview. On the 65/20 list it stops at 6 right or 5 wrong.",
+        "On some phones the microphone does not work. You can always type."
+      ],
+      "es": {
+        "t": "Entrevista de práctica: como el día de verdad",
+        "p": [
+          "El oficial lee cada pregunta en voz alta, en inglés. Responda con el micrófono o escribiendo y luego toque “Check my answer”.",
+          "La app revisa su respuesta. Si no está segura, le muestra las respuestas aceptadas y usted decide. Se detiene con 12 respuestas correctas (usted aprueba) o 9 incorrectas, como la entrevista de verdad. En la lista 65/20 se detiene con 6 correctas o 5 incorrectas.",
+          "En algunos teléfonos el micrófono no funciona. Siempre puede escribir."
+        ]
+      }
+    },
+    {
+      "id": "6520",
+      "t": "The 65/20 list",
+      "p": [
+        "If you are 65 or older and have been a permanent resident for 20 years or more, you study only the 20 questions marked with a star. Tap “★ 65/20 list (20)” on the first screen.",
+        "Ask your lawyer or USCIS if you are not sure this applies to you."
+      ],
+      "es": {
+        "t": "La lista 65/20",
+        "p": [
+          "Si tiene 65 años o más y ha sido residente permanente por 20 años o más, estudia solo las 20 preguntas marcadas con una estrella. Toque “★ 65/20 list (20)” en la primera pantalla.",
+          "Pregunte a su abogado o a USCIS si no está seguro de que esto se aplique a usted."
+        ]
+      }
+    },
+    {
+      "id": "goal",
+      "t": "Your daily goal and the National Mall",
+      "p": [
+        "Your goal is 10 questions a day. You can change it to 5 or 20. Each day you reach it adds to your days in a row. One missed day a week is a rest day and does not break them.",
+        "Each landmark on the Mall gets brighter as you know its questions. It turns gold when you knew them all on two different days."
+      ],
+      "es": {
+        "t": "Su meta diaria y el National Mall",
+        "p": [
+          "Su meta es de 10 preguntas al día. Puede cambiarla a 5 o a 20. Cada día que la cumple se suma a sus días seguidos. Un día sin estudiar por semana es un día de descanso y no los interrumpe.",
+          "Cada monumento del Mall se ilumina más a medida que usted sabe sus preguntas. Se vuelve dorado cuando las supo todas en dos días distintos."
+        ]
+      }
+    },
+    {
+      "id": "backup",
+      "t": "Keep your progress safe: the backup",
+      "p": [
+        "Your progress is saved only on this phone. The app opened in Safari or Chrome and the app opened from the Home Screen icon keep separate progress.",
+        "To move your progress to another phone, or just to keep a copy: tap “Backup”, then “Save a backup”. Send the file to yourself by WhatsApp or email. On the other phone, open the app, tap “Backup”, then “Load a backup” and pick the file.",
+        "Cannot find the file on the other phone? Use “Copy the backup as text” here and “Paste a backup as text” there.",
+        "Loading a backup replaces the progress on that phone. You can undo it."
+      ],
+      "es": {
+        "t": "Proteja su progreso: la copia de seguridad",
+        "p": [
+          "Su progreso se guarda solo en este teléfono. La app abierta en Safari o Chrome y la app abierta desde el ícono de la pantalla de inicio guardan su progreso por separado.",
+          "Para pasar su progreso a otro teléfono, o solo para tener una copia: toque “Backup” y luego “Save a backup”. Envíese el archivo por WhatsApp o por correo. En el otro teléfono, abra la app, toque “Backup”, luego “Load a backup” y elija el archivo.",
+          "¿No encuentra el archivo en el otro teléfono? Use “Copy the backup as text” aquí y “Paste a backup as text” allá.",
+          "Cargar una copia reemplaza el progreso de ese teléfono. Puede deshacerlo."
+        ]
+      }
+    },
+    {
+      "id": "about",
+      "t": "About this app",
+      "p": [
+        "The questions and answers are copied word for word from USCIS (form M-1778, 09/25), for people who filed form N-400 on or after October 20, 2025.",
+        "This app is not made by USCIS and is not legal advice. Names of officials change: always check them at uscis.gov before your interview."
+      ],
+      "es": {
+        "t": "Sobre esta app",
+        "p": [
+          "Las preguntas y respuestas están copiadas palabra por palabra de USCIS (formulario M-1778, 09/25), para quienes presentaron el formulario N-400 el 20 de octubre de 2025 o después.",
+          "Esta app no es de USCIS y no es asesoría legal. Los nombres de los funcionarios cambian: revíselos siempre en uscis.gov antes de su entrevista."
+        ]
+      }
+    }
+  ]
+}

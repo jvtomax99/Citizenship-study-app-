@@ -1,0 +1,556 @@
+{
+ "about": "Answers that depend on where you live (23, 29, 61, 62) or on who holds an office now (30, 38, 39, 57). Values: a name or list = filled; null = not filled yet; \"none\" = the office does not exist there. Each person, once filled, is {name, confirmed, source, recheck?}: confirmed is the date someone actually checked the name at the source. The app shows that date.",
+ "federal": {
+  "30": {
+   "office": "Speaker of the House of Representatives",
+   "name": "Mike Johnson",
+   "source": "https://www.uscis.gov/citizenship/testupdates",
+   "confirmed": "2026-11-11",
+   "sourceReviewed": "2025-09-18",
+   "also": [
+    "Johnson",
+    "James Michael Johnson (birth name)"
+   ]
+  },
+  "38": {
+   "office": "President of the United States",
+   "name": "Donald J. Trump",
+   "source": "https://www.uscis.gov/citizenship/testupdates",
+   "confirmed": "2026-11-11",
+   "sourceReviewed": "2025-09-18",
+   "also": [
+    "Donald Trump",
+    "Trump"
+   ]
+  },
+  "39": {
+   "office": "Vice President of the United States",
+   "name": "JD Vance",
+   "source": "https://www.uscis.gov/citizenship/testupdates",
+   "confirmed": "2026-11-11",
+   "sourceReviewed": "2025-09-18",
+   "also": [
+    "Vance"
+   ]
+  },
+  "57": {
+   "office": "Chief Justice of the United States",
+   "name": "John G. Roberts, Jr.",
+   "source": "https://www.uscis.gov/citizenship/testupdates",
+   "confirmed": "2026-11-11",
+   "sourceReviewed": "2025-09-18",
+   "also": [
+    "John Roberts",
+    "Roberts"
+   ]
+  }
+ },
+ "federalNote": "confirmed 2026-11-11: Jose opened uscis.gov/citizenship/testupdates on his phone and sent a screenshot; the four names match. also = the other forms of the name that page lists as accepted. sourceReviewed is the page's own 'last reviewed' date as seen earlier in a search extract. Recheck after the new Congress sits on January 3, 2027: the House elects its Speaker then.",
+ "statesNote": "Capitals are fixed. Senators and governors are null until filled from senate.gov and each state's or territory's own site, each with its confirmed date. Until then the app asks the user to type their own. Question 29 (your representative) is always typed or picked by the user, since it depends on the district.",
+ "places": [
+  {
+   "code": "AL",
+   "name": "Alabama",
+   "type": "state",
+   "capital": "Montgomery",
+   "senators": [],
+   "governor": null
+  },
+  {
+   "code": "AK",
+   "name": "Alaska",
+   "type": "state",
+   "capital": "Juneau",
+   "senators": [],
+   "governor": null
+  },
+  {
+   "code": "AZ",
+   "name": "Arizona",
+   "type": "state",
+   "capital": "Phoenix",
+   "senators": [],
+   "governor": null
+  },
+  {
+   "code": "AR",
+   "name": "Arkansas",
+   "type": "state",
+   "capital": "Little Rock",
+   "senators": [],
+   "governor": null
+  },
+  {
+   "code": "CA",
+   "name": "California",
+   "type": "state",
+   "capital": "Sacramento",
+   "senators": [],
+   "governor": null
+  },
+  {
+   "code": "CO",
+   "name": "Colorado",
+   "type": "state",
+   "capital": "Denver",
+   "senators": [],
+   "governor": null
+  },
+  {
+   "code": "CT",
+   "name": "Connecticut",
+   "type": "state",
+   "capital": "Hartford",
+   "senators": [],
+   "governor": null
+  },
+  {
+   "code": "DE",
+   "name": "Delaware",
+   "type": "state",
+   "capital": "Dover",
+   "senators": [],
+   "governor": null
+  },
+  {
+   "code": "FL",
+   "name": "Florida",
+   "type": "state",
+   "capital": "Tallahassee",
+   "senators": [],
+   "governor": null
+  },
+  {
+   "code": "GA",
+   "name": "Georgia",
+   "type": "state",
+   "capital": "Atlanta",
+   "senators": [],
+   "governor": null
+  },
+  {
+   "code": "HI",
+   "name": "Hawaii",
+   "type": "state",
+   "capital": "Honolulu",
+   "senators": [],
+   "governor": null
+  },
+  {
+   "code": "ID",
+   "name": "Idaho",
+   "type": "state",
+   "capital": "Boise",
+   "senators": [],
+   "governor": null
+  },
+  {
+   "code": "IL",
+   "name": "Illinois",
+   "type": "state",
+   "capital": "Springfield",
+   "senators": [],
+   "governor": null
+  },
+  {
+   "code": "IN",
+   "name": "Indiana",
+   "type": "state",
+   "capital": "Indianapolis",
+   "senators": [],
+   "governor": null
+  },
+  {
+   "code": "IA",
+   "name": "Iowa",
+   "type": "state",
+   "capital": "Des Moines",
+   "senators": [],
+   "governor": null
+  },
+  {
+   "code": "KS",
+   "name": "Kansas",
+   "type": "state",
+   "capital": "Topeka",
+   "senators": [],
+   "governor": null
+  },
+  {
+   "code": "KY",
+   "name": "Kentucky",
+   "type": "state",
+   "capital": "Frankfort",
+   "senators": [],
+   "governor": null
+  },
+  {
+   "code": "LA",
+   "name": "Louisiana",
+   "type": "state",
+   "capital": "Baton Rouge",
+   "senators": [],
+   "governor": null
+  },
+  {
+   "code": "ME",
+   "name": "Maine",
+   "type": "state",
+   "capital": "Augusta",
+   "senators": [],
+   "governor": null
+  },
+  {
+   "code": "MD",
+   "name": "Maryland",
+   "type": "state",
+   "capital": "Annapolis",
+   "senators": [],
+   "governor": null
+  },
+  {
+   "code": "MA",
+   "name": "Massachusetts",
+   "type": "state",
+   "capital": "Boston",
+   "senators": [],
+   "governor": null
+  },
+  {
+   "code": "MI",
+   "name": "Michigan",
+   "type": "state",
+   "capital": "Lansing",
+   "senators": [],
+   "governor": null
+  },
+  {
+   "code": "MN",
+   "name": "Minnesota",
+   "type": "state",
+   "capital": "Saint Paul",
+   "senators": [],
+   "governor": null
+  },
+  {
+   "code": "MS",
+   "name": "Mississippi",
+   "type": "state",
+   "capital": "Jackson",
+   "senators": [],
+   "governor": null
+  },
+  {
+   "code": "MO",
+   "name": "Missouri",
+   "type": "state",
+   "capital": "Jefferson City",
+   "senators": [],
+   "governor": null
+  },
+  {
+   "code": "MT",
+   "name": "Montana",
+   "type": "state",
+   "capital": "Helena",
+   "senators": [],
+   "governor": null
+  },
+  {
+   "code": "NE",
+   "name": "Nebraska",
+   "type": "state",
+   "capital": "Lincoln",
+   "senators": [],
+   "governor": null
+  },
+  {
+   "code": "NV",
+   "name": "Nevada",
+   "type": "state",
+   "capital": "Carson City",
+   "senators": [],
+   "governor": null
+  },
+  {
+   "code": "NH",
+   "name": "New Hampshire",
+   "type": "state",
+   "capital": "Concord",
+   "senators": [],
+   "governor": null
+  },
+  {
+   "code": "NJ",
+   "name": "New Jersey",
+   "type": "state",
+   "capital": "Trenton",
+   "senators": [
+    {
+     "name": "Cory A. Booker",
+     "confirmed": "2026-11-11",
+     "source": "https://www.senate.gov/general/contact_information/senators_cfm.xml",
+     "recheck": "2027-01-03: this seat (Class II) was on the November 3, 2026 ballot; the term ends January 3, 2027."
+    },
+    {
+     "name": "Andy Kim",
+     "confirmed": "2026-11-11",
+     "source": "https://www.senate.gov/general/contact_information/senators_cfm.xml"
+    }
+   ],
+   "governor": {
+    "name": "Mikie Sherrill",
+    "confirmed": "2026-11-11",
+    "source": "https://www.nj.gov/governor/"
+   }
+  },
+  {
+   "code": "NM",
+   "name": "New Mexico",
+   "type": "state",
+   "capital": "Santa Fe",
+   "senators": [],
+   "governor": null
+  },
+  {
+   "code": "NY",
+   "name": "New York",
+   "type": "state",
+   "capital": "Albany",
+   "senators": [
+    {
+     "name": "Kirsten E. Gillibrand",
+     "confirmed": "2026-11-11",
+     "source": "https://www.senate.gov/general/contact_information/senators_cfm.xml"
+    },
+    {
+     "name": "Charles E. Schumer",
+     "confirmed": "2026-11-11",
+     "source": "https://www.senate.gov/general/contact_information/senators_cfm.xml"
+    }
+   ],
+   "governor": {
+    "name": "Kathy Hochul",
+    "confirmed": "2026-11-11",
+    "source": "https://www.governor.ny.gov/",
+    "recheck": "2027-01-01: the governor's office was on the November 3, 2026 ballot; the new term starts January 1, 2027."
+   }
+  },
+  {
+   "code": "NC",
+   "name": "North Carolina",
+   "type": "state",
+   "capital": "Raleigh",
+   "senators": [],
+   "governor": null
+  },
+  {
+   "code": "ND",
+   "name": "North Dakota",
+   "type": "state",
+   "capital": "Bismarck",
+   "senators": [],
+   "governor": null
+  },
+  {
+   "code": "OH",
+   "name": "Ohio",
+   "type": "state",
+   "capital": "Columbus",
+   "senators": [],
+   "governor": null
+  },
+  {
+   "code": "OK",
+   "name": "Oklahoma",
+   "type": "state",
+   "capital": "Oklahoma City",
+   "senators": [],
+   "governor": null
+  },
+  {
+   "code": "OR",
+   "name": "Oregon",
+   "type": "state",
+   "capital": "Salem",
+   "senators": [],
+   "governor": null
+  },
+  {
+   "code": "PA",
+   "name": "Pennsylvania",
+   "type": "state",
+   "capital": "Harrisburg",
+   "senators": [],
+   "governor": null
+  },
+  {
+   "code": "RI",
+   "name": "Rhode Island",
+   "type": "state",
+   "capital": "Providence",
+   "senators": [],
+   "governor": null
+  },
+  {
+   "code": "SC",
+   "name": "South Carolina",
+   "type": "state",
+   "capital": "Columbia",
+   "senators": [],
+   "governor": null
+  },
+  {
+   "code": "SD",
+   "name": "South Dakota",
+   "type": "state",
+   "capital": "Pierre",
+   "senators": [],
+   "governor": null
+  },
+  {
+   "code": "TN",
+   "name": "Tennessee",
+   "type": "state",
+   "capital": "Nashville",
+   "senators": [],
+   "governor": null
+  },
+  {
+   "code": "TX",
+   "name": "Texas",
+   "type": "state",
+   "capital": "Austin",
+   "senators": [],
+   "governor": null
+  },
+  {
+   "code": "UT",
+   "name": "Utah",
+   "type": "state",
+   "capital": "Salt Lake City",
+   "senators": [],
+   "governor": null
+  },
+  {
+   "code": "VT",
+   "name": "Vermont",
+   "type": "state",
+   "capital": "Montpelier",
+   "senators": [],
+   "governor": null
+  },
+  {
+   "code": "VA",
+   "name": "Virginia",
+   "type": "state",
+   "capital": "Richmond",
+   "senators": [],
+   "governor": null
+  },
+  {
+   "code": "WA",
+   "name": "Washington",
+   "type": "state",
+   "capital": "Olympia",
+   "senators": [],
+   "governor": null
+  },
+  {
+   "code": "WV",
+   "name": "West Virginia",
+   "type": "state",
+   "capital": "Charleston",
+   "senators": [],
+   "governor": null
+  },
+  {
+   "code": "WI",
+   "name": "Wisconsin",
+   "type": "state",
+   "capital": "Madison",
+   "senators": [],
+   "governor": null
+  },
+  {
+   "code": "WY",
+   "name": "Wyoming",
+   "type": "state",
+   "capital": "Cheyenne",
+   "senators": [],
+   "governor": null
+  },
+  {
+   "code": "DC",
+   "name": "District of Columbia",
+   "type": "district",
+   "capital": "none",
+   "senators": "none",
+   "governor": "none",
+   "answers": {
+    "23": "D.C. has no U.S. senators.",
+    "61": "D.C. does not have a governor.",
+    "62": "D.C. is not a state and does not have a capital."
+   }
+  },
+  {
+   "code": "PR",
+   "name": "Puerto Rico",
+   "type": "territory",
+   "capital": "San Juan",
+   "senators": "none",
+   "governor": null,
+   "answers": {
+    "23": "Puerto Rico has no U.S. senators."
+   }
+  },
+  {
+   "code": "GU",
+   "name": "Guam",
+   "type": "territory",
+   "capital": "Hagåtña",
+   "senators": "none",
+   "governor": null,
+   "answers": {
+    "23": "Guam has no U.S. senators."
+   },
+   "capitalAlso": [
+    "Agana",
+    "Hagatna"
+   ]
+  },
+  {
+   "code": "VI",
+   "name": "U.S. Virgin Islands",
+   "type": "territory",
+   "capital": "Charlotte Amalie",
+   "senators": "none",
+   "governor": null,
+   "answers": {
+    "23": "The U.S. Virgin Islands have no U.S. senators."
+   }
+  },
+  {
+   "code": "AS",
+   "name": "American Samoa",
+   "type": "territory",
+   "capital": "Pago Pago",
+   "senators": "none",
+   "governor": null,
+   "answers": {
+    "23": "American Samoa has no U.S. senators."
+   }
+  },
+  {
+   "code": "MP",
+   "name": "Northern Mariana Islands",
+   "type": "territory",
+   "capital": "Saipan",
+   "senators": "none",
+   "governor": null,
+   "answers": {
+    "23": "The Northern Mariana Islands have no U.S. senators."
+   }
+  }
+ ]
+}
