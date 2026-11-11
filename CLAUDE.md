@@ -8,8 +8,11 @@ A study app for the U.S. citizenship (naturalization) civics test, 2025 version
 ## This project: how the general rules apply here
 
 - **Real user:** family and friends Jose is helping (who: TO FILL in SPEC.md).
-- **Hosting:** GitHub Pages from `main` (Jose, 2026-11-11). Merging to `main` is
-  going live; the preview is Playwright screenshots (phone first) sent as files.
+- **Hosting:** GitHub Pages from `main` (Jose, 2026-11-11), at
+  https://jvtomax99.github.io/Citizenship-study-app-/ once Jose turns Pages on.
+  Merging to `main` is going live. The preview is the test link
+  https://citizenship-study-test.vercel.app (deploy the branch again after new work:
+  it does not update by itself) plus Playwright screenshots, phone first.
 - **The questions are copied, never written.** `data/questions.json` is built from
   the USCIS PDF in `sources/`; `python3 tools/questions_from_pdf.py` must say OK
   before any push. uscis.gov blocks automated downloads: ask Jose to upload files.
@@ -18,7 +21,13 @@ A study app for the U.S. citizenship (naturalization) civics test, 2025 version
 - **Links and settings to paste go in one code block, all at once** (Jose,
   2026-11-11): every link or domain in a single block, one per line, never split
   into several blocks.
-- **No main branch yet.** The first pull request creates it once Jose OKs it.
+- **Default branch.** `main` exists since 2026-11-10 (rule files only until the first
+  release), but GitHub's default is still `claude/amazing-albattani-rqksw7` until Jose
+  switches it (Settings, Branches). Pull requests go into `main`.
+- **Site check:** not set up yet. Copy `.github/site-check.cjs` and
+  `.github/workflows/site-check.yml` from Lions-Roar- and list the pages there.
+- **A new file the app loads** goes in the `FILES` list in `sw.js`, and the cache name
+  there is bumped.
 
 - **Public repo, paid assets.** The repo is public (checked 2026-11-10), so paid raw files can't be committed (docs/assets.md, section 9) unless Jose makes it private.
 - **Taste skill.** Saved in `.claude/skills/taste/` (Senlin's, MIT; `SOURCE.md` there says where from). It asks for the Playwright MCP server; in a cloud session use the Playwright already installed instead (run its `references/extract.js` with `page.evaluate`).
