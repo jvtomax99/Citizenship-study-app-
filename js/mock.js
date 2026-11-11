@@ -22,6 +22,7 @@ let host = null;
 const STAR = '<path d="M12 2.6l2.8 6 6.5.8-4.8 4.5 1.3 6.5L12 17.2l-5.8 3.2 1.3-6.5L2.7 9.4l6.5-.8z"/>';
 const MIC = '<svg width="22" height="22" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.4" stroke-linecap="round" aria-hidden="true"><rect x="9" y="3" width="6" height="11" rx="3" fill="currentColor"/><path d="M5.5 11a6.5 6.5 0 0013 0M12 17.5V21"/></svg>';
 
+const NAMED = new Set([23, 29, 30, 38, 39, 57, 61]); // the answer is a person's name
 const get = () => store.get().mock;
 const save = (m) => store.set({ mock: m });
 const installedIos = () => typeof navigator !== 'undefined' && navigator.standalone === true;
@@ -36,7 +37,12 @@ function begin() {
 function answersFor(q) {
   const s = store.get();
   const { mine, ask } = personalAnswers(q, { place: s.place, typed: store.typedFor(s.place) });
-  return { mine: mine.map((m) => m.text), ask, accepted: q.answers.map((a) => a.text) };
+  return { mine: mine.map((m) => m.text), ask, accepted: q.answers.map((a) => a.text),
+    // for the checker: a personal question is checked against the person's answers only
+    // ("Answers will vary." is not an answer); up to four words is a name, more is a sentence
+    // such as "D.C. has no U.S. senators."
+    check: q.kind === 'fixed' ? { accepted: q.answers.map((a) => a.text), need: q.need }
+      : { mine: mine.map((m) => ({ text: m.text, name: NAMED.has(q.id) && m.text.trim().split(/\s+/).length <= 4 })) } };
 }
 
 function accepted(q) {
@@ -206,7 +212,7 @@ export function mock(root, _arg, rerender) {
     stopListening(); hearing = false; stopSpeaking();
     const said = input.value.trim();
     const a = answersFor(q);
-    const auto = said ? judge(said, { accepted: a.accepted, mine: a.mine, need: q.need }) : 'unsure';
+    const auto = said ? judge(said, a.check) : 'unsure';
     save({ ...m, open: { said, auto, verdict: auto === 'unsure' ? null : auto } });
     rerender();
   };
@@ -231,6 +237,8 @@ export function mock(root, _arg, rerender) {
     },
   }, () => q);
 
+  // the sheet and its buttons must be on screen without a scroll
+  if (m.open) root.querySelector('.sheet').scrollIntoView({ block: 'end' });
   if (!m.open && spoken !== q.id) { // the officer reads each new question once, by himself
     spoken = q.id;
     speak(q.question, root.querySelector('.speak'));

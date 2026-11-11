@@ -1,4 +1,4 @@
-// Taps through the app at phone size, checks the "Done when" lines of Step 3 and saves
+// Taps through the app at phone size, checks the "Done when" lines of Steps 3 and 4 and saves
 // screenshots. Run a local server first (python3 -m http.server 8123), then:
 //   node tools/shots.mjs [folder for the pictures] [http://localhost:8123/]
 import { createRequire } from 'node:module';
@@ -27,6 +27,9 @@ async function run(scheme) {
     window.__said = [];
     const real = window.speechSynthesis.speak.bind(window.speechSynthesis);
     window.speechSynthesis.speak = (u) => { window.__said.push({ text: u.text, lang: u.lang }); try { real(u); } catch {} };
+    // a pretend microphone: it "hears" whatever window.__hear says
+    class Hear { start() { setTimeout(() => { this.onresult({ results: [[{ transcript: window.__hear || '' }]] }); this.onend(); }, 150); } abort() { if (this.onend) this.onend(); } }
+    window.SpeechRecognition = Hear; window.webkitSpeechRecognition = Hear;
   });
 
   // 1. first visit lands on the state picker
@@ -149,7 +152,122 @@ async function run(scheme) {
   log(`${scheme}: drill round, miss and guess both came back, progress saved`);
   await shot('9-home-after-drill');
 
-  // 5. offline: with the network cut, the app still opens from the saved copy
+  // 5. mock interview: read aloud, voice, the check, the overrule, the 12 or 9 stop
+  const bank = (await (await fetch(base + 'data/questions.json')).json()).questions;
+  const byText = Object.fromEntries(bank.map((q) => [q.question, q]));
+  const tap = async (sel) => { await page.waitForTimeout(TAP); await page.click(sel); };
+  const rightAnswer = (q) => q.answers.slice(0, q.need).map((a) => a.text.replace(/\(\d+\)/g, ' ').replace(/[()]/g, ' ')).join(', ');
+  await tap('a[href="#/mock"]');
+  await page.waitForSelector('[data-act=fresh]');
+  assert.ok((await page.locator('.lead').innerText()).includes('up to 20 questions'));
+  await shot('10-mock-start');
+  await tap('[data-act=fresh]');
+  await page.waitForSelector('#answer');
+  let q = byText[await page.locator('.q').innerText()];
+  assert.equal((await page.evaluate(() => window.__said.at(-1))).text, q.question, 'the officer reads the question by himself');
+  assert.equal(await page.locator('.es-toggle').count(), 0, 'no Spanish during the interview');
+  await shot('11-mock-ask');
+  // question 1 by voice: the phone "hears" a wrong answer, the app says so, the person overrules it
+  await page.evaluate(() => { window.__hear = 'I think it is the banana'; });
+  await tap('[data-act=mic]');
+  await page.waitForFunction(() => document.querySelector('#answer').value === 'I think it is the banana');
+  await tap('[data-act=check]');
+  await page.waitForSelector(q.kind === 'fixed' ? '.sheet.wrong' : '.sheet');
+  if (await page.locator('[data-verdict]').count()) await tap('[data-verdict=wrong]');
+  await shot('12-mock-wrong');
+  await tap('[data-act=flip]');
+  await page.waitForSelector('.sheet.right');
+  assert.equal(await page.locator('.st.on').count(), 0, 'the star is earned when the answer is counted');
+  await shot('13-mock-overruled');
+  await tap('[data-act=next]');
+  assert.equal(await page.locator('.st.on').count(), 1);
+  // question 2: typed right, then "I was actually wrong"
+  let asked = 1;
+  const answerRight = async () => {
+    q = byText[await page.locator('.q').innerText()];
+    asked++;
+    if (q.kind === 'fixed') {
+      await page.fill('#answer', rightAnswer(q));
+      await tap('[data-act=check]');
+      await page.waitForSelector('.sheet.right', { timeout: 3000 }).catch(() => { throw new Error(`a word-for-word answer was not judged right: Q${q.id}`); });
+    } else {
+      await page.fill('#answer', 'Somebody Unknown');
+      await tap('[data-act=check]');
+      await page.waitForSelector('.sheet');
+      if (await page.locator('[data-verdict]').count()) {
+        await tap('[data-verdict=right]');
+      } else await tap('[data-act=flip]');
+      await page.waitForSelector('.sheet.right');
+    }
+  };
+  await answerRight();
+  await tap('[data-act=flip]');
+  await page.waitForSelector('.sheet.wrong');
+  await tap('[data-act=next]');
+  assert.ok((await page.locator('.road').innerText()).includes('1 of 9'));
+  // leave and come back: the interview is still there
+  await tap('a.x');
+  await page.waitForSelector('.hello');
+  assert.ok((await page.locator('a[href="#/mock"]').innerText()).toLowerCase().includes('continue the interview · 2 answered'));
+  await tap('a[href="#/mock"]');
+  await tap('[data-act=go]');
+  await page.waitForSelector('#answer');
+  // "I don't know" is a miss with nothing to overrule
+  await tap('[data-act=skip]');
+  await page.waitForSelector('.sheet.wrong');
+  assert.equal(await page.locator('[data-act=flip]').count(), 0);
+  await tap('[data-act=next]');
+  asked++;
+  // 11 more right answers: it stops at 12 right
+  for (let i = 0; i < 11; i++) {
+    await answerRight();
+    if (i === 3) await shot('14-mock-right');
+    if (i === 10) assert.equal(await page.locator('[data-act=next]').innerText(), 'SEE THE RESULT');
+    await tap('[data-act=next]');
+  }
+  await page.waitForSelector('.review');
+  assert.equal(await page.locator('.title').innerText(), 'You passed!');
+  assert.match((await page.locator('.score').innerText()).replace(/\s+/g, ' '), /12 right 2 wrong 12 to pass/);
+  assert.equal(await page.locator('.review details').count(), 14);
+  assert.equal(asked, 14);
+  await shot('15-mock-passed', true);
+  // 65/20: ten questions, six to pass; five misses end it
+  await tap('a.btn[href="#/"]');
+  await page.waitForSelector('.hello');
+  assert.ok((await page.locator('.hint.center').innerText()).includes('passed, 12 right and 2 wrong'));
+  assert.equal(await page.locator('a[href="#/mock"]').innerText(), 'MOCK INTERVIEW', 'a finished interview is not offered again');
+  await tap('[data-list="6520"]');
+  await tap('a[href="#/mock"]');
+  await page.waitForSelector('[data-act=fresh]');
+  assert.ok((await page.locator('.lead').innerText()).includes('up to 10 questions'));
+  await tap('[data-act=fresh]');
+  await page.waitForSelector('#answer');
+  assert.equal(await page.locator('.st').count(), 6);
+  assert.equal(await page.locator('.chip.star').count(), 1);
+  for (let i = 0; i < 5; i++) {
+    assert.equal(await page.locator('#answer').count(), 1, 'still asking');
+    if (i === 0) { // no answer typed: the app does not guess, the person compares and marks it
+      await tap('[data-act=check]');
+      await page.waitForSelector('.sheet.ask');
+      await shot('17-mock-6520-compare');
+      await tap('[data-verdict=wrong]');
+    } else await tap('[data-act=skip]');
+    await tap('[data-act=next]');
+  }
+  await page.waitForSelector('.review');
+  assert.equal(await page.locator('.title').innerText(), 'Not yet');
+  assert.match((await page.locator('.score').innerText()).replace(/\s+/g, ' '), /0 right 5 wrong 6 to pass/);
+  await shot('18-mock-not-yet', true);
+  const after = await page.evaluate(() => JSON.parse(localStorage['civics128.v1']));
+  assert.equal(after.mockHistory.length, 2);
+  assert.ok(Object.values(after.cards).filter((c) => c.last === 'missed').length >= 5, 'interview misses go to the drill');
+  await tap('a.btn[href="#/"]');
+  await page.waitForSelector('.hello');
+  await tap('[data-list="all"]');
+  await shot('19-home-after-interviews', true);
+  log(`${scheme}: mock interview passed at 12 right (voice, overrule both ways, leave and continue), 65/20 stopped at 5 misses`);
+
+  // 6. offline: with the network cut, the app still opens from the saved copy
   await page.evaluate(() => navigator.serviceWorker.ready);
   await page.waitForTimeout(800);
   await ctx.setOffline(true);
@@ -159,7 +277,7 @@ async function run(scheme) {
   await page.waitForSelector('.q');
   assert.ok(await page.evaluate(() => document.fonts.check('700 27px Fraunces')));
   log(`${scheme}: opens and shows a study card with the network off`);
-  await shot('10-offline-study');
+  await shot('20-offline-study');
   await ctx.setOffline(false);
 
   assert.deepEqual(errors, []);
