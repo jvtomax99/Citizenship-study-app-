@@ -19,6 +19,7 @@ export const isMiss = (result) => result !== 'knew';
 export function grade(card, result, today, { retry = false } = {}) {
   const prev = card || { box: 0, due: today, seen: 0 };
   const next = { ...prev, seen: prev.seen + 1, last: result };
+  if (!isMiss(result) && prev.seen && prev.due > today) return next; // asked early: the wait stays as it was
   if (isMiss(result)) {
     next.box = 0;
     next.due = today; // stays due until it is known

@@ -37,6 +37,13 @@ test('a miss, then knowing it later in the same round, still comes back tomorrow
   assert.equal(grade(again, 'knew', T + 1).due, T + 2);
 });
 
+test('practising early does not push a question further away', () => {
+  const c = { box: 1, due: T + 1, seen: 1, last: 'knew' };
+  const early = grade(c, 'knew', T);
+  assert.deepEqual({ box: early.box, due: early.due }, { box: 1, due: T + 1 });
+  assert.equal(grade(c, 'guessed', T).due, T); // but a miss still counts
+});
+
 test('round order: due missed, other due, new, then not yet due', () => {
   const cards = {
     1: { box: 2, due: T + 5, seen: 2, last: 'knew' },  // not due

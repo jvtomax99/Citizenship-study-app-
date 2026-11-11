@@ -50,7 +50,9 @@ const typed = (text, where) => ({ text, caption: `You typed this. Check it at ${
 //   mine: [{text, caption}]  names or sentences to say, with where they came from
 //   ask:  null | 'place' (no state picked yet) | 'typed' (a name still has to be typed)
 // The USCIS text (q.answers) is shown under these either way.
-export function personalAnswers(q, profile, todayIso = new Date().toISOString().slice(0, 10)) {
+const localIso = (d = new Date()) => new Date(d.getTime() - d.getTimezoneOffset() * 60000).toISOString().slice(0, 10);
+
+export function personalAnswers(q, profile, todayIso = localIso()) {
   if (q.kind === 'fixed') return { mine: [], ask: null };
 
   if (q.kind === 'current-official') {
@@ -75,7 +77,11 @@ export function personalAnswers(q, profile, todayIso = new Date().toISOString().
   }
   if (q.id === 29) {
     const n = t.rep.trim();
-    return n ? { mine: [typed(n, 'house.gov')], ask: null } : { mine: [], ask: 'typed' };
+    if (n) return { mine: [typed(n, 'house.gov')], ask: null };
+    // USCIS (the note on question 29): a territory resident may say this instead of a name.
+    if (place.type === 'territory') return { mine: [{ text: 'My territory has no voting representatives in Congress.',
+      caption: 'USCIS accepts a statement like this, or the name of your Delegate or Resident Commissioner.' }], ask: null };
+    return { mine: [], ask: 'typed' };
   }
   if (q.id === 61) {
     if (place.governor && place.governor.name) return { mine: [person(place.governor, todayIso)], ask: null };
@@ -83,7 +89,7 @@ export function personalAnswers(q, profile, todayIso = new Date().toISOString().
     const site = place.type === 'territory' ? "your territory's official website" : "your state's official website";
     return n ? { mine: [typed(n, site)], ask: null } : { mine: [], ask: 'typed' };
   }
-  if (q.id === 62) return { mine: [{ text: place.capital, caption: '' }], ask: null };
+  if (q.id === 62) return { mine: [{ text: place.capital, caption: place.capitalAlso ? `Also written ${place.capitalAlso.join(' or ')}.` : '' }], ask: null };
   return { mine: [], ask: null };
 }
 

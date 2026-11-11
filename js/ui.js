@@ -57,7 +57,7 @@ function officialList(q) {
   return `<ul class="alist">${q.answers.map((a, i) => {
     const gloss = es && es.glosses && es.glosses[i];
     return `<li><span>${esc(a.text)}</span>
-      ${es && es.a[i] ? `<i lang="es">${esc(es.a[i])}${gloss ? ` <span class="gloss" lang="en">(${esc(gloss)})</span>` : ''}</i>` : ''}
+      ${es && es.a[i] ? `<i lang="es">${esc(es.a[i])}${gloss ? ` <span class="gloss">(${esc(gloss)})</span>` : ''}</i>` : ''}
       ${a.note ? `<small>${esc(a.note)}</small>` : ''}
       ${a.note && es && es.notes && es.notes[i] ? `<small lang="es" class="es-note">${esc(es.notes[i])}</small>` : ''}
     </li>`;
@@ -85,15 +85,18 @@ export function answersPanel(q) {
   } else {
     head = `<h2 class="label">${q.answers.length > 1 ? 'The officer accepts any one of these' : 'The officer accepts'}</h2>`;
   }
-  return `<section class="answers" aria-live="polite">${head}${officialList(q)}
+  return `<section class="answers">${head}${officialList(q)}
     ${optional ? '<p class="hint">Words in parentheses are optional.</p>' : ''}</section>`;
 }
 
 // Buttons and links marked data-act="name" call handlers[name]. Returns nothing.
 export function wire(root, handlers, q) {
+  const drawn = performance.now();
   root.onclick = (e) => {
     const el = e.target.closest('[data-act]');
     if (!el || !root.contains(el)) return;
+    // a double tap must not press the button that just appeared under the finger
+    if (e.isTrusted && performance.now() - drawn < 300 && el.dataset.act !== 'speak') return;
     const act = el.dataset.act;
     if (act === 'speak' && q) return speak(q().question, el);
     if (handlers[act]) handlers[act](el, e);

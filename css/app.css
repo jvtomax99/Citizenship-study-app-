@@ -201,3 +201,8 @@ a.btn{display:grid;place-items:center;text-decoration:none}
 .score span{font-size:var(--fs-small);font-weight:800;color:var(--text-soft)}
 .score .good{background:var(--liberty-soft);border-color:transparent}
 .score .good b{color:var(--liberty-text)}
+
+/* small pills keep their look but get a 44px tap area */
+.es-toggle{position:relative}
+.es-toggle::after{content:"";position:absolute;inset:-8px -6px}
+.pill-link{height:44px}

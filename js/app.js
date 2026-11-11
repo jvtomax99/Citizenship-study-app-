@@ -4,7 +4,7 @@ import { loadData } from './data.js';
 import { store } from './store.js';
 import { stopSpeaking } from './speak.js';
 import { home } from './home.js';
-import { place } from './place.js';
+import { place, leavePlace } from './place.js';
 import { study, leaveStudy } from './study.js';
 import { drill, leaveDrill } from './drill.js';
 
@@ -15,12 +15,13 @@ function render() {
   const [name = '', arg = ''] = location.hash.replace(/^#\/?/, '').split('/');
   const s = store.get();
   if (!s.place && !s.skippedPlace && name !== 'place') { location.replace('#/place'); return; }
-  root.dataset.screen = name || 'home';
-  (screens[name] || home)(root, arg, render);
+  const screen = screens[name] || home;
+  root.dataset.screen = screen === home ? 'home' : name;
+  screen(root, arg, render);
 }
 
 window.addEventListener('hashchange', () => {
-  stopSpeaking(); leaveStudy(); leaveDrill();
+  stopSpeaking(); leaveStudy(); leaveDrill(); leavePlace();
   render();
   window.scrollTo(0, 0);
 });

@@ -48,13 +48,14 @@ export function study(root, key, rerender) {
     <div class="actions two">
       <button class="btn ghost" data-act="prev" ${i === 0 ? 'disabled' : ''} aria-label="Previous card">Back</button>
       ${shown
-        ? (i < ids.length - 1 ? '<button class="btn primary" data-act="next">Next</button>' : '<a class="btn primary" href="#/study">Done</a>')
+        ? (i < ids.length - 1 ? '<button class="btn primary" data-act="next">Next</button>' : '<button class="btn primary" data-act="done">Done</button>')
         : '<button class="btn primary" data-act="show">Show answers</button>'}
     </div>`);
 
   wire(root, {
     show: () => { shown = true; rerender(); },
     next: () => go(i + 1),
+    done: () => { at[slot] = 0; location.hash = '#/study'; },
     prev: () => go(i - 1),
     spanish: () => { store.set({ spanish: !store.get().spanish }); rerender(); },
   }, () => q);

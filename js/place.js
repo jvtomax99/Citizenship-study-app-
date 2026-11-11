@@ -50,7 +50,8 @@ function detailsView(root, rerender, place) {
   const need = needsTyping(place);
   const t = store.typedFor(place.code);
   const special = place.answers || {};
-  const territory = place.type !== 'state';
+  const territory = place.type === 'territory';
+  const district = place.type === 'district';
   const input = (id, label, value, hint) => `<label class="typed"><span>${label}</span>
     <input id="${id}" type="text" value="${esc(value)}" autocomplete="off" autocapitalize="words" spellcheck="false">${hint ? `<small>${hint}</small>` : ''}</label>`;
   const fact = (label, body) => `<div class="fact"><span class="who">${label}</span>${body}</div>`;
@@ -72,9 +73,10 @@ function detailsView(root, rerender, place) {
         : need.governor ? input('gov', 'Governor', t.governor, `Find the name on your ${territory ? 'territory' : 'state'}’s official website.`)
         : `<p>${esc(place.governor.name)}</p>${checked(place.governor)}`)}
 
-      ${fact(`${territory ? 'Delegate or Resident Commissioner' : 'U.S. representative'} · question 29`,
-        input('rep', territory ? 'Name (optional)' : 'Your representative', t.rep,
+      ${fact(`${territory ? 'Delegate or Resident Commissioner' : district ? 'Delegate' : 'U.S. representative'} · question 29`,
+        input('rep', territory ? 'Name (optional)' : district ? 'D.C.’s Delegate in the House' : 'Your representative', t.rep,
           territory ? 'You may also say that your territory has no voting representatives in Congress.'
+            : district ? 'Find the name at <a href="https://www.house.gov/representatives" target="_blank" rel="noopener">house.gov</a>.'
             : 'It depends on your address. Find yours at <a href="https://www.house.gov/representatives/find-your-representative" target="_blank" rel="noopener">house.gov</a> with your ZIP code.'))}
     </section>
     <div class="spacer"></div>
@@ -82,20 +84,23 @@ function detailsView(root, rerender, place) {
   `, { short: true });
 
   const val = (id) => (root.querySelector('#' + id)?.value ?? '').trim().replace(/\s+/g, ' ');
+  const keep = () => { // saved as you type, so leaving by any button keeps the names
+    const typed = { ...store.get().typed };
+    typed[place.code] = {
+      senators: need.senators ? [val('sen0'), val('sen1')] : t.senators,
+      governor: need.governor ? val('gov') : t.governor,
+      rep: val('rep'),
+    };
+    store.set({ typed });
+  };
+  root.querySelectorAll('.typed input').forEach((el) => el.addEventListener('input', keep));
   wire(root, {
-    change: () => { choosing = true; rerender(); },
-    save: () => {
-      const typed = { ...store.get().typed };
-      typed[place.code] = {
-        senators: need.senators ? [val('sen0'), val('sen1')] : t.senators,
-        governor: need.governor ? val('gov') : t.governor,
-        rep: val('rep'),
-      };
-      store.set({ typed });
-      location.hash = '#/';
-    },
+    change: () => { keep(); choosing = true; rerender(); },
+    save: () => { keep(); location.hash = '#/'; },
   });
 }
+
+export function leavePlace() { choosing = false; }
 
 export function place(root, _arg, rerender) {
   const current = placeByCode(store.get().place);

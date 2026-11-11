@@ -13,6 +13,7 @@ const base = process.argv[3] || 'http://localhost:8123/';
 mkdirSync(out, { recursive: true });
 const browser = await chromium.launch();
 const log = (m) => console.log('ok  ' + m);
+const TAP = 330; // the app ignores a second tap within 300 ms of a new screen
 
 async function run(scheme) {
   const ctx = await browser.newContext({ viewport: { width: 390, height: 844 }, deviceScaleFactor: 2, colorScheme: scheme, isMobile: true, hasTouch: true });
@@ -41,6 +42,7 @@ async function run(scheme) {
   const nj = await page.locator('.card').innerText();
   for (const t of ['Trenton', 'Cory A. Booker', 'Andy Kim', 'Mikie Sherrill', 'Checked Nov 11, 2026']) assert.ok(nj.includes(t), t);
   await page.fill('#rep', 'Test Representative');
+  assert.equal(await page.evaluate(() => JSON.parse(localStorage['civics128.v1']).typed.NJ.rep), 'Test Representative', 'typed names are kept without Save');
   await shot('2-state-new-jersey', true);
   await page.click('[data-act=save]');
   await page.waitForSelector('.hello');
@@ -53,6 +55,7 @@ async function run(scheme) {
     await page.goto(base + '#/study/all');
     await page.waitForSelector('.q');
     await page.evaluate((n) => { for (let i = 1; i < n; i++) document.querySelector('[data-act=show]').click(), document.querySelector('[data-act=next]').click(); }, id);
+    await page.waitForTimeout(TAP);
     await page.click('[data-act=show]');
     return page.locator('.answers').innerText();
   };
@@ -69,6 +72,10 @@ async function run(scheme) {
   await page.evaluate(() => { const s = JSON.parse(localStorage['civics128.v1']); s.place = 'DC'; localStorage['civics128.v1'] = JSON.stringify(s); });
   await page.reload();
   assert.ok((await answerOf(61)).includes('D.C. does not have a governor.'));
+  await page.evaluate(() => { const s = JSON.parse(localStorage['civics128.v1']); s.place = 'PR'; localStorage['civics128.v1'] = JSON.stringify(s); });
+  await page.reload();
+  assert.ok((await answerOf(29)).includes('no voting representatives in Congress'));
+  assert.ok((await answerOf(62)).includes('San Juan'));
   await page.evaluate(() => { const s = JSON.parse(localStorage['civics128.v1']); s.place = 'NJ'; localStorage['civics128.v1'] = JSON.stringify(s); });
   await page.reload();
   log(`${scheme}: changing the state changes answers 23, 29, 61, 62`);
@@ -84,15 +91,24 @@ async function run(scheme) {
   await page.click('[data-act=speak]');
   const said = await page.evaluate(() => window.__said);
   assert.deepEqual(said.at(-1), { text: q1, lang: 'en-US' });
+  await page.waitForTimeout(TAP);
   await page.click('[data-act=spanish]');
   assert.ok((await page.locator('.es').innerText()).includes('borrador'));
+  await page.waitForTimeout(TAP);
   await page.click('[data-act=show]');
   assert.equal(await page.locator('.alist li').count(), 3);
   await shot('5-study-card-spanish', true);
   let flips = 1;
-  while (await page.locator('[data-act=next]').count()) { await page.click('[data-act=next]'); await page.click('[data-act=show]'); flips++; }
+  while (await page.locator('[data-act=next]').count()) { await page.waitForTimeout(TAP); await page.click('[data-act=next]'); await page.waitForTimeout(TAP); await page.click('[data-act=show]'); flips++; }
   assert.equal(flips, 15);
+  await page.waitForTimeout(TAP);
+  await page.click('[data-act=done]');
+  await page.waitForSelector('.rows .row');
+  await page.click('a.row[href="#/study/government-A"]');
+  await page.waitForSelector('.q');
+  assert.ok((await page.locator('.tally').innerText()).includes('1 / 15'), 'a finished section starts over');
   log(`${scheme}: flipped 15 cards of a section, read-aloud asked for the exact question in en-US`);
+  await page.waitForTimeout(TAP);
   await page.click('[data-act=spanish]');
 
   // 4. drill: a miss and a guess come back in the round; knew does not
@@ -106,8 +122,10 @@ async function run(scheme) {
     const q = await page.locator('.q').innerText();
     const again = seen.includes(q);
     seen.push(q);
+    await page.waitForTimeout(TAP);
     await page.click('[data-act=show]');
     if (!firstShot) { await shot('7-drill-answers', true); firstShot = true; }
+    await page.waitForTimeout(TAP);
     await page.click(`[data-result=${again ? 'knew' : plan[step++]}]`);
     await page.waitForTimeout(30);
   }

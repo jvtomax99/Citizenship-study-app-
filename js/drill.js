@@ -91,4 +91,4 @@ export function drill(root, _arg, rerender) {
 }
 
 // A finished round should not greet you again when you come back from Home.
-export function leaveDrill() { if (round && !round.queue.length) round = null; }
+export function leaveDrill() { if (round && !round.queue.length) round = null; else if (round) round.shown = false; }
