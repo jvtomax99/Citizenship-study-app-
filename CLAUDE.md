@@ -30,9 +30,6 @@ The rules shared by all of Jose's projects are in
 - **A new file the app loads** goes in the `FILES` list in `sw.js`, and the
   cache name there is bumped.
 - **Never live 3D.** The pictures are rendered once and saved as images.
-- **Default branch.** Pull requests go into `main`. GitHub's default is
-  still `claude/amazing-albattani-rqksw7` until Jose switches it (Settings,
-  Branches), so a fresh clone can be behind `main`: fetch `main` first.
 - **Site check.** Not set up. Copy `.github/site-check.cjs` and
   `.github/workflows/site-check.yml` from Lions-Roar- and list the pages
   there.
