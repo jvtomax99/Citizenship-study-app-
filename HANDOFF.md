@@ -18,17 +18,17 @@ the open question: does the microphone work inside the installed app on an iPhon
 - Step 4: `js/mock.js`, `js/match.js`, `js/listen.js`, `tests/match.test.mjs`, the Home
   button, `sw.js` list. Proof: `node --test tests/*.mjs` (16 pass) and
   `node tools/shots.mjs` (needs `python3 -m http.server 8123`).
-- The first cleanup audit: `docs/CLEANUP.md` (14 items, report only). The low-risk
-  items were cleaned up on 2026-11-11 (item 6 skipped; reasons in the file). Items 1 and
-  2 (the sample screen, the mock styles) can be rechecked now that Step 4 uses them.
+- The first cleanup audit: `docs/CLEANUP.md`. Jose chose "Clean up the low-risk ones":
+  done 2026-11-11 (items 3, 5, 7 to 10, 12 to 14; item 6 skipped, it needs a
+  `package.json`). The medium and high items stay: recheck items 1 and 2 (the sample
+  screen, the mock styles) now that Step 4 uses them. Also fixed: button labels in dark
+  mode took the link color.
 
 ## Left open, waiting on Jose
 
 - Test link: https://citizenship-study-test.vercel.app (Vercel project
   `citizenship-study-test`, team `language-services`, deployed from this branch with the
   Vercel tools: git source, target production). It does NOT update by itself.
-- Is anyone in the family 65/20 and taking the test in Spanish? The interview is English
-  only for now (SPEC, Later).
 - Show the app to one of the family and friends.
 - Read the Spanish; SPEC.md TO FILL (who, the app's name, "Not in v1").
 - Confirm the four federal names at uscis.gov/citizenship/testupdates. Recheck Booker's
