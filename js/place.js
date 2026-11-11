@@ -1,6 +1,6 @@
 // Pick your state: fills the senator, governor and capital answers. Names that are
 // not in data/officials.json are typed by the person, once.
-import { data, placeByCode, needsTyping, niceDate } from './data.js';
+import { data, placeByCode, needsTyping, checkedLine } from './data.js';
 import { store } from './store.js';
 import { esc, frame, wire, ICON } from './ui.js';
 
@@ -44,7 +44,7 @@ function listView(root, rerender, current) {
   });
 }
 
-const checked = (p) => `<small>Checked ${niceDate(p.confirmed)}</small>`;
+const checked = (p) => `<small>${checkedLine(p, { site: false })}</small>`;
 
 function detailsView(root, rerender, place) {
   const need = needsTyping(place);

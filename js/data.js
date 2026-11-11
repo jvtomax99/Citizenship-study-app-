@@ -42,14 +42,16 @@ export function sectionRows(list, cards) {
 }
 
 const MONTHS = ['Jan', 'Feb', 'Mar', 'Apr', 'May', 'Jun', 'Jul', 'Aug', 'Sep', 'Oct', 'Nov', 'Dec'];
-export function niceDate(iso) {
+function niceDate(iso) {
   const [y, m, d] = iso.split('-').map(Number);
   return `${MONTHS[m - 1]} ${d}, ${y}`;
 }
 const host = (url) => { try { return new URL(url).hostname.replace(/^www\./, ''); } catch { return 'the official site'; } };
+// "Checked Nov 11, 2026 at senate.gov." site: false leaves the site out (the place screen).
+export const checkedLine = (p, { site = true } = {}) => `Checked ${niceDate(p.confirmed)}${site ? ` at ${host(p.source)}.` : ''}`;
 
 function person(p, todayIso) {
-  let caption = `Checked ${niceDate(p.confirmed)} at ${host(p.source)}.`;
+  let caption = checkedLine(p);
   const recheck = (p.recheck || '').slice(0, 10);
   if (/^\d{4}-\d{2}-\d{2}$/.test(recheck) && todayIso >= recheck) caption += ' This may have changed since: check again.';
   return { text: p.name, caption };
@@ -68,7 +70,7 @@ export function personalAnswers(q, profile, todayIso = localIso()) {
   if (q.kind === 'current-official') {
     const f = data.officials.federal[q.id];
     const caption = f.confirmed
-      ? `Checked ${niceDate(f.confirmed)} at ${host(f.source)}.`
+      ? checkedLine(f)
       : `The name USCIS lists (its page was last reviewed ${niceDate(f.sourceReviewed)}). Confirm at uscis.gov/citizenship/testupdates before your interview.`;
     return { mine: [{ text: f.name, caption }], ask: null };
   }
