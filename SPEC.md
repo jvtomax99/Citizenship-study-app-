@@ -100,10 +100,8 @@ TO FILL: Jose to confirm.
 
 ## Open questions for Jose
 
-- Senators and governors: fill them now from senate.gov and each state (allow
-  www.senate.gov in the network settings), or wait for the new Congress (January 3,
-  2027) and let users type their own until then.
-- Which states do the family and friends live in? Those get checked first.
+- Senators and governors: only the states where the family and friends live (Jose,
+  2026-11-11); other states type their own. TO FILL: which states.
 
 ## Hosting
 
