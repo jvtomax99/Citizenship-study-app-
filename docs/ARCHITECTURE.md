@@ -7,7 +7,7 @@ nothing to install. GitHub Pages serves the folder as it is.
 
 - `sources/` The official files the data is copied from. `uscis-2025-civics-128.pdf`
   is USCIS form M-1778 (09/25), the 128 questions (a U.S. government work, free to reuse).
-- `data/` What the app will read.
+- `data/` What the app reads.
   - `questions.json` The 128 questions, every accepted answer, the bracketed notes, the
     65/20 marks (`star6520`), the section and part, and `kind`: `fixed`,
     `where-you-live` (23, 29, 61, 62) or `current-official` (30, 38, 39, 57), and `need`:
@@ -30,7 +30,8 @@ nothing to install. GitHub Pages serves the folder as it is.
   - `app.js` starts the app and picks the screen from the address (`#/`, `#/place`,
     `#/study/<section>`, `#/drill`, `#/mock`).
   - `data.js` loads the three data files and works out the personal answers
-    (`personalAnswers`: senators, governor, capital, representative, the four federal names).
+    (`personalAnswers`: senators, governor, capital, representative, the four federal names)
+    and the section list (`sectionRows`).
   - `store.js` what the phone remembers (one `localStorage` entry, `civics128.v1`).
   - `srs.js` the come-back-sooner schedule (pure functions; `tests/srs.test.mjs`).
   - `speak.js` read-aloud with the phone's voice. `listen.js` speech to text with the
@@ -41,7 +42,8 @@ nothing to install. GitHub Pages serves the folder as it is.
     answers. When changing it, add the case to the test list first.
   - `mock.js` the mock interview's screens. The interview in progress is `mock` in the
     store; finished ones go to `mockHistory` (last 10).
-  - `ui.js` shared pieces (scene, top bar, question card, answers panel).
+  - `ui.js` shared pieces (scene, top bar, question card, answers panel, eagle header,
+    section rows, the Español switch).
   - `home.js`, `place.js`, `study.js`, `drill.js` the other four screens.
 - `tests/` `node --test tests/*.mjs` checks the schedule and the answer checker.
   `tools/shots.mjs` taps through the whole app at phone size (a pretend microphone
@@ -52,7 +54,7 @@ nothing to install. GitHub Pages serves the folder as it is.
 - `assets/fonts/` Fraunces and Nunito as web files (saved here so they work offline).
   `assets/icons/` the app icon, cut from the eagle picture.
 - `assets/images/` The 3D-rendered pictures (the Mall by day and night, the eagle officer). `CREDITS.md` lists every asset; `docs/design/art-prompts.md` says how they were made.
-- `docs/design/` Taste studies of sites Jose picked (`duolingo.com.md` and its raw `.json`).
+- `docs/design/` Taste studies of sites Jose picked (`duolingo.com.md`).
 - `docs/` Rules (design, assets, cleanup, refactor) and this file.
 
 ## How data moves

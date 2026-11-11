@@ -18,10 +18,9 @@ the open question: does the microphone work inside the installed app on an iPhon
 - Step 4: `js/mock.js`, `js/match.js`, `js/listen.js`, `tests/match.test.mjs`, the Home
   button, `sw.js` list. Proof: `node --test tests/*.mjs` (16 pass) and
   `node tools/shots.mjs` (needs `python3 -m http.server 8123`).
-- The first cleanup audit: `docs/CLEANUP.md` (14 items, report only). Jose has not yet
-  chosen: "Clean up the low-risk ones" (recommended), "Pick individually", "Just keep
-  the report". Items 1 and 2 (the sample screen, the mock styles) can be rechecked now
-  that Step 4 uses them.
+- The first cleanup audit: `docs/CLEANUP.md` (14 items, report only). The low-risk
+  items were cleaned up on 2026-11-11 (item 6 skipped; reasons in the file). Items 1 and
+  2 (the sample screen, the mock styles) can be rechecked now that Step 4 uses them.
 
 ## Left open, waiting on Jose
 

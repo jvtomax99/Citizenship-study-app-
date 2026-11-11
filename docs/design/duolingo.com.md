@@ -1,7 +1,7 @@
 # duolingo.com: taste study (2026-11-11)
 
 Measured with the taste skill's `extract.js` in headless Chromium, home page, desktop
-1440 and phone 390. Raw numbers: `duolingo.com.json`. Inspiration only (docs/design-rules.md):
+1440 and phone 390. The raw numbers file was removed in the 2026-11-11 cleanup (it is in the git history). Inspiration only (docs/design-rules.md):
 its green, its owl, its fonts (duolingo-sans, feather: proprietary) and its name never
 go in this app.
 

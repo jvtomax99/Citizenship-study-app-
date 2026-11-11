@@ -118,6 +118,9 @@ TO FILL: Jose to confirm.
 - More languages.
 - A mock interview in Spanish for 65/20 applicants (once Jose has read the Spanish).
 - A how-to video like the CPA app's.
+- Bug, dark mode only (found in the 2026-11-11 cleanup, not fixed there): links that look
+  like buttons take the link color, so "Drill · 10 questions" on Home is purple on green
+  and hard to read. Cause: `css/app.css`, the dark `a{color}` rule outranks `.btn.primary`.
 
 ## Open questions for Jose
 
