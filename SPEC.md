@@ -85,7 +85,8 @@ TO FILL: Jose to confirm.
 - The 2008 test (100 questions).
 - Accounts, sync between phones, any server (so no AI grading of spoken answers).
 - Languages other than English and Spanish. Fully bilingual menus.
-- 3D. The Mall is drawn 2D so it runs on older phones.
+- Live 3D. The Mall and the mascot are 3D-rendered pictures (Jose, 2026-11-11), saved as
+  images so the app stays fast on older phones.
 - Help filling out the N-400 or legal advice of any kind.
 - Ads or payments.
 
@@ -107,8 +108,9 @@ TO FILL: Jose to confirm.
 
 ## Budget
 
-$0, free assets only, no template (Jose, 2026-11-11). Google Fonts, public-domain or
-CC0 art.
+$0 in new purchases, no template (Jose, 2026-11-11). Google Fonts, public-domain or
+CC0 art, and pictures made with the Runway credits Jose already has (60 used so far;
+CREDITS.md).
 
 ## Hosting
 
@@ -134,7 +136,9 @@ Each phase is one pull request, one or two sessions.
     `preview/sample-drill.html` (2026-11-11).
   - [x] Jose found the first sample too simple; of three richer options he picked
     "Golden hour on the Mall" with more detail. DESIGN.md and the sample redrawn.
-  - [ ] Jose OKs the redrawn sample (or asks for changes).
+  - [x] Jose asked for 3D images and richer detail: the Mall (day and night) and an
+    eagle officer rendered as 3D pictures, in the sample.
+  - [ ] Jose OKs the sample (or asks for changes).
 - [ ] 3. App shell, state picker, Study cards with read-aloud, Drill with spaced
   repetition and "I guessed". Home Screen install and offline.
 - [ ] 4. Mock interview with voice, the 12/9 rule and 65/20 mode.

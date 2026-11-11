@@ -1,7 +1,7 @@
 # Design: Citizenship study app
 
-> Golden hour on the National Mall. A drawn sunset scene (Lincoln Memorial,
-> Washington Monument, Capitol, reflecting pool) sits behind a warm cream page; the
+> Golden hour on the National Mall. A 3D-rendered miniature of the Mall (Lincoln
+> Memorial, Washington Monument, Capitol, reflecting pool) sits behind a warm cream page; the
 > question is set in an elegant serif on a soft white card; everything you press is
 > bold, rounded and has a solid lip (the Duolingo lesson, `docs/design/duolingo.com.md`).
 > Dark mode is the same Mall at night, monuments floodlit.
@@ -39,13 +39,13 @@ together. Phone first (390px), one column, content max 560px.
 banners: `--liberty-soft` `#DDF4EF` / `#173A3A`, `--red-soft` `#FBE6E9` / `#3A1E2A`.
 One loud action per screen; red appears only when something is wrong.
 
-### The scene (golden hour / night)
+### The art (3D-rendered pictures)
 
-Sky `--s1`…`--s6`: `#2B3596` `#5B55C2` `#A873C6` `#F08F8C` `#FFC489` `#FFE6AE`
-(night: `#060920` `#0F153F` `#26235C` `#4B2F6E` `#7A4476` `#B5607A`). Buildings
-`--land1` `#674A92`, shade `--land2` `#4E3777`, sunlit edges `--rim` `#FFC39A`, lit
-windows `--win` `#FFD98A` (night: buildings `#DAD4F2` / `#A9A0D2`, rim white). Trees
-`#44356E` / `#5D4A8C`. Pool `#FFDCA6` to `#F8D2CF`. Flags `#F0607A`.
+Jose asked for 3D images with rich detail (2026-11-11). The scenes are rendered once and
+saved as pictures, so they cost a phone nothing: `assets/images/mall-day.webp` (light)
+and `mall-night.webp` (dark), each fading into `--page` at the bottom, and the eagle
+officer `eagle-officer.webp`. Style, prompts and sizes: `docs/design/art-prompts.md`.
+New art must match that style line. Never live 3D (SPEC, Not in v1).
 
 ## Type
 
@@ -67,12 +67,13 @@ windows `--win` `#FFD98A` (night: buildings `#DAD4F2` / `#A9A0D2`, rim white). T
 
 ## Components
 
-- **Scene header:** the SVG scene, 390 by 300, top of the screen, fading into `--page`.
+- **Scene header:** the Mall picture, full width, 4:3, top of the screen, fading into
+  `--page`; it drifts very slowly (scale 1 to 1.05 over 40s).
   The top bar floats on it: 44px glass close button, 14px gold progress bar (questions
   asked), glass tally pills (right, wrong).
-- **Question card:** chips row; officer badge (34px indigo circle, dome icon) with the
-  label and the 48px speaker button (two rings pulse out of it); the question; a gold
-  ✦ divider; the Español pill; the Spanish line.
+- **Question card:** chips row; the eagle officer (44px round picture, gold ring) with
+  the label and the 48px speaker button (two rings pulse out of it); the question; the
+  Español pill; the Spanish line.
 - **Answer field:** 58px, 2px `--line` border, 44px Liberty mic inside. Focus: indigo
   border and a 4px soft ring.
 - **Road to 12:** dashed panel with 12 stars (gold when earned) and "7 of 12 right to
@@ -85,11 +86,11 @@ windows `--win` `#FFD98A` (night: buildings `#DAD4F2` / `#A9A0D2`, rim white). T
 
 ## Motion
 
-Ease `cubic-bezier(0.22,1,0.36,1)`. In the scene: stars twinkle, clouds drift (38s and
-52s), the pool shimmers. Reduced motion: everything still.
+Ease `cubic-bezier(0.22,1,0.36,1)`. The scene drifts slowly; the speaker's rings pulse.
+Reduced motion: everything still.
 
 ## Do and don't
 
 - Do: one main action per screen; let the scene carry the beauty and keep the card calm.
-- Don't: Duolingo's green, owl, fonts or name; photos; grey shadows; text under 12px;
+- Don't: Duolingo's green, owl, fonts or name; photos of real people; flat clip art beside the 3D pictures; grey shadows; text under 12px;
   the serif for buttons or labels; text lighter than `--text-soft`.
