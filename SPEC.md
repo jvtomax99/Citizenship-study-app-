@@ -214,15 +214,18 @@ Each phase is one pull request, one or two sessions.
 - [x] 5. The National Mall, daily goal and streak (built 2026-11-11 before Step 4 was
   checked off: Jose will test the voice interview later). Jose tried it on his phone:
   "Looks good" (2026-11-11).
-- [ ] 6. Backup, user guide, first release to GitHub Pages.
+- [x] 6. Backup, user guide, first release to GitHub Pages. Live since 2026-11-12 at
+  https://jvtomax99.github.io/Citizenship-study-app-/
   - [x] Backup and guide built 2026-11-11, tapped through by script, reviewed by a
     separate reviewer (fixes in), on the test link.
   - [x] Jose ran the phone test list (save from the Home Screen icon, load in another
     copy, undo, the guide) on 2026-11-11: "It works". He did not say which of the
     three ways to save his iPhone used.
-  - [ ] Jose's "push" on the pull request into `main`; Jose turns on Pages (Settings,
-    Pages, branch `main`, root) and makes `main` the default branch.
-  - [ ] Live address checked: loads, installs, opens offline.
+  - [x] Jose's "push" on pull request 5 into `main` (2026-11-11); Pages on.
+  - [x] Live address checked 2026-11-12 by script at phone size: loads, the install
+    file is right, 53 files saved for offline, and Home, a study card, the guide,
+    Backup and the Mall open with the network off. (GitHub's publishing was stuck for
+    13 hours behind a GitHub incident; a fresh start of the build fixed it.)
 - [x] 7. How-to video in English and Spanish.
   - [x] English video built 2026-11-11 (`media/how-to-use-en.mp4`), on the guide screen.
   - [x] Jose OK'd the Spanish script (`promo/SCRIPT.md`) on 2026-11-12; the Spanish video
