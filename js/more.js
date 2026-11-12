@@ -193,7 +193,7 @@ export function backup(root, _arg, rerender) {
 // ---- guide ----
 
 // The how-to video (made in promo/). It is not saved for offline use: it needs internet.
-// With Español open the guide plays the Spanish one (Jose OK'd its script and voice, 2026-11-12).
+// With Español open the guide plays the Spanish one (Jose OK'd its script, 2026-11-12).
 const VIDEO = { en: 'media/how-to-use-en', es: 'media/how-to-use-es' };
 
 let guideData = null; // data/guide.json, fetched the first time the guide is opened
@@ -220,7 +220,7 @@ export function guide(root, _arg, rerender) {
       ${open && guideData && !guideData.checked ? '<p class="hint" lang="es">El español de esta guía es un <span class="draft">borrador</span> todavía no revisado.</p>' : ''}
     </section>
     <section class="video" aria-label="Video guide">
-      <h2 class="label">Watch the guide · 2 minutes${open ? ' <span lang="es">· Vea la guía</span>' : ''}</h2>
+      <h2 class="label">Watch the guide · ${open ? '3' : '2'} minutes${open ? ' <span lang="es">· Vea la guía</span>' : ''}</h2>
       <video controls playsinline preload="none" aria-label="${open ? 'Video: cómo usar esta app' : 'Video: how to use this app'}" poster="${open ? VIDEO.es : VIDEO.en}.jpg" src="${open ? VIDEO.es : VIDEO.en}.mp4"${open ? ' lang="es"' : ''}></video>
       <p class="note bad" id="novideo" role="status" hidden>The video did not load. It needs internet. <span lang="es">El video no cargó. Necesita internet.</span></p>
       <p class="hint">The video needs internet.${open ? ' <span lang="es">El video necesita internet.</span>' : ' Tap “Español” above for the video in Spanish. <span lang="es">Toque “Español” para ver el video en español.</span>'}</p>

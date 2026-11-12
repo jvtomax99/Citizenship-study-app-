@@ -122,7 +122,7 @@ read through a search extract:
    Spanish, in the style of the CPA app's and the Interpreter Hub's (Jose, 2026-11-11;
    moved up from "Later"). It plays on the guide screen ("Watch the guide" on Home) and
    is also a file to send by WhatsApp. Made in code from screenshots of the real app
-   (`promo/`). Jose OK'd the Spanish script and voice on 2026-11-12.
+   (`promo/`). Narrated with ElevenLabs voices (Jose, 2026-11-12).
    - Done when: the video plays on a phone in both languages and walks through install,
      the state, Study cards, Drill, the Mock interview, the 65/20 list, the goal and the
      Mall, and Backup.
@@ -165,7 +165,8 @@ TO FILL: Jose to confirm.
 
 ## Budget
 
-$0 in new purchases, no template (Jose, 2026-11-11). Google Fonts, public-domain or
+$0 in new purchases, no template (Jose, 2026-11-11). The video's narration uses Jose's
+ElevenLabs account (his ask, 2026-11-12). Google Fonts, public-domain or
 CC0 art, and pictures made with the Runway credits Jose already has (120 used so far;
 CREDITS.md).
 
@@ -224,7 +225,10 @@ Each phase is one pull request, one or two sessions.
   - [ ] Live address checked: loads, installs, opens offline.
 - [ ] 7. How-to video in English and Spanish.
   - [x] English video built 2026-11-11 (`media/how-to-use-en.mp4`), on the guide screen.
-  - [x] Jose OK'd the Spanish script (`promo/SCRIPT.md`) as written and picked the voice
-    (Dora) on 2026-11-12; the Spanish video (`media/how-to-use-es.mp4`) plays on the
-    guide screen when Español is open.
+  - [x] Jose OK'd the Spanish script (`promo/SCRIPT.md`) on 2026-11-12; the Spanish video
+    (`media/how-to-use-es.mp4`) plays on the guide screen when Español is open.
+  - [x] Voices: ElevenLabs, Brian (English) and Matilda (Spanish), picked by Jose from
+    samples on 2026-11-12 (the first version used a free offline voice).
+  - [x] Independent review: added "ask USCIS or your lawyer" to the 65/20 scene and
+    "if a name is missing, type it in" to the state scene.
   - [ ] Jose watches both on his phone.
