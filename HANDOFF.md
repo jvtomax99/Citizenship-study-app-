@@ -4,7 +4,8 @@
 
 - Live at https://jvtomax99.github.io/Citizenship-study-app-/ (GitHub Pages from
   `main`, on since 2026-11-12). Checked by script that day: it loads, the guide plays
-  both videos, it opens with the network off.
+  both videos, it opens with the network off. Jose installed it on his iPhone the same
+  day: "It works". Step 6 is checked off.
 - The how-to video is done in English and Spanish (SPEC.md feature 10, phase 7, pull
   request 6). It plays on the guide screen; `promo/README.md` says how to make it again.
 - The test link https://citizenship-study-test.vercel.app is a separate copy with its
@@ -14,8 +15,6 @@
 
 Ask Jose, with buttons and a phone notification (CLAUDE.md), which of these he wants:
 
-- Install the live app on his iPhone and open it from the icon (the last open line of
-  Step 6).
 - Step 4 voice test: one mock interview by voice in the browser, one from the icon.
   Step 4 is not checked off, and the video shows the microphone working.
 - Read the app's Spanish (`data/es.json`, the 20 marked 65/20 first, and the guide).
@@ -39,7 +38,8 @@ Ask Jose, with buttons and a phone notification (CLAUDE.md), which of these he w
 - Site check workflow (CLAUDE.md) is still not set up. Step 5 leftovers still open:
   "Study cards" from a landmark goes back to the sections list; a drill round left open
   overnight treats a returning question as a retry.
-- Cleanup audit: last ran 2026-11-11; two phases finished since.
+- Cleanup audit: last ran 2026-11-11; two phases (6 and 7) finished since. Offer
+  `docs/cleanup-audit.md` after the next phase.
 
 ## Files to look at first
 

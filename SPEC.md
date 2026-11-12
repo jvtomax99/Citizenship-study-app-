@@ -214,7 +214,7 @@ Each phase is one pull request, one or two sessions.
 - [x] 5. The National Mall, daily goal and streak (built 2026-11-11 before Step 4 was
   checked off: Jose will test the voice interview later). Jose tried it on his phone:
   "Looks good" (2026-11-11).
-- [ ] 6. Backup, user guide, first release to GitHub Pages.
+- [x] 6. Backup, user guide, first release to GitHub Pages.
   - [x] Backup and guide built 2026-11-11, tapped through by script, reviewed by a
     separate reviewer (fixes in), on the test link.
   - [x] Jose ran the phone test list (save from the Home Screen icon, load in another
@@ -224,8 +224,8 @@ Each phase is one pull request, one or two sessions.
     Pages on 2026-11-12; `main` is the default branch.
   - [x] Live address checked by script on 2026-11-12: it loads, the guide plays both
     videos, and it opens again with the network off.
-  - [ ] Jose installs it from the live address on his iPhone (Add to Home Screen) and
-    opens it from the icon. A script cannot do this part.
+  - [x] Jose installed it from the live address on his iPhone and opened it from the
+    icon: "It works" (2026-11-12).
 - [x] 7. How-to video in English and Spanish.
   - [x] English video built 2026-11-11 (`media/how-to-use-en.mp4`), on the guide screen.
   - [x] Jose OK'd the Spanish script (`promo/SCRIPT.md`) on 2026-11-12; the Spanish video
