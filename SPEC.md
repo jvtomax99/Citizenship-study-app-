@@ -223,7 +223,7 @@ Each phase is one pull request, one or two sessions.
   - [ ] Jose's "push" on the pull request into `main`; Jose turns on Pages (Settings,
     Pages, branch `main`, root) and makes `main` the default branch.
   - [ ] Live address checked: loads, installs, opens offline.
-- [ ] 7. How-to video in English and Spanish.
+- [x] 7. How-to video in English and Spanish.
   - [x] English video built 2026-11-11 (`media/how-to-use-en.mp4`), on the guide screen.
   - [x] Jose OK'd the Spanish script (`promo/SCRIPT.md`) on 2026-11-12; the Spanish video
     (`media/how-to-use-es.mp4`) plays on the guide screen when Español is open.
@@ -232,4 +232,4 @@ Each phase is one pull request, one or two sessions.
   - [x] Independent review: added "ask USCIS or your lawyer" to the 65/20 scene and
     "if a name is missing, type it in" to the state scene.
   - [x] Jose watched both: "Both good" (2026-11-12).
-  - [ ] Jose's "push" on pull request 6 into `main`.
+  - [x] Jose's "push" on pull request 6 into `main` (2026-11-12).
