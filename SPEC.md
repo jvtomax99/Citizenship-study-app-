@@ -231,4 +231,5 @@ Each phase is one pull request, one or two sessions.
     samples on 2026-11-12 (the first version used a free offline voice).
   - [x] Independent review: added "ask USCIS or your lawyer" to the 65/20 scene and
     "if a name is missing, type it in" to the state scene.
-  - [ ] Jose watches both on his phone.
+  - [x] Jose watched both: "Both good" (2026-11-12).
+  - [ ] Jose's "push" on pull request 6 into `main`.
