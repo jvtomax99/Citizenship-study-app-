@@ -1,0 +1,1227 @@
+{
+ "lang": "es",
+ "status": "Draft by Claude, 2026-11-11. Not yet checked by Jose: every entry stays checked:false until he reads it.",
+ "about": "Spanish help for data/questions.json. Same question ids; a[i] translates answer i; notes[i] translates the bracketed note on answer i; glosses[i] is an English name or a synonym for answer i, shown beside it, never part of the answer. Parentheses in a[i] mean the same as in the English: optional words.",
+ "questions": {
+  "1": {
+   "q": "¿Cuál es la forma de gobierno de los Estados Unidos?",
+   "a": [
+    "República",
+    "República federal basada en la Constitución",
+    "Democracia representativa"
+   ],
+   "checked": false
+  },
+  "2": {
+   "q": "¿Cuál es la ley suprema de la nación?",
+   "a": [
+    "La Constitución (de los EE. UU.)"
+   ],
+   "checked": false
+  },
+  "3": {
+   "q": "Nombre una cosa que hace la Constitución de los EE. UU.",
+   "a": [
+    "Forma el gobierno",
+    "Define los poderes del gobierno",
+    "Define las partes del gobierno",
+    "Protege los derechos del pueblo"
+   ],
+   "checked": false
+  },
+  "4": {
+   "q": "La Constitución de los EE. UU. comienza con las palabras \"We the People\" (Nosotros, el Pueblo). ¿Qué significa \"Nosotros, el Pueblo\"?",
+   "a": [
+    "Autogobierno",
+    "Soberanía popular",
+    "Consentimiento de los gobernados",
+    "El pueblo debe gobernarse a sí mismo",
+    "(Ejemplo de) contrato social"
+   ],
+   "checked": false
+  },
+  "5": {
+   "q": "¿Cómo se hacen cambios a la Constitución de los EE. UU.?",
+   "a": [
+    "Enmiendas",
+    "El proceso de enmienda"
+   ],
+   "checked": false
+  },
+  "6": {
+   "q": "¿Qué protege la Carta de Derechos (Bill of Rights)?",
+   "a": [
+    "Los derechos (básicos) de los estadounidenses",
+    "Los derechos (básicos) de las personas que viven en los Estados Unidos"
+   ],
+   "checked": false
+  },
+  "7": {
+   "q": "¿Cuántas enmiendas tiene la Constitución de los EE. UU.?",
+   "a": [
+    "Veintisiete (27)"
+   ],
+   "checked": false
+  },
+  "8": {
+   "q": "¿Por qué es importante la Declaración de Independencia?",
+   "a": [
+    "Dice que Estados Unidos es libre del control británico.",
+    "Dice que todas las personas son creadas iguales.",
+    "Identifica derechos inherentes.",
+    "Identifica libertades individuales."
+   ],
+   "checked": false
+  },
+  "9": {
+   "q": "¿Qué documento fundador dijo que las colonias americanas eran libres de Gran Bretaña?",
+   "a": [
+    "La Declaración de Independencia"
+   ],
+   "checked": false
+  },
+  "10": {
+   "q": "Nombre dos ideas importantes de la Declaración de Independencia y de la Constitución de los EE. UU.",
+   "a": [
+    "Igualdad",
+    "Libertad",
+    "Contrato social",
+    "Derechos naturales",
+    "Gobierno limitado",
+    "Autogobierno"
+   ],
+   "checked": false
+  },
+  "11": {
+   "q": "¿En qué documento fundador están las palabras \"Life, Liberty, and the pursuit of Happiness\" (la vida, la libertad y la búsqueda de la felicidad)?",
+   "a": [
+    "La Declaración de Independencia"
+   ],
+   "checked": false
+  },
+  "12": {
+   "q": "¿Cuál es el sistema económico de los Estados Unidos?",
+   "a": [
+    "Capitalismo",
+    "Economía de libre mercado"
+   ],
+   "checked": false
+  },
+  "13": {
+   "q": "¿Qué es el estado de derecho?",
+   "a": [
+    "Todos deben obedecer la ley.",
+    "Los líderes deben obedecer la ley.",
+    "El gobierno debe obedecer la ley.",
+    "Nadie está por encima de la ley."
+   ],
+   "checked": false
+  },
+  "14": {
+   "q": "Muchos documentos influyeron en la Constitución de los EE. UU. Nombre uno.",
+   "a": [
+    "La Declaración de Independencia",
+    "Los Artículos de la Confederación",
+    "Los Documentos Federalistas",
+    "Los Documentos Antifederalistas",
+    "La Declaración de Derechos de Virginia",
+    "Las Órdenes Fundamentales de Connecticut",
+    "El Pacto del Mayflower",
+    "La Gran Ley de la Paz de los iroqueses"
+   ],
+   "checked": false,
+   "glosses": {
+    "2": "Federalist Papers",
+    "3": "Anti-Federalist Papers"
+   }
+  },
+  "15": {
+   "q": "Hay tres poderes (ramas) de gobierno. ¿Por qué?",
+   "a": [
+    "Para que ninguna parte se vuelva demasiado poderosa",
+    "Pesos y contrapesos",
+    "Separación de poderes"
+   ],
+   "checked": false
+  },
+  "16": {
+   "q": "Nombre los tres poderes (ramas) de gobierno.",
+   "a": [
+    "Legislativo, ejecutivo y judicial",
+    "El Congreso, el presidente y los tribunales"
+   ],
+   "checked": false
+  },
+  "17": {
+   "q": "¿De qué poder (rama) de gobierno está a cargo el presidente de los Estados Unidos?",
+   "a": [
+    "El poder ejecutivo"
+   ],
+   "checked": false
+  },
+  "18": {
+   "q": "¿Qué parte del gobierno federal escribe las leyes?",
+   "a": [
+    "El Congreso (de los EE. UU.)",
+    "La legislatura (nacional o de los EE. UU.)",
+    "El poder legislativo"
+   ],
+   "checked": false
+  },
+  "19": {
+   "q": "¿Cuáles son las dos partes del Congreso de los EE. UU.?",
+   "a": [
+    "El Senado y la Cámara (de Representantes)"
+   ],
+   "checked": false
+  },
+  "20": {
+   "q": "Nombre un poder del Congreso de los EE. UU.",
+   "a": [
+    "Escribe las leyes",
+    "Declara la guerra",
+    "Hace el presupuesto federal"
+   ],
+   "checked": false
+  },
+  "21": {
+   "q": "¿Cuántos senadores de los EE. UU. hay?",
+   "a": [
+    "Cien (100)"
+   ],
+   "checked": false
+  },
+  "22": {
+   "q": "¿De cuántos años es el período de un senador de los EE. UU.?",
+   "a": [
+    "Seis (6) años"
+   ],
+   "checked": false
+  },
+  "23": {
+   "q": "¿Quién es ahora uno de los senadores de los EE. UU. de su estado?",
+   "a": [
+    "Las respuestas varían."
+   ],
+   "notes": {
+    "0": "Los residentes del Distrito de Columbia y de los territorios de los EE. UU. deben responder que D.C. (o el territorio donde vive el solicitante) no tiene senadores de los EE. UU."
+   },
+   "checked": false
+  },
+  "24": {
+   "q": "¿Cuántos miembros con derecho a voto hay en la Cámara de Representantes?",
+   "a": [
+    "Cuatrocientos treinta y cinco (435)"
+   ],
+   "checked": false
+  },
+  "25": {
+   "q": "¿De cuántos años es el período de un miembro de la Cámara de Representantes?",
+   "a": [
+    "Dos (2) años"
+   ],
+   "checked": false
+  },
+  "26": {
+   "q": "¿Por qué los representantes de los EE. UU. tienen períodos más cortos que los senadores de los EE. UU.?",
+   "a": [
+    "Para seguir más de cerca la opinión pública"
+   ],
+   "checked": false
+  },
+  "27": {
+   "q": "¿Cuántos senadores tiene cada estado?",
+   "a": [
+    "Dos (2)"
+   ],
+   "checked": false
+  },
+  "28": {
+   "q": "¿Por qué cada estado tiene dos senadores?",
+   "a": [
+    "Igualdad de representación (para los estados pequeños)",
+    "El Gran Compromiso (Compromiso de Connecticut)"
+   ],
+   "checked": false
+  },
+  "29": {
+   "q": "Nombre a su representante de los EE. UU.",
+   "a": [
+    "Las respuestas varían."
+   ],
+   "notes": {
+    "0": "Los residentes de territorios con Delegados sin derecho a voto o Comisionados Residentes pueden dar el nombre de ese Delegado o Comisionado. También se acepta cualquier respuesta que diga que el territorio no tiene representantes (con derecho a voto) en el Congreso."
+   },
+   "checked": false
+  },
+  "30": {
+   "q": "¿Cómo se llama ahora el presidente (Speaker) de la Cámara de Representantes?",
+   "a": [
+    "Visite uscis.gov/citizenship/testupdates para ver el nombre del presidente de la Cámara de Representantes."
+   ],
+   "checked": false
+  },
+  "31": {
+   "q": "¿A quién representa un senador de los EE. UU.?",
+   "a": [
+    "A los ciudadanos de su estado",
+    "A la gente de su estado"
+   ],
+   "checked": false
+  },
+  "32": {
+   "q": "¿Quién elige a los senadores de los EE. UU.?",
+   "a": [
+    "Los ciudadanos de su estado"
+   ],
+   "checked": false
+  },
+  "33": {
+   "q": "¿A quién representa un miembro de la Cámara de Representantes?",
+   "a": [
+    "A los ciudadanos de su distrito (electoral)",
+    "A los ciudadanos de su distrito",
+    "A la gente de su distrito (electoral)",
+    "A la gente de su distrito"
+   ],
+   "checked": false
+  },
+  "34": {
+   "q": "¿Quién elige a los miembros de la Cámara de Representantes?",
+   "a": [
+    "Los ciudadanos de su distrito (electoral)"
+   ],
+   "checked": false
+  },
+  "35": {
+   "q": "Algunos estados tienen más representantes que otros. ¿Por qué?",
+   "a": [
+    "(Por) la población del estado",
+    "(Porque) tienen más gente",
+    "(Porque) algunos estados tienen más gente"
+   ],
+   "checked": false
+  },
+  "36": {
+   "q": "¿Por cuántos años se elige al presidente de los Estados Unidos?",
+   "a": [
+    "Cuatro (4) años"
+   ],
+   "checked": false
+  },
+  "37": {
+   "q": "El presidente de los Estados Unidos solo puede servir dos períodos. ¿Por qué?",
+   "a": [
+    "(Por) la Enmienda 22",
+    "Para que el presidente no se vuelva demasiado poderoso"
+   ],
+   "checked": false
+  },
+  "38": {
+   "q": "¿Cómo se llama ahora el presidente de los Estados Unidos?",
+   "a": [
+    "Visite uscis.gov/citizenship/testupdates para ver el nombre del presidente de los Estados Unidos."
+   ],
+   "checked": false
+  },
+  "39": {
+   "q": "¿Cómo se llama ahora el vicepresidente de los Estados Unidos?",
+   "a": [
+    "Visite uscis.gov/citizenship/testupdates para ver el nombre del vicepresidente de los Estados Unidos."
+   ],
+   "checked": false
+  },
+  "40": {
+   "q": "Si el presidente ya no puede servir, ¿quién se vuelve presidente?",
+   "a": [
+    "El vicepresidente (de los Estados Unidos)"
+   ],
+   "checked": false
+  },
+  "41": {
+   "q": "Nombre un poder del presidente.",
+   "a": [
+    "Firma proyectos de ley para que sean ley",
+    "Veta proyectos de ley",
+    "Hace cumplir las leyes",
+    "Comandante en jefe (de las fuerzas armadas)",
+    "Jefe de la diplomacia",
+    "Nombra a los jueces federales"
+   ],
+   "checked": false
+  },
+  "42": {
+   "q": "¿Quién es el comandante en jefe de las fuerzas armadas de los EE. UU.?",
+   "a": [
+    "El presidente (de los Estados Unidos)"
+   ],
+   "checked": false
+  },
+  "43": {
+   "q": "¿Quién firma los proyectos de ley para que se conviertan en leyes?",
+   "a": [
+    "El presidente (de los Estados Unidos)"
+   ],
+   "checked": false
+  },
+  "44": {
+   "q": "¿Quién veta los proyectos de ley?",
+   "a": [
+    "El presidente (de los Estados Unidos)"
+   ],
+   "checked": false
+  },
+  "45": {
+   "q": "¿Quién nombra a los jueces federales?",
+   "a": [
+    "El presidente (de los Estados Unidos)"
+   ],
+   "checked": false
+  },
+  "46": {
+   "q": "El poder ejecutivo tiene muchas partes. Nombre una.",
+   "a": [
+    "El presidente (de los Estados Unidos)",
+    "El Gabinete",
+    "Los departamentos y agencias federales"
+   ],
+   "checked": false
+  },
+  "47": {
+   "q": "¿Qué hace el Gabinete del presidente?",
+   "a": [
+    "Asesora al presidente (de los Estados Unidos)"
+   ],
+   "checked": false
+  },
+  "48": {
+   "q": "¿Cuáles son dos cargos a nivel de Gabinete?",
+   "a": [
+    "Fiscal General",
+    "Secretario de Agricultura",
+    "Secretario de Comercio",
+    "Secretario de Educación",
+    "Secretario de Energía",
+    "Secretario de Salud y Servicios Humanos",
+    "Secretario de Seguridad Nacional",
+    "Secretario de Vivienda y Desarrollo Urbano",
+    "Secretario del Interior",
+    "Secretario del Trabajo",
+    "Secretario de Estado",
+    "Secretario de Transporte",
+    "Secretario del Tesoro",
+    "Secretario de Asuntos de Veteranos",
+    "Secretario de Guerra (Defensa)",
+    "Vicepresidente",
+    "Administrador de la Agencia de Protección Ambiental",
+    "Administrador de la Agencia Federal de Pequeñas Empresas",
+    "Director de la Agencia Central de Inteligencia",
+    "Director de la Oficina de Administración y Presupuesto",
+    "Director de Inteligencia Nacional",
+    "Representante Comercial de los Estados Unidos"
+   ],
+   "checked": false,
+   "glosses": {
+    "0": "Attorney General",
+    "17": "Small Business Administration (SBA)",
+    "18": "CIA"
+   }
+  },
+  "49": {
+   "q": "¿Por qué es importante el Colegio Electoral?",
+   "a": [
+    "Decide quién es elegido presidente.",
+    "Es un compromiso (acuerdo intermedio) entre la elección popular del presidente y la selección por el Congreso."
+   ],
+   "checked": false
+  },
+  "50": {
+   "q": "¿Cuál es una parte del poder judicial?",
+   "a": [
+    "La Corte Suprema",
+    "Los tribunales federales"
+   ],
+   "checked": false
+  },
+  "51": {
+   "q": "¿Qué hace el poder judicial?",
+   "a": [
+    "Revisa las leyes",
+    "Explica las leyes",
+    "Resuelve disputas (desacuerdos) sobre la ley",
+    "Decide si una ley va en contra de la Constitución (de los EE. UU.)"
+   ],
+   "checked": false
+  },
+  "52": {
+   "q": "¿Cuál es el tribunal más alto de los Estados Unidos?",
+   "a": [
+    "La Corte Suprema"
+   ],
+   "checked": false
+  },
+  "53": {
+   "q": "¿Cuántos puestos hay en la Corte Suprema?",
+   "a": [
+    "Nueve (9)"
+   ],
+   "checked": false
+  },
+  "54": {
+   "q": "¿Cuántos jueces de la Corte Suprema se necesitan normalmente para decidir un caso?",
+   "a": [
+    "Cinco (5)"
+   ],
+   "checked": false
+  },
+  "55": {
+   "q": "¿Por cuánto tiempo sirven los jueces de la Corte Suprema?",
+   "a": [
+    "(De por) vida",
+    "Nombramiento vitalicio",
+    "(Hasta la) jubilación"
+   ],
+   "checked": false
+  },
+  "56": {
+   "q": "Los jueces de la Corte Suprema sirven de por vida. ¿Por qué?",
+   "a": [
+    "Para ser independientes (de la política)",
+    "Para limitar la influencia (política) externa"
+   ],
+   "checked": false
+  },
+  "57": {
+   "q": "¿Quién es ahora el presidente de la Corte Suprema (Chief Justice) de los Estados Unidos?",
+   "a": [
+    "Visite uscis.gov/citizenship/testupdates para ver el nombre del presidente de la Corte Suprema de los Estados Unidos."
+   ],
+   "checked": false
+  },
+  "58": {
+   "q": "Nombre un poder que es solo del gobierno federal.",
+   "a": [
+    "Imprimir papel moneda",
+    "Acuñar monedas",
+    "Declarar la guerra",
+    "Crear un ejército",
+    "Hacer tratados",
+    "Fijar la política exterior"
+   ],
+   "checked": false
+  },
+  "59": {
+   "q": "Nombre un poder que es solo de los estados.",
+   "a": [
+    "Proveer escuelas y educación",
+    "Proveer protección (policía)",
+    "Proveer seguridad (departamentos de bomberos)",
+    "Dar licencias de manejar",
+    "Aprobar la zonificación y el uso de la tierra"
+   ],
+   "checked": false
+  },
+  "60": {
+   "q": "¿Cuál es el propósito de la Enmienda 10?",
+   "a": [
+    "(Dice que los) poderes que no se le dan al gobierno federal pertenecen a los estados o al pueblo."
+   ],
+   "checked": false
+  },
+  "61": {
+   "q": "¿Quién es ahora el gobernador de su estado?",
+   "a": [
+    "Las respuestas varían."
+   ],
+   "notes": {
+    "0": "Los residentes del Distrito de Columbia deben responder que D.C. no tiene gobernador."
+   },
+   "checked": false
+  },
+  "62": {
+   "q": "¿Cuál es la capital de su estado?",
+   "a": [
+    "Las respuestas varían."
+   ],
+   "notes": {
+    "0": "Los residentes del Distrito de Columbia deben responder que D.C. no es un estado y no tiene capital. Los residentes de los territorios de los EE. UU. deben nombrar la capital del territorio."
+   },
+   "checked": false
+  },
+  "63": {
+   "q": "Hay cuatro enmiendas a la Constitución de los EE. UU. sobre quién puede votar. Describa una de ellas.",
+   "a": [
+    "Los ciudadanos de dieciocho (18) años o más (pueden votar).",
+    "No hay que pagar (un impuesto electoral) para votar.",
+    "Cualquier ciudadano puede votar. (Las mujeres y los hombres pueden votar.)",
+    "Un ciudadano varón de cualquier raza (puede votar)."
+   ],
+   "checked": false
+  },
+  "64": {
+   "q": "¿Quién puede votar en las elecciones federales, postularse para un cargo federal y servir en un jurado en los Estados Unidos?",
+   "a": [
+    "Los ciudadanos",
+    "Los ciudadanos de los Estados Unidos",
+    "Los ciudadanos de los EE. UU."
+   ],
+   "checked": false
+  },
+  "65": {
+   "q": "¿Cuáles son tres derechos de todas las personas que viven en los Estados Unidos?",
+   "a": [
+    "Libertad de expresión",
+    "Libertad de palabra",
+    "Libertad de reunión",
+    "Libertad de hacer peticiones al gobierno",
+    "Libertad de religión",
+    "El derecho a portar armas"
+   ],
+   "checked": false
+  },
+  "66": {
+   "q": "¿A qué le mostramos lealtad cuando decimos el Juramento a la Bandera (Pledge of Allegiance)?",
+   "a": [
+    "A los Estados Unidos",
+    "A la bandera"
+   ],
+   "checked": false
+  },
+  "67": {
+   "q": "Nombre dos promesas que hacen los nuevos ciudadanos en el Juramento de Lealtad (Oath of Allegiance).",
+   "a": [
+    "Renunciar a la lealtad a otros países",
+    "Defender la Constitución (de los EE. UU.)",
+    "Obedecer las leyes de los Estados Unidos",
+    "Servir en las fuerzas armadas (si es necesario)",
+    "Servir a la nación (ayudar, hacer trabajo importante para ella) (si es necesario)",
+    "Ser leal a los Estados Unidos"
+   ],
+   "checked": false
+  },
+  "68": {
+   "q": "¿Cómo pueden las personas hacerse ciudadanos de los Estados Unidos?",
+   "a": [
+    "Nacer en los Estados Unidos, bajo las condiciones de la Enmienda 14",
+    "Naturalizarse",
+    "Obtener la ciudadanía por derivación (bajo las condiciones que fija el Congreso)"
+   ],
+   "checked": false
+  },
+  "69": {
+   "q": "¿Cuáles son dos ejemplos de participación cívica en los Estados Unidos?",
+   "a": [
+    "Votar",
+    "Postularse para un cargo",
+    "Afiliarse a un partido político",
+    "Ayudar en una campaña",
+    "Unirse a un grupo cívico",
+    "Unirse a un grupo comunitario",
+    "Darle su opinión (sobre un tema) a un funcionario electo",
+    "Comunicarse con los funcionarios electos",
+    "Apoyar u oponerse a un tema o una política",
+    "Escribirle a un periódico"
+   ],
+   "checked": false
+  },
+  "70": {
+   "q": "¿Cuál es una forma en que los estadounidenses pueden servir a su país?",
+   "a": [
+    "Votar",
+    "Pagar impuestos",
+    "Obedecer la ley",
+    "Servir en las fuerzas armadas",
+    "Postularse para un cargo",
+    "Trabajar para el gobierno local, estatal o federal"
+   ],
+   "checked": false
+  },
+  "71": {
+   "q": "¿Por qué es importante pagar impuestos federales?",
+   "a": [
+    "Lo exige la ley",
+    "Todos pagan para financiar el gobierno federal",
+    "Lo exige la Constitución (de los EE. UU.) (Enmienda 16)",
+    "Es un deber cívico"
+   ],
+   "checked": false
+  },
+  "72": {
+   "q": "Es importante que todos los hombres de 18 a 25 años se inscriban en el Servicio Selectivo. Nombre una razón.",
+   "a": [
+    "Lo exige la ley",
+    "Es un deber cívico",
+    "Hace que el reclutamiento militar sea justo, si se necesita"
+   ],
+   "checked": false
+  },
+  "73": {
+   "q": "Los colonos vinieron a América por muchas razones. Nombre una.",
+   "a": [
+    "Libertad",
+    "Libertad política",
+    "Libertad religiosa",
+    "Oportunidades económicas",
+    "Escapar de la persecución"
+   ],
+   "checked": false
+  },
+  "74": {
+   "q": "¿Quiénes vivían en América antes de que llegaran los europeos?",
+   "a": [
+    "Los indios americanos",
+    "Los nativos americanos"
+   ],
+   "checked": false
+  },
+  "75": {
+   "q": "¿Qué grupo de personas fue capturado y vendido como esclavos?",
+   "a": [
+    "Los africanos",
+    "Gente de África"
+   ],
+   "checked": false
+  },
+  "76": {
+   "q": "¿Qué guerra pelearon los americanos para ganar la independencia de Gran Bretaña?",
+   "a": [
+    "La Revolución Americana",
+    "La Guerra Revolucionaria (Americana)",
+    "La Guerra de Independencia (de los Estados Unidos)"
+   ],
+   "checked": false
+  },
+  "77": {
+   "q": "Nombre una razón por la que los americanos declararon la independencia de Gran Bretaña.",
+   "a": [
+    "Impuestos altos",
+    "Impuestos sin representación",
+    "Los soldados británicos se quedaban en las casas de los americanos (alojamiento, acuartelamiento)",
+    "No tenían autogobierno",
+    "La Masacre de Boston",
+    "El Motín del Té de Boston (Ley del Té)",
+    "La Ley del Timbre",
+    "La Ley del Azúcar",
+    "Las Leyes Townshend",
+    "Las Leyes Intolerables (Coercitivas)"
+   ],
+   "checked": false,
+   "glosses": {
+    "6": "Stamp Act",
+    "7": "Sugar Act"
+   }
+  },
+  "78": {
+   "q": "¿Quién escribió la Declaración de Independencia?",
+   "a": [
+    "(Thomas) Jefferson"
+   ],
+   "checked": false
+  },
+  "79": {
+   "q": "¿Cuándo se adoptó la Declaración de Independencia?",
+   "a": [
+    "El 4 de julio de 1776"
+   ],
+   "checked": false
+  },
+  "80": {
+   "q": "La Revolución Americana tuvo muchos sucesos importantes. Nombre uno.",
+   "a": [
+    "(La batalla de) Bunker Hill",
+    "La Declaración de Independencia",
+    "Washington cruza el río Delaware (la batalla de Trenton)",
+    "(La batalla de) Saratoga",
+    "Valley Forge (el campamento)",
+    "(La batalla de) Yorktown (la rendición británica en Yorktown)"
+   ],
+   "checked": false
+  },
+  "81": {
+   "q": "Había 13 estados originales. Nombre cinco.",
+   "a": [
+    "New Hampshire",
+    "Massachusetts",
+    "Rhode Island",
+    "Connecticut",
+    "Nueva York",
+    "Nueva Jersey",
+    "Pensilvania",
+    "Delaware",
+    "Maryland",
+    "Virginia",
+    "Carolina del Norte",
+    "Carolina del Sur",
+    "Georgia"
+   ],
+   "checked": false
+  },
+  "82": {
+   "q": "¿Qué documento fundador se escribió en 1787?",
+   "a": [
+    "La Constitución (de los EE. UU.)"
+   ],
+   "checked": false
+  },
+  "83": {
+   "q": "Los Documentos Federalistas (Federalist Papers) apoyaron la aprobación de la Constitución de los EE. UU. Nombre a uno de sus autores.",
+   "a": [
+    "(James) Madison",
+    "(Alexander) Hamilton",
+    "(John) Jay",
+    "Publius"
+   ],
+   "checked": false
+  },
+  "84": {
+   "q": "¿Por qué fueron importantes los Documentos Federalistas?",
+   "a": [
+    "Ayudaron a la gente a entender la Constitución (de los EE. UU.).",
+    "Apoyaron la aprobación de la Constitución (de los EE. UU.)."
+   ],
+   "checked": false
+  },
+  "85": {
+   "q": "Benjamin Franklin es famoso por muchas cosas. Nombre una.",
+   "a": [
+    "Fundó las primeras bibliotecas públicas gratuitas",
+    "Primer director general de Correos de los Estados Unidos",
+    "Ayudó a escribir la Declaración de Independencia",
+    "Inventor",
+    "Diplomático de los EE. UU."
+   ],
+   "checked": false
+  },
+  "86": {
+   "q": "George Washington es famoso por muchas cosas. Nombre una.",
+   "a": [
+    "\"Padre de la Patria\"",
+    "Primer presidente de los Estados Unidos",
+    "General del Ejército Continental",
+    "Presidente de la Convención Constitucional"
+   ],
+   "checked": false
+  },
+  "87": {
+   "q": "Thomas Jefferson es famoso por muchas cosas. Nombre una.",
+   "a": [
+    "Autor de la Declaración de Independencia",
+    "Tercer presidente de los Estados Unidos",
+    "Duplicó el tamaño de los Estados Unidos (la Compra de Luisiana)",
+    "Primer secretario de Estado",
+    "Fundó la Universidad de Virginia",
+    "Autor del Estatuto de Virginia sobre la Libertad Religiosa"
+   ],
+   "checked": false
+  },
+  "88": {
+   "q": "James Madison es famoso por muchas cosas. Nombre una.",
+   "a": [
+    "\"Padre de la Constitución\"",
+    "Cuarto presidente de los Estados Unidos",
+    "Presidente durante la Guerra de 1812",
+    "Uno de los autores de los Documentos Federalistas"
+   ],
+   "checked": false
+  },
+  "89": {
+   "q": "Alexander Hamilton es famoso por muchas cosas. Nombre una.",
+   "a": [
+    "Primer secretario del Tesoro",
+    "Uno de los autores de los Documentos Federalistas",
+    "Ayudó a establecer el Primer Banco de los Estados Unidos",
+    "Ayudante de campo del general George Washington",
+    "Miembro del Congreso Continental"
+   ],
+   "checked": false
+  },
+  "90": {
+   "q": "¿Qué territorio le compraron los Estados Unidos a Francia en 1803?",
+   "a": [
+    "El territorio de Luisiana",
+    "Luisiana"
+   ],
+   "checked": false
+  },
+  "91": {
+   "q": "Nombre una guerra en la que pelearon los Estados Unidos en el siglo XIX (los años 1800).",
+   "a": [
+    "La Guerra de 1812",
+    "La Guerra entre México y los Estados Unidos",
+    "La Guerra Civil",
+    "La Guerra Hispano-Estadounidense"
+   ],
+   "checked": false
+  },
+  "92": {
+   "q": "Nombre la guerra de los EE. UU. entre el Norte y el Sur.",
+   "a": [
+    "La Guerra Civil"
+   ],
+   "checked": false
+  },
+  "93": {
+   "q": "La Guerra Civil tuvo muchos sucesos importantes. Nombre uno.",
+   "a": [
+    "(La batalla de) Fort Sumter",
+    "La Proclamación de Emancipación",
+    "(La batalla de) Vicksburg",
+    "(La batalla de) Gettysburg",
+    "La Marcha de Sherman",
+    "(La rendición en) Appomattox",
+    "(La batalla de) Antietam/Sharpsburg",
+    "Lincoln fue asesinado."
+   ],
+   "checked": false
+  },
+  "94": {
+   "q": "Abraham Lincoln es famoso por muchas cosas. Nombre una.",
+   "a": [
+    "Liberó a los esclavos (la Proclamación de Emancipación)",
+    "Salvó (o preservó) la Unión",
+    "Dirigió a los Estados Unidos durante la Guerra Civil",
+    "16.º presidente de los Estados Unidos",
+    "Pronunció el Discurso de Gettysburg"
+   ],
+   "checked": false
+  },
+  "95": {
+   "q": "¿Qué hizo la Proclamación de Emancipación?",
+   "a": [
+    "Liberó a los esclavos",
+    "Liberó a los esclavos de la Confederación",
+    "Liberó a los esclavos de los estados confederados",
+    "Liberó a los esclavos de la mayoría de los estados del Sur"
+   ],
+   "checked": false
+  },
+  "96": {
+   "q": "¿Qué guerra de los EE. UU. terminó con la esclavitud?",
+   "a": [
+    "La Guerra Civil"
+   ],
+   "checked": false
+  },
+  "97": {
+   "q": "¿Qué enmienda dice que todas las personas nacidas o naturalizadas en los Estados Unidos, y sujetas a su jurisdicción, son ciudadanos de los EE. UU.?",
+   "a": [
+    "La Enmienda 14"
+   ],
+   "checked": false
+  },
+  "98": {
+   "q": "¿Cuándo obtuvieron todos los hombres el derecho al voto?",
+   "a": [
+    "Después de la Guerra Civil",
+    "Durante la Reconstrucción",
+    "(Con la) Enmienda 15",
+    "1870"
+   ],
+   "checked": false
+  },
+  "99": {
+   "q": "Nombre a una líder del movimiento por los derechos de la mujer en el siglo XIX (los años 1800).",
+   "a": [
+    "Susan B. Anthony",
+    "Elizabeth Cady Stanton",
+    "Sojourner Truth",
+    "Harriet Tubman",
+    "Lucretia Mott",
+    "Lucy Stone"
+   ],
+   "checked": false
+  },
+  "100": {
+   "q": "Nombre una guerra en la que pelearon los Estados Unidos en el siglo XX (los años 1900).",
+   "a": [
+    "La Primera Guerra Mundial",
+    "La Segunda Guerra Mundial",
+    "La Guerra de Corea",
+    "La Guerra de Vietnam",
+    "La Guerra del Golfo (Pérsico)"
+   ],
+   "checked": false
+  },
+  "101": {
+   "q": "¿Por qué entraron los Estados Unidos en la Primera Guerra Mundial?",
+   "a": [
+    "Porque Alemania atacó barcos (civiles) de los EE. UU.",
+    "Para apoyar a las Potencias Aliadas (Inglaterra, Francia, Italia y Rusia)",
+    "Para oponerse a las Potencias Centrales (Alemania, Austria-Hungría, el Imperio otomano y Bulgaria)"
+   ],
+   "checked": false
+  },
+  "102": {
+   "q": "¿Cuándo obtuvieron todas las mujeres el derecho al voto?",
+   "a": [
+    "1920",
+    "Después de la Primera Guerra Mundial",
+    "(Con la) Enmienda 19"
+   ],
+   "checked": false
+  },
+  "103": {
+   "q": "¿Qué fue la Gran Depresión?",
+   "a": [
+    "La recesión económica más larga de la historia moderna"
+   ],
+   "checked": false
+  },
+  "104": {
+   "q": "¿Cuándo empezó la Gran Depresión?",
+   "a": [
+    "El Gran Crac (1929)",
+    "La caída de la bolsa de valores de 1929"
+   ],
+   "checked": false
+  },
+  "105": {
+   "q": "¿Quién era presidente durante la Gran Depresión y la Segunda Guerra Mundial?",
+   "a": [
+    "(Franklin) Roosevelt"
+   ],
+   "checked": false
+  },
+  "106": {
+   "q": "¿Por qué entraron los Estados Unidos en la Segunda Guerra Mundial?",
+   "a": [
+    "(El bombardeo de) Pearl Harbor",
+    "Los japoneses atacaron Pearl Harbor",
+    "Para apoyar a las Potencias Aliadas (Inglaterra, Francia y Rusia)",
+    "Para oponerse a las Potencias del Eje (Alemania, Italia y Japón)"
+   ],
+   "checked": false
+  },
+  "107": {
+   "q": "Dwight Eisenhower es famoso por muchas cosas. Nombre una.",
+   "a": [
+    "General durante la Segunda Guerra Mundial",
+    "Presidente al final de (durante) la Guerra de Corea",
+    "34.º presidente de los Estados Unidos",
+    "Firmó la Ley Federal de Ayuda para Carreteras de 1956 (creó el Sistema Interestatal de carreteras)"
+   ],
+   "checked": false
+  },
+  "108": {
+   "q": "¿Quién fue el principal rival de los Estados Unidos durante la Guerra Fría?",
+   "a": [
+    "La Unión Soviética",
+    "La URSS",
+    "Rusia"
+   ],
+   "checked": false
+  },
+  "109": {
+   "q": "Durante la Guerra Fría, ¿cuál fue una de las principales preocupaciones de los Estados Unidos?",
+   "a": [
+    "El comunismo",
+    "La guerra nuclear"
+   ],
+   "checked": false
+  },
+  "110": {
+   "q": "¿Por qué entraron los Estados Unidos en la Guerra de Corea?",
+   "a": [
+    "Para detener la expansión del comunismo"
+   ],
+   "checked": false
+  },
+  "111": {
+   "q": "¿Por qué entraron los Estados Unidos en la Guerra de Vietnam?",
+   "a": [
+    "Para detener la expansión del comunismo"
+   ],
+   "checked": false
+  },
+  "112": {
+   "q": "¿Qué hizo el movimiento de derechos civiles?",
+   "a": [
+    "Luchó para terminar con la discriminación racial"
+   ],
+   "checked": false
+  },
+  "113": {
+   "q": "Martin Luther King, Jr. es famoso por muchas cosas. Nombre una.",
+   "a": [
+    "Luchó por los derechos civiles",
+    "Trabajó por la igualdad de todos los estadounidenses",
+    "Trabajó para que las personas \"no fueran juzgadas por el color de su piel, sino por el contenido de su carácter\""
+   ],
+   "checked": false
+  },
+  "114": {
+   "q": "¿Por qué entraron los Estados Unidos en la Guerra del Golfo Pérsico?",
+   "a": [
+    "Para obligar a las fuerzas militares iraquíes a salir de Kuwait"
+   ],
+   "checked": false
+  },
+  "115": {
+   "q": "¿Qué suceso importante ocurrió el 11 de septiembre de 2001 en los Estados Unidos?",
+   "a": [
+    "Unos terroristas atacaron los Estados Unidos",
+    "Unos terroristas secuestraron dos aviones y los estrellaron contra el World Trade Center en la ciudad de Nueva York",
+    "Unos terroristas secuestraron un avión y lo estrellaron contra el Pentágono en Arlington, Virginia",
+    "Unos terroristas secuestraron un avión que iba hacia Washington, D.C., y se estrelló en un campo en Pensilvania"
+   ],
+   "checked": false
+  },
+  "116": {
+   "q": "Nombre un conflicto militar de los EE. UU. después de los ataques del 11 de septiembre de 2001.",
+   "a": [
+    "La Guerra (global) contra el Terrorismo",
+    "La Guerra de Afganistán",
+    "La Guerra de Irak"
+   ],
+   "checked": false
+  },
+  "117": {
+   "q": "Nombre una tribu de indios americanos de los Estados Unidos.",
+   "a": [
+    "Apache",
+    "Blackfeet",
+    "Cayuga",
+    "Cherokee",
+    "Cheyenne",
+    "Chippewa",
+    "Choctaw",
+    "Creek",
+    "Crow",
+    "Hopi",
+    "Huron",
+    "Inupiat",
+    "Lakota",
+    "Mohawk",
+    "Mohegan",
+    "Navajo",
+    "Oneida",
+    "Onondaga",
+    "Pueblo",
+    "Seminole",
+    "Seneca",
+    "Shawnee",
+    "Sioux",
+    "Teton",
+    "Tuscarora"
+   ],
+   "listNote": "Para ver la lista completa de tribus, visite bia.gov.",
+   "checked": false
+  },
+  "118": {
+   "q": "Nombre un ejemplo de una innovación estadounidense.",
+   "a": [
+    "La bombilla",
+    "El automóvil (los carros, el motor de combustión interna)",
+    "Los rascacielos",
+    "El avión",
+    "La línea de ensamblaje",
+    "La llegada a la Luna",
+    "El circuito integrado (CI)"
+   ],
+   "checked": false,
+   "glosses": {
+    "0": "También: el foco"
+   }
+  },
+  "119": {
+   "q": "¿Cuál es la capital de los Estados Unidos?",
+   "a": [
+    "Washington, D.C."
+   ],
+   "checked": false
+  },
+  "120": {
+   "q": "¿Dónde está la Estatua de la Libertad?",
+   "a": [
+    "(El puerto de) Nueva York",
+    "La isla de la Libertad"
+   ],
+   "notes": {
+    "1": "También se aceptan: Nueva Jersey; cerca de la ciudad de Nueva York; en el (río) Hudson."
+   },
+   "checked": false,
+   "glosses": {
+    "1": "Liberty Island"
+   }
+  },
+  "121": {
+   "q": "¿Por qué tiene 13 franjas la bandera?",
+   "a": [
+    "(Porque había) 13 colonias originales",
+    "(Porque las franjas) representan las colonias originales"
+   ],
+   "checked": false
+  },
+  "122": {
+   "q": "¿Por qué tiene 50 estrellas la bandera?",
+   "a": [
+    "(Porque hay) una estrella por cada estado",
+    "(Porque) cada estrella representa un estado",
+    "(Porque hay) 50 estados"
+   ],
+   "checked": false
+  },
+  "123": {
+   "q": "¿Cómo se llama el himno nacional?",
+   "a": [
+    "The Star-Spangled Banner"
+   ],
+   "checked": false,
+   "glosses": {
+    "0": "En español: La bandera tachonada de estrellas"
+   }
+  },
+  "124": {
+   "q": "El primer lema de la nación fue \"E Pluribus Unum\". ¿Qué significa?",
+   "a": [
+    "De muchos, uno",
+    "Todos nos volvemos uno"
+   ],
+   "checked": false
+  },
+  "125": {
+   "q": "¿Qué es el Día de la Independencia?",
+   "a": [
+    "Un día feriado para celebrar la independencia de los EE. UU. (de Gran Bretaña)",
+    "El cumpleaños del país"
+   ],
+   "checked": false
+  },
+  "126": {
+   "q": "Nombre tres días feriados nacionales de los EE. UU.",
+   "a": [
+    "El Día de Año Nuevo",
+    "El Día de Martin Luther King, Jr.",
+    "El Día de los Presidentes (Cumpleaños de Washington)",
+    "El Día de los Caídos",
+    "Juneteenth",
+    "El Día de la Independencia",
+    "El Día del Trabajo",
+    "El Día de Colón",
+    "El Día de los Veteranos",
+    "El Día de Acción de Gracias",
+    "El Día de Navidad"
+   ],
+   "checked": false,
+   "glosses": {
+    "3": "Memorial Day",
+    "4": "Día de la Liberación, el fin de la esclavitud"
+   }
+  },
+  "127": {
+   "q": "¿Qué es el Día de los Caídos (Memorial Day)?",
+   "a": [
+    "Un día feriado para honrar a los soldados que murieron en el servicio militar"
+   ],
+   "checked": false
+  },
+  "128": {
+   "q": "¿Qué es el Día de los Veteranos?",
+   "a": [
+    "Un día feriado para honrar a las personas de las fuerzas armadas (de los EE. UU.)",
+    "Un día feriado para honrar a las personas que han servido (en las fuerzas armadas de los EE. UU.)"
+   ],
+   "checked": false
+  }
+ }
+}
