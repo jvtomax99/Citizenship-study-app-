@@ -13,7 +13,7 @@
     "From then on, open it from its icon. It works without internet."]},
   {"id": "state", "head": ["Pick Your State.", "Get Your Answers."], "lines": [
     "Pick your state. Your senators, your governor and your state capital fill in.",
-    "Then type in your representative."]},
+    "If a name is missing, type it in. Your representative is always typed in."]},
   {"id": "study", "head": ["Study Cards.", "Learn the Answers."], "lines": [
     "Study cards teach you the answers. Pick a part, and tap the speaker to hear the question.",
     "Tap Show answers to see every answer the officer accepts.",
@@ -27,7 +27,8 @@
     "Answer with the microphone, or type. Then tap Check my answer.",
     "It stops at twelve right, or nine wrong, just like the real interview."]},
   {"id": "list", "head": ["65 or Older?", "The 65/20 List."], "lines": [
-    "Sixty-five or older, with twenty years as a permanent resident? Tap the 65/20 list, and study only the twenty questions with a star."]},
+    "Sixty-five or older, with twenty years as a permanent resident? Tap the 65/20 list, and study only the twenty questions with a star.",
+    "Not sure this applies to you? Ask USCIS, or your lawyer."]},
   {"id": "goal", "head": ["Ten a Day.", "Light Up the Mall."], "lines": [
     "Your goal is ten questions a day. One missed day a week is a rest day.",
     "On the National Mall, each landmark gets brighter as you learn its questions.",

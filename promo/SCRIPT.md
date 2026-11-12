@@ -40,7 +40,7 @@ Headline in Spanish: **Después, ábrala siempre desde aquí.**
 
 | # | English | Español |
 |---|---|---|
-| 7 | From then on, open it from its icon. It works without internet. | Desde entonces, ábrala desde su ícono. Funciona sin internet. |
+| 7 | From then on, open it from its icon. It works without internet. | Después, ábrala siempre desde su ícono. Funciona sin internet. |
 
 ## Pick Your State. Get Your Answers.
 
@@ -49,7 +49,7 @@ Headline in Spanish: **Elija su estado. Vea sus respuestas.**
 | # | English | Español |
 |---|---|---|
 | 8 | Pick your state. Your senators, your governor and your state capital fill in. | Elija su estado. Sus senadores, su gobernador y la capital de su estado aparecen solos. |
-| 9 | Then type in your representative. | Luego escriba el nombre de su representante. |
+| 9 | If a name is missing, type it in. Your representative is always typed in. | Si falta un nombre, puede escribirlo. El nombre de su representante siempre se escribe. |
 
 ## Study Cards. Learn the Answers.
 
@@ -68,7 +68,7 @@ Headline in Spanish: **Drill. Practique cada día.**
 | # | English | Español |
 |---|---|---|
 | 13 | Drill is your daily practice. Say the answer out loud, then tap Show answers. | Drill es su práctica diaria. Diga la respuesta en voz alta, y luego toque Show answers. |
-| 14 | Be honest: I knew it, I guessed, or I missed it. | Sea sincero: la sabía, adiviné, o no la sabía. |
+| 14 | Be honest: I knew it, I guessed, or I missed it. | Diga la verdad: la sabía, adiviné, o no la sabía. |
 | 15 | Guessed or missed, the question comes back sooner. Knew it, and it waits longer each time. | Si adivinó o no la supo, la pregunta vuelve más pronto. Si la sabía, espera más días cada vez. |
 
 ## Mock Interview. Like the Real Day.
@@ -88,6 +88,7 @@ Headline in Spanish: **¿65 años o más? La lista 65/20.**
 | # | English | Español |
 |---|---|---|
 | 19 | Sixty-five or older, with twenty years as a permanent resident? Tap the 65/20 list, and study only the twenty questions with a star. | ¿Tiene sesenta y cinco años o más, y veinte años como residente permanente? Toque la lista 65/20, y estudie solo las veinte preguntas con estrella. |
+| 20 | Not sure this applies to you? Ask USCIS, or your lawyer. | ¿No está seguro de que esto se aplique a usted? Pregunte a USCIS, o a su abogado. |
 
 ## Ten a Day. Light Up the Mall.
 
@@ -95,9 +96,9 @@ Headline in Spanish: **Diez al día. Ilumine el Mall.**
 
 | # | English | Español |
 |---|---|---|
-| 20 | Your goal is ten questions a day. One missed day a week is a rest day. | Su meta es de diez preguntas al día. Un día sin estudiar por semana es un día de descanso. |
-| 21 | On the National Mall, each landmark gets brighter as you learn its questions. | En el National Mall, cada monumento se ilumina más a medida que usted aprende sus preguntas. |
-| 22 | It turns gold when you knew them all on two different days. | Se vuelve dorado cuando las supo todas en dos días distintos. |
+| 21 | Your goal is ten questions a day. One missed day a week is a rest day. | Su meta es de diez preguntas al día. Un día sin estudiar por semana es un día de descanso. |
+| 22 | On the National Mall, each landmark gets brighter as you learn its questions. | En el National Mall, cada monumento se ilumina más a medida que usted aprende sus preguntas. |
+| 23 | It turns gold when you knew them all on two different days. | Se vuelve dorado cuando las supo todas en dos días distintos. |
 
 ## Keep It Safe. Save a Backup.
 
@@ -105,11 +106,11 @@ Headline in Spanish: **Proteja su progreso. Guarde una copia.**
 
 | # | English | Español |
 |---|---|---|
-| 23 | Your progress is saved only on this phone. Tap Backup, save the file, and send it to yourself. | Su progreso se guarda solo en este teléfono. Toque Backup, guarde el archivo, y envíeselo a usted mismo. |
+| 24 | Your progress is saved only on this phone. Tap Backup, save the file, and send it to yourself. | Su progreso se guarda solo en este teléfono. Toque Backup, guarde el archivo, y envíeselo a usted mismo. |
 
 ## Outro
 
 | # | English | Español |
 |---|---|---|
-| 24 | This app is not made by USCIS. Check the names of officials at uscis.gov before your interview. | Esta app no es de USCIS. Revise los nombres de los funcionarios en uscis.gov antes de su entrevista. |
-| 25 | Add it to your Home Screen, and study a little every day. Good luck! | Póngala en su pantalla de inicio, y estudie un poco cada día. ¡Buena suerte! |
+| 25 | This app is not made by USCIS. Check the names of officials at uscis.gov before your interview. | Esta app no es de USCIS. Revise los nombres de los funcionarios en uscis.gov antes de su entrevista. |
+| 26 | Add it to your Home Screen, and study a little every day. Good luck! | Póngala en su pantalla de inicio, y estudie un poco cada día. ¡Buena suerte! |

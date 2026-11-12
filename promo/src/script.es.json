@@ -10,24 +10,25 @@
   {"id": "android", "head": ["En Android,", "Instale la app."], "lines": [
     "En Android, ábrala en Chrome. Toque los tres puntos, y luego Agregar a la pantalla principal, o Instalar app."]},
   {"id": "icon", "head": ["Después, ábrala", "siempre desde aquí."], "lines": [
-    "Desde entonces, ábrala desde su ícono. Funciona sin internet."]},
+    "Después, ábrala siempre desde su ícono. Funciona sin internet."]},
   {"id": "state", "head": ["Elija su estado.", "Vea sus respuestas."], "lines": [
     "Elija su estado. Sus senadores, su gobernador y la capital de su estado aparecen solos.",
-    "Luego escriba el nombre de su representante."]},
+    "Si falta un nombre, puede escribirlo. El nombre de su representante siempre se escribe."]},
   {"id": "study", "head": ["Study cards.", "Aprenda las respuestas."], "lines": [
     "Las tarjetas de estudio le enseñan las respuestas. Elija una parte, y toque la bocina para escuchar la pregunta.",
     "Toque Show answers para ver todas las respuestas que el oficial acepta.",
     "Toque Español para ver la ayuda en español. La entrevista es en inglés."]},
   {"id": "drill", "head": ["Drill.", "Practique cada día."], "lines": [
     "Drill es su práctica diaria. Diga la respuesta en voz alta, y luego toque Show answers.",
-    "Sea sincero: la sabía, adiviné, o no la sabía.",
+    "Diga la verdad: la sabía, adiviné, o no la sabía.",
     "Si adivinó o no la supo, la pregunta vuelve más pronto. Si la sabía, espera más días cada vez."]},
   {"id": "mock", "head": ["Mock interview.", "Como el día de verdad."], "lines": [
     "La entrevista de práctica es como el día de verdad. El oficial lee cada pregunta en voz alta, en inglés.",
     "Responda con el micrófono, o escribiendo. Luego toque Check my answer.",
     "Se detiene con doce correctas, o nueve incorrectas, igual que la entrevista de verdad."]},
   {"id": "list", "head": ["¿65 años o más?", "La lista 65/20."], "lines": [
-    "¿Tiene sesenta y cinco años o más, y veinte años como residente permanente? Toque la lista 65/20, y estudie solo las veinte preguntas con estrella."]},
+    "¿Tiene sesenta y cinco años o más, y veinte años como residente permanente? Toque la lista 65/20, y estudie solo las veinte preguntas con estrella.",
+    "¿No está seguro de que esto se aplique a usted? Pregunte a USCIS, o a su abogado."]},
   {"id": "goal", "head": ["Diez al día.", "Ilumine el Mall."], "lines": [
     "Su meta es de diez preguntas al día. Un día sin estudiar por semana es un día de descanso.",
     "En el National Mall, cada monumento se ilumina más a medida que usted aprende sus preguntas.",

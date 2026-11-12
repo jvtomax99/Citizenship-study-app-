@@ -37,7 +37,7 @@ const T = {
     ghost: {ios: 'Share', android: 'Install', icon: 'No Internet Needed', state: 'New Jersey', study: 'Study Cards', drill: 'Out Loud', mock: '12 Right', list: '65 / 20', goal: 'National Mall', backup: 'Backup'},
     back: 'Guessed or missed: it comes back sooner', wait: 'Knew it: it waits longer each time', days: ['1 day', '3 days', '7 days', '14 days', '30 days'],
     notUscis: 'Not made by USCIS.', check: 'Check officials’ names at uscis.gov', add: 'Add It to Your Home Screen.', daily: 'Study a Little Every Day.'},
-  es: {hookK: 'La entrevista de ciudadanía', civics: 'preguntas de cívica', asks: 'El oficial hace hasta', need: 'correctas. Usted aprueba.', how: 'Cómo se usa',
+  es: {hookK: 'La entrevista de ciudadanía', civics: 'preguntas de educación cívica', asks: 'El oficial hace hasta', need: 'correctas. Usted aprueba.', how: 'Cómo se usa',
     ghost: {ios: 'Compartir', android: 'Instalar', icon: 'Sin internet', state: 'New Jersey', study: 'Study Cards', drill: 'En voz alta', mock: '12 correctas', list: '65 / 20', goal: 'National Mall', backup: 'Backup'},
     back: 'Adivinó o no la supo: vuelve más pronto', wait: 'La sabía: espera más días cada vez', days: ['1 día', '3 días', '7 días', '14 días', '30 días'],
     notUscis: 'Esta app no es de USCIS.', check: 'Revise los nombres en uscis.gov', add: 'Póngala en su pantalla de inicio.', daily: 'Estudie un poco cada día.'},
@@ -79,7 +79,7 @@ const Hook: React.FC<{s: Scene}> = ({s}) => {
         <AbsoluteFill style={{alignItems: 'center', justifyContent: 'center', gap: 30, paddingBottom: 300}}>
           <Kicker text={t.hookK} at={4} color={C.amber} style={{fontSize: 30, letterSpacing: 9}} />
           <div style={{transform: `scale(${pop(10)})`}}><Neon color={C.amber} size={330}>{n128}</Neon></div>
-          <div style={{opacity: interpolate(frame, [36, 46], [0, 1], clamp)}}><Neon color={C.amber} size={84}>{t.civics}</Neon></div>
+          <div style={{opacity: interpolate(frame, [36, 46], [0, 1], clamp), textAlign: 'center', padding: '0 70px'}}><Neon color={C.amber} size={84}>{t.civics}</Neon></div>
         </AbsoluteFill>
       )}
       {frame >= l1 && frame < stars && (
