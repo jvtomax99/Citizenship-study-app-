@@ -67,7 +67,7 @@ nothing to install. GitHub Pages serves the folder as it is.
   `assets/icons/` the app icon, cut from the eagle picture.
 - `assets/images/` The 3D-rendered pictures (the Mall by day and night, the eagle officer;
   `landmarks/` the eight Mall landmarks, each 720 px wide plus a 108 px `-s` square for Home). `CREDITS.md` lists every asset; `docs/design/art-prompts.md` says how they were made.
-- `media/` The how-to video (`how-to-use-en.mp4`, later `-es.mp4`) and its first picture.
+- `media/` The how-to video in English and Spanish (`how-to-use-en.mp4`, `-es.mp4`) and their first pictures.
   Played on the guide screen; not saved for offline use (`sw.js` lets `.mp4` pass).
 - `promo/` How the video is made, in code (Remotion): `README.md` there has the steps,
   `SCRIPT.md` the words in both languages. Not part of the app; has its own `package.json`.

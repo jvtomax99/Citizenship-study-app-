@@ -460,6 +460,7 @@ async function run(scheme) {
   await shot('33-guide', true);
   await tap('[data-act=spanish]');
   assert.ok(await page.locator('.step p.es').count() >= 18);
+  assert.match(await page.locator('.video video').getAttribute('src'), /how-to-use-es\.mp4$/, 'with Español open the video is the Spanish one');
   assert.ok((await page.locator('.card').innerText()).includes('borrador'));
   await shot('34-guide-spanish', true);
   await tap('[data-act=spanish]');

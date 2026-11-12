@@ -2,7 +2,7 @@
 
 Made from `src/script.en.json` and `src/script.es.json` by `tools/script_page.py`; change the words there.
 Each line is spoken and shown as a subtitle. The app's button names stay in English, as in the guide.
-Spanish: **draft, not yet read by Jose.**
+Spanish: Jose OK'd the words and the voice (Dora) on 2026-11-12.
 
 ## Hook
 

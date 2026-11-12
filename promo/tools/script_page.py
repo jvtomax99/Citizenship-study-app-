@@ -6,7 +6,7 @@ en, es = (json.load(open(os.path.join(root, "src", f"script.{l}.json"), encoding
 out = ["# The video's words, English and Spanish", "",
        "Made from `src/script.en.json` and `src/script.es.json` by `tools/script_page.py`; change the words there.",
        "Each line is spoken and shown as a subtitle. The app's button names stay in English, as in the guide.",
-       "Spanish: **draft, not yet read by Jose.**", ""]
+       "Spanish: Jose OK'd the words and the voice (Dora) on 2026-11-12.", ""]
 n = 0
 for a, b in zip(en, es):
     head = " ".join(x for x in a["head"] if x) or a["id"].capitalize()

@@ -193,8 +193,8 @@ export function backup(root, _arg, rerender) {
 // ---- guide ----
 
 // The how-to video (made in promo/). It is not saved for offline use: it needs internet.
-// es stays null until Jose has read the Spanish script; then it is 'media/how-to-use-es.mp4'.
-const VIDEO = { en: 'media/how-to-use-en.mp4', es: null, poster: 'media/how-to-use-en.jpg' };
+// With Español open the guide plays the Spanish one (Jose OK'd its script and voice, 2026-11-12).
+const VIDEO = { en: 'media/how-to-use-en', es: 'media/how-to-use-es' };
 
 let guideData = null; // data/guide.json, fetched the first time the guide is opened
 let guideFailed = false;
@@ -220,9 +220,9 @@ export function guide(root, _arg, rerender) {
       ${open && guideData && !guideData.checked ? '<p class="hint" lang="es">El español de esta guía es un <span class="draft">borrador</span> todavía no revisado.</p>' : ''}
     </section>
     <section class="video" aria-label="Video guide">
-      <h2 class="label">Watch the guide · 2 minutes</h2>
-      <video controls playsinline preload="none" poster="${VIDEO.poster}" src="${(open && VIDEO.es) || VIDEO.en}"${open && VIDEO.es ? ' lang="es"' : ''}></video>
-      <p class="hint">The video needs internet.${open && !VIDEO.es ? ' <span lang="es">El video en español viene pronto; por ahora está en inglés.</span>' : ''}</p>
+      <h2 class="label">Watch the guide · 2 minutes${open ? ' <span lang="es">· Vea la guía</span>' : ''}</h2>
+      <video controls playsinline preload="none" poster="${open ? VIDEO.es : VIDEO.en}.jpg" src="${open ? VIDEO.es : VIDEO.en}.mp4"${open ? ' lang="es"' : ''}></video>
+      <p class="hint">The video needs internet.${open ? ' <span lang="es">El video necesita internet.</span>' : ' Tap “Español” above for the video in Spanish.'}</p>
     </section>
     <div class="steps">${body}</div>
     <a class="btn ghost" href="#/backup">Open Backup</a>`, { short: true });

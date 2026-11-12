@@ -16,7 +16,7 @@ const FILES = [
   'assets/fonts/fraunces.woff2', 'assets/fonts/fraunces-italic.woff2', 'assets/fonts/nunito.woff2',
   'assets/icons/icon-180.png', 'assets/icons/icon-192.png', 'assets/icons/icon-512.png',
   'assets/icons/icon-maskable-512.png',
-  'media/how-to-use-en.jpg', // the video's first picture; the video itself is too big to save and plays from the internet
+  'media/how-to-use-en.jpg', 'media/how-to-use-es.jpg', // the videos' first pictures; the videos are too big to save and play from the internet
 ];
 const fresh = () => FILES.map((f) => new Request(f, { cache: 'no-cache' }));
 

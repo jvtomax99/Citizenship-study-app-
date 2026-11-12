@@ -122,7 +122,7 @@ read through a search extract:
    Spanish, in the style of the CPA app's and the Interpreter Hub's (Jose, 2026-11-11;
    moved up from "Later"). It plays on the guide screen ("Watch the guide" on Home) and
    is also a file to send by WhatsApp. Made in code from screenshots of the real app
-   (`promo/`). The Spanish narration is recorded only after Jose has read its script.
+   (`promo/`). Jose OK'd the Spanish script and voice on 2026-11-12.
    - Done when: the video plays on a phone in both languages and walks through install,
      the state, Study cards, Drill, the Mock interview, the 65/20 list, the goal and the
      Mall, and Backup.
@@ -224,6 +224,7 @@ Each phase is one pull request, one or two sessions.
   - [ ] Live address checked: loads, installs, opens offline.
 - [ ] 7. How-to video in English and Spanish.
   - [x] English video built 2026-11-11 (`media/how-to-use-en.mp4`), on the guide screen.
-  - [ ] Jose reads the Spanish script (`promo/SCRIPT.md`) and picks the Spanish voice
-    from the draft; then the Spanish video goes on the guide screen.
+  - [x] Jose OK'd the Spanish script (`promo/SCRIPT.md`) as written and picked the voice
+    (Dora) on 2026-11-12; the Spanish video (`media/how-to-use-es.mp4`) plays on the
+    guide screen when Español is open.
   - [ ] Jose watches both on his phone.
