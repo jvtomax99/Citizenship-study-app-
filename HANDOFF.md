@@ -1,57 +1,46 @@
-# HANDOFF (written 2026-11-11, Step 6 built, not released)
+# HANDOFF (written 2026-11-12: the app is live, with the how-to videos)
 
-## Goal and exact next step
+## Where things stand
 
-Step 6 (backup, user guide, first release) is built, reviewed and on the test link. It
-is NOT released: no pull request yet, nothing live.
-- Jose ran the phone test on 2026-11-11: "It works". Pull request 5 into `main` is open. The
-  four federal names are confirmed (his screenshot of the USCIS page). **Next: his
-  "push"**, then the two settings. Ask with buttons.
-- Jose's try-this list: on the iPhone, from the Home Screen icon, Backup, "Save a
-  backup", send it by WhatsApp or save to Files; load it in Safari or on a second
-  phone; see the same numbers; "Undo the load"; open the guide and tap Español.
-  Unproven on a real iPhone: which of the three ways to save works there (Share menu,
-  download, copy as text), and whether the file picker lists the file (it has no file
-  filter on purpose; the reviewer says iPhone then also offers photos).
-- After the merge, Jose: Settings, Pages, branch `main`, folder root; Settings,
-  Branches, default `main`. Then check
-  https://jvtomax99.github.io/Citizenship-study-app-/ loads, installs, opens offline.
+- Live at https://jvtomax99.github.io/Citizenship-study-app-/ (GitHub Pages from
+  `main`, on since 2026-11-12). Checked by script that day: it loads, the guide plays
+  both videos, it opens with the network off.
+- The how-to video is done in English and Spanish (SPEC.md feature 10, phase 7, pull
+  request 6). It plays on the guide screen; `promo/README.md` says how to make it again.
+- The test link https://citizenship-study-test.vercel.app is a separate copy with its
+  own saved progress. Deploy a branch there before asking Jose to try new work.
 
-## Done this session (branch `claude/relaxed-mccarthy-sqi1n0`, pushed)
+## Next step
 
-- `js/backup.js` + `tests/backup.test.mjs`, `js/more.js` (`#/backup`, `#/guide`),
-  `data/guide.json` (Spanish `checked:false`), `store.replace/kept/undo`, Home rows,
-  `sw.js` list (cache `civics128-v4`), robots "hidden from Google" line, `.nojekyll`,
-  `README.md`. `main`'s three rule-file commits are merged in (CLAUDE.md settled).
-- Proof: `node --test tests/*.mjs` (48 pass), `python3 tools/questions_from_pdf.py` OK,
-  `node tools/shots.mjs` ALL OK (needs `python3 -m http.server 8123`; takes about 4
-  minutes, run it with a long timeout).
-- Review caught: undo could drop weeks of study in one tap (now asks, and swaps);
-  "saved" was claimed without knowing (wording now asks to check); a crafted interview
-  in a file could freeze "Continue" (now refused).
-- Runway: cleared on the Terms of Use, section 4.4 (CREDITS.md). Jose is on the paid
-  Standard plan.
+Ask Jose, with buttons and a phone notification (CLAUDE.md), which of these he wants:
 
-## Still owed by Jose before the release
+- Install the live app on his iPhone and open it from the icon (the last open line of
+  Step 6).
+- Step 4 voice test: one mock interview by voice in the browser, one from the icon.
+  Step 4 is not checked off, and the video shows the microphone working.
+- Read the app's Spanish (`data/es.json`, the 20 marked 65/20 first, and the guide).
+  Until then the Spanish shows the "borrador" mark, also inside the video's study card.
+- Show the app to one of the family. SPEC.md still has TO FILL: who they are.
 
-- Step 4 voice test (one interview by voice in the browser, one from the icon). Step 4
-  is NOT checked off.
-- Read the Spanish: the 20 marked 65/20 first, plus the guide.
-- Show it to one of the family and friends. SPEC.md TO FILL (who, the app's name).
+## Good to know
 
-## Notes
-
-- Test link: https://citizenship-study-test.vercel.app (Vercel project
-  `citizenship-study-test`, team `language-services`; a push makes a preview only, so
-  deploy with git source, target production). Its saved progress is separate from the
-  live site's: the backup file is how to carry it over.
-- `main` exists (rule files only). GitHub's default branch is still
-  `claude/amazing-albattani-rqksw7`.
-- Site check workflow (CLAUDE.md) lives in Lions-Roar-, not reachable from this session.
-- Step 5 leftovers still open: "Study cards" from a landmark goes back to the sections
-  list; a drill round left open overnight treats a returning question as a retry.
-- Cleanup audit: last ran 2026-11-11; one step finished since, due after Step 6 and 4.
+- ElevenLabs: the key is saved on the cloud environment for `api.elevenlabs.io`. It can
+  record but cannot list voices or show the plan. The voices are Brian (English) and
+  Matilda (Spanish), ids in `promo/tools/voice_eleven.py`. A key must start with `sk_`
+  and have Text to Speech allowed; a restricted key or the key's ID is refused.
+- Changing a line of the video: edit `promo/src/script.<lang>.json`, record again,
+  render (about 30 minutes per language on a 4-core cloud machine), `finish.sh`.
+  `promo/public/shots`, `voice`, `sfx` and `music.mp3` are not in git: make them again
+  with the commands in `promo/README.md` first.
+- The videos' closing card shows the live address. The videos are 10 and 12 MB, play
+  from the internet and are not saved for offline use.
+- Recheck in early January 2027: Senator Booker's seat, New York's governor, and the
+  Speaker after January 3 (`data/officials.json`).
+- Site check workflow (CLAUDE.md) is still not set up. Step 5 leftovers still open:
+  "Study cards" from a landmark goes back to the sections list; a drill round left open
+  overnight treats a returning question as a retry.
+- Cleanup audit: last ran 2026-11-11; two phases finished since.
 
 ## Files to look at first
 
-SPEC.md, docs/ARCHITECTURE.md, js/more.js, js/backup.js, tools/shots.mjs.
+SPEC.md, docs/ARCHITECTURE.md, promo/README.md, js/more.js.

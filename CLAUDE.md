@@ -11,8 +11,8 @@ The rules shared by all of Jose's projects are in
 - **Real user.** Family and friends Jose is helping (who: TO FILL in
   `SPEC.md`).
 - **Hosting.** GitHub Pages from `main` (Jose, 2026-11-11), at
-  https://jvtomax99.github.io/Citizenship-study-app-/ once Jose turns Pages
-  on. Merging to `main` is going live. The preview is the test link
+  https://jvtomax99.github.io/Citizenship-study-app-/ (live since
+  2026-11-12). Merging to `main` is going live. The preview is the test link
   https://citizenship-study-test.vercel.app (Vercel project
   `citizenship-study-test`, team `language-services`; deploy the branch
   again after new work, git source, target production: it does not update

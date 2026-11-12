@@ -220,9 +220,12 @@ Each phase is one pull request, one or two sessions.
   - [x] Jose ran the phone test list (save from the Home Screen icon, load in another
     copy, undo, the guide) on 2026-11-11: "It works". He did not say which of the
     three ways to save his iPhone used.
-  - [ ] Jose's "push" on the pull request into `main`; Jose turns on Pages (Settings,
-    Pages, branch `main`, root) and makes `main` the default branch.
-  - [ ] Live address checked: loads, installs, opens offline.
+  - [x] Jose's "push" on the pull request into `main` (pull request 5); Jose turned on
+    Pages on 2026-11-12; `main` is the default branch.
+  - [x] Live address checked by script on 2026-11-12: it loads, the guide plays both
+    videos, and it opens again with the network off.
+  - [ ] Jose installs it from the live address on his iPhone (Add to Home Screen) and
+    opens it from the icon. A script cannot do this part.
 - [x] 7. How-to video in English and Spanish.
   - [x] English video built 2026-11-11 (`media/how-to-use-en.mp4`), on the guide screen.
   - [x] Jose OK'd the Spanish script (`promo/SCRIPT.md`) on 2026-11-12; the Spanish video
