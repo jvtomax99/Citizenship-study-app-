@@ -5,7 +5,8 @@
 - Live at https://jvtomax99.github.io/Citizenship-study-app-/ (GitHub Pages from
   `main`, on since 2026-11-12). Checked by script that day: it loads, the guide plays
   both videos, it opens with the network off. Jose installed it on his iPhone the same
-  day: "It works". Step 6 is checked off.
+  day: "It works". Step 6 is checked off. Step 4 too: Jose did a mock interview by voice
+  in Safari and from the icon, "Both worked" (2026-11-12).
 - The how-to video is done in English and Spanish (SPEC.md feature 10, phase 7, pull
   request 6). It plays on the guide screen; `promo/README.md` says how to make it again.
 - The test link https://citizenship-study-test.vercel.app is a separate copy with its
@@ -15,8 +16,6 @@
 
 Ask Jose, with buttons and a phone notification (CLAUDE.md), which of these he wants:
 
-- Step 4 voice test: one mock interview by voice in the browser, one from the icon.
-  Step 4 is not checked off, and the video shows the microphone working.
 - Read the app's Spanish (`data/es.json`, the 20 marked 65/20 first, and the guide).
   Until then the Spanish shows the "borrador" mark, also inside the video's study card.
 - Show the app to one of the family. SPEC.md still has TO FILL: who they are.

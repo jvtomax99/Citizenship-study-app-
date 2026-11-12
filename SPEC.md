@@ -83,7 +83,7 @@ read through a search extract:
      with nothing typed asks the person to compare (for people who only say it aloud).
    - Voice is the phone's own speech to text: it needs internet on Android Chrome and
      sends the audio to Google or Apple (the start screen says so). Whether it works
-     in the installed Home Screen app on an iPhone: Jose to try (not known).
+     in the installed Home Screen app on an iPhone: yes, on Jose's iPhone (2026-11-12).
 6. **The National Mall.** Eight rendered landmarks, one per official USCIS part
    (Jose, 2026-11-11: eight, not four, so the 47-question part does not hide progress):
    National Archives (Principles), the Capitol (System of Government), Supreme Court
@@ -209,8 +209,9 @@ Each phase is one pull request, one or two sessions.
   repetition and "I guessed". Home Screen install and offline. Built 2026-11-11, tapped
   through by script (`node tools/shots.mjs`), and Jose tried the test link on his phone
   and said to move on.
-- [ ] 4. Mock interview with voice, the 12/9 rule and 65/20 mode (built 2026-11-11,
-  reviewed, on the test link; waits on Jose finishing one by voice on his phone).
+- [x] 4. Mock interview with voice, the 12/9 rule and 65/20 mode (built 2026-11-11,
+  reviewed). Jose finished one by voice in Safari and one from the Home Screen icon on
+  his iPhone, on the live site: "Both worked" (2026-11-12).
 - [x] 5. The National Mall, daily goal and streak (built 2026-11-11 before Step 4 was
   checked off: Jose will test the voice interview later). Jose tried it on his phone:
   "Looks good" (2026-11-11).
