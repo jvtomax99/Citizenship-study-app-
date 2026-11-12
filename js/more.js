@@ -192,6 +192,10 @@ export function backup(root, _arg, rerender) {
 
 // ---- guide ----
 
+// The how-to video (made in promo/). It is not saved for offline use: it needs internet.
+// With Español open the guide plays the Spanish one (Jose OK'd its script, 2026-11-12).
+const VIDEO = { en: 'media/how-to-use-en', es: 'media/how-to-use-es' };
+
 let guideData = null; // data/guide.json, fetched the first time the guide is opened
 let guideFailed = false;
 
@@ -211,13 +215,21 @@ export function guide(root, _arg, rerender) {
   root.innerHTML = frame(`${top}
     <section class="card">
       ${eagleHeader('Guide · Guía', 'How to use this app')}
-      <p class="lead">Short steps, one for each part of the app. Tap “Español” to read them in Spanish too.</p>
+      <p class="lead">A short video, then short steps, one for each part of the app. Tap “Español” to read them in Spanish too.</p>
       <button class="es-toggle" data-act="spanish" aria-expanded="${open}">Español <span aria-hidden="true">${open ? '▴' : '▾'}</span></button>
       ${open && guideData && !guideData.checked ? '<p class="hint" lang="es">El español de esta guía es un <span class="draft">borrador</span> todavía no revisado.</p>' : ''}
+    </section>
+    <section class="video" aria-label="Video guide">
+      <h2 class="label">Watch the guide · ${open ? '3' : '2'} minutes${open ? ' <span lang="es">· Vea la guía</span>' : ''}</h2>
+      <video controls playsinline preload="none" aria-label="${open ? 'Video: cómo usar esta app' : 'Video: how to use this app'}" poster="${open ? VIDEO.es : VIDEO.en}.jpg" src="${open ? VIDEO.es : VIDEO.en}.mp4"${open ? ' lang="es"' : ''}></video>
+      <p class="note bad" id="novideo" role="status" hidden>The video did not load. It needs internet. <span lang="es">El video no cargó. Necesita internet.</span></p>
+      <p class="hint">The video needs internet.${open ? ' <span lang="es">El video necesita internet.</span>' : ' Tap “Español” above for the video in Spanish. <span lang="es">Toque “Español” para ver el video en español.</span>'}</p>
     </section>
     <div class="steps">${body}</div>
     <a class="btn ghost" href="#/backup">Open Backup</a>`, { short: true });
   wire(root, { spanish: toggleSpanish(rerender) });
+  // no internet: say so instead of a play button that does nothing
+  root.querySelector('.video video')?.addEventListener('error', () => { root.querySelector('#novideo').hidden = false; });
 }
 
 export function leaveMore() { pending = null; note = null; pasting = false; pasted = ''; copyText = ''; guideFailed = false; }

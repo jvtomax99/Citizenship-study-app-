@@ -2,7 +2,7 @@ Drafted 2026-11-11 from Jose's answers. Gaps marked TO FILL for Jose.
 
 # SPEC: Citizenship study app
 
-Working name TO FILL (Jose picks; the CPA app is "Above the Line").
+Name: Citizenship Study (Jose, 2026-11-11: the name on the icon stays).
 
 ## What it is
 
@@ -118,6 +118,17 @@ read through a search extract:
    tap away (Jose, 2026-11-11).
    - Done when: a person can read how to install, study and back up, in both languages.
 
+10. **How-to video.** A narrated video of about 2 minutes, once in English and once in
+   Spanish, in the style of the CPA app's and the Interpreter Hub's (Jose, 2026-11-11;
+   moved up from "Later"). It plays on the guide screen ("Watch the guide" on Home) and
+   is also a file to send by WhatsApp. Made in code from screenshots of the real app
+   (`promo/`). Narrated with ElevenLabs voices (Jose, 2026-11-12).
+   - Done when: the video plays on a phone in both languages and walks through install,
+     the state, Study cards, Drill, the Mock interview, the 65/20 list, the goal and the
+     Mall, and Backup.
+   - Not in its first version: Spanish app screens (the app's buttons are English), a
+     real person's voice, saving the video for offline use (it needs internet).
+
 ## Not in v1
 
 TO FILL: Jose to confirm.
@@ -143,7 +154,7 @@ TO FILL: Jose to confirm.
   about the application).
 - More languages.
 - A mock interview in Spanish for 65/20 applicants (not needed now: Jose, 2026-11-11).
-- A how-to video like the CPA app's. A printable guide.
+- A printable guide.
 
 ## Open questions for Jose
 
@@ -154,7 +165,8 @@ TO FILL: Jose to confirm.
 
 ## Budget
 
-$0 in new purchases, no template (Jose, 2026-11-11). Google Fonts, public-domain or
+$0 in new purchases, no template (Jose, 2026-11-11). The video's narration uses Jose's
+ElevenLabs account (his ask, 2026-11-12). Google Fonts, public-domain or
 CC0 art, and pictures made with the Runway credits Jose already has (120 used so far;
 CREDITS.md).
 
@@ -211,3 +223,13 @@ Each phase is one pull request, one or two sessions.
   - [ ] Jose's "push" on the pull request into `main`; Jose turns on Pages (Settings,
     Pages, branch `main`, root) and makes `main` the default branch.
   - [ ] Live address checked: loads, installs, opens offline.
+- [x] 7. How-to video in English and Spanish.
+  - [x] English video built 2026-11-11 (`media/how-to-use-en.mp4`), on the guide screen.
+  - [x] Jose OK'd the Spanish script (`promo/SCRIPT.md`) on 2026-11-12; the Spanish video
+    (`media/how-to-use-es.mp4`) plays on the guide screen when Español is open.
+  - [x] Voices: ElevenLabs, Brian (English) and Matilda (Spanish), picked by Jose from
+    samples on 2026-11-12 (the first version used a free offline voice).
+  - [x] Independent review: added "ask USCIS or your lawyer" to the 65/20 scene and
+    "if a name is missing, type it in" to the state scene.
+  - [x] Jose watched both: "Both good" (2026-11-12).
+  - [x] Jose's "push" on pull request 6 into `main` (2026-11-12).

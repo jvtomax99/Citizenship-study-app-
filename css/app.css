@@ -290,6 +290,9 @@ a.link{display:flex;align-items:center}
 .paste{display:block;width:100%;margin-top:var(--sp-2);padding:var(--sp-3);border-radius:var(--r);border:2px solid var(--line);background:var(--card);color:var(--ink);font:700 16px/22px var(--sans);resize:vertical;word-break:break-all}
 .paste:focus{outline:none;border-color:var(--indigo1);box-shadow:0 0 0 4px rgba(95,87,201,.18)}
 .vh{position:absolute;width:1px;height:1px;opacity:0;pointer-events:none}
+.video{margin-top:var(--sp-5)}
+.video video{display:block;width:100%;max-width:300px;aspect-ratio:9/16;margin:var(--sp-2) auto 0;border-radius:var(--r);background:#12152B;box-shadow:0 22px 44px -16px rgba(92,52,120,.38)}
+.video .hint{text-align:center}
 .steps{display:flex;flex-direction:column;gap:var(--sp-3)}
 .step{padding:var(--sp-4);border-radius:var(--r);border:2px solid var(--line);background:var(--card)}
 .step h2{display:flex;gap:var(--sp-3);align-items:flex-start;margin:0;font:800 var(--fs-body)/24px var(--sans);color:var(--ink)}

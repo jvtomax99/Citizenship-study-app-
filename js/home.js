@@ -81,7 +81,7 @@ export function home(root, _arg, rerender) {
     ${mallStrip(rows)}
     <nav class="more" aria-label="More">
       <a class="row" href="#/backup"><span class="row-main"><b>Backup</b><small>Last saved: ${ago(s.lastBackup, today)}</small></span>${ICON.chevron}</a>
-      <a class="row" href="#/guide"><span class="row-main"><b>How to use this app</b><small lang="es">Cómo usar esta app</small></span>${ICON.chevron}</a>
+      <a class="row" href="#/guide"><span class="row-main"><b>Watch the guide</b><small>How to use this app, in 2 minutes · <span lang="es">Cómo usar esta app</span></small></span>${ICON.chevron}</a>
     </nav>
     <p class="fine">The questions and answers are copied word for word from USCIS (form M-1778, 09/25). This app is not made by USCIS.</p>
   `);

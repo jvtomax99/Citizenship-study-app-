@@ -22,9 +22,11 @@ The rules shared by all of Jose's projects are in
   built from the USCIS PDF in `sources/`; `python3
   tools/questions_from_pdf.py` must say OK before any push. uscis.gov
   blocks automated downloads: ask Jose to upload files.
-- **Always clickable suggestions** (Jose, 2026-11-11): every question or
-  next step goes out as `AskUserQuestion` buttons, recommended first, never
-  only as text.
+- **Always clickable suggestions, with a phone notification** (Jose,
+  2026-11-11 and 2026-11-12): every question or next step goes out as
+  `AskUserQuestion` buttons, recommended first, never only as text. Each
+  time Jose has to choose something, also send a phone notification that
+  says what the choice is.
 - **Links and settings to paste go in one code block, all at once** (Jose,
   2026-11-11): one per line, never split into several blocks.
 - **A new file the app loads** goes in the `FILES` list in `sw.js`, and the
