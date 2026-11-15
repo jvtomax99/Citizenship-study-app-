@@ -46,6 +46,20 @@ function swapIn(next) {
   }
 }
 
+// Ask the phone to keep the saved progress when it runs low on space, instead of
+// clearing it. The phone may say no, and then nothing changes. Asked at the first
+// answer after the app opens, so nobody is asked before they have progress to lose
+// (Firefox shows a question; Chrome and Safari decide by themselves).
+let askedToKeep = false;
+function askToKeep() {
+  if (askedToKeep) return;
+  askedToKeep = true;
+  try {
+    const s = navigator.storage;
+    if (s && s.persist && s.persisted) s.persisted().then((kept) => kept || s.persist()).catch(() => {});
+  } catch { /* an old browser, or not a browser: carry on */ }
+}
+
 export const store = {
   get: () => state,
   set(patch) {
@@ -55,7 +69,7 @@ export const store = {
   },
   // One more question answered today (the drill and the mock interview call this).
   // Each question counts once a day.
-  countAnswer(id) { return this.set({ days: addAnswer(state.days, dayNumber(), state.goal, id) }); },
+  countAnswer(id) { askToKeep(); return this.set({ days: addAnswer(state.days, dayNumber(), state.goal, id) }); },
   // A new daily goal. Today is held to the new goal; earlier days keep theirs.
   setGoal(goal) {
     const today = dayNumber();
@@ -67,6 +81,7 @@ export const store = {
   // False if the phone could not save, and then nothing is changed.
   replace(next) {
     const loaded = { ...blank(), ...next, hideInstallTip: state.hideInstallTip, lastBackup: state.lastBackup };
+    askToKeep();
     return swapIn(loaded);
   },
   // The progress kept aside by the last load or put-back, or null.

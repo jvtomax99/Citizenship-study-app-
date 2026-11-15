@@ -3,7 +3,7 @@
 // fresh set is downloaded in the background and swapped in only if every file arrived,
 // so the files never get mixed between two versions. An update shows up the second
 // time the app is opened. A new file the app needs must be added to FILES.
-const CACHE = 'civics128-v5';
+const CACHE = 'civics128-v6';
 const NEXT = 'civics128-next';
 const FILES = [
   './', 'index.html', 'manifest.webmanifest', 'css/app.css',

@@ -114,6 +114,9 @@ read through a search extract:
      keeps the one copy it had before; putting it back also shows both sides first
      and can itself be undone (from the review: no single tap drops progress).
      Files that are not a backup are refused.
+   - Keeping progress (Jose, 2026-11-15): at the first answer the app asks the phone
+     to keep its saved progress when space runs low. The phone may refuse; nothing
+     on screen changes either way.
 9. **User guide.** "How to use this app" on Home: short steps in English, Spanish one
    tap away (Jose, 2026-11-11).
    - Done when: a person can read how to install, study and back up, in both languages.
