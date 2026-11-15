@@ -87,6 +87,9 @@ switch, one card per question (`box`, `due`, `seen`, `last`), the daily goal and
 file on the first visit, serves the saved copy, and fetches a fresh one in the
 background, so an update appears the second time the app is opened. A new file the app
 needs must be added to the `FILES` list in `sw.js`, and the cache name there bumped.
+At the first answer after the app opens (and when a backup is loaded), `store.js` asks
+the phone to keep the saved progress when space runs low (`navigator.storage.persist`).
+The phone may refuse; nothing else depends on the answer.
 
 A backup is that same remembered state as one text file (`js/backup.js`). Loading one
 replaces the state; what the phone held is kept under `civics128.undo` (one copy).
